@@ -1,0 +1,26 @@
+{
+  "name": "@trace/app",
+  "version": "0.0.1",
+  "description": "Trace navigation system",
+  "productName": "Trace",
+  "author": "radioActive DROID <me@godwin.dev>",
+  "private": true,
+  "scripts": {
+    "setup": "pnpm run rimraf node_modules && pnpm install",
+    "clean": "pnpm rimraf www/*"
+  },
+  "dependencies": {
+    "@capacitor/android": "^3.0.0-beta.0",
+    "@capacitor/app": "^1.0.0",
+    "@capacitor/cli": "^3.0.0",
+    "@capacitor/core": "^3.0.0",
+    "@capacitor/splash-screen": "^1.0.0",
+    "@capacitor/status-bar": "^1.0.8"
+  },
+  "engines": {
+    "node": "^18 || ^16 || ^14.19",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1",
+    "pnpm": ">=3"
+  }
+}

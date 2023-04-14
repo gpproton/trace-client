@@ -1,0 +1,41 @@
+{
+  "extends": "@quasar/app-vite/tsconfig-preset",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowJs": true,
+    "types": [
+      "vite/client",
+      "@intlify/unplugin-vue-i18n/messages"
+    ],
+    "paths": {
+      "src/*": ["src/*"],
+      "@/*": ["src/*"],
+      "~/*": ["src/*"],
+      "~assets/*": ["src/assets/*"],
+      "assets/*": ["src/assets/*"],
+      "app/*": ["*"],
+      "boot/*": ["src/boot/*"],
+      "stores/*": ["src/stores/*"],
+      "shared/*": ["src/shared/*"],
+      "@/shared/*": ["src/shared/*"],
+      "@/stores/*": ["src/stores/*"],
+      "@/libs/*": ["src/shared/libs/*"],
+      "@/layouts/*": ["src/shared/layouts/*"],
+      "@/components/*": ["src/shared/components/*"],
+      "@/composables/*": ["src/shared/composables/*"],
+      "@/direct/*": ["src/apps/direct/*"],
+      "@/easy/*": ["src/apps/easy/*"],
+      "@/support/*": ["src/apps/support/*"],
+      "@/manager/*": ["src/apps/manager/*"],
+      "@/vector/*": ["src/apps/vector/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "src/**/*.json",
+    "components.d.ts",
+    "types.d.ts"
+  ]
+}

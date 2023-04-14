@@ -1,0 +1,11 @@
+<script setup lang="ts">
+const contextOptions = {
+  page: {
+    title: 'Shortage Summary',
+  },
+};
+</script>
+
+<template>
+  <page-wrapper :options="contextOptions"></page-wrapper>
+</template>

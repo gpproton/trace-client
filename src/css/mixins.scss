@@ -1,0 +1,90 @@
+// $
+
+@mixin bg-text-color($name, $color) {
+  .text-#{$name} {
+    color: $color !important;
+  }
+  .bg-#{$name} {
+    background: $color !important;
+  }
+}
+
+@mixin named-color($name, $color, $color-darken) {
+  --q-#{$name}-only: #{$color};
+  $profiles: 'light' 'dark';
+  @each $profile in $profiles {
+    .body--#{$profile} {
+      $mode-color: null;
+      $mode-text-color: null;
+      @if $profile == 'light' {
+        $mode-color: $color;
+        $mode-text-color: $mode-color;
+        --q-#{$name}-inverted: #{$color-darken};
+        --q-#{$name}-inverted-text: #{$color-darken};
+      } @else {
+        $mode-color: $color-darken;
+        $mode-text-color: $mode-color;
+        --q-#{$name}-inverted: #{$color};
+        --q-#{$name}-inverted-text: #{$color};
+      }
+
+      --q-#{$name}: #{$mode-color};
+
+      .text-#{$name} {
+        color: $mode-text-color !important;
+      }
+      .bg-#{$name} {
+        background: $mode-color !important;
+      }
+      .text-#{$name}-inverted {
+        color: var(--q-#{$name}-inverted-text) !important;
+      }
+      .bg-#{$name}-inverted {
+        background: var(--q-#{$name}-inverted) !important;
+      }
+      .text-#{$name}-only {
+        color: $color !important;
+      }
+      .bg-#{$name}-only {
+        background: $color !important;
+      }
+    }
+  }
+}
+
+@mixin add-border-radius($size, $radius) {
+  .border-radius-#{$size} {
+    border-radius: $radius !important;
+  }
+}
+
+@mixin vector-color($color, $hoverColor) {
+  svg {
+    fill: $color !important;
+
+    circle,
+    line,
+    path {
+      fill: $color !important;
+    }
+
+    &:hover {
+      fill: $hoverColor !important;
+
+      circle,
+      line,
+      path {
+        fill: $hoverColor !important;
+      }
+    }
+  }
+}
+
+@mixin vector-scale($scale, $miniScale) {
+  svg {
+    transform: scale($scale);
+    @media screen and (max-width: 900px) {
+      transform: scale($miniScale);
+    }
+  }
+}

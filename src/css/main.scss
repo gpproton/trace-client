@@ -1,0 +1,95 @@
+@import './quasar.variables.scss';
+@import './mixins';
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  font-weight: 300;
+  color: #333;
+  background-color: #fff;
+  --webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  .text-h1,
+  .text-h2,
+  .text-h3,
+  .text-h4,
+  .text-h5,
+  .text-h6,
+  .text-headline,
+  .text-title {
+    font-family: $heading-font-family !important;
+  }
+
+  .headline,
+  .title,
+  .subheading {
+    font-family: $heading-font-family !important;
+  }
+
+  .text-subtitle-1,
+  .text-subtitle-2,
+  .text-body-1,
+  .text-body-2,
+  .text-button,
+  .text-caption,
+  .text-overline {
+    font-family: $body-font-family !important;
+  }
+
+  .text-weight-thiner {
+    font-weight: 100 !important;
+  }
+  .text-weight-thin {
+    font-weight: 300 !important;
+  }
+
+  @include add-border-radius(xs, $border-radius-xs);
+  @include add-border-radius(sm, $border-radius-sm);
+  @include add-border-radius(md, $border-radius-md);
+  @include add-border-radius(lg, $border-radius-lg);
+  @include add-border-radius(xl, $border-radius-xl);
+  @include add-border-radius(xxl, $border-radius-xxl);
+
+  --q-header-height: #{$header-height};
+  --q-page-container-height: calc(100vh - var(--q-header-height));
+  --q-page-content-height: calc(var(--q-page-container-height) * 0.9);
+
+  .page-container {
+    min-height: var(--q-page-container-height);
+    max-height: var(--q-page-container-height);
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    background-color: var(--q-app-background);
+    .page-content {
+      min-height: var(--q-page-content-height);
+      max-height: var(--q-page-content-height);
+      min-width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+  }
+
+  .bordered-section-1 {
+    border: 1px solid var(--q-app-background);
+    border-radius: $border-radius-sm;
+  }
+
+  .dot {
+    height: 12px;
+    width: 12px;
+    background-color: dodgerblue;
+    border-radius: 50%;
+    display: inline-block;
+  }
+}

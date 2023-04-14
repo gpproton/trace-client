@@ -1,0 +1,88 @@
+body {
+  /** !!Very important! */
+  .app-module-drawer {
+    .q-drawer {
+      background-color: var(--q-app-background);
+    }
+  }
+  /** !!Very important! */
+  .app-main-drawer {
+    .q-drawer {
+      @media screen and (max-width: $breakpoint-md-min) {
+        border-radius: $border-radius-md !important;
+        margin: 15px 0 15px 15px !important;
+        min-width: 68vw;
+        max-width: 92vw;
+      }
+    }
+  }
+
+  /** Added identity module inner form input styles */
+  .identity-form .q-field__inner {
+    .q-field__control {
+      padding: 0 14px !important;
+      background-color: var(--q-app-background-shift);
+      border-radius: $border-radius-sm !important;
+      height: 58px;
+      .q-field__label {
+        color: var(--q-accent);
+      }
+
+      .q-field__native {
+        color: var(--q-primary);
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .app-form .q-field__inner {
+    border-radius: $border-radius-sm;
+
+    .q-field__control {
+      border-radius: inherit;
+      .q-field__native {
+        color: var(--q-primary-1);
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+      }
+      .q-field__append {
+        color: var(--q-accent);
+      }
+    }
+    .q-field__control:before {
+      border: none;
+    }
+  }
+
+  .q-field--labeled.q-field--focused.q-field--highlighted,
+  .q-field--float.q-field--labeled {
+    .q-field__label {
+      margin-top: -8px;
+    }
+  }
+
+  /** Added OTP form input styles */
+  .verify-input .q-field__inner {
+    .q-field__control .q-field__native {
+      text-align: center !important;
+    }
+  }
+
+  .mobile-footer-item {
+    .q-icon {
+      font-size: 2.2rem;
+      width: 2.2rem;
+      height: 2.2rem;
+    }
+  }
+
+  .app-footer {
+    .q-tab__indicator {
+      height: 0.15rem;
+    }
+  }
+
+  .vier-sheet-container {
+    z-index: 5999 !important;
+  }
+}

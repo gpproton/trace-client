@@ -1,0 +1,33 @@
+@import './quasar.variables.scss';
+@import './mixins';
+
+:root {
+  /** color-name, light-mode-color, dark-mode-color */
+
+  @include named-color('primary', $primary, $primary-darkend);
+  @include named-color('primary-1', $primary-1, $primary-1-darkend);
+  @include named-color('secondary', $secondary, $secondary-darkend);
+  @include named-color('accent', $accent, $accent-darkend);
+  @include named-color('accent-more', $accent, $grey-5);
+  @include named-color('space', $space, $accent-darkend);
+  @include named-color('action', $primary, $accent);
+  @include named-color('action-accent', $accent, $accent);
+  @include named-color('app-background', $indigo-1, $grey-9);
+  @include named-color('app-background-more', $indigo-2, $grey-9);
+  @include named-color('app-background-shift', $indigo-0, $grey-9);
+  @include named-color('app-background-shift2', $indigo-01, $grey-10);
+  @include named-color('deep-background', $indigo-7, transparent);
+  @include named-color('app-white', white, transparent);
+  @include named-color('app-plain', white, $grey-9);
+  @include named-color('app-plainer', white, $indigo-1);
+  @include named-color('deep-light', $indigo-1, $indigo-0);
+  @include named-color('app-container', $indigo-0, transparent);
+  @include named-color('app-shade', $app-shade, $app-shade-darkened);
+  @include named-color('app-surface', $accent, #000);
+  @include named-color('app-sheet', $indigo-0, rgb(44, 44, 44));
+  @include named-color('app-container-darker', $indigo-1, transparent);
+
+  /*
+    @include bg-text-color('app-active', var(--q-app-active));
+  */
+}
