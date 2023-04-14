@@ -16,6 +16,7 @@ export default {
   path: ServiceVariant.VECTOR,
   name: APP_NAME,
   component: () => import('./AppLayout.vue'),
+  redirect: { name: 'vec.overview' },
   children: [
     ...SharedBaseRoutes,
     BillingModule,
