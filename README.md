@@ -1,41 +1,22 @@
-# Trace (@trace/client)
+# Trace Client [Experimental]
 
-Trace navigation system
+Trace is an end to end logistics B2C platform, for handling all processes in the logistics process,
+manages the entire logistics cycle from procurement and distribution to transport,
+delivery to the customer and ending with return logistics.
 
-## Install the dependencies
-```bash
-yarn
-# or
-npm install
-```
+## License
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
+Trace is license under the [Reciprocal Public License 1.5](./LICENSE)
 
+[![Reciprocal Public License 1.5](https://img.shields.io/badge/license-RPL--1.5-blue.svg?style=flat-square)](https://opensource.org/license/rpl1-5-txt)
 
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
+- Agboola Solomon ([agboolas@outlook.com](mailto:agboolas@outlook.com))
+- Godwin peter .O ([me@godwin.dev](mailto:me@godwin.dev))
 
+## Support
 
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
+To get free support, use github issue tab.
 
+## Contributing
 
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+Interested in contributing? check out the [contributing guide](./CONTRIBUTING.md).
