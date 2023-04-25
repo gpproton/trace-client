@@ -1,5 +1,6 @@
 export default {
   path: 'auth',
+  name: 'app.identity',
   redirect: { name: 'app.identity.sign-in' },
   component: () => import('./ModLayout.vue'),
   children: [

@@ -16,7 +16,6 @@ interface IProps {
 }
 
 const props = defineProps<IProps>();
-
 const layoutStore = useLayoutStore();
 const { drawerState } = storeToRefs(layoutStore);
 </script>
@@ -66,7 +65,7 @@ export default {
               color="primary"
               text-color="primary-inverted"
               icon="bi-box-arrow-in-right"
-              label="Sign Out"
+              :label="$t('actions.signOut')"
               class="full-width text-weight-thin border-radius-sm"
             ></q-btn>
           </div>

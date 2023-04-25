@@ -36,9 +36,9 @@ export default route(function (/* { store, ssrContext } */) {
 
       if (typeof ServiceVariant[currentService] !== 'undefined') {
         console.log('Active Service: ', service);
-        // INFO: Handle service routing
         if (currentService.toLowerCase() === service) next();
-        else next(`/${service}`);
+        // TODO: temp disabled for more statful changes
+        // else next(`/${service}`);
       } else {
         next();
       }

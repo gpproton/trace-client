@@ -1,6 +1,6 @@
 {
   "name": "@trace/client",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.1",
   "description": "Trace logistics platform",
   "productName": "Trace",
   "private": true,
@@ -88,6 +88,7 @@
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^9.0.0",
+    "json-autotranslate": "^1.11.0",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.5.4",

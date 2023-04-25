@@ -1,7 +1,14 @@
-// This is just an example,
-// so you can safely delete all default props below
+export * from './app';
+import * as actions from './actions';
+import * as defaults from './default';
+import * as items from './items';
+import * as extra from './extra';
 
-export default {
-  failed: 'Action failed',
-  success: 'Action was successful'
+const all = {
+  default: defaults.default,
+  items: items.default,
+  actions: actions.default,
+  extra: extra.default,
 };
+
+export default all;

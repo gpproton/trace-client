@@ -2,6 +2,8 @@
 export const rootRoute = {
   path: '',
   name: 'app.root',
+  // TODO: temporary for initilization
+  redirect: { name: 'app.identity' },
   component: () => import('./pages/RootPage.vue'),
 };
 
