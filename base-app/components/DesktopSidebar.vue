@@ -54,7 +54,7 @@ const toggleIdentityMenu = () =>
 watch(miniDrawer, () => {
   timeout.value = setTimeout(() => {
     if (miniDrawer.value) emits('update:showIdentity', false);
-  }, 500);
+  }, 250);
 });
 onUnmounted(() => clearTimeout(timeout.value));
 </script>
@@ -64,7 +64,7 @@ onUnmounted(() => clearTimeout(timeout.value));
     v-model="drawer"
     show-if-above
     bordered
-    :width="320"
+    :width="295"
     :mini-width="64"
     side="left"
     :mini="miniDrawer"
@@ -89,7 +89,17 @@ onUnmounted(() => clearTimeout(timeout.value));
 
     <!-- Fixed navigation action -->
     <div class="fixed-bottom full-width column items-center q-mb-sm">
-      <div v-show="!miniDrawer" class="q-mb-md">
+      <div
+        v-show="!miniDrawer"
+        class="full-width q-px-lg q-mb-md column items-center"
+      >
+        <theme-switcher
+          v-show="showIdentity"
+          v-model="isDarkMode"
+          @update:model-value="
+            (modelValue: boolean) => emits('update:darkMode', modelValue)
+          "
+        />
         <q-btn
           v-show="showIdentity"
           no-caps
@@ -98,33 +108,17 @@ onUnmounted(() => clearTimeout(timeout.value));
           text-color="primary-inverted"
           icon="bi-box-arrow-in-right"
           label="Sign Out"
-          class="full-width text-weight-thin border-radius-sm q-mx-md"
-        />
-
-        <theme-switcher
-          v-show="!showIdentity"
-          v-model="isDarkMode"
-          @update:model-value="
-            (modelValue) => emits('update:darkMode', modelValue)
-          "
+          class="full-width text-weight-thin border-radius-sm q-my-md"
         />
       </div>
 
       <!-- App user widget for mini and normal state -->
       <sidebar-user
-        v-show="miniDrawer"
-        :mini="true"
+        @click="toggleIdentityMenu"
+        v-model:mini="miniDrawer"
         :profile="userProfile"
-        class="q-mb-md"
+        :class="miniDrawer ? 'q-mb-sm' : 'full-width q-px-sm q-mb-sm'"
       />
-      <div class="full-width q-px-sm" @click="toggleIdentityMenu">
-        <sidebar-user
-          v-show="!miniDrawer"
-          :mini="false"
-          :profile="userProfile"
-          class="q-mb-sm"
-        />
-      </div>
     </div>
   </q-drawer>
 </template>

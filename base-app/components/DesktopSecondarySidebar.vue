@@ -1,22 +1,21 @@
 <script setup lang="ts">
 import { IModule } from '@trace/shared';
-import LinkSecondaryItem from './LinkSecondaryItem.vue';
 import SidebarListItem from './SidebarListItem.vue';
 
 interface IProps {
   modelValue: boolean;
-  search: string;
+  title: string;
   items: IModule[];
 }
 
 const props = withDefaults(defineProps<IProps>(), {
   modelValue: false,
-  search: '',
+  title: 'Secondary Title',
 });
 
 const emits = defineEmits<{
   (eventName: 'update:modelValue', value: boolean): boolean;
-  (eventName: 'update:search', value: string): void;
+  (eventName: 'update:title', value: string): void;
   (eventName: 'update:items', value: IModule[]): void;
 }>();
 
@@ -43,28 +42,17 @@ onMounted(() => {
     side="left"
     bordered
   >
-    <div>
-      <q-input
-        :model-value="search"
-        dense
-        label="Search"
-        class="q-ma-sm rounded-borders"
-        filled
-        @update:model-value="$emit('update:search', $event)"
-      >
-        <template #prepend>
-          <q-avatar>
-            <q-icon size="sm" name="bi-search" />
-          </q-avatar>
-        </template>
-      </q-input>
-      <q-list padding class="text-primary">
-        <template v-for="(item, index) in items" :key="index">
-          <sidebar-list-item :item="item" :dense="false" />
-          <q-separator v-if="item.separator" :key="'sep' + index" />
-        </template>
-      </q-list>
-    </div>
+    <q-toolbar class="q-my-sm">
+      <q-toolbar-title class="q-px-sm">
+        {{ title }}
+      </q-toolbar-title>
+    </q-toolbar>
+    <q-list padding class="text-primary">
+      <template v-for="(item, index) in items" :key="index">
+        <sidebar-list-item :item="item" :dense="false" />
+        <q-separator v-if="item.separator" :key="'sep' + index" />
+      </template>
+    </q-list>
   </q-drawer>
 </template>
 

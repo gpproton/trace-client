@@ -166,7 +166,7 @@ const secondaryItemList = ref<IModule[]>([
             v-if="isDesktop && secondaryItemList.length > 0"
             v-model="showSecondarySidebar"
             v-model:items="secondaryItemList"
-            v-model:search="search"
+            v-model:title="title"
           />
         </slot>
 

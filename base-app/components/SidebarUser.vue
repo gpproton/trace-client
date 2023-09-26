@@ -11,6 +11,10 @@ const props = withDefaults(defineProps<IProps>(), {
   mini: true,
 });
 
+const emits = defineEmits<{
+  (eventName: 'update:mini', value: boolean): void;
+}>();
+
 const truncateText = (evalText: string, maxLength: number) => {
   return evalText.length > maxLength
     ? `${evalText.substring(0, maxLength)}..`
@@ -18,10 +22,10 @@ const truncateText = (evalText: string, maxLength: number) => {
 };
 
 const userFullName = computed<string>(() =>
-  truncateText(`${props.profile.firstName} ${props.profile.lastName}`, 15)
+  truncateText(`${props.profile.firstName} ${props.profile.lastName}`, 12)
 );
 
-const userEmail = computed<string>(() => truncateText(props.profile.email, 25));
+const userEmail = computed<string>(() => truncateText(props.profile.email, 22));
 
 const iconTextChar = computed(
   () => props.profile.firstName.charAt(0) + props.profile.lastName.charAt(0)

@@ -49,12 +49,27 @@ const emits = defineEmits<{
         size="lg"
         @click="() => emits('update:modelValue', !props.modelValue)"
       />
-      <div
-        class="text-primary text-h5 text-weight-bold text-no-wrap overflow-hidden ellipsis q-pl-sm col-2"
+      <q-input
+        :model-value="search"
+        dense
+        filled
+        label="Search items"
+        class="q-mx-sm border-radius-sm"
+        @update:model-value="$emit('update:search', $event)"
       >
-        {{ showTitle ? title : '' }}
-      </div>
-      <q-toolbar-title class="q-px-sm col-6">
+        <template #prepend>
+          <q-avatar>
+            <q-icon size="sm" name="bi-search" />
+          </q-avatar>
+        </template>
+        <template #append>
+          <div class="row items-center q-gutter-xs">
+            <q-icon size="1.25rem" name="bi-command" />
+            <span class="text-weight-regular text-subtitle1">K</span>
+          </div>
+        </template>
+      </q-input>
+      <q-toolbar-title class="q-px-sm">
         <div class="row items-center">
           <switcher-button
             v-show="headerMenu.length > 0"
