@@ -15,10 +15,8 @@ export default defineNuxtConfig({
   },
   modules: [
     'nuxt-quasar-ui',
-    'nuxt-svgo',
     'nuxt3-leaflet',
     // '@nuxtjs/apollo',
-    // '@nuxtjs/i18n',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
@@ -29,10 +27,7 @@ export default defineNuxtConfig({
     join(currentDir, './assets/qusar-mod.scss'),
     join(currentDir, './assets/leaflet.scss')
   ],
-  svgo: {
-    global: false,
-    autoImportPath: false
-  },
+
   quasar: {
     plugins: [
       'AddressbarColor',

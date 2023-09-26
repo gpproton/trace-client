@@ -1,8 +1,12 @@
 {
   "name": "trace",
   "private": true,
+  "scripts": {
+    "clean": "bunx rimraf node_modules **/node_modules bun.* **/bun.*"
+  },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "vue-i18n-locale-message": "^1.16.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

@@ -33,7 +33,7 @@ const router = useRouter();
             style="width: 200px"
             @click="router.back"
           >
-            Go Back
+            {{ $t('navigation.back') }}
           </q-btn>
         </transition>
       </div>

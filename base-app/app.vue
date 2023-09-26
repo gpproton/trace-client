@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const layout: string = 'default';
+</script>
+
 <template>
-  <div>Hello</div>
+  <app-root :layout="layout" />
 </template>
