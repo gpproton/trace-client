@@ -42,11 +42,12 @@ onMounted(() => {
     side="left"
     bordered
   >
-    <q-toolbar class="q-my-sm">
+    <q-toolbar>
       <q-toolbar-title class="q-px-sm">
         {{ title }}
       </q-toolbar-title>
     </q-toolbar>
+    <q-separator class="q-mb-md" />
     <q-list padding class="text-primary">
       <template v-for="(item, index) in items" :key="index">
         <sidebar-list-item :item="item" :dense="false" />
