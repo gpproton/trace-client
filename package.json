@@ -1,12 +1,29 @@
 {
-  "name": "trace",
+  "name": "@trace/client",
+  "engines": {
+    "npm": "please-use-bun",
+    "pnpm": "please-use-bun",
+    "yarn": "please-use-bun",
+    "bun": ">= 1.0.4",
+    "node": ">= 16.0.0"
+  },
   "private": true,
   "scripts": {
-    "clean": "bunx rimraf node_modules **/node_modules bun.* **/bun.*"
+    "clean": "bunx rimraf node_modules **/node_modules bun.* **/bun.* **/dist/*",
+    "generate": "nuxt generate",
+    "dev": "run-p dev:support dev:core",
+    "dev:support": "cd support && bun dev",
+    "dev:core": "cd core && bun dev",
+    "dev:finder": "cd finder && bun dev",
+    "dev:portal": "cd portal && bun dev",
+    "dev:manage": "cd manage && bun dev",
+    "build": "run-p build:support build:core",
+    "build:support": "bun generate --cwd support",
+    "build:core": "bun generate --cwd core && cp -r core/dist/. support/dist/core/"
   },
   "devDependencies": {
     "bun-types": "latest",
-    "vue-i18n-locale-message": "^1.16.0"
+    "npm-run-all2": "^6.1.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
