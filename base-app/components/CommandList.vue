@@ -12,11 +12,6 @@ const closeModal = (value: boolean) => {
   emits('update:visible', value);
 };
 </script>
-<script lang="ts">
-export default {
-  name: 'CommandList',
-};
-</script>
 
 <template>
   <q-list style="min-width: 175px">
