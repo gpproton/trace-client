@@ -1,4 +1,5 @@
 import bootstrapIcons from 'quasar/icon-set/svg-bootstrap-icons'
+import materialIcons from 'quasar/icon-set/svg-material-icons'
 import svgLoader from 'vite-svg-loader'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
@@ -39,14 +40,15 @@ export default defineNuxtConfig({
       'Notify',
       'Dark',
     ],
-    sassVariables: join(currentDir, './assets/main.scss'),  //'~/assets/main.scss',
+    sassVariables: join(currentDir, './assets/main.scss'),
     iconSet: {
       ...bootstrapIcons,
+      ...materialIcons,
       colorPicker: bootstrapIcons.colorPicker
     },
     extras: {
       font: 'roboto-font',
-      fontIcons: ['bootstrap-icons'],
+      fontIcons: ['bootstrap-icons', 'material-icons'],
       animations: 'all',
     },
   }
