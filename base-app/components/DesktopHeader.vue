@@ -81,7 +81,7 @@ const emits = defineEmits<{
         </div>
       </q-toolbar-title>
       <div class="header-icon-button q-gutter-xs vertical-middle">
-        <!-- Top level section switcher -->
+        <!-- Top level app switcher -->
         <q-btn flat square color="primary" class="border-radius-sm q-px-sm">
           <q-icon
             color="primary"
