@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.124-alpha">
+
+  <PropertyGroup>
+    <StartupCommand>bun run dev</StartupCommand>
+    <ShouldRunNpmInstall>false</ShouldRunNpmInstall>
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <PublishCommand>bun run build</PublishCommand>
+    <ProductionBuildCommand>bun run build</ProductionBuildCommand>
+    <CleanCommand>bun run clean</CleanCommand>
+    <!--    <BuildCommand>bun install</BuildCommand>-->
+    <!--    <TestCommand>bun test</TestCommand>-->
+    <!--    <JavaScriptTestRoot>src\</JavaScriptTestRoot>-->
+    <!--    <JavaScriptTestFramework>Jest</JavaScriptTestFramework>-->
+    <SpaRoot>$(MSBuildProjectDirectory)\</SpaRoot>
+    <CoreRoot>$(MSBuildProjectDirectory)\core</CoreRoot>
+    <BuildOutputFolder>$(MSBuildProjectDirectory)\support\dist</BuildOutputFolder>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Script Include="**" Exclude="*.esproj;**\node_modules\**;**\.vscode\**" />
+  </ItemGroup>
+
+  <!-- This target is copied from the ASP.NET SPA template in order to ensure node_modules are in place. -->
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules')">
+    <Exec Command="bun --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Bun is required to build and run this project. To continue, please install Bun from https://bun.sh/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'bun'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="bun install" />
+  </Target>
+
+</Project>
