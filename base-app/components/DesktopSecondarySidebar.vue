@@ -47,7 +47,7 @@ onMounted(() => {
         {{ title }}
       </q-toolbar-title>
     </q-toolbar>
-    <q-separator class="q-mb-md" />
+    <q-separator size="1" class="q-mb-md" />
     <q-list padding class="text-primary">
       <template v-for="(item, index) in items" :key="index">
         <sidebar-list-item :item="item" :dense="false" />

@@ -30,6 +30,11 @@ const emits = defineEmits<{
   (eventName: 'update:title', value: string): void;
   (eventName: 'update:showTitle', value: boolean): void;
 }>();
+
+const searchValue = computed({
+  get: () => props.search,
+  set: (value) => emits('update:search', value),
+});
 </script>
 
 <template>
@@ -50,12 +55,11 @@ const emits = defineEmits<{
         @click="() => emits('update:modelValue', !props.modelValue)"
       />
       <q-input
-        :model-value="search"
+        v-model="searchValue"
         dense
         filled
         label="Search items"
         class="q-mx-sm border-radius-sm"
-        @update:model-value="$emit('update:search', $event)"
       >
         <template #prepend>
           <q-avatar>

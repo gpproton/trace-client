@@ -34,7 +34,7 @@ export default abstract class BaseMenu implements IBaseMenu {
       name: 'support',
       title: 'Support',
       icon: 'bi-wrench-adjustable-circle',
-      path: ServiceVariant.SUPPORT,
+      path: '',
     },
     {
       name: 'portal',
@@ -57,7 +57,6 @@ export default abstract class BaseMenu implements IBaseMenu {
       icon: 'bi-gear-wide-connected',
       name: 'account.settings',
     },
-    { title: 'Manage', icon: 'bi-nut', name: 'manage' },
     { title: 'Help', icon: 'bi-question-circle', name: 'help' },
   ];
   notificationTabs: IModule[] = [

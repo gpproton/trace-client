@@ -79,7 +79,7 @@ onUnmounted(() => clearTimeout(timeout.value));
     >
       <div v-show="!showIdentity">
         <sidebar-list :items="overviewMenu" />
-        <q-separator class="q-my-xs q-mx-sm" />
+        <q-separator class="q-mx-sm" />
         <sidebar-list :items="secondaryMenu" />
       </div>
       <div v-show="showIdentity">

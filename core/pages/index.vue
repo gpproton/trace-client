@@ -8,8 +8,6 @@ definePageMeta({ name: 'overview' });
     layout="default"
     :options="{ title: 'Overview' }"
   >
-    <div>
-      <q-btn color="primary" class="q-mx-md border-radius-sm">Check</q-btn>
-    </div>
+    <h3>Trace Advance (Core)</h3>
   </page-wrapper>
 </template>

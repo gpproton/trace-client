@@ -1,6 +1,13 @@
+<script setup lang="ts">
+definePageMeta({ name: 'overview' });
+</script>
+
 <template>
-  <div>
-    <h3>Root page</h3>
-    <NuxtLink to="/test">Test page</NuxtLink>
-  </div>
+  <page-wrapper
+    name="overview"
+    layout="default"
+    :options="{ title: 'Overview' }"
+  >
+    <h3>Trace Portal</h3>
+  </page-wrapper>
 </template>

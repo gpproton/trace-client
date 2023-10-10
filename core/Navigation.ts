@@ -4,8 +4,8 @@ export class Navigation extends BaseMenu {
   constructor() {
     super();
 
-    this.desktopFilter = ['overview', 'schedule'];
-    this.mobileFilter = ['overview', 'schedule', 'task', 'track'];
+    this.desktopFilter = ['overview', 'schedule', 'engagement'];
+    this.mobileFilter = ['overview', 'schedule', 'task', 'engagement'];
     this.modules = [
       {
         title: 'Overview',
@@ -20,6 +20,12 @@ export class Navigation extends BaseMenu {
         path: 'schedule',
       },
       {
+        name: 'engagement',
+        title: 'Engagement',
+        icon: 'bi-people-fill',
+        path: 'engagement',
+      },
+      {
         name: 'task',
         title: 'Task',
         icon: 'bi-list-check',
@@ -32,10 +38,22 @@ export class Navigation extends BaseMenu {
         path: 'track',
       },
       {
-        title: 'Billing',
+        title: 'Accounting',
         icon: 'bi-upc-scan',
-        name: 'billing',
-        path: 'billing',
+        name: 'accounting',
+        path: 'accounting',
+      },
+      {
+        title: 'Customers',
+        icon: 'bi-journal-album',
+        name: 'customers',
+        path: 'customers',
+      },
+      {
+        title: 'Fueling',
+        icon: 'bi-fuel-pump',
+        name: 'fueling',
+        path: 'refuelingsource',
       },
       {
         title: 'Shortage',
@@ -50,30 +68,52 @@ export class Navigation extends BaseMenu {
         path: 'payment',
       },
       {
-        title: 'Drivers',
+        title: 'Dispatch',
         icon: 'bi-person-workspace',
-        name: 'driver',
-        path: 'driver',
+        name: 'dispatch',
+        path: 'dispatch',
+      },
+      {
+        title: 'Locations',
+        icon: 'bi-geo',
+        name: 'locations',
+        path: 'locations',
+      },
+      {
+        title: 'Fleet',
+        icon: 'bi-car-front',
+        name: 'fleet',
+        path: 'fleet',
+      },
+      {
+        title: 'Documents',
+        icon: 'bi-files-alt',
+        name: 'documents',
+        path: 'documents',
+      },
+      {
+        title: 'Catalog',
+        icon: 'bi-collection',
+        name: 'catalog',
+        path: 'catalog',
+      },
+      {
+        title: 'Inventory',
+        icon: 'bi-box',
+        name: 'inventory',
+        path: 'inventory',
+      },
+      {
+        title: 'Maintenance',
+        icon: 'bi-wrench-adjustable',
+        name: 'maintenance',
+        path: 'maintenance',
       },
       {
         title: 'Resources',
         icon: 'bi-hdd-stack',
         name: 'resource',
         path: 'resource',
-        items: [
-          {
-            name: 'preview-00',
-            icon: 'bi-0-square',
-            title: 'Preview 00',
-            separator: false,
-          },
-          {
-            name: 'preview-01',
-            icon: 'bi-1-square',
-            title: 'Preview 11',
-            separator: false,
-          },
-        ],
       },
     ];
 

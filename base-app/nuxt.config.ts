@@ -5,7 +5,9 @@ import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 
 const currentDir = dirname(fileURLToPath(import.meta.url))
-
+// TODO: Mapbox refrence
+// https://gitlab.com/relief-melone/vue-mapbox-ts/-/blob/master/src/services/MapboxDrawControl.ts?ref_type=heads
+// https://github.com/studiometa/vue-mapbox-gl/blob/develop/packages/vue-mapbox-gl/components/MapboxMap.vue
 export default defineNuxtConfig({
   ssr: false,
   pwa: {},
@@ -16,7 +18,6 @@ export default defineNuxtConfig({
   },
   modules: [
     'nuxt-quasar-ui',
-    'nuxt3-leaflet',
     // '@nuxtjs/apollo',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
@@ -25,8 +26,7 @@ export default defineNuxtConfig({
   ],
   css: [
     join(currentDir, './assets/colors.scss'),
-    join(currentDir, './assets/qusar-mod.scss'),
-    join(currentDir, './assets/leaflet.scss')
+    join(currentDir, './assets/qusar-mod.scss')
   ],
 
   quasar: {
