@@ -11,12 +11,12 @@
   "scripts": {
     "clean": "bunx rimraf node_modules **/node_modules bun.* **/bun.* **/dist/*",
     "generate": "nuxt generate",
-    "dev": "run-p dev:support dev:core",
-    "dev:support": "cd support && bun dev",
+    "dev": "run-p dev:support dev:finder dev:core dev:portal dev:manager",
+    "dev:support": "cd apps/support && bun dev",
     "dev:core": "cd apps/core && bun dev",
     "dev:finder": "cd apps/finder && bun dev",
     "dev:portal": "cd apps/portal && bun dev",
-    "dev:manage": "cd apps/manager && bun dev",
+    "dev:manager": "cd apps/manager && bun dev",
     "build": "run-p build:support build:core",
     "build:support": "bun generate --cwd apps/support",
     "build:core": "bun generate --cwd apps/core && cp -r apps/core/dist/. apps/support/dist/core/"
