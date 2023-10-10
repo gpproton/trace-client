@@ -1,16 +1,8 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { appHeader } from "@trace/shared";
+
 export default defineNuxtConfig({
+  app: appHeader('/', 'Trace Manager'),
   extends: [
     '../base-app'
   ],
-  app: {
-    head: {
-      titleTemplate: '%s :: Trace Manage',
-      meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Meta description' }
-      ]
-    }
-  }
 })

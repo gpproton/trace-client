@@ -75,7 +75,7 @@ onUnmounted(() => clearTimeout(timeout.value));
     <sidebar-header v-model="miniDrawer" class="q-mt-sm" :name="props.name" />
     <q-scroll-area
       class="fit fixed-bottom"
-      style="padding-top: 96px; padding-bottom: 150px"
+      style="padding-top: 96px; padding-bottom: 110px"
     >
       <div v-show="!showIdentity">
         <sidebar-list :items="overviewMenu" />

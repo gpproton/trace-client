@@ -29,7 +29,7 @@ export const usePageStore = defineStore('page-state', () => {
 
     useMeta({
       title: title.value,
-      // titleTemplate: (title) => `${title} :: ${rootTitle}`,
+      titleTemplate: (title) => `${title} :: Trace`,
       link: style.value,
       script: script.value,
     });
