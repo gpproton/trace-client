@@ -1,8 +1,8 @@
 import { appHeader } from "@trace/shared";
 
 export default defineNuxtConfig({
-  app: appHeader('/', 'Trace Support'),
+  app: appHeader('/', 'Trace Manager'),
   extends: [
-    '../base-app'
-  ]
+    '../../base-app'
+  ],
 })

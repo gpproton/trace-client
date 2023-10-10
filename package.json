@@ -13,13 +13,13 @@
     "generate": "nuxt generate",
     "dev": "run-p dev:support dev:core",
     "dev:support": "cd support && bun dev",
-    "dev:core": "cd core && bun dev",
-    "dev:finder": "cd finder && bun dev",
-    "dev:portal": "cd portal && bun dev",
-    "dev:manage": "cd manage && bun dev",
+    "dev:core": "cd apps/core && bun dev",
+    "dev:finder": "cd apps/finder && bun dev",
+    "dev:portal": "cd apps/portal && bun dev",
+    "dev:manage": "cd apps/manager && bun dev",
     "build": "run-p build:support build:core",
-    "build:support": "bun generate --cwd support",
-    "build:core": "bun generate --cwd core && cp -r core/dist/. support/dist/core/"
+    "build:support": "bun generate --cwd apps/support",
+    "build:core": "bun generate --cwd apps/core && cp -r apps/core/dist/. apps/support/dist/core/"
   },
   "devDependencies": {
     "bun-types": "latest",
@@ -31,10 +31,6 @@
   "workspaces": [
     "packages/*",
     "base-app",
-    "core",
-    "finder",
-    "portal",
-    "support",
-    "manage"
+    "apps/*"
   ]
 }
