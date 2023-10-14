@@ -1,29 +1,29 @@
 {
   "name": "@trace/client",
   "engines": {
-    "npm": "please-use-bun",
-    "pnpm": "please-use-bun",
-    "yarn": "please-use-bun",
-    "bun": ">= 1.0.4",
+    "npm": "please-use-pnpm",
+    "pnpm": ">= 8.2.0",
+    "yarn": "please-use-pnpm",
+    "bun": ">= 1.0.1",
     "node": ">= 16.0.0"
   },
   "private": true,
   "scripts": {
-    "clean": "bunx rimraf node_modules **/node_modules bun.* **/bun.* **/dist/*",
-    "generate": "nuxt generate",
-    "dev": "run-p dev:support dev:finder dev:core dev:portal dev:manager",
-    "dev:support": "cd apps/support && bun dev",
-    "dev:core": "cd apps/core && bun dev",
-    "dev:finder": "cd apps/finder && bun dev",
-    "dev:portal": "cd apps/portal && bun dev",
-    "dev:manager": "cd apps/manager && bun dev",
-    "build": "run-p build:support build:core",
-    "build:support": "bun generate --cwd apps/support",
-    "build:core": "bun generate --cwd apps/core && cp -r apps/core/dist/. apps/support/dist/core/"
+    "clean": "pnpx rimraf node_modules **/node_modules bun.* **/bun.* **/dist/* pnpm-lock.* **/pnpm-lock.*",
+    "dev": "pnpm -r --filter ./apps run dev",
+    "dev:app": "pnpm -r --filter ./base-app run dev",
+    "dev:support": "pnpm -r --filter ./apps/support run dev",
+    "dev:portal": "pnpm -r --filter ./apps/portal run dev",
+    "dev:finder": "pnpm -r --filter ./apps/finder run dev",
+    "dev:core": "pnpm -r --filter ./apps/core run dev",
+    "dev:manager": "pnpm -r --filter ./apps/manager run dev",
+    "build": "pnpm -r --filter ./apps run build"
   },
   "devDependencies": {
-    "bun-types": "latest",
-    "npm-run-all2": "^6.1.0"
+    "pnpm": "^8.2.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^5.0.0",
+    "bun-types": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

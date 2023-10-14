@@ -4,26 +4,26 @@ import svgLoader from 'vite-svg-loader'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 
-const currentDir = dirname(fileURLToPath(import.meta.url))
-// TODO: Mapbox refrence
-// https://gitlab.com/relief-melone/vue-mapbox-ts/-/blob/master/src/services/MapboxDrawControl.ts?ref_type=heads
-// https://github.com/studiometa/vue-mapbox-gl/blob/develop/packages/vue-mapbox-gl/components/MapboxMap.vue
+const currentDir = dirname(fileURLToPath(import.meta.url));
 export default defineNuxtConfig({
-  ssr: false,
   pwa: {},
+  // @ts-ignore
   vite: {
     plugins: [
       svgLoader(),
     ],
   },
   modules: [
+    '@nuxtjs/i18n',
     'nuxt-quasar-ui',
-    // '@nuxtjs/apollo',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
     '@vite-pwa/nuxt'
   ],
+  i18n: {
+    vueI18n: './i18n.config.ts'
+  },
   css: [
     join(currentDir, './assets/colors.scss'),
     join(currentDir, './assets/qusar-mod.scss')

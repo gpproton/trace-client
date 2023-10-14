@@ -36,6 +36,7 @@
     "@nuxtjs/apollo": "next",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/html-validator": "^1.5.2",
+    "@nuxtjs/i18n": "next",
     "@nuxtjs/robots": "^3.0.0",
     "@pinia/nuxt": "^0.4.11",
     "@quasar/extras": "^1.16.6",
@@ -45,6 +46,13 @@
     "@vue-js-cron/quasar": "1.1.4",
     "mapbox-gl": "^1.13.3",
     "maplibre-gl": "^3.4.0",
-    "quasar": "^2.12.7"
+    "quasar": "^2.12.7",
+    "@intlify/message-compiler": "9.4.1",
+    "@intlify/core-base": "9.4.1",
+    "@intlify/shared": "9.4.1",
+    "@intlify/vue-i18n-bridge": "1.0.1",
+    "@intlify/vue-router-bridge": "1.0.1",
+    "vue-i18n": "9.4.1",
+    "vue-i18n-routing": "1.1.1"
   }
 }

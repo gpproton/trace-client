@@ -1,9 +1,8 @@
 {
-  "hello": "Hello X",
-  "navigation": {
+  "router": {
     "back": "Go Back"
   },
-  "identity": {
+  "auth": {
     "signIn": "Sign In",
     "signInGoogle": "Sign in wth Google",
     "signInMicrosoft": "Sign in wth Microsoft",
