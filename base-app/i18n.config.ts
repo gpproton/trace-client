@@ -16,9 +16,9 @@ export default defineI18nConfig(() => {
   const messages = loadLocaleMessages();
 
   return {
-  legacy: false,
-  globalInjection: true,
-  locale: 'en-US',
-  messages
-}
+    legacy: false,
+    globalInjection: true,
+    locale: 'en-US',
+    messages
+  }
 })

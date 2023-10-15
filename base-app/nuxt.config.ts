@@ -6,6 +6,7 @@ import { dirname, join } from 'path'
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
 export default defineNuxtConfig({
+  ssr: false,
   pwa: {},
   // @ts-ignore
   vite: {
