@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Trace</string>
-    <string name="title_activity_main">Trace</string>
-    <string name="package_name">ng.trace.vector</string>
-    <string name="custom_url_scheme">ng.trace.vector</string>
-</resources>

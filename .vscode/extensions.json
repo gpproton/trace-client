@@ -3,8 +3,10 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "editorconfig.editorconfig",
-    "johnsoncodehk.volar",
-    "wayou.vscode-todo-highlight"
+    "vue.vscode-typescript-vue-plugin",
+    "vue.volar",
+    "wayou.vscode-todo-highlight",
+    "sibiraj-s.vscode-scss-formatter"
   ],
   "unwantedRecommendations": [
     "octref.vetur",

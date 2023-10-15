@@ -1,0 +1,27 @@
+version: '3'
+
+x-app-instance: &app-instance
+  build: &app-build
+    context: .
+    dockerfile: Dockerfile
+    args: &app-args
+      VERSION: '${VERSION}'
+  healthcheck:
+    test: ['CMD', 'service', 'nginx', 'status']
+    interval: 30s
+    timeout: 20s
+    retries: 5
+
+services:
+  core:
+    <<: *app-instance
+    image: ${REGISTRY_URL}/client-core:${VERSION}
+    build:
+      <<: *app-build
+      args:
+        <<: *app-args
+        TAG: core
+    ports:
+      - 8088:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "types": ["@trace/shared"],
+    "paths": {
+      "@/*": ["./*"],
+      "@@/*": ["./*"],
+      "~/*": ["./*"],
+      "~~/*": ["./*"]
+    }
+  },
+  "extends": "./.playground/.nuxt/tsconfig.json"
+}

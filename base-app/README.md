@@ -1,0 +1,1 @@
+# Trace Nuxt Base App
