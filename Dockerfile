@@ -1,5 +1,4 @@
 FROM oven/bun:latest as builder
-ARG TAG
 WORKDIR /app
 COPY --chown=node:node . .
 RUN bun install
@@ -10,7 +9,6 @@ RUN cd /app/finder && bun generate
 RUN cd /app/portal && bun generate
 
 FROM nginx:stable-alpine as production
-ARG TAG
 COPY --from=builder /app/support/dist /usr/share/nginx/html
 COPY --from=builder /app/core/dist /usr/share/nginx/html/core
 COPY --from=builder /app/finder/dist /usr/share/nginx/html/finder
