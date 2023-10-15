@@ -2,8 +2,8 @@
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useAppBreakpoints } from '@/composables/breakpoints';
-import { useLayout } from '@/composables/layout';
-import { useTheme } from '@/composables/theme';
+import { useLayout } from '@/store/layout';
+import { useTheme } from '@/store/theme';
 import { IModule, IProfile } from '@trace/shared';
 import DesktopHeader from './DesktopHeader.vue';
 import DesktopSidebar from './DesktopSidebar.vue';
@@ -121,7 +121,10 @@ const secondaryItemList = ref<IModule[]>([
 </script>
 
 <template>
-  <q-layout view="lHr lpR fFf" @resize="setSize">
+  <q-layout
+    view="lHr lpR fFf"
+    @resize="setSize"
+  >
     <slot name="desktop-sidebar">
       <desktop-sidebar
         v-if="isDesktop"

@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia';
 import { Dark } from 'quasar';
+import { ref, computed } from 'vue';
 // import { StatusBar, Style } from '@capacitor/status-bar';
 
 export const useTheme = defineStore(
-  'app-theme',
+  'theme',
   () => {
     const lightState = ref<boolean>(false);
     const isDark = computed(() => lightState.value);

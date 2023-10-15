@@ -1,13 +1,21 @@
 {
   "name": "@trace/client",
-  "engines": {
-    "npm": "please-use-pnpm",
-    "pnpm": ">= 8.2.0",
-    "yarn": "please-use-pnpm",
-    "bun": ">= 1.0.1",
-    "node": ">= 16.0.0"
-  },
+  "version": "0.0.1-alpha.1",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drolx/trace-client.git"
+  },
+  "keywords": [
+    "gps",
+    "track"
+  ],
+  "author": "radioActive DROID <me@godwin.dev>",
+  "license": "BSL-1.1",
+  "bugs": {
+    "url": "https://github.com/drolx/trace-client/issues"
+  },
+  "homepage": "https://trace.ng",
   "scripts": {
     "clean": "pnpx rimraf node_modules **/node_modules bun.* **/bun.* **/dist/* pnpm-lock.* **/pnpm-lock.*",
     "dev": "pnpm -r --filter ./apps run dev",
@@ -32,5 +40,12 @@
     "packages/*",
     "base-app",
     "apps/*"
-  ]
+  ],
+  "engines": {
+    "npm": "please-use-pnpm",
+    "pnpm": ">= 8.2.0",
+    "yarn": "please-use-pnpm",
+    "bun": ">= 1.0.1",
+    "node": ">= 16.0.0"
+  }
 }
