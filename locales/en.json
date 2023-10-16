@@ -1,0 +1,36 @@
+{
+  "action": {
+    "failed": "Action failed",
+    "success": "Action was successful"
+  },
+  "auth": {
+    "email": "Email",
+    "enterOtp": "Enter OTP",
+    "forgotPassword": "Forgot Password?",
+    "password": "Password",
+    "passwordResetEmail": "Reset via Email",
+    "passwordResetSms": "Reset via SMS",
+    "resendOtp": "Resend OTP",
+    "sendOtp": "Send OTP",
+    "signIn": "Sign In",
+    "signInGoogle": "Sign in wth Google",
+    "signInMicrosoft": "Sign in wth Microsoft",
+    "signOut": "Sign Out",
+    "username": "Username",
+    "usernameOrEmail": "Username Or Email",
+    "verifyOtp": "Verify OTP"
+  },
+  "layout": {
+    "darkMode": "Dark Mode",
+    "fullScreen": "Full Screen",
+    "lightMode": "Light Mode",
+    "refresh": "Refresh Page"
+  },
+  "router": {
+    "back": "Go Back"
+  },
+  "shared": {
+    "notification": "Notification",
+    "user": "User"
+  }
+}
