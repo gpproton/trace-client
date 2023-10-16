@@ -1,0 +1,36 @@
+{
+  "action": {
+    "failed": "فشل الإجراءات",
+    "success": "العمل الناجح"
+  },
+  "auth": {
+    "email": "Email",
+    "enterOtp": "Enter OTP",
+    "forgotPassword": "نسيت كلمة السر؟?",
+    "password": "كلمة السر",
+    "passwordResetEmail": "Reset via Email",
+    "passwordResetSms": "Reset via SMS",
+    "resendOtp": "Resend OTP",
+    "sendOtp": "إرسال OTP",
+    "signIn": "التوقيع",
+    "signInGoogle": "وقع في غوغل",
+    "signInMicrosoft": "وقع في ميكروسوفت",
+    "signOut": "وقع",
+    "username": "المستعمل",
+    "usernameOrEmail": "المستعمل أو البريد الإلكتروني",
+    "verifyOtp": "تصديق مكتب المدعي العام"
+  },
+  "layout": {
+    "darkMode": "موديل الظلام",
+    "fullScreen": "كاملة",
+    "lightMode": "لايت موديل",
+    "refresh": "الصفحة"
+  },
+  "router": {
+    "back": "العودة"
+  },
+  "shared": {
+    "notification": "الإخطار",
+    "user": "مستخدم"
+  }
+}
