@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["@trace/shared"],
+    "types": ["@trace/shared", "@trace/model"],
     "paths": {
       "@/*": ["./*"],
       "@@/*": ["./*"],

@@ -24,7 +24,11 @@ const emits = defineEmits<{
 </script>
 
 <template>
-  <q-header reveal :elevated="false" class="bg-transparent">
+  <q-header
+    reveal
+    :elevated="false"
+    class="bg-transparent"
+  >
     <q-toolbar>
       <q-btn
         flat

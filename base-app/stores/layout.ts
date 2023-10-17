@@ -2,7 +2,7 @@ import { IModule } from '@trace/shared';
 import { defineStore, storeToRefs } from 'pinia';
 import { usePageStore } from './page';
 
-export const useLayout = defineStore(
+export const useLayoutStore = defineStore(
   'app-layout',
   () => {
     const { title } = storeToRefs(usePageStore());

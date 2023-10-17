@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-export const useLayout = defineStore(
+export const useAppStore = defineStore(
   'app',
   () => {
     const reloadFlag = ref(true);

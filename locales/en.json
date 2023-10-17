@@ -27,7 +27,12 @@
     "refresh": "Refresh Page"
   },
   "router": {
-    "back": "Go Back"
+    "home": "Home",
+    "back": "Go Back",
+    "un-authorized": "Unauthorized",
+    "error": "Error",
+    "quick-start": "Quick Start",
+    "testing": "Testing"
   },
   "shared": {
     "notification": "Notification",

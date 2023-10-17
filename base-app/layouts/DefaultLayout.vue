@@ -28,6 +28,8 @@ const {
     :mobile-overview-items="mobileOverviewItems"
     :notification-tabs="notificationTabs"
   >
-    <slot />
+    <slot>
+      <router-view />
+    </slot>
   </core-layout>
 </template>

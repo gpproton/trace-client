@@ -56,7 +56,7 @@ const updateValue = (value: string) => {
         class="border-radius-sm q-ma-xs q-px-none"
         content-class="q-px-md"
       >
-        {{ moduleItem.title }}
+        {{ $t(moduleItem.title) }}
       </q-route-tab>
     </template>
     <q-tab

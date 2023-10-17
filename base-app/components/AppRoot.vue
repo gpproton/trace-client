@@ -6,16 +6,19 @@ interface IProps {
 }
 
 withDefaults(defineProps<IProps>(), {
-  layout: 'default',
+  layout: 'default-layout',
 });
 </script>
 
 <template>
   <VitePwaManifest />
   <loading-indicator>
+    <!--
     <NuxtLayout :name="layout">
       <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
+    -->
+    <NuxtPage />
   </loading-indicator>
 </template>

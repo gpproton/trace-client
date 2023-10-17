@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import CommandList from './CommandList.vue';
-import NotificationDialog from './NotificationDialog.vue';
+import CommandList from '../CommandList.vue';
+import NotificationDialog from '../NotificationDialog.vue';
 import { IModule, IModuleCommands } from '@trace/shared';
+import TagView from './TagView.vue';
 
 interface IProps {
   quickCommands: IModuleCommands[];
@@ -63,12 +64,18 @@ const searchValue = computed({
       >
         <template #prepend>
           <q-avatar>
-            <q-icon size="sm" name="bi-search" />
+            <q-icon
+              size="sm"
+              name="bi-search"
+            />
           </q-avatar>
         </template>
         <template #append>
           <div class="row items-center q-gutter-xs">
-            <q-icon size="1.25rem" name="bi-command" />
+            <q-icon
+              size="1.25rem"
+              name="bi-command"
+            />
             <span class="text-weight-regular text-subtitle1">K</span>
           </div>
         </template>
@@ -86,7 +93,12 @@ const searchValue = computed({
       </q-toolbar-title>
       <div class="header-icon-button q-gutter-xs vertical-middle">
         <!-- Top level app switcher -->
-        <q-btn flat square color="primary" class="border-radius-sm q-px-sm">
+        <q-btn
+          flat
+          square
+          color="primary"
+          class="border-radius-sm q-px-sm"
+        >
           <q-icon
             color="primary"
             class="button-icon"
@@ -117,7 +129,12 @@ const searchValue = computed({
             class="button-icon"
             :name="bellIconFill ? 'bi-bell-fill' : 'bi-bell'"
           >
-            <q-badge floating color="red-7" class="badge" rounded />
+            <q-badge
+              floating
+              color="red-7"
+              class="badge"
+              rounded
+            />
           </q-icon>
           <q-menu
             :offset="[-5, 10]"
@@ -148,6 +165,8 @@ const searchValue = computed({
         </q-btn>
       </div>
     </q-toolbar>
+    <q-separator />
+    <tag-view />
   </q-header>
 </template>
 

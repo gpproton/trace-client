@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-export const useLayout = defineStore(
+export const useServerStore = defineStore(
   'server',
   () => {
     return {};
