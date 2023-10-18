@@ -13,18 +13,19 @@ export default defineNuxtRouteMiddleware(() => {
 
   const { setRoutes } = routerStore;
   const { getPermissionRoutes } = storeToRefs(routerStore);
-  const { getUserPermmisions, setUserInfo } = userAccountStore;
+  const { setUserInfo } = userAccountStore;
+  const { getUserPermmisions } = storeToRefs(userAccountStore);
 
   // router.beforeEach((to, from, next) => {
 
   //   // There is user authority, and the route is not empty, then let go
   //   if (
-  //     getUserPermmisions.length > 0 &&
+  //     getUserPermmisions.value.length > 0 &&
   //     getPermissionRoutes.value.length
   //   ) {
   //     next();
   //   } else {
-  //     if (getUserPermmisions.length <= 0) {
+  //     if (getUserPermmisions.value.length <= 0) {
   //       const { data, error } = await me();
   //       if (!error.value) {
   //         setUserInfo(data.value);

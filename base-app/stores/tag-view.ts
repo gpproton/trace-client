@@ -1,7 +1,7 @@
 import { RouteLocationNormalized, Router } from 'vue-router';
 import { RouteData } from '@/types/index';
 import { getFirst } from '@/utils';
-import { defineStore } from 'pinia';
+import { defineStore, storeToRefs } from 'pinia';
 import { useUserAccountStore } from './user-account';
 
 enum removeType {
@@ -15,8 +15,8 @@ export const useTagViewStore = defineStore(
   () => {
     const router: Router = useRouter();
     const userAccountStore = useUserAccountStore();
-    const { getAccessToken } = userAccountStore;
-    const accessToken = getAccessToken();
+    const { getAccessToken } = storeToRefs(userAccountStore);
+    const accessToken = getAccessToken.value;
 
     const tagView = ref<RouteData[]>([]);
     const storedTagView = ref<RouteData[] | null>(null);

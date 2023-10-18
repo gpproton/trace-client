@@ -1,13 +1,13 @@
 import { useUserAccountStore } from "@/stores/user-account";
 import { ActionState } from "@trace/model";
+import { storeToRefs } from 'pinia';
 
-// const validateAction = (type: ActionType, actions: Action) => actions[type] == true
 export const useAppPermission = () => {
   const userStore = useUserAccountStore();
 
   function hasPermission(action: ActionState) {
-    const { getUserPermmisions } = userStore;
-    const permission = getUserPermmisions();
+    const { getUserPermmisions } = storeToRefs(userStore);
+    const permission = getUserPermmisions.value;
     if (permission) {
       const featurePermission = permission.find(x => {
         const checkModule = action.module === undefined || x.module == action.module;

@@ -30,13 +30,13 @@ export const useUserAccountStore = defineStore(
       lastName: 'Doe'
     });
 
-    const getUserName = () => user.value;
-    const getUserPermmisions = (): Permission[] => permissions.value;
-    const getAccessToken = () => accessToken.value;
-    const setAccessToken = (value: string) => accessToken.value = value;
-    const getFirstCharacterOfUserName = () =>
-      user.value!.username ? user.value!.username.charAt(0).toUpperCase() : "X";
+    const getUserName = computed(() => user.value);
+    const getUserPermmisions = computed(() => permissions.value);
+    const getAccessToken = computed(() => accessToken.value);
+    const getFirstCharacterOfUserName = computed(() => user.value!.username ? user.value!.username.charAt(0).toUpperCase() : "X");
+
     const setUserInfo = (value: User) => user.value = value;
+    const setAccessToken = (value: string) => accessToken.value = value;
     const setUserPermmisions = (values: Permission[]) => {
       const account = user.value;
       permissions.value = values;
