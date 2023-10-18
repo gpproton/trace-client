@@ -1,5 +1,5 @@
 import type { RouterConfig } from '@nuxt/schema';
-import { constantRoutes, rootRoutes } from './router.constants';
+import { constantRoutes, asyncRootRoute } from './router.constants';
 import { ActionState } from '@trace/model';
 
 declare module "vue-router" {
@@ -17,7 +17,7 @@ export default <RouterConfig>{
   routes: () => {
     // default routes
     return [
-      ...rootRoutes,
+      ...asyncRootRoute,
       ...constantRoutes,
     ]
   },

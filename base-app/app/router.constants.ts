@@ -1,6 +1,7 @@
+import { Route } from "@/types/index";
 import { RouteRecordRaw } from "vue-router";
 
-export const extraRoutes: RouteRecordRaw[] = [
+export const asyncRoutesChildren: Route[] = [
   {
     name: 'home',
     path: '/',
@@ -39,13 +40,13 @@ export const extraRoutes: RouteRecordRaw[] = [
   },
 ]
 
-export const rootRoutes: RouteRecordRaw[] = [
+export const asyncRootRoute: Route[] = [
   {
     name: 'index',
     path: '/',
     component: () => import('@/layouts/DefaultLayout.vue'),
     redirect: '',
-    children: extraRoutes
+    children: asyncRoutesChildren
   }
 ]
 
