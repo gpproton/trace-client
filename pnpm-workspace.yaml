@@ -1,4 +1,6 @@
 workspaces:
   - 'packages/*'
   - 'base-app'
+  - 'website'
+  - 'docs'
   - 'apps/*'

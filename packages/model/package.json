@@ -1,7 +1,12 @@
 {
   "name": "@trace/model",
   "module": "index.ts",
+  "main": "./index.ts",
+  "types": "./index.ts",
   "type": "module",
+  "scripts": {
+    "build": "bun build"
+  },
   "devDependencies": {
     "bun-types": "latest"
   },

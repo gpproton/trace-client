@@ -25,6 +25,12 @@ export default defineNuxtConfig({
   i18n: {
     vueI18n: './i18n.config.ts'
   },
+  piniaPersistedstate: {
+    cookieOptions: {
+      sameSite: 'strict',
+    },
+    storage: 'cookies'
+  },
   css: [
     join(currentDir, './assets/colors.scss'),
     join(currentDir, './assets/qusar-mod.scss')

@@ -2,13 +2,13 @@
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useAppBreakpoints } from '@/composables/breakpoints';
-import { useLayout } from '@/store/layout';
-import { useTheme } from '@/store/theme';
+import { useLayoutStore } from '@/stores/layout';
+import { useThemeStore } from '@/stores/theme';
 import { IModule, IProfile } from '@trace/shared';
-import DesktopHeader from './DesktopHeader.vue';
+import DesktopHeader from './header/DesktopHeader.vue';
 import DesktopSidebar from './DesktopSidebar.vue';
 import DesktopSecondarySidebar from './DesktopSecondarySidebar.vue';
-import MobileHeader from './MobileHeader.vue';
+import MobileHeader from './header/MobileHeader.vue';
 import MobileBottomMenu from './MobileBottomMenu.vue';
 
 interface IProps {
@@ -38,8 +38,8 @@ withDefaults(defineProps<IProps>(), {
 
 const showTitle = ref(true);
 const breakpointStates = useAppBreakpoints();
-const layout = useLayout();
-const theme = useTheme();
+const layout = useLayoutStore();
+const theme = useThemeStore();
 
 const {
   title,
@@ -58,17 +58,23 @@ initializeTheme();
 
 const headerMenu: IModule[] = [
   {
-    title: 'Overview',
-    name: 'overview',
+    title: 'router.home',
+    name: 'home',
     icon: 'bi-grid',
-    path: 'overview',
+    path: '/',
   },
   {
-    title: 'Content-00',
-    name: 'content-00',
+    title: 'router.testing',
+    name: 'app.testing',
     icon: 'bi-0-square',
-    path: 'content-00',
+    path: '/testing',
   },
+  {
+    title: 'router.quick-start',
+    name: 'quick-start',
+    icon: 'bi-0-square',
+    path: '/testing',
+  }
 ];
 
 const secondaryItemList = ref<IModule[]>([
@@ -174,9 +180,7 @@ const secondaryItemList = ref<IModule[]>([
         </slot>
 
         <q-page-container class="bg-app-container">
-          <q-page class="q-pa-sm">
-            <slot />
-          </q-page>
+          <slot />
         </q-page-container>
       </q-layout>
     </q-page-container>
