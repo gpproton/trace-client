@@ -1,5 +1,6 @@
 import { Route } from "@/types/index";
 import { RouteRecordRaw } from "vue-router";
+import AuthRoutes from '@/modules/authentication/router';
 
 export const asyncRoutesChildren: Route[] = [
   {
@@ -51,13 +52,19 @@ export const asyncRootRoute: Route[] = [
 ]
 
 export const constantRoutes: RouteRecordRaw[] = [
+  ...AuthRoutes as RouteRecordRaw[],
   {
-    name: 'app.error',
-    path: "/:catchAll(.*)*",
-    component: () => import("@/pages/ErrorNotFound.vue"),
-    meta: {
-      title: "router.error",
-      icon: "sync",
-    },
+    path: '/:catchAll(.*)*',
+    component: () => import('@/layouts/EmptyLayout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('@/pages/ErrorNotFound.vue'),
+        meta: {
+          title: 'router.error',
+          icon: 'sync',
+        },
+      },
+    ]
   },
 ];

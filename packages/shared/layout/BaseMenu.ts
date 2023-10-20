@@ -41,13 +41,7 @@ export default abstract class BaseMenu implements IBaseMenu {
       title: 'Portal',
       icon: 'bi-hurricane',
       path: ServiceVariant.PORTAL,
-    },
-    {
-      name: 'manage',
-      title: 'Manage',
-      icon: 'bi-sliders',
-      path: ServiceVariant.MANAGE,
-    },
+    }
   ];
 
   identityItems: IModule[] = [

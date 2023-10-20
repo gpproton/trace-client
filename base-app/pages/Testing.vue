@@ -2,8 +2,8 @@
 import { ref } from 'vue';
 import { CronQuasar } from '@vue-js-cron/quasar';
 
-defineOptions({ name: 'Testing' })
-const expr = ref('* 0 * * *');
+defineOptions({ name: 'Testing' });
+const expr = ref('0 * * * *');
 </script>
 
 <template>

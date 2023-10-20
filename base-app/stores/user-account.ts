@@ -43,7 +43,9 @@ export const useUserAccountStore = defineStore(
       user.value = account;
     }
 
-    const setLogout = () => {
+    const signIn = () => { };
+
+    const signout = () => {
       user.value = null;
       accessToken.value = null;
       permissions.value = []
@@ -64,7 +66,8 @@ export const useUserAccountStore = defineStore(
       setAccessToken,
       setUserInfo,
       setUserPermmisions,
-      setLogout
+      signIn,
+      signout
     };
   },
   {

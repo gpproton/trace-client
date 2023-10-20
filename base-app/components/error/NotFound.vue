@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import NotFound from '@/icons/not-found.svg?url';
 import { useAppBreakpoints } from '@/composables/breakpoints';
-import { storeToRefs } from "pinia";
+import { storeToRefs } from 'pinia';
 
 const breakpointStates = useAppBreakpoints();
 const { isDesktop } = storeToRefs(breakpointStates);
@@ -13,10 +13,11 @@ const { isDesktop } = storeToRefs(breakpointStates);
       no-native-menu
       no-spinner
       :src="NotFound"
-      class="q-my-xs page-visual q-mb-lg"
+      class="q-mt-xs q-mb-md"
+      width="calc(32vw)"
       alt="Under Construction"
     />
-    <div class="text-center q-mt-xl">
+    <div class="text-center q-mt-lg">
       <transition
         v-show="isDesktop"
         appear
@@ -25,10 +26,10 @@ const { isDesktop } = storeToRefs(breakpointStates);
       >
         <q-btn
           color="primary"
-          class="q-mt-lg border-radius-sm"
+          class="border-radius-sm"
           size="lg"
           no-caps
-          :to="{ name: 'overview' }"
+          :to="{ name: 'home' }"
           outline
           style="width: 200px"
         >
