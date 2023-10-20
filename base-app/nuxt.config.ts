@@ -29,7 +29,7 @@ export default defineNuxtConfig({
     cookieOptions: {
       sameSite: 'strict',
     },
-    storage: 'cookies'
+    storage: 'localStorage'
   },
   css: [
     join(currentDir, './assets/colors.scss'),

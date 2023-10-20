@@ -4,6 +4,8 @@
     "success": "行动取得成功"
   },
   "auth": {
+    "signInTitle": "欢迎!",
+    "signInSubTitle": "签署:",
     "email": "电子邮件",
     "enterOtp": "进口",
     "forgotPassword": "前言:?",
@@ -13,8 +15,6 @@
     "resendOtp": "附录O",
     "sendOtp": "Send OTP",
     "signIn": "签字",
-    "signInGoogle": "页: 1",
-    "signInMicrosoft": "微软总公司签名",
     "signOut": "签字",
     "username": "用户名",
     "usernameOrEmail": "用户名",
@@ -27,10 +27,17 @@
     "refresh": "页 次"
   },
   "router": {
-    "back": "背 景"
+    "home": "家庭",
+    "back": "背 景",
+    "un-authorized": "未经许可",
+    "error": "Error",
+    "quick-start": "快速启动方案",
+    "testing": "检测"
   },
   "shared": {
     "notification": "通知",
-    "user": "用户"
+    "user": "用户",
+    "privacyPolicy": "隐私政策",
+    "copyright": "版权"
   }
 }

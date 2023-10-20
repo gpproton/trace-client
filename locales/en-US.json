@@ -4,6 +4,8 @@
     "success": "Action was successful"
   },
   "auth": {
+    "signInTitle": "Welcome Back!",
+    "signInSubTitle": "Sign in to continue",
     "email": "Email",
     "enterOtp": "Enter OTP",
     "forgotPassword": "Forgot Password?",
@@ -13,8 +15,6 @@
     "resendOtp": "Resend OTP",
     "sendOtp": "Send OTP",
     "signIn": "Sign In",
-    "signInGoogle": "Sign in wth Google",
-    "signInMicrosoft": "Sign in wth Microsoft",
     "signOut": "Sign Out",
     "username": "Username",
     "usernameOrEmail": "Username Or Email",
@@ -36,6 +36,8 @@
   },
   "shared": {
     "notification": "Notification",
-    "user": "User"
+    "user": "User",
+    "privacyPolicy": "Privacy policy",
+    "copyright": "Copyright"
   }
 }

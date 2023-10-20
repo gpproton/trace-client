@@ -18,7 +18,16 @@ export default defineI18nConfig(() => {
   return {
     legacy: false,
     globalInjection: true,
-    locale: 'en',
+    locale: 'en-US',
     messages
   }
 })
+
+export type CountryOption = { countryCode: string, name: string, value: string };
+
+export const languages: CountryOption[] = [
+  { countryCode: 'AE', name: 'العربية', value: 'ar' },
+  { countryCode: 'US', name: 'English', value: 'en-US' },
+  { countryCode: 'FR', name: 'Français', value: 'fr' },
+  { countryCode: 'CN', name: '中文', value: 'zh' },
+];

@@ -71,6 +71,8 @@ export const useUserAccountStore = defineStore(
     };
   },
   {
-    persist: true
+    persist: {
+      storage: persistedState.sessionStorage
+    }
   }
 );

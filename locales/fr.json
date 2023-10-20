@@ -4,6 +4,8 @@
     "success": "Action was successful"
   },
   "auth": {
+    "signInTitle": "Bienvenue !",
+    "signInSubTitle": "Se connecter pour continuer",
     "email": "Email",
     "enterOtp": "Entrez OTP",
     "forgotPassword": "Mot de passe oublié ?",
@@ -13,8 +15,6 @@
     "resendOtp": "Resend OTP",
     "sendOtp": "Envoyer OTP",
     "signIn": "Sign In",
-    "signInGoogle": "Se connecter wth Google",
-    "signInMicrosoft": "Sign in wth Microsoft",
     "signOut": "Sign Out",
     "username": "Username",
     "usernameOrEmail": "Username or Email",
@@ -27,10 +27,17 @@
     "refresh": "Page"
   },
   "router": {
-    "back": "Allez-y"
+    "home": "Home",
+    "back": "Allez-y",
+    "un-authorized": "Non-autorisé",
+    "error": "Erreur",
+    "quick-start": "Démarrage rapide",
+    "testing": "Essais"
   },
   "shared": {
     "notification": "Notification",
-    "user": "Utilisateur"
+    "user": "Utilisateur",
+    "privacyPolicy": "Politique de confidentialité",
+    "copyright": "Copyright"
   }
 }

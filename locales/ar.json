@@ -4,17 +4,17 @@
     "success": "العمل الناجح"
   },
   "auth": {
+    "signInTitle": "مرحباً بعودتك!",
+    "signInSubTitle": "التوقيع على مواصلة",
     "email": "Email",
     "enterOtp": "Enter OTP",
-    "forgotPassword": "نسيت كلمة السر؟?",
-    "password": "كلمة السر",
+    "forgotPassword": "--",
+    "password": "--",
     "passwordResetEmail": "Reset via Email",
-    "passwordResetSms": "Reset via SMS",
+    "passwordResetSms": "--",
     "resendOtp": "Resend OTP",
     "sendOtp": "إرسال OTP",
     "signIn": "التوقيع",
-    "signInGoogle": "وقع في غوغل",
-    "signInMicrosoft": "وقع في ميكروسوفت",
     "signOut": "وقع",
     "username": "المستعمل",
     "usernameOrEmail": "المستعمل أو البريد الإلكتروني",
@@ -27,10 +27,17 @@
     "refresh": "الصفحة"
   },
   "router": {
-    "back": "العودة"
+    "home": "البيت",
+    "back": "العودة",
+    "un-authorized": "غير المأذون به",
+    "error": "الرعب",
+    "quick-start": "البداية السريعة",
+    "testing": "الاختبار"
   },
   "shared": {
     "notification": "الإخطار",
-    "user": "مستخدم"
+    "user": "مستخدم",
+    "privacyPolicy": "سياسة الخصوصية",
+    "copyright": "حقوق الطبع"
   }
 }

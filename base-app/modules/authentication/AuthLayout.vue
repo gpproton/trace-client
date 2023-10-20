@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import AppLogo from '@/icons/logo.svg';
 import LightHouse from '@/icons/lighthouse.svg?url';
+import AppLogo from '@/icons/logo.svg';
+import LangSelector from '@/components/extra/LangSelector.vue';
 </script>
 
 <template>
@@ -10,14 +11,16 @@ import LightHouse from '@/icons/lighthouse.svg?url';
         <q-card
           class="col no-border no-shadow window-height column justify-between"
         >
-          <q-toolbar class="text-primary q-pa-xs">
-            <!-- <app-logo
-              style="height: 48px; width: 48px"
-              class="text-primary border-radius-sm"
+          <q-toolbar class="text-primary q-pa-xs q-mx-sm">
+            <app-logo
+              style="height: 38px; width: 38px; fill: var(--q-primary)"
+              class="border-radius-sm text-primary"
             />
-            <q-toolbar-title class="text-h4 text-weight-bold">
+            <q-toolbar-title class="text-h5 text-weight-bold">
               {{ 'Trace' }}
-            </q-toolbar-title> -->
+            </q-toolbar-title>
+            <q-space />
+            <lang-selector class="q-mr-md" />
           </q-toolbar>
           <q-card class="full-width relative-position">
             <!-- Render page content here -->
@@ -25,11 +28,13 @@ import LightHouse from '@/icons/lighthouse.svg?url';
           </q-card>
           <div class="row q-pa-sm q-gutter-x-md">
             <div class="text-primary">
-              {{ `Copyright @Trace ${new Date().getFullYear()}` }}
+              {{
+                `${$t('shared.copyright')} @Trace ${new Date().getFullYear()}`
+              }}
             </div>
             <div>|</div>
             <div class="text-primary">
-              {{ 'Privacy policy' }}
+              {{ $t('shared.privacyPolicy') }}
             </div>
           </div>
         </q-card>
