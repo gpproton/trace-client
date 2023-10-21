@@ -6,6 +6,7 @@ export interface Tenant {
   confirmed: boolean;
   name: string;
   fullName: string;
+  language: string;
   workflow: Workflow;
   domains: string[];
 }

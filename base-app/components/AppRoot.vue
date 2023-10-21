@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import LoadingIndicator from '@/LoadingIndicator.vue';
+import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import { onMounted } from 'vue';
 import { useLanguageStore } from '@/stores/language';
+
+defineOptions({ name: 'AppRoot' });;
 
 interface IProps {
   layout?: string;

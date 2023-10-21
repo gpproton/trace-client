@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+defineOptions({ name: 'ThemeSwitcher' });
+
 interface IProps {
   modelValue: boolean;
 }
@@ -43,18 +45,9 @@ const themeStatus = (value: string) => {
 
 <template>
   <div class="text-center theme-switcher">
-    <q-btn
-      v-for="(option, index) in darkOptions"
-      :key="index"
-      size="md"
-      class="q-px-md"
-      rounded
-      :icon="option.icon"
-      :flat="!themeStatus(option.name)"
-      :color="themeStatus(option.name) ? 'white' : 'transparent'"
-      :text-color="themeStatus(option.name) ? 'primary-only' : 'primary'"
-      @click="setThemeState(option.value)"
-    />
+    <q-btn v-for="(option, index) in darkOptions" :key="index" size="md" class="q-px-md" rounded :icon="option.icon"
+      :flat="!themeStatus(option.name)" :color="themeStatus(option.name) ? 'white' : 'transparent'"
+      :text-color="themeStatus(option.name) ? 'primary-only' : 'primary'" @click="setThemeState(option.value)" />
   </div>
 </template>
 

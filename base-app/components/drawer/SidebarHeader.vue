@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import AppLogo from '@/icons/logo.svg';
 
+defineOptions({ name: 'SidebarHeader' });
+
 interface IProps {
   modelValue: boolean;
   name: string;
@@ -14,11 +16,7 @@ const props = defineProps<IProps>();
     <div v-show="props.modelValue" class="q-mx-auto" style="height: 55px">
       <app-logo class="app-logo self-start col-1 q-mx-auto" />
     </div>
-    <div
-      v-show="!props.modelValue"
-      class="full-width row cursor-pointer q-px-md"
-      style="height: 55px"
-    >
+    <div v-show="!props.modelValue" class="full-width row cursor-pointer q-px-md" style="height: 55px">
       <app-logo class="app-logo self-start col-3" />
       <div class="col-9 row">
         <div class="col-10 text-no-wrap q-pl-md">

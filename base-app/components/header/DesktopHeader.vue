@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import CommandList from '../CommandList.vue';
-import NotificationDialog from '../NotificationDialog.vue';
-import { IModule, IModuleCommands } from '@trace/shared';
-import TagView from './TagView.vue';
+import type { IModule, IModuleCommands } from '@trace/shared';
+import CommandList from '@/components/extra/CommandList.vue';
+import NotificationDialog from '@/components/extra/NotificationDialog.vue';
+import SwitcherButton from '@/components/extra/SwitcherButton.vue';
+import TagView from '@/components/header/TagView.vue';
 
 interface IProps {
   quickCommands: IModuleCommands[];
@@ -39,127 +40,51 @@ const searchValue = computed({
 </script>
 
 <template>
-  <q-header
-    reveal
-    :elevated="false"
-    class="bg-transparent"
-    style="margin-left: 64px"
-  >
+  <q-header reveal :elevated="false" class="bg-transparent" style="margin-left: 64px">
     <q-toolbar class="row justify-between q-mt-xs">
-      <q-btn
-        dense
-        flat
-        square
-        icon="bi-list"
-        color="primary"
-        size="lg"
-        @click="() => emits('update:modelValue', !props.modelValue)"
-      />
-      <q-input
-        v-model="searchValue"
-        dense
-        filled
-        label="Search items"
-        class="q-mx-sm border-radius-sm"
-      >
+      <q-btn dense flat square icon="bi-list" color="primary" size="lg"
+        @click="() => emits('update:modelValue', !props.modelValue)" />
+      <q-input v-model="searchValue" dense filled label="Search items" class="q-mx-sm border-radius-sm">
         <template #prepend>
           <q-avatar>
-            <q-icon
-              size="sm"
-              name="bi-search"
-            />
+            <q-icon size="sm" name="bi-search" />
           </q-avatar>
         </template>
         <template #append>
           <div class="row items-center q-gutter-xs">
-            <q-icon
-              size="1.25rem"
-              name="bi-command"
-            />
+            <q-icon size="1.25rem" name="bi-command" />
             <span class="text-weight-regular text-subtitle1">K</span>
           </div>
         </template>
       </q-input>
       <q-toolbar-title class="q-px-sm">
         <div class="row items-center">
-          <switcher-button
-            v-show="headerMenu.length > 0"
-            class="gt-sm"
-            :items="headerMenu"
-            dense
-            route
-          />
+          <switcher-button v-show="headerMenu.length > 0" class="gt-sm" :items="headerMenu" dense route />
         </div>
       </q-toolbar-title>
       <div class="header-icon-button q-gutter-xs vertical-middle">
         <!-- Top level app switcher -->
-        <q-btn
-          flat
-          square
-          color="primary"
-          class="border-radius-sm q-px-sm"
-        >
-          <q-icon
-            color="primary"
-            class="button-icon"
-            name="bi-ui-checks-grid"
-          />
-          <q-menu
-            :offset="[-35, 10]"
-            transition-show="scale"
-            transition-hide="scale"
-            self="top middle"
-            class="border-radius-sm q-pa-sm"
-          >
+        <q-btn flat square color="primary" class="border-radius-sm q-px-sm">
+          <q-icon color="primary" class="button-icon" name="bi-ui-checks-grid" />
+          <q-menu :offset="[-35, 10]" transition-show="scale" transition-hide="scale" self="top middle"
+            class="border-radius-sm q-pa-sm">
             <command-list :items="props.appSections" />
           </q-menu>
         </q-btn>
         <!-- Notification actions -->
-        <q-btn
-          flat
-          square
-          color="primary"
-          class="border-radius-sm q-px-md"
-          @mouseover="bellIconFill = true"
-          @mouseout="bellIconFill = false"
-        >
-          <q-icon
-            color="primary"
-            size="md"
-            class="button-icon"
-            :name="bellIconFill ? 'bi-bell-fill' : 'bi-bell'"
-          >
-            <q-badge
-              floating
-              color="red-7"
-              class="badge"
-              rounded
-            />
+        <q-btn flat square color="primary" class="border-radius-sm q-px-md" @mouseover="bellIconFill = true"
+          @mouseout="bellIconFill = false">
+          <q-icon color="primary" size="md" class="button-icon" :name="bellIconFill ? 'bi-bell-fill' : 'bi-bell'">
+            <q-badge floating color="red-7" class="badge" rounded />
           </q-icon>
-          <q-menu
-            :offset="[-5, 10]"
-            transition-show="scale"
-            transition-hide="scale"
-            class="border-radius-sm q-pa-none"
-          >
+          <q-menu :offset="[-5, 10]" transition-show="scale" transition-hide="scale" class="border-radius-sm q-pa-none">
             <notification-dialog :items="notificationTabs" />
           </q-menu>
         </q-btn>
         <!-- Quick new items triggers-->
-        <q-btn
-          square
-          size="1.1rem"
-          icon="bi-plus-lg"
-          color="primary"
-          text-color="primary-inverted"
-          class="border-radius-sm"
-        >
-          <q-menu
-            :offset="[-5, 10]"
-            transition-show="scale"
-            transition-hide="scale"
-            class="border-radius-sm q-pa-sm"
-          >
+        <q-btn square size="1.1rem" icon="bi-plus-lg" color="primary" text-color="primary-inverted"
+          class="border-radius-sm">
+          <q-menu :offset="[-5, 10]" transition-show="scale" transition-hide="scale" class="border-radius-sm q-pa-sm">
             <command-list :items="props.quickCommands" />
           </q-menu>
         </q-btn>

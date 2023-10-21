@@ -11,20 +11,8 @@ const { locale, getActiveCountry } = storeToRefs(localeStore);
 </script>
 
 <template>
-  <q-select
-    v-model="locale"
-    hide-dropdown-icon
-    :options="languages"
-    option-label="name"
-    option-value="value"
-    dense
-    borderless
-    color="secondary"
-    emit-value
-    map-options
-    options-dense
-    @update:model-value="setLocale"
-  >
+  <q-select v-model="locale" hide-dropdown-icon :options="languages" option-label="name" option-value="value" dense
+    borderless color="secondary" emit-value map-options options-dense @update:model-value="setLocale">
     >
     <template #prepend>
       <span class="q-mr-sm">
@@ -37,14 +25,8 @@ const { locale, getActiveCountry } = storeToRefs(localeStore);
       </div>
     </template>
     <template #option="{ opt, toggleOption }">
-      <q-item
-        v-ripple
-        dense
-        clickable
-        :active="locale === opt.value"
-        :focused="locale === opt.value"
-        @click="() => toggleOption(opt)"
-      >
+      <q-item v-ripple dense clickable :active="locale === opt.value" :focused="locale === opt.value"
+        @click="() => toggleOption(opt)">
         <q-item-section avatar>
           <country-flag :country="opt.countryCode" />
         </q-item-section>

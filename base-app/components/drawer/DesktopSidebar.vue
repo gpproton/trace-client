@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { IModule, IProfile } from '@trace/shared';
-import SidebarList from './SidebarList.vue';
-import SidebarHeader from './SidebarHeader.vue';
-import SidebarUser from './SidebarUser.vue';
+import type { IModule, IProfile } from '@trace/shared';
+import SidebarList from '@/components/drawer/SidebarList.vue';
+import SidebarHeader from '@/components/drawer/SidebarHeader.vue';
+import SidebarUser from '@/components/drawer/SidebarUser.vue';
+
+defineOptions({ name: 'DesktopSidebar' });
 
 interface IProps {
   name: string;
@@ -60,23 +62,10 @@ onUnmounted(() => clearTimeout(timeout.value));
 </script>
 
 <template>
-  <q-drawer
-    v-model="drawer"
-    show-if-above
-    bordered
-    :width="295"
-    :mini-width="64"
-    side="left"
-    :mini="miniDrawer"
-    mini-to-overlay
-    @mouseover="setMiniDrawer(false)"
-    @mouseout="setMiniDrawer(true)"
-  >
+  <q-drawer v-model="drawer" show-if-above bordered :width="295" :mini-width="64" side="left" :mini="miniDrawer"
+    mini-to-overlay @mouseover="setMiniDrawer(false)" @mouseout="setMiniDrawer(true)">
     <sidebar-header v-model="miniDrawer" class="q-mt-sm" :name="props.name" />
-    <q-scroll-area
-      class="fit fixed-bottom"
-      style="padding-top: 96px; padding-bottom: 110px"
-    >
+    <q-scroll-area class="fit fixed-bottom" style="padding-top: 96px; padding-bottom: 110px">
       <div v-show="!showIdentity">
         <sidebar-list :items="overviewMenu" />
         <q-separator class="q-mx-sm" />
@@ -89,36 +78,16 @@ onUnmounted(() => clearTimeout(timeout.value));
 
     <!-- Fixed navigation action -->
     <div class="fixed-bottom full-width column items-center q-mb-sm">
-      <div
-        v-show="!miniDrawer"
-        class="full-width q-px-lg q-mb-md column items-center"
-      >
-        <theme-switcher
-          v-show="showIdentity"
-          v-model="isDarkMode"
-          @update:model-value="
-            (modelValue: boolean) => emits('update:darkMode', modelValue)
-          "
-        />
-        <q-btn
-          v-show="showIdentity"
-          no-caps
-          size="lg"
-          color="primary"
-          text-color="primary-inverted"
-          icon="bi-box-arrow-in-right"
-          label="Sign Out"
-          class="full-width text-weight-thin border-radius-sm q-my-md"
-        />
+      <div v-show="!miniDrawer" class="full-width q-px-lg q-mb-md column items-center">
+        <theme-switcher v-show="showIdentity" v-model="isDarkMode" @update:model-value="(modelValue: boolean) => emits('update:darkMode', modelValue)
+          " />
+        <q-btn v-show="showIdentity" no-caps size="lg" color="primary" text-color="primary-inverted"
+          icon="bi-box-arrow-in-right" label="Sign Out" class="full-width text-weight-thin border-radius-sm q-my-md" />
       </div>
 
       <!-- App user widget for mini and normal state -->
-      <sidebar-user
-        @click="toggleIdentityMenu"
-        v-model:mini="miniDrawer"
-        :profile="userProfile"
-        :class="miniDrawer ? 'q-mb-sm' : 'full-width q-px-sm q-mb-sm'"
-      />
+      <sidebar-user @click="toggleIdentityMenu" v-model:mini="miniDrawer" :profile="userProfile"
+        :class="miniDrawer ? 'q-mb-sm' : 'full-width q-px-sm q-mb-sm'" />
     </div>
   </q-drawer>
 </template>

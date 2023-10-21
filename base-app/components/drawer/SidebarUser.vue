@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { IProfile } from '@trace/shared';
+import type { IProfile } from '@trace/shared';
 import { computed } from 'vue';
+
+defineOptions({ name: 'SidebarUser' });
 
 interface IProps {
   profile: IProfile;
@@ -34,45 +36,23 @@ const iconTextChar = computed(
 
 <template>
   <div v-bind="$attrs">
-    <q-avatar
-      v-if="mini"
-      rounded
-      color="red-5"
-      class="user-state-avatar"
-      size="3.5em"
-      text-color="white"
-    >
+    <q-avatar v-if="mini" rounded color="red-5" class="user-state-avatar" size="3.5em" text-color="white">
       {{ iconTextChar }}
       <q-badge floating color="green-9" rounded />
     </q-avatar>
-    <div
-      v-else
-      class="user-state row cursor-pointer q-pa-sm bg-app-background full-width"
-    >
+    <div v-else class="user-state row cursor-pointer q-pa-sm bg-app-background full-width">
       <div class="self-start col-2">
-        <q-avatar
-          rounded
-          color="red-5"
-          class="user-state-avatar"
-          size="3.5em"
-          text-color="white"
-        >
+        <q-avatar rounded color="red-5" class="user-state-avatar" size="3.5em" text-color="white">
           {{ iconTextChar }}
           <q-badge floating color="green-9" rounded />
         </q-avatar>
       </div>
       <div class="col-10 row">
         <div class="col-12 text-no-wrap q-pl-md">
-          <div
-            class="text-weight-medium text-primary"
-            style="font-size: 1.65rem; margin-top: -0.2rem"
-          >
+          <div class="text-weight-medium text-primary" style="font-size: 1.65rem; margin-top: -0.2rem">
             {{ userFullName }}
           </div>
-          <div
-            class="caption text-accent-more q-ml-xs"
-            style="margin-top: -0.4rem"
-          >
+          <div class="caption text-accent-more q-ml-xs" style="margin-top: -0.4rem">
             {{ userEmail }}
           </div>
         </div>

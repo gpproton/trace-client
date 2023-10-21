@@ -5,6 +5,8 @@ import IconGoogle from '@/icons/brands/google.svg?url';
 import IconMicrosoft from '@/icons/brands/microsoft.svg?url';
 import IconApple from '@/icons/brands/apple.svg?url';
 
+defineOptions({ name: 'SignIn' });
+
 const socialLogins = [
   {
     icon: IconGoogle,

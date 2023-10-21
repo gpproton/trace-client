@@ -1,5 +1,5 @@
-import { Route } from "@/types/index";
-import { RouteRecordRaw } from "vue-router";
+import type { Route } from "@/types/index";
+import type { RouteRecordRaw } from "vue-router";
 import AuthRoutes from '@/modules/authentication/router';
 
 export const asyncRoutesChildren: Route[] = [
@@ -45,7 +45,7 @@ export const asyncRootRoute: Route[] = [
   {
     name: 'index',
     path: '/',
-    component: () => import('@/layouts/DefaultLayout.vue'),
+    component: () => import('@/components/layouts/Layout.vue'),
     redirect: '',
     children: asyncRoutesChildren
   }
@@ -55,7 +55,7 @@ export const constantRoutes: RouteRecordRaw[] = [
   ...AuthRoutes as RouteRecordRaw[],
   {
     path: '/:catchAll(.*)*',
-    component: () => import('@/layouts/EmptyLayout.vue'),
+    component: () => import('@/components/layouts/EmptyLayout.vue'),
     children: [
       {
         path: '',

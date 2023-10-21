@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
-import { RouteData } from "@/types/index";
-import { RouteRecordNormalized, LocationQuery } from "vue-router";
+import type { RouteData } from "@/types/index";
+import type { RouteRecordNormalized, LocationQuery } from "vue-router";
 import { getFirst } from "@/utils/index";
 
 export const useBreadcrumbsStore = defineStore(

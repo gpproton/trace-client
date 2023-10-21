@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'Layout' });
+defineOptions({ name: 'EmptyLayout' });
 </script>
 
 <template>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { IModule } from '@trace/shared';
-import SidebarListItem from './SidebarListItem.vue';
+import type { IModule } from '@trace/shared';
+import SidebarListItem from '@/components/drawer/SidebarListItem.vue';
+
+defineOptions({ name: "DesktopSecondarySidebar" });
 
 interface IProps {
   modelValue: boolean;
@@ -32,16 +34,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <q-drawer
-    v-if="drawer"
-    v-model="drawer"
-    :width="230"
-    show-if-above
-    persistent
-    behavior="desktop"
-    side="left"
-    bordered
-  >
+  <q-drawer v-if="drawer" v-model="drawer" :width="230" show-if-above persistent behavior="desktop" side="left" bordered>
     <q-toolbar>
       <q-toolbar-title class="q-px-sm">
         {{ title }}

@@ -4,12 +4,12 @@ import { storeToRefs } from 'pinia';
 import { useAppBreakpoints } from '@/composables/breakpoints';
 import { useLayoutStore } from '@/stores/layout';
 import { useThemeStore } from '@/stores/theme';
-import { IModule, IProfile } from '@trace/shared';
-import DesktopHeader from './header/DesktopHeader.vue';
-import DesktopSidebar from './DesktopSidebar.vue';
-import DesktopSecondarySidebar from './DesktopSecondarySidebar.vue';
-import MobileHeader from './header/MobileHeader.vue';
-import MobileBottomMenu from './MobileBottomMenu.vue';
+import type { IModule, IProfile } from '@trace/shared';
+import DesktopHeader from '@/components/header/DesktopHeader.vue';
+import DesktopSidebar from '@/components/drawer/DesktopSidebar.vue';
+import DesktopSecondarySidebar from '@/components/drawer/DesktopSecondarySidebar.vue';
+import MobileHeader from '@/components/header/MobileHeader.vue';
+import MobileBottomMenu from '@/components/footer/MobileBottomMenu.vue';
 
 interface IProps {
   name: string;
@@ -74,7 +74,7 @@ const headerMenu: IModule[] = [
     name: 'quick-start',
     icon: 'bi-0-square',
     path: '/testing',
-  }
+  },
 ];
 
 const secondaryItemList = ref<IModule[]>([
@@ -127,56 +127,28 @@ const secondaryItemList = ref<IModule[]>([
 </script>
 
 <template>
-  <q-layout
-    view="lHr lpR fFf"
-    @resize="setSize"
-  >
+  <q-layout view="lHr lpR fFf" @resize="setSize">
     <slot name="desktop-sidebar">
-      <desktop-sidebar
-        v-if="isDesktop"
-        v-model="showPrimarySidebar"
-        v-model:dark-mode="isDark"
-        v-model:drawer-mini-state="primaryMiniState"
-        v-model:show-identity="showIdentityList"
-        :name="name"
-        :identity-menu="identityItems"
-        :overview-menu="overviewItems"
-        :secondary-menu="items"
-        :user-profile="userProfile"
-        @update:dark-mode="setThemeState"
-      />
+      <desktop-sidebar v-if="isDesktop" v-model="showPrimarySidebar" v-model:dark-mode="isDark"
+        v-model:drawer-mini-state="primaryMiniState" v-model:show-identity="showIdentityList" :name="name"
+        :identity-menu="identityItems" :overview-menu="overviewItems" :secondary-menu="items" :user-profile="userProfile"
+        @update:dark-mode="setThemeState" />
     </slot>
     <q-page-container>
       <!-- Check inner layout -->
       <q-layout view="lhr lpr lfr">
         <slot name="mobile-header">
-          <mobile-header
-            v-show="!isDesktop"
-            v-model:title="title"
-            v-model:search="search"
-          />
+          <mobile-header v-show="!isDesktop" v-model:title="title" v-model:search="search" />
         </slot>
 
         <slot name="desktop-header">
-          <desktop-header
-            v-show="isDesktop"
-            v-model="showSecondarySidebar"
-            v-model:search="search"
-            v-model:title="title"
-            v-model:show-title="showTitle"
-            :header-menu="headerMenu"
-            :app-sections="serviceItems"
-            :quick-commands="quickCreateItems"
-            :notification-tabs="notificationTabs"
-          />
+          <desktop-header v-show="isDesktop" v-model="showSecondarySidebar" v-model:search="search" v-model:title="title"
+            v-model:show-title="showTitle" :header-menu="headerMenu" :app-sections="serviceItems"
+            :quick-commands="quickCreateItems" :notification-tabs="notificationTabs" />
         </slot>
         <slot name="desktop-secondary-sidebar">
-          <desktop-secondary-sidebar
-            v-if="isDesktop && secondaryItemList.length > 0"
-            v-model="showSecondarySidebar"
-            v-model:items="secondaryItemList"
-            v-model:title="title"
-          />
+          <desktop-secondary-sidebar v-if="isDesktop && secondaryItemList.length > 0" v-model="showSecondarySidebar"
+            v-model:items="secondaryItemList" v-model:title="title" />
         </slot>
 
         <q-page-container class="bg-app-container">
@@ -186,11 +158,7 @@ const secondaryItemList = ref<IModule[]>([
     </q-page-container>
     <!-- Mobile standard navigation menu -->
     <slot name="mobile-bottom-menu">
-      <mobile-bottom-menu
-        v-show="isMobile"
-        :items="mobileItems"
-        :overflow-items="mobileOverviewItems"
-      />
+      <mobile-bottom-menu v-show="isMobile" :items="mobileItems" :overflow-items="mobileOverviewItems" />
     </slot>
   </q-layout>
 </template>

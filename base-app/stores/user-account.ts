@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import { SessionStorage } from 'quasar';
-import { Permission, User } from '@trace/model';
+import type { Permission, User } from '@trace/model';
 import { useTagViewStore } from './tag-view';
 
 export const useUserAccountStore = defineStore(

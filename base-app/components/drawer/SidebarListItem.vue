@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { IModule } from '@trace/shared';
+import type { IModule } from '@trace/shared';
+
+defineOptions({ name: 'SidebarListItem' });
 
 interface IProps {
   item: IModule;
@@ -14,13 +16,8 @@ withDefaults(defineProps<IProps>(), {
 </script>
 
 <template>
-  <q-item
-    v-if="item.items == undefined"
-    :to="{ name: item.name }"
-    clickable
-    :dense="dense"
-    active-class="app-list-item-active"
-  >
+  <q-item v-if="item.items == undefined" :to="{ name: item.name }" clickable :dense="dense"
+    active-class="app-list-item-active">
     <q-item-section avatar>
       <q-icon :size="iconSize" :name="item.icon" />
     </q-item-section>
@@ -28,12 +25,7 @@ withDefaults(defineProps<IProps>(), {
       <q-item-label>{{ item.title }}</q-item-label>
     </q-item-section>
   </q-item>
-  <link-secondary-item
-    v-else
-    v-bind="$attrs"
-    :icon-size="iconSize"
-    :item="item"
-  />
+  <link-secondary-item v-else v-bind="$attrs" :icon-size="iconSize" :item="item" />
 </template>
 
 <style lang="scss" scoped>
