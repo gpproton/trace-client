@@ -11,7 +11,7 @@ const { locale, getActiveCountry } = storeToRefs(localeStore);
 </script>
 
 <template>
-  <q-select v-model="locale" hide-dropdown-icon :options="languages" option-label="name" option-value="value" dense
+  <q-select $="locale" hide-dropdown-icon :options="languages" option-label="name" option-value="value" dense
     borderless color="secondary" emit-value map-options options-dense @update:model-value="setLocale">
     >
     <template #prepend>

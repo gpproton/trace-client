@@ -32,7 +32,7 @@ const { modelValue, search, title, showTitle } = defineModels<{
     <q-toolbar class="row justify-between q-mt-xs">
       <q-btn dense flat square icon="bi-list" color="primary" size="lg"
         @click="() => modelValue = !modelValue" />
-      <q-input v-model="search" dense filled label="Search items" class="q-mx-sm border-radius-sm">
+      <q-input $="search" dense filled label="Search items" class="q-mx-sm border-radius-sm">
         <template #prepend>
           <q-avatar>
             <q-icon size="sm" name="bi-search" />

@@ -24,7 +24,7 @@ const { modelValue } = defineModels<{
 </script>
 
 <template>
-  <q-tabs v-model="modelValue" :dense="props.dense" no-caps inline-label :outside-arrows="props.outsideArrows"
+  <q-tabs $="modelValue" :dense="props.dense" no-caps inline-label :outside-arrows="props.outsideArrows"
     align="center" indicator-color="transparent" class="bg-app-background border-radius-sm text-accent" :active-class="props.flat
       ? 'shadow-0 bg-app-plainer text-action'
       : 'shadow-2 bg-app-plainer text-action'

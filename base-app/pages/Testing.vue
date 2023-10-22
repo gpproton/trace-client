@@ -8,7 +8,7 @@ const expr = ref('0 * * * *');
 
 <template>
   <page-wrapper>
-    <cron-quasar v-model="expr" />
+    <cron-quasar $="expr" />
     <div class="q-ma-md">
       {{ expr }}
     </div>

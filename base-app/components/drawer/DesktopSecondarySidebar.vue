@@ -18,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <q-drawer v-if="modelValue" v-model="modelValue" :width="230" show-if-above persistent behavior="desktop" side="left" bordered>
+  <q-drawer v-if="modelValue" $="modelValue" :width="230" show-if-above persistent behavior="desktop" side="left" bordered>
     <q-toolbar>
       <q-toolbar-title class="q-px-sm">
         {{ title }}

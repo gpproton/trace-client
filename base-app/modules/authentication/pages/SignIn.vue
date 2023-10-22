@@ -69,7 +69,7 @@ const passwordState = reactive({
 
     <div class="q-gutter-y-md q-my-md">
       <q-input
-        v-model="usernameState"
+        $="usernameState"
         outlined
         no-error-icon
         type="text"
@@ -84,7 +84,7 @@ const passwordState = reactive({
         </template>
       </q-input>
       <q-input
-        v-model="passwordState.value"
+        $="passwordState.value"
         outlined
         no-error-icon
         :type="passwordState.show ? 'text' : 'password'"

@@ -15,7 +15,7 @@ const handleTenantSelection = () => {};
 
 <template>
   <q-select
-    v-model="tenant"
+    $="tenant"
     :options="tenantOptions"
     dense
     borderless
