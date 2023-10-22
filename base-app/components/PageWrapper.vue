@@ -130,5 +130,5 @@ onDeactivated(() => {
 </template>
 
 <style lang="scss" scoped>
-@import '../styles/error.scss';
+@import './styles/error.scss';
 </style>
