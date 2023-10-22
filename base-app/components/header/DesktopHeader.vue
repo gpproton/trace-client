@@ -11,40 +11,28 @@ interface IProps {
   appSections: IModule[];
   headerMenu: IModule[];
   notificationTabs: IModule[];
-  modelValue: boolean;
-  search: string;
-  title?: string;
-  showTitle?: boolean;
 }
 
 const bellIconFill = ref(false);
-const props = withDefaults(defineProps<IProps>(), {
-  modelValue: false,
-  search: '',
-  title: 'Title',
-  showTitle: true,
+
+withDefaults(defineProps<IProps>(), {
   notificationTabs: () => [],
 });
 
-const emits = defineEmits<{
-  (eventName: 'update:modelValue', value: boolean): void;
-  (eventName: 'update:search', value: string): void;
-  (eventName: 'update:title', value: string): void;
-  (eventName: 'update:showTitle', value: boolean): void;
+const { modelValue, search, title, showTitle } = defineModels<{
+  modelValue: ModelOptions<boolean, { defaultValue: false; deep: true; passive: true }>;
+  search: ModelOptions<string, { defaultValue: ''; deep: true; passive: true }>;
+  title: ModelOptions<string, { defaultValue: 'Title'; deep: true; passive: true }>;
+  showTitle: ModelOptions<boolean, { defaultValue: true; deep: true; passive: true }>;
 }>();
-
-const searchValue = computed({
-  get: () => props.search,
-  set: (value) => emits('update:search', value),
-});
 </script>
 
 <template>
   <q-header reveal :elevated="false" class="bg-transparent" style="margin-left: 64px">
     <q-toolbar class="row justify-between q-mt-xs">
       <q-btn dense flat square icon="bi-list" color="primary" size="lg"
-        @click="() => emits('update:modelValue', !props.modelValue)" />
-      <q-input v-model="searchValue" dense filled label="Search items" class="q-mx-sm border-radius-sm">
+        @click="() => modelValue = !modelValue" />
+      <q-input v-model="search" dense filled label="Search items" class="q-mx-sm border-radius-sm">
         <template #prepend>
           <q-avatar>
             <q-icon size="sm" name="bi-search" />
@@ -68,7 +56,7 @@ const searchValue = computed({
           <q-icon color="primary" class="button-icon" name="bi-ui-checks-grid" />
           <q-menu :offset="[-35, 10]" transition-show="scale" transition-hide="scale" self="top middle"
             class="border-radius-sm q-pa-sm">
-            <command-list :items="props.appSections" />
+            <command-list :items="appSections" />
           </q-menu>
         </q-btn>
         <!-- Notification actions -->
@@ -85,7 +73,7 @@ const searchValue = computed({
         <q-btn square size="1.1rem" icon="bi-plus-lg" color="primary" text-color="primary-inverted"
           class="border-radius-sm">
           <q-menu :offset="[-5, 10]" transition-show="scale" transition-hide="scale" class="border-radius-sm q-pa-sm">
-            <command-list :items="props.quickCommands" />
+            <command-list :items="quickCommands" />
           </q-menu>
         </q-btn>
       </div>

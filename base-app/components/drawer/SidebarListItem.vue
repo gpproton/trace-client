@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { IModule } from '@trace/shared';
+import LinkSecondaryItem from './LinkSecondaryItem.vue';
 
 defineOptions({ name: 'SidebarListItem' });
 

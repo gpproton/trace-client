@@ -20,6 +20,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
+    '@vue-macros/nuxt',
     '@vite-pwa/nuxt'
   ],
   i18n: {

@@ -3,15 +3,15 @@ import { useBreadcrumbsStore } from "@/stores/breadcrumbs";
 import { useKeepAliveStore } from "@/stores/keep-alive";
 import { LoadingBar } from "quasar";
 import { storeToRefs } from 'pinia';
-import { RouteLocationNormalized, Router } from "vue-router";
+import type { RouteLocationNormalized, Router } from "vue-router";
 import { constantRoutes } from '@/app/router.constants';
-import { RouteData } from "@/types/index";
+import type { RouteData } from "@/types/index";
 
-export default defineNuxtRouteMiddleware(() => {
+export default defineNuxtRouteMiddleware(({ $pinia }) => {
   const router: Router = useRouter();
-  const tagViewStore = useTagViewStore();
-  const breadCrumbsStore = useBreadcrumbsStore();
-  const keepAliveStore = useKeepAliveStore();
+  const tagViewStore = useTagViewStore($pinia);
+  const breadCrumbsStore = useBreadcrumbsStore($pinia);
+  const keepAliveStore = useKeepAliveStore($pinia);
 
   const { setTagView, addTagView } = tagViewStore;
   const { getTagView, getStoredTagView } = storeToRefs(tagViewStore);
@@ -30,8 +30,9 @@ export default defineNuxtRouteMiddleware(() => {
         }
       }
 
-      const storedTagView = (getStoredTagView.value ?? []) as RouteData[];
+      const storedTagView = (getStoredTagView.value ?? []) as unknown as RouteData[];
       if (
+        // @ts-ignore
         getTagView.value.length === 0 &&
         storedTagView.length !== 0
       ) {

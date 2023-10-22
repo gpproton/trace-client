@@ -1,10 +1,10 @@
-import { Router } from 'vue-router';
+import type { Router } from 'vue-router';
 import { useUserAccountStore } from "@/stores/user-account";
 import { constantRoutes } from '@/app/router.constants';
 
-export default defineNuxtRouteMiddleware(() => {
-  const router: Router = useRouter();
-  const userAccount = useUserAccountStore();
+export default defineNuxtRouteMiddleware(({ $pinia }) => {
+  const router: Router = useRouter($pinia);
+  const userAccount = useUserAccountStore($pinia);
   const { getAccessToken } = userAccount;
 
   // router.beforeEach((to, from, next) => {

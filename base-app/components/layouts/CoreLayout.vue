@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, toRefs } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useAppBreakpoints } from '@/composables/breakpoints';
 import { useLayoutStore } from '@/stores/layout';
@@ -38,7 +38,7 @@ withDefaults(defineProps<IProps>(), {
 
 const showTitle = ref(true);
 const breakpointStates = useAppBreakpoints();
-const layout = useLayoutStore();
+const layoutStores = useLayoutStore();
 const theme = useThemeStore();
 
 const {
@@ -48,10 +48,10 @@ const {
   primaryMiniState,
   showSecondarySidebar,
   showIdentityList,
-} = storeToRefs(layout);
+} = toRefs(layoutStores);
 
 const { isDesktop, isMobile } = storeToRefs(breakpointStates);
-const { isDark } = storeToRefs(theme);
+const { isDark } = toRefs(theme);
 const { setSize } = breakpointStates;
 const { initializeTheme, setThemeState } = theme;
 initializeTheme();
@@ -129,8 +129,8 @@ const secondaryItemList = ref<IModule[]>([
 <template>
   <q-layout view="lHr lpR fFf" @resize="setSize">
     <slot name="desktop-sidebar">
-      <desktop-sidebar v-if="isDesktop" v-model="showPrimarySidebar" v-model:dark-mode="isDark"
-        v-model:drawer-mini-state="primaryMiniState" v-model:show-identity="showIdentityList" :name="name"
+      <desktop-sidebar v-if="isDesktop" $="showPrimarySidebar" $dark-mode="isDark"
+        :drawer-mini-state="primaryMiniState" $show-identity="showIdentityList" :name="name"
         :identity-menu="identityItems" :overview-menu="overviewItems" :secondary-menu="items" :user-profile="userProfile"
         @update:dark-mode="setThemeState" />
     </slot>
@@ -138,17 +138,16 @@ const secondaryItemList = ref<IModule[]>([
       <!-- Check inner layout -->
       <q-layout view="lhr lpr lfr">
         <slot name="mobile-header">
-          <mobile-header v-show="!isDesktop" v-model:title="title" v-model:search="search" />
+          <mobile-header v-show="!isDesktop" $title="title" $search="search" />
         </slot>
-
         <slot name="desktop-header">
-          <desktop-header v-show="isDesktop" v-model="showSecondarySidebar" v-model:search="search" v-model:title="title"
-            v-model:show-title="showTitle" :header-menu="headerMenu" :app-sections="serviceItems"
+          <desktop-header v-show="isDesktop" $="showSecondarySidebar" $search="search" $title="title"
+            $show-title="showTitle" :header-menu="headerMenu" :app-sections="serviceItems"
             :quick-commands="quickCreateItems" :notification-tabs="notificationTabs" />
         </slot>
         <slot name="desktop-secondary-sidebar">
-          <desktop-secondary-sidebar v-if="isDesktop && secondaryItemList.length > 0" v-model="showSecondarySidebar"
-            v-model:items="secondaryItemList" v-model:title="title" />
+          <desktop-secondary-sidebar v-if="isDesktop && secondaryItemList.length > 0" $="showSecondarySidebar"
+            $items="secondaryItemList" $title="title" />
         </slot>
 
         <q-page-container class="bg-app-container">

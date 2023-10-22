@@ -1,10 +1,10 @@
-import { Router } from 'vue-router';
+import type { Router } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useRouterStore } from "@/stores/router";
 import { useUserAccountStore } from "@/stores/user-account";
 import { asyncRootRoute, asyncRoutesChildren } from '@/app/router.constants';
 import { constructionRouters } from '@/utils/permission-util';
-import { RouteRecordRaw } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 
 export default defineNuxtRouteMiddleware(() => {
   const router: Router = useRouter();

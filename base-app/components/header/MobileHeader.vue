@@ -1,22 +1,10 @@
 <script setup lang="ts">
 defineOptions({ name: 'MobileHeader' });
 
-interface IProps {
-  modelValue?: boolean;
-  search: string;
-  title: string;
-}
-
-const props = withDefaults(defineProps<IProps>(), {
-  modelValue: false,
-  search: '',
-  title: 'Title',
-});
-
-const emits = defineEmits<{
-  (eventName: 'update:modelValue', value: boolean): void;
-  (eventName: 'update:search', value: string): void;
-  (eventName: 'update:title', value: string): void;
+const { modelValue, title } = defineModels<{
+  modelValue?: ModelOptions<boolean, { defaultValue: false; deep: true; passive: true }>;
+  search: ModelOptions<string, { defaultValue: ''; deep: true; passive: true }>;
+  title: ModelOptions<string, { defaultValue: 'Title'; deep: true; passive: true }>;
 }>();
 </script>
 
@@ -24,9 +12,9 @@ const emits = defineEmits<{
   <q-header reveal :elevated="false" class="bg-transparent">
     <q-toolbar>
       <q-btn flat square color="primary" icon="bi-list" class="q-mr-sm"
-        @click="() => emits('update:modelValue', !props.modelValue)" />
+        @click="() => modelValue = !modelValue" />
       <q-toolbar-title class="text-primary text-h5 text-weight-bold text-no-wrap overflow-hidden ellipsis">
-        {{ props.title }}
+        {{ title }}
       </q-toolbar-title>
       <q-space />
       <div class="q-gutter-xs">

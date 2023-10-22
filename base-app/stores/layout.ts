@@ -7,9 +7,9 @@ export const useLayoutStore = defineStore(
   () => {
     const { title } = storeToRefs(usePageStore());
     /** States */
-    const name = ref('Trace');
-    const search = ref('');
-    const sencondaryNavigation = ref<IModule[]>();
+    const name = ref<string>('Trace');
+    const search = ref<string>('');
+    const sencondaryNavigation = ref<IModule[]>([]);
     const showPrimarySidebar = ref<boolean>(false);
     const primaryMiniState = ref<boolean>(true);
     const showSecondarySidebar = ref<boolean>(false);

@@ -1,25 +1,12 @@
 <script lang="ts" setup>
 defineOptions({ name: 'ThemeSwitcher' });
 
-interface IProps {
-  modelValue: boolean;
-}
-
-const props = withDefaults(defineProps<IProps>(), {
-  modelValue: false,
-});
-
-const emits = defineEmits<{
-  (eventName: 'update:modelValue', value: boolean): void;
+const { modelValue } = defineModels<{
+  modelValue: ModelOptions<boolean, { defaultValue: false; deep: true; passive: true }>;
 }>();
 
-const isDark = computed({
-  get: () => props.modelValue,
-  set: (value) => emits('update:modelValue', value),
-});
-
 const setThemeState = (value: boolean) => {
-  isDark.value = value;
+  modelValue.value = value;
 };
 
 const darkOptions = [
@@ -36,10 +23,10 @@ const darkOptions = [
 ];
 
 const themeStatus = (value: string) => {
-  if (value === 'dark' && isDark.value) {
+  if (value === 'dark' && modelValue.value) {
     return true;
   }
-  return value === 'light' && !isDark.value;
+  return value === 'light' && !modelValue.value;
 };
 </script>
 

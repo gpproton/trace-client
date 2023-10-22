@@ -2,9 +2,11 @@
 import AppLogo from '@/icons/logo.svg';
 
 defineOptions({ name: 'SidebarHeader' });
+const { modelValue } = defineModels<{
+  modelValue: boolean;
+}>()
 
 interface IProps {
-  modelValue: boolean;
   name: string;
 }
 
@@ -13,10 +15,10 @@ const props = defineProps<IProps>();
 
 <template>
   <q-toolbar class="q-pa-none" style="min-height: 72px">
-    <div v-show="props.modelValue" class="q-mx-auto" style="height: 55px">
+    <div v-show="modelValue" class="q-mx-auto" style="height: 55px">
       <app-logo class="app-logo self-start col-1 q-mx-auto" />
     </div>
-    <div v-show="!props.modelValue" class="full-width row cursor-pointer q-px-md" style="height: 55px">
+    <div v-show="!modelValue" class="full-width row cursor-pointer q-px-md" style="height: 55px">
       <app-logo class="app-logo self-start col-3" />
       <div class="col-9 row">
         <div class="col-10 text-no-wrap q-pl-md">

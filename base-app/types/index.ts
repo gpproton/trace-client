@@ -1,7 +1,7 @@
-import {
-  RouteRecordName,
-  RouteRecordRedirectOption,
-  RouteMeta,
+import type {
+RouteRecordName,
+RouteRecordRedirectOption,
+RouteMeta,
 } from "vue-router";
 
 export interface Route {

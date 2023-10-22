@@ -4,37 +4,21 @@ import SidebarListItem from '@/components/drawer/SidebarListItem.vue';
 
 defineOptions({ name: "DesktopSecondarySidebar" });
 
-interface IProps {
-  modelValue: boolean;
-  title: string;
+const { modelValue, title, items } = defineModels<{
+  modelValue: ModelOptions<boolean, { defaultValue: false; deep: true; passive: true }>;
+  title:  ModelOptions<string, { defaultValue: 'Secondary Title'; deep: true; passive: true }>;
   items: IModule[];
-}
-
-const props = withDefaults(defineProps<IProps>(), {
-  modelValue: false,
-  title: 'Secondary Title',
-});
-
-const emits = defineEmits<{
-  (eventName: 'update:modelValue', value: boolean): boolean;
-  (eventName: 'update:title', value: string): void;
-  (eventName: 'update:items', value: IModule[]): void;
 }>();
 
-const drawer = computed({
-  get: () => props.modelValue,
-  set: (value) => emits('update:modelValue', value),
-});
-
 onMounted(() => {
-  if (props.items.length > 0) {
-    drawer.value = true;
+  if (items.value.length > 0) {
+    modelValue.value = true;
   }
 });
 </script>
 
 <template>
-  <q-drawer v-if="drawer" v-model="drawer" :width="230" show-if-above persistent behavior="desktop" side="left" bordered>
+  <q-drawer v-if="modelValue" v-model="modelValue" :width="230" show-if-above persistent behavior="desktop" side="left" bordered>
     <q-toolbar>
       <q-toolbar-title class="q-px-sm">
         {{ title }}
