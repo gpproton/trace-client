@@ -3,7 +3,8 @@ import { ref } from 'vue';
 import type { IModule, IModuleCommands } from '@trace/shared';
 import CommandList from '@/components/extra/CommandList.vue';
 import NotificationDialog from '@/components/extra/NotificationDialog.vue';
-import SwitcherButton from '@/components/extra/SwitcherButton.vue';
+// import SwitcherButton from '@/components/extra/SwitcherButton.vue';
+import Breadcrumbs from './Breadcrumbs.vue';
 import TagView from '@/components/header/TagView.vue';
 
 interface IProps {
@@ -20,18 +21,30 @@ withDefaults(defineProps<IProps>(), {
 });
 
 const { modelValue, search, title, showTitle } = defineModels<{
-  modelValue: ModelOptions<boolean, { defaultValue: false; deep: true; passive: true }>;
-  search: ModelOptions<string, { defaultValue: ''; deep: true; passive: true }>;
-  title: ModelOptions<string, { defaultValue: 'Title'; deep: true; passive: true }>;
-  showTitle: ModelOptions<boolean, { defaultValue: true; deep: true; passive: true }>;
+  modelValue: ModelOptions<boolean, { defaultValue: false; deep: true }>;
+  search: ModelOptions<string, { defaultValue: ''; deep: true }>;
+  title: ModelOptions<string, { defaultValue: 'Title'; deep: true }>;
+  showTitle: ModelOptions<boolean, { defaultValue: true; deep: true }>;
 }>();
 </script>
 
 <template>
-  <q-header reveal :elevated="false" class="bg-transparent" style="margin-left: 64px">
+  <q-header reveal :elevated="false" class="bg-transparent" height-hint="64" bordered
+    style="margin-left: 64px; box-shadow: rgba(0, 0, 0, 0) 0px 2px 12px 0px; padding-bottom: 2px">
     <q-toolbar class="row justify-between q-mt-xs">
-      <q-btn dense flat square icon="bi-list" color="primary" size="lg"
-        @click="() => modelValue = !modelValue" />
+
+      <div class="q-pr-md">
+        <q-btn dense flat square :icon="modelValue ? 'menu_open' : 'menu'" aria-label="Menu" color="primary" size="lg"
+          @click="() => modelValue = !modelValue" />
+      </div>
+      <breadcrumbs class="text-weight-bold" :show-icon="false" v-if="$q.screen.gt.sm" />
+      <q-space />
+
+      <!-- <q-toolbar-title class="q-px-sm">
+        <div class="row items-center">
+          <switcher-button v-show="headerMenu.length > 0" class="gt-sm" :items="headerMenu" dense route />
+        </div>
+      </q-toolbar-title> -->
       <q-input $="search" dense filled label="Search items" class="q-mx-sm border-radius-sm">
         <template #prepend>
           <q-avatar>
@@ -45,11 +58,6 @@ const { modelValue, search, title, showTitle } = defineModels<{
           </div>
         </template>
       </q-input>
-      <q-toolbar-title class="q-px-sm">
-        <div class="row items-center">
-          <switcher-button v-show="headerMenu.length > 0" class="gt-sm" :items="headerMenu" dense route />
-        </div>
-      </q-toolbar-title>
       <div class="header-icon-button q-gutter-xs vertical-middle">
         <!-- Top level app switcher -->
         <q-btn flat square color="primary" class="border-radius-sm q-px-sm">

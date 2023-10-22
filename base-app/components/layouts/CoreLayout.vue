@@ -48,10 +48,10 @@ const {
   primaryMiniState,
   showSecondarySidebar,
   showIdentityList,
-} = toRefs(layoutStores);
+} = storeToRefs(layoutStores);
 
 const { isDesktop, isMobile } = storeToRefs(breakpointStates);
-const { isDark } = toRefs(theme);
+const { isDark } = storeToRefs(theme);
 const { setSize } = breakpointStates;
 const { initializeTheme, setThemeState } = theme;
 initializeTheme();
@@ -129,10 +129,9 @@ const secondaryItemList = ref<IModule[]>([
 <template>
   <q-layout view="lHr lpR fFf" @resize="setSize">
     <slot name="desktop-sidebar">
-      <desktop-sidebar v-if="isDesktop" $="showPrimarySidebar" $dark-mode="isDark"
-        :drawer-mini-state="primaryMiniState" $show-identity="showIdentityList" :name="name"
-        :identity-menu="identityItems" :overview-menu="overviewItems" :secondary-menu="items" :user-profile="userProfile"
-        @update:dark-mode="setThemeState" />
+      <desktop-sidebar v-if="isDesktop" $="showPrimarySidebar" $dark-mode="isDark" :drawer-mini-state="primaryMiniState"
+        $show-identity="showIdentityList" :name="name" :identity-menu="identityItems" :overview-menu="overviewItems"
+        :secondary-menu="items" :user-profile="userProfile" @update:dark-mode="setThemeState" />
     </slot>
     <q-page-container>
       <!-- Check inner layout -->
@@ -157,7 +156,8 @@ const secondaryItemList = ref<IModule[]>([
     </q-page-container>
     <!-- Mobile standard navigation menu -->
     <slot name="mobile-bottom-menu">
-      <mobile-bottom-menu v-show="isMobile" :items="mobileItems" :overflow-items="mobileOverviewItems" />
+      <mobile-bottom-menu style="display: none" :style="isMobile ? { display: 'flex' } : {}" :items="mobileItems"
+        :overflow-items="mobileOverviewItems" />
     </slot>
   </q-layout>
 </template>

@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<IProps>(), {
 });
 
 const { modelValue } = defineModels<{
-  modelValue?: ModelOptions<string, { defaultValue: ''; deep: true; passive: true }>;
+  modelValue?: ModelOptions<string, { defaultValue: ''; deep: true }>;
 }>();
 </script>
 

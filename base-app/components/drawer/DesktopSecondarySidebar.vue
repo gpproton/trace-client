@@ -5,8 +5,8 @@ import SidebarListItem from '@/components/drawer/SidebarListItem.vue';
 defineOptions({ name: "DesktopSecondarySidebar" });
 
 const { modelValue, title, items } = defineModels<{
-  modelValue: ModelOptions<boolean, { defaultValue: false; deep: true; passive: true }>;
-  title:  ModelOptions<string, { defaultValue: 'Secondary Title'; deep: true; passive: true }>;
+  modelValue: ModelOptions<boolean, { defaultValue: false; deep: true }>;
+  title:  ModelOptions<string, { defaultValue: 'Secondary Title'; deep: true }>;
   items: IModule[];
 }>();
 

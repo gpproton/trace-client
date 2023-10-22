@@ -4,24 +4,25 @@ import { useKeepAliveStore } from "@/stores/keep-alive";
 import { LoadingBar } from "quasar";
 import { storeToRefs } from 'pinia';
 import type { RouteLocationNormalized, Router } from "vue-router";
-import { constantRoutes } from '@/app/router.constants';
+import { constantRoutes } from '@/app/routes';
 import type { RouteData } from "@/types/index";
 
-export default defineNuxtRouteMiddleware(({ $pinia }) => {
+export default defineNuxtPlugin(() => {
   const router: Router = useRouter();
-  const tagViewStore = useTagViewStore($pinia);
-  const breadCrumbsStore = useBreadcrumbsStore($pinia);
-  const keepAliveStore = useKeepAliveStore($pinia);
+  const tagViewStore = useTagViewStore();
+  const breadCrumbsStore = useBreadcrumbsStore();
+  const keepAliveStore = useKeepAliveStore();
 
   const { setTagView, addTagView } = tagViewStore;
   const { getTagView, getStoredTagView } = storeToRefs(tagViewStore);
   const { setKeepAliveList } = keepAliveStore;
+  const { getBreadCrumbs } = storeToRefs(breadCrumbsStore);
   const { setBreadcrumbs } = breadCrumbsStore;
 
   router.beforeEach((to, from) => {
     LoadingBar.stop();
     LoadingBar.start();
-
+    
     if (to.name != null) {
       // is a public route
       for (let i = 0; i < constantRoutes.length; i++) {
@@ -29,7 +30,6 @@ export default defineNuxtRouteMiddleware(({ $pinia }) => {
           return;
         }
       }
-
       const storedTagView = (getStoredTagView.value ?? []) as unknown as RouteData[];
       if (
         // @ts-ignore
@@ -41,6 +41,7 @@ export default defineNuxtRouteMiddleware(({ $pinia }) => {
       } else if (from.fullPath !== to.fullPath) {
         addTagView(to);
       }
+      
       setBreadcrumbs(to.matched, to.query);
       handleKeepAlive(to);
     }

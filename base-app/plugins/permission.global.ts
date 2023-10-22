@@ -2,11 +2,11 @@ import type { Router } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useRouterStore } from "@/stores/router";
 import { useUserAccountStore } from "@/stores/user-account";
-import { asyncRootRoute, asyncRoutesChildren } from '@/app/router.constants';
+import { asyncRootRoute, asyncRoutesChildren } from '@/app/routes';
 import { constructionRouters } from '@/utils/permission-util';
 import type { RouteRecordRaw } from 'vue-router';
 
-export default defineNuxtRouteMiddleware(() => {
+export default defineNuxtPlugin(() => {
   const router: Router = useRouter();
   const routerStore = useRouterStore();
   const userAccountStore = useUserAccountStore();

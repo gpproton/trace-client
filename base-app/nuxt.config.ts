@@ -41,12 +41,16 @@ export default defineNuxtConfig({
     plugins: [
       'AddressbarColor',
       'AppVisibility',
+      'AppFullscreen',
       'BottomSheet',
       'Dialog',
       'Loading',
       'LoadingBar',
       'Notify',
       'Dark',
+      'Cookies',
+      'SessionStorage',
+      'Meta',
     ],
     sassVariables: join(currentDir, './assets/main.scss'),
     iconSet: {

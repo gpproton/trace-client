@@ -1,6 +1,6 @@
 import type { Directive } from 'vue';
 import { useAppPermission } from '@/composables/permission';
-import { ActionState } from '@trace/model';
+import type { ActionState } from '@trace/model';
 
 export default defineNuxtPlugin((nuxtApp) => {
   const { hasPermission } = useAppPermission();

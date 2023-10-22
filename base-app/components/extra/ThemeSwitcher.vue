@@ -2,7 +2,7 @@
 defineOptions({ name: 'ThemeSwitcher' });
 
 const { modelValue } = defineModels<{
-  modelValue: ModelOptions<boolean, { defaultValue: false; deep: true; passive: true }>;
+  modelValue: ModelOptions<boolean, { defaultValue: false; deep: true }>;
 }>();
 
 const setThemeState = (value: boolean) => {
