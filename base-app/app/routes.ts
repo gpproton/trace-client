@@ -1,9 +1,32 @@
 import type { Route } from "@/types/index";
 import type { RouteRecordRaw } from "vue-router";
+import AuthRoutes from '@/modules/authentication/routes';
+import routes from './routes.default';
 
 export const setupRootRoute = (route: Route) => {
   route.children = asyncRoutesChildren;
   asyncRootRoute = [route];
+};
+
+export const setupDefaultRoutes = () => {
+  mergeConstantRoutes(AuthRoutes);
+  mergeRoutes(routes);
+  mergeConstantRoutes([
+    {
+      path: '/:catchAll(.*)*',
+      component: () => import('@/components/layouts/EmptyLayout.vue'),
+      children: [
+        {
+          path: '',
+          component: () => import('@/pages/ErrorNotFound.vue'),
+          meta: {
+            title: 'router.error',
+            icon: 'sync',
+          },
+        },
+      ]
+    },
+  ]);
 };
 
 export const mergeRoutes = (routes: Route[]) => {

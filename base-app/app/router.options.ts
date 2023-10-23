@@ -1,8 +1,6 @@
 import type { RouterConfig } from '@nuxt/schema'
 import type { ActionState, Workflow } from '@trace/model';
-import { getRoutes, setupRootRoute, mergeConstantRoutes, mergeRoutes } from '@/app/routes';
-import AuthRoutes from '@/modules/authentication/routes';
-import routes from './routes.default';
+import { getRoutes, setupRootRoute, setupDefaultRoutes } from '@/app/routes';
 
 declare module "vue-router" {
   interface RouteMeta {
@@ -26,26 +24,8 @@ export default <RouterConfig>{
       component: () => import('@/components/layouts/Layout.vue'),
       redirect: '/'
     });
-    
-    mergeConstantRoutes(AuthRoutes);
-    mergeRoutes(routes);
 
-    mergeConstantRoutes([
-      {
-        path: '/:catchAll(.*)*',
-        component: () => import('@/components/layouts/EmptyLayout.vue'),
-        children: [
-          {
-            path: '',
-            component: () => import('@/pages/ErrorNotFound.vue'),
-            meta: {
-              title: 'router.error',
-              icon: 'sync',
-            },
-          },
-        ]
-      },
-    ]);
+    setupDefaultRoutes();
 
     return getRoutes();
   },
