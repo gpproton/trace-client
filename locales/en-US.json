@@ -44,9 +44,16 @@
   "shared": {
     "notification": "Notification",
     "user": "User",
+    "profileType": "Profile Type",
+    "workflowType": "Workflow Type",
     "gettingStarted": "Getting Started",
     "welcomeAboard": "Welcome Aboard",
+    "representative": "Representative Information",
+    "organizationDetails": "Organization Details",
     "privacyPolicy": "Privacy policy",
-    "copyright": "Copyright"
+    "copyright": "Copyright",
+    "registration": "Registration",
+    "verification": "Verification",
+    "confirmation": "Confirmation"
   }
 }

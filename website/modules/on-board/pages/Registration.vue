@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import OnboardWrapper from '@trace/base-app/modules/on-board/components/OnboardWrapper.vue';
 
-defineOptions({ name: 'Verify' });
+defineOptions({ name: 'Registration' });
 </script>
 
 <template>
     <onboard-wrapper>
-        <div>Verify</div>
+        <div>Registration</div>
     </onboard-wrapper>
 </template>

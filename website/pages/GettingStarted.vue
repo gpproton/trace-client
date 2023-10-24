@@ -11,10 +11,10 @@ const registerNote = 'Enter your email to start using trace';
 <template>
     <q-page padding>
         <div class="row q-py-lg">
-            <q-card square flat class="col q-px-xs">
+            <q-card square flat class="col q-px-xs q-pt-xl">
                 <span class="bg-grey-6 text-white text-body2 q-py-sm q-px-md border-radius-sm">{{ tag }}</span>
                 <div class="text-h2 text-grey-9 text-weight-bold q-mt-sm q-mb-xl">{{ details }}</div>
-                <div class="q-gutter-y-sm q-px-lg">
+                <div class="q-gutter-y-sm q-px-xs">
                     <div class="text-primary">{{ registerNote }}</div>
                     <div class="row q-gutter-x-sm">
                         <q-input class="col" filled hide-bottom-space placeholder="your@email.com" />
