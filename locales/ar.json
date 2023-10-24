@@ -1,43 +1,47 @@
 {
-  "action": {
-    "failed": "فشل الإجراءات",
-    "success": "العمل الناجح"
-  },
-  "auth": {
-    "signInTitle": "مرحباً بعودتك!",
-    "signInSubTitle": "التوقيع على مواصلة",
-    "email": "Email",
-    "enterOtp": "Enter OTP",
-    "forgotPassword": "--",
-    "password": "--",
-    "passwordResetEmail": "Reset via Email",
-    "passwordResetSms": "--",
-    "resendOtp": "Resend OTP",
-    "sendOtp": "إرسال OTP",
-    "signIn": "التوقيع",
-    "signOut": "وقع",
-    "username": "المستعمل",
-    "usernameOrEmail": "المستعمل أو البريد الإلكتروني",
-    "verifyOtp": "تصديق مكتب المدعي العام"
-  },
-  "layout": {
-    "darkMode": "موديل الظلام",
-    "fullScreen": "كاملة",
-    "lightMode": "لايت موديل",
-    "refresh": "الصفحة"
-  },
-  "router": {
-    "home": "البيت",
-    "back": "العودة",
-    "un-authorized": "غير المأذون به",
-    "error": "الرعب",
-    "quick-start": "البداية السريعة",
-    "testing": "الاختبار"
-  },
-  "shared": {
-    "notification": "الإخطار",
-    "user": "مستخدم",
-    "privacyPolicy": "سياسة الخصوصية",
-    "copyright": "حقوق الطبع"
-  }
+    "action": {
+        "failed": "فشل الإجراءات",
+        "success": "العمل الناجح"
+    },
+    "auth": {
+        "signInTitle": "مرحباً بعودتك!",
+        "signInSubTitle": "--",
+        "email": "Email",
+        "enterOtp": "--",
+        "forgotPassword": "--",
+        "password": "كلمة السر",
+        "passwordResetEmail": "--",
+        "passwordResetSms": "--",
+        "resendOtp": "--",
+        "sendOtp": "--",
+        "signIn": "التوقيع",
+        "signOut": "وقع",
+        "username": "المستعمل",
+        "usernameOrEmail": "--",
+        "verifyOtp": "--"
+    },
+    "layout": {
+        "darkMode": "--",
+        "fullScreen": "--",
+        "lightMode": "--",
+        "refresh": "--"
+    },
+    "router": {
+        "home": "--",
+        "back": "العودة",
+        "un-authorized": "غير المأذون به",
+        "error": "الرعب",
+        "quick-start": "البداية السريعة",
+        "getStarted": "ابدأ",
+        "support": "الدعم",
+        "docs": "Docs",
+        "testing": "--"
+    },
+    "shared": {
+        "notification": "--",
+        "user": "--",
+        "welcomeAboard": "--",
+        "privacyPolicy": "--",
+        "copyright": "--"
+    }
 }

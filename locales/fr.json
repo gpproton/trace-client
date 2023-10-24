@@ -1,43 +1,47 @@
 {
-  "action": {
-    "failed": "Action failed",
-    "success": "Action was successful"
-  },
-  "auth": {
-    "signInTitle": "Bienvenue !",
-    "signInSubTitle": "Se connecter pour continuer",
-    "email": "Email",
-    "enterOtp": "Entrez OTP",
-    "forgotPassword": "Mot de passe oublié ?",
-    "password": "Mot de passe",
-    "passwordResetEmail": "Réinitialiser via Email",
-    "passwordResetSms": "Réinitialiser par SMS",
-    "resendOtp": "Resend OTP",
-    "sendOtp": "Envoyer OTP",
-    "signIn": "Sign In",
-    "signOut": "Sign Out",
-    "username": "Username",
-    "usernameOrEmail": "Username or Email",
-    "verifyOtp": "Vérifier l ' OTP"
-  },
-  "layout": {
-    "darkMode": "Dark Mode",
-    "fullScreen": "Écran complet",
-    "lightMode": "Mode léger",
-    "refresh": "Page"
-  },
-  "router": {
-    "home": "Home",
-    "back": "Allez-y",
-    "un-authorized": "Non-autorisé",
-    "error": "Erreur",
-    "quick-start": "Démarrage rapide",
-    "testing": "Essais"
-  },
-  "shared": {
-    "notification": "Notification",
-    "user": "Utilisateur",
-    "privacyPolicy": "Politique de confidentialité",
-    "copyright": "Copyright"
-  }
+    "action": {
+        "failed": "Action failed",
+        "success": "Action was successful"
+    },
+    "auth": {
+        "signInTitle": "Bienvenue !",
+        "signInSubTitle": "Se connecter pour continuer",
+        "email": "Email",
+        "enterOtp": "Entrez OTP",
+        "forgotPassword": "Mot de passe oublié ?",
+        "password": "Mot de passe",
+        "passwordResetEmail": "Réinitialiser via Email",
+        "passwordResetSms": "Réinitialiser par SMS",
+        "resendOtp": "Resend OTP",
+        "sendOtp": "Envoyer OTP",
+        "signIn": "Sign In",
+        "signOut": "Sign Out",
+        "username": "Username",
+        "usernameOrEmail": "Username or Email",
+        "verifyOtp": "Vérifier l ' OTP"
+    },
+    "layout": {
+        "darkMode": "Dark Mode",
+        "fullScreen": "Écran complet",
+        "lightMode": "Mode léger",
+        "refresh": "Page"
+    },
+    "router": {
+        "home": "Home",
+        "back": "Allez-y",
+        "un-authorized": "Non-autorisé",
+        "error": "Erreur",
+        "quick-start": "Démarrage rapide",
+        "getStarted": "Commencez",
+        "support": "Appui",
+        "docs": "Docs",
+        "testing": "Essais"
+    },
+    "shared": {
+        "notification": "Notification",
+        "user": "Utilisateur",
+        "welcomeAboard": "Bienvenue à bord",
+        "privacyPolicy": "Politique de confidentialité",
+        "copyright": "Copyright"
+    }
 }

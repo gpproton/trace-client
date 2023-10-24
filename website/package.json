@@ -9,6 +9,10 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "dependencies": {
+    "@trace/base-app": "workspace:*",
+    "@trace/shared": "workspace:*"
+  },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "nuxt": "^3.7.4",

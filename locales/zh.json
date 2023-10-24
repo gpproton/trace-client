@@ -1,43 +1,47 @@
 {
-  "action": {
-    "failed": "行动失败",
-    "success": "行动取得成功"
-  },
-  "auth": {
-    "signInTitle": "欢迎!",
-    "signInSubTitle": "签署:",
-    "email": "电子邮件",
-    "enterOtp": "进口",
-    "forgotPassword": "前言:?",
-    "password": "密码",
-    "passwordResetEmail": "重新使用 电子邮件",
-    "passwordResetSms": "通过SMS进行重新定位",
-    "resendOtp": "附录O",
-    "sendOtp": "Send OTP",
-    "signIn": "签字",
-    "signOut": "签字",
-    "username": "用户名",
-    "usernameOrEmail": "用户名",
-    "verifyOtp": "检察官办公室"
-  },
-  "layout": {
-    "darkMode": "达尔马德",
-    "fullScreen": "全面检查",
-    "lightMode": "轻型",
-    "refresh": "页 次"
-  },
-  "router": {
-    "home": "家庭",
-    "back": "背 景",
-    "un-authorized": "未经许可",
-    "error": "Error",
-    "quick-start": "快速启动方案",
-    "testing": "检测"
-  },
-  "shared": {
-    "notification": "通知",
-    "user": "用户",
-    "privacyPolicy": "隐私政策",
-    "copyright": "版权"
-  }
+    "action": {
+        "failed": "--",
+        "success": "--"
+    },
+    "auth": {
+        "signInTitle": "--",
+        "signInSubTitle": "--",
+        "email": "电子邮件",
+        "enterOtp": "进口",
+        "forgotPassword": "前言:?",
+        "password": "密码",
+        "passwordResetEmail": "重新使用 电子邮件",
+        "passwordResetSms": "通过SMS进行重新定位",
+        "resendOtp": "附录O",
+        "sendOtp": "Send OTP",
+        "signIn": "签字",
+        "signOut": "签字",
+        "username": "用户名",
+        "usernameOrEmail": "用户名",
+        "verifyOtp": "--"
+    },
+    "layout": {
+        "darkMode": "达尔马德",
+        "fullScreen": "--",
+        "lightMode": "--",
+        "refresh": "页 次"
+    },
+    "router": {
+        "home": "家庭",
+        "back": "背 景",
+        "un-authorized": "--",
+        "error": "--",
+        "quick-start": "快速启动方案",
+        "getStarted": "--",
+        "support": "支助",
+        "docs": "文件",
+        "testing": "检测"
+    },
+    "shared": {
+        "notification": "通知",
+        "user": "用户",
+        "welcomeAboard": "欢迎登机",
+        "privacyPolicy": "隐私政策",
+        "copyright": "版权"
+    }
 }

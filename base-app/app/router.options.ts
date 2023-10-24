@@ -1,6 +1,7 @@
 import type { RouterConfig } from '@nuxt/schema'
 import type { ActionState, Workflow } from '@trace/model';
-import { getRoutes, setupRootRoute, setupDefaultRoutes } from '@/app/routes';
+import { getRoutes, setupRootRoute, setupDefaultRoutes, mergeRoutes } from '@/app/routes';
+import OnboardRoutes from '@/modules/on-board/routes';
 
 declare module "vue-router" {
   interface RouteMeta {
@@ -26,6 +27,7 @@ export default <RouterConfig>{
     });
 
     setupDefaultRoutes();
+    mergeRoutes(OnboardRoutes);
 
     return getRoutes();
   },
