@@ -18,7 +18,9 @@
     "signOut": "Sign Out",
     "username": "Username",
     "usernameOrEmail": "Username Or Email",
-    "verifyOtp": "Verify OTP"
+    "verifyOtp": "Verify OTP",
+    "dintRecieveCode": "Didn't recieve a code?",
+    "otpHasBeenSent": "A 4 digit OTP has been sent to"
   },
   "layout": {
     "darkMode": "Dark Mode",
@@ -40,6 +42,10 @@
     "support": "Support",
     "docs": "Docs",
     "testing": "Testing"
+  },
+  "onboard": {
+    "selectProfile": "Choose preffered profile",
+    "selectWorkflow": "How will you use trace?"
   },
   "shared": {
     "notification": "Notification",

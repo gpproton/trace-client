@@ -27,7 +27,7 @@ const extraInfo = 'Trace allows full transportation digitization allowing adapta
                     </div>
                     <q-img no-native-menu no-spinner :src="OnboardAsset" alt="Trace Asset" width="calc(28vw)" />
                 </q-card>
-                <q-card square fit class="col window-height">
+                <q-card square fit class="col window-height column justify-between">
                     <q-toolbar class="q-px-md">
                         <lang-selector />
                         <q-space />
@@ -36,8 +36,17 @@ const extraInfo = 'Trace allows full transportation digitization allowing adapta
                                 :name="link.name" class="text-body1">{{ $t(link.label) }}</q-route-tab>
                         </q-tabs>
                     </q-toolbar>
-                    <div class="q-pa-sm">
+                    <div class="q-pa-sm col-10">
                         <router-view />
+                    </div>
+                    <div class="row q-py-md">
+                        <div class="q-px-lg">
+                            <span>{{ 'Already have an account?' }}</span>
+                            <nuxt-link style="text-decoration: none;" class="text-body1 text-primary q-ml-sm"
+                                :to="{ name: 'auth.sign-in' }">
+                                {{ $t('auth.signIn') }}
+                            </nuxt-link>
+                        </div>
                     </div>
                 </q-card>
             </div>

@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import OnboardWrapper from '@trace/base-app/modules/on-board/components/OnboardWrapper.vue';
-
-defineOptions({ name: 'TenantConfirmation' });
+defineOptions({ name: 'Confirmation' });
 </script>
 
 <template>
-    <onboard-wrapper>
-        <div>Confirmation</div>
-    </onboard-wrapper>
+    <div>Confirmation</div>
 </template>

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 export const useOnboardStore = defineStore(
   'on-board',
@@ -11,24 +11,29 @@ export const useOnboardStore = defineStore(
       const isRoute = route.name === name;
       const isCompleted = progress.value.includes(name);
 
-      if(isCompleted) return true
-      if(isRoute && !isCompleted) return false;
+      if (isCompleted) return true
+      if (isRoute && !isCompleted) return false;
 
       return null;
     };
 
-    const getColor = (name: string) => status(name) === null ? 'secondary' : 'green';
-    const getIcon = (name: string) => {
-      const state = status(name);
-      if(state === null) return ''
+    const getColor = computed(() => {
+      return (name: string) => status(name) === null ? 'secondary' : 'green';
+    });
 
-      return state ? 'done' : 'fiber_manual_record';
-    };
+    const getIcon = computed(() => {
+      return (name: string) => {
+        const state = status(name);
+        if (state === null) return ''
+
+        return state ? 'done' : 'fiber_manual_record';
+      };
+    });
     const addPage = () => {
-      if(!progress.value.includes(route.name)) {
+      const isContained = progress.value.includes(route.name);
+      if (!isContained) {
         progress.value.push(route.name);
       }
-      console.log(progress.value)
     }
 
     return {

@@ -2,15 +2,6 @@ import type { Route } from '@trace/base-app/types/index';
 
 export const onboardRoutes: Route[] = [
     {
-        path: 'registration',
-        name: 'on-board.registration',
-        component: () => import('./pages/Registration.vue'),
-        meta: {
-            title: 'shared.registration',
-            description: 'Start registration process for account'
-        },
-    },
-    {
         path: 'profile-type',
         name: 'on-board.profile-type',
         component: () => import('./pages/ProfileType.vue'),
@@ -35,6 +26,15 @@ export const onboardRoutes: Route[] = [
         meta: {
             title: 'shared.organizationDetails',
             description: 'Enter required organization details'
+        },
+    },
+    {
+        path: 'registration',
+        name: 'on-board.registration',
+        component: () => import('./pages/Registration.vue'),
+        meta: {
+            title: 'shared.registration',
+            description: 'Start registration process for account'
         },
     },
     {
@@ -70,7 +70,7 @@ const routes: Route[] = [
     {
         path: '/on-board',
         name: 'on-board',
-        redirect: { name: 'on-board.registration' },
+        redirect: { name: 'on-board.profile-type' },
         component: () => import('./OnboardLayout.vue'),
         children: onboardRoutes
     },

@@ -92,4 +92,19 @@ body {
     border-radius: 50%;
     display: inline-block;
   }
+
+  .social-icons {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .onboard-form {
+    min-height: 350px;
+    max-width: 45vw;
+
+    @media screen and (max-width: $breakpoint-md-min) {
+        max-width: 95vw;
+    }
+}
 }

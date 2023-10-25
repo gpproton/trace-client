@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import AppLogo from '@trace/base-app/icons/logo.svg';
 import LangSelector from '@trace/base-app/components/extra/LangSelector.vue';
 import { onboardRoutes } from './routes';
@@ -9,13 +10,14 @@ defineOptions({ name: 'WelcomeLayout' });
 const onboardStore = useOnboardStore();
 const { status } = onboardStore;
 
-const getStatus = (name: string) => {
-    const state = status(name);
+const getStatus = computed(() => {
+    return (name: string) => {
+        const state = status(name);
+        if (state === null) return 'item-inactive'
 
-    if (state === null) return 'item-inactive'
-
-    return state ? 'item-completed' : 'item-active';
-};
+        return state ? 'item-completed' : 'item-active';
+    };
+});
 </script>
 
 <template>
@@ -39,10 +41,13 @@ const getStatus = (name: string) => {
                                             name="bi-check" size="sm" />
                                     </div>
                                 </q-item-section>
-                                <q-item-section class="text-body1 text-grey-8">{{ $t(`${item.meta?.title}`)
-                                }}</q-item-section>
+                                <q-item-section class="text-h6"
+                                    :class="getStatus(item.name) === 'item-active' ? 'text-accent' : 'text-grey-6'">{{
+                                        $t(`${item.meta?.title}`)
+                                    }}</q-item-section>
                                 <q-item-section v-if="getStatus(item.name) === 'item-active'" side>
-                                    <q-icon name="bi-arrow-right" color="grey-6" />
+                                    <q-icon name="bi-arrow-right"
+                                        :class="getStatus(item.name) === 'item-active' ? 'text-accent' : 'text-grey-6'" />
                                 </q-item-section>
                             </q-item>
                         </q-list>
