@@ -1,9 +1,11 @@
 import { useUserAccountStore } from "@/stores/user-account";
-import { ActionState } from "@trace/model";
+import { useServerStore } from '@/stores/server';
+import { ActionState, Workflow } from "@trace/model";
 import { storeToRefs } from 'pinia';
 
 export const useAppPermission = () => {
   const userStore = useUserAccountStore();
+  const serverStore = useServerStore();
 
   function hasPermission(action: ActionState) {
     const { getUserPermmisions } = storeToRefs(userStore);
@@ -22,7 +24,17 @@ export const useAppPermission = () => {
     return false;
   }
 
+  const hasWorkflow = (workflows: Workflow[]) => {
+    const { getWorkflow } = storeToRefs(serverStore);
+    const workflow = getWorkflow.value;
+    if (workflow) {
+      return getWorkflow.value === Workflow.System || Object.values(workflows).includes(workflow);
+    }
+    return false;
+  }
+
   return {
     hasPermission,
+    hasWorkflow,
   };
 };

@@ -11,7 +11,7 @@ defineOptions({ name: "TagView" });
 const route = useRoute();
 const tagViewStore = useTagViewStore();
 const keepAliveStore = useKeepAliveStore();
-const { setKeepAliveList} = keepAliveStore;
+const { setKeepAliveList } = keepAliveStore;
 const themeStore = useThemeStore();
 const { activeTextColor, activeBgColor } = storeToRefs(themeStore)
 
@@ -47,104 +47,51 @@ onUnmounted(() => {
 });
 
 const unSubscribe = tagViewStore.$subscribe((mutation, state) => {
+  // @ts-ignore
   setKeepAliveList(state.tagView);
+  // @ts-ignore
   tagViewStore.setStoredTagView(state.tagView);
 });
 </script>
 
 <template>
-  <div
-    class="row"
-    :style="{
-      margin: !$q.screen.gt.sm ? '0px 3px 0px 3px' : '0px 15px 0px 5px',
-    }"
-  >
-    <q-tabs
-      class="tagViewBase col-12"
-      align="left"
-      active-color="white"
-      active-class="tagActive"
-      dense
-      swipeable
-      inline-label
-      indicator-color="transparent"
-      :breakpoint="0"
-    >
-      <q-route-tab
-        :to="'/'"
-        :class="tagViewClass('/')"
-        flat
-        dense
-        no-caps
-      >
-        <q-icon
-          size="1.1rem"
-          name="home"
-        />
+  <div class="row" :style="{
+    margin: !$q.screen.gt.sm ? '0px 3px 0px 3px' : '0px 15px 0px 5px',
+  }">
+    <q-tabs class="tagViewBase col-12" align="left" active-color="white" active-class="tagActive" dense swipeable
+      inline-label indicator-color="transparent" :breakpoint="0">
+      <q-route-tab :to="'/'" :class="tagViewClass('/')" flat dense no-caps>
+        <q-icon size="1.1rem" name="home" />
         <div class="line-limit-length">
           {{ $t("router.home") }}
         </div>
       </q-route-tab>
-      <template
-        v-for="(tag, i) in tagViewStore.tagView"
-        :key="tag.fullPath + i"
-      >
-        <q-route-tab
-          :to="tag.fullPath"
-          :class="tagViewClass(tag.fullPath)"
-          flat
-          dense
-          no-caps
-        >
-          <q-icon
-            size="1.1rem"
-            :name="tag.icon"
-          />
+      <template v-for="(tag, i) in tagViewStore.tagView" :key="tag.fullPath + i">
+        <q-route-tab :to="tag.fullPath" :class="tagViewClass(tag.fullPath)" flat dense no-caps>
+          <q-icon size="1.1rem" :name="tag.icon" />
           <div class="line-limit-length">
             {{ $t(tag.title) }}
           </div>
-          <q-btn
-            class="tagView-remove-icon"
-            style="display: inline-flex"
-            round
-            size="0.45em"
-            flat
-            icon="close"
-            @click.prevent.stop="removetagViewAt(i)"
-          />
-          <q-menu
-            touch-position
-            context-menu
-          >
+          <q-btn class="tagView-remove-icon" style="display: inline-flex" round size="0.45em" flat icon="close"
+            @click.prevent.stop="removetagViewAt(i)" />
+          <q-menu touch-position context-menu>
             <q-list dense>
-              <q-item
-                v-close-popup
-                clickable
-              >
+              <q-item v-close-popup clickable>
                 <q-item-section @click="removetagViewOnRight(i)">
                   Close Right
                 </q-item-section>
               </q-item>
-              <q-item
-                v-close-popup
-                clickable
-              >
+              <q-item v-close-popup clickable>
                 <q-item-section @click="removetagViewOnLeft(i)">
                   Close Left
                 </q-item-section>
               </q-item>
-              <q-item
-                v-close-popup
-                clickable
-              >
+              <q-item v-close-popup clickable>
                 <q-item-section @click="removeOthertagView(i)">
                   Close Other
                 </q-item-section>
               </q-item>
-              <q-item
-                v-close-popup
-                clickable
-              >
+              <q-item v-close-popup clickable>
                 <q-item-section @click="removeAllTagView()">
                   Close All
                 </q-item-section>

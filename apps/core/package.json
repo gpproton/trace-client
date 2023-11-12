@@ -17,6 +17,6 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@vite-pwa/assets-generator": "^0.0.10",
-    "nuxt": "^3.7.3"
+    "nuxt": "^3.7.4"
   }
 }

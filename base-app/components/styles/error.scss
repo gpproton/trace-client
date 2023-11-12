@@ -1,0 +1,10 @@
+/** Shared between page wrappers */
+.page-visual {
+  width: 85vw;
+  height: 60vh;
+
+  @media screen and (max-width: $breakpoint-md-min) {
+    margin-top: 25px;
+    height: 60vh;
+  }
+}

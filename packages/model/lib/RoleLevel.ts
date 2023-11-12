@@ -1,0 +1,21 @@
+export enum RoleLevel {
+  Anonymous,
+  Bot,
+  CustomerUser,
+  CustomerOperator,
+  CustomerAdministrator,
+  TenantDispatcher,
+  TenantLoadSupervisor,
+  TenantWarehouseManager,
+  TenantDriverSupervisor,
+  TenantDriverManager,
+  TenantFleetMember,
+  TenantFleetLead,
+  TenantFleetManager,
+  TenantAdministrator,
+  TenantSuperAdministrator,
+  SystemBot,
+  SystemOperator,
+  SystemAdministrator,
+  SystemSuperAdministrator
+}

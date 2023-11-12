@@ -1,10 +1,13 @@
-import type { RouterConfig } from '@nuxt/schema';
-import { constantRoutes, asyncRootRoute } from './router.constants';
-import { ActionState } from '@trace/model';
+import type { RouterConfig } from '@nuxt/schema'
+import type { ActionState, Workflow } from '@trace/model';
+import { getRoutes, setupRootRoute, setupDefaultRoutes, mergeConstantRoutes } from '@/app/routes';
+import OnboardRoutes from '@/modules/on-board/routes';
 
 declare module "vue-router" {
   interface RouteMeta {
     permission?: ActionState
+    workflows?: Workflow[];
+    anonymous?: boolean;
     title: string;
     icon?: string;
     itemLabel?: string;
@@ -14,11 +17,18 @@ declare module "vue-router" {
 }
 
 export default <RouterConfig>{
+
   routes: () => {
-    // default routes
-    return [
-      ...asyncRootRoute,
-      ...constantRoutes,
-    ]
+    setupRootRoute({
+      name: 'index',
+      path: '/',
+      component: () => import('@/components/layouts/Layout.vue'),
+      redirect: '/'
+    });
+
+    setupDefaultRoutes();
+    mergeConstantRoutes(OnboardRoutes);
+
+    return getRoutes();
   },
 }

@@ -1,4 +1,4 @@
-import { RouteData } from '@/types/index';
+import type { RouteData } from '@/types/index';
 import { defineStore } from 'pinia';
 
 export const useKeepAliveStore = defineStore(
@@ -6,6 +6,7 @@ export const useKeepAliveStore = defineStore(
   () => {
     const keepAliveList = ref<string[]>([]);
     const getKeepAliveList = computed(() => keepAliveList.value);
+
     const setKeepAliveList = (payload: RouteData[]) => {
       keepAliveList.value = [];
       for (let i = 0; i < payload.length; i++) {

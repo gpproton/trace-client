@@ -1,12 +1,19 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeMount, onUnmounted, onActivated, onDeactivated } from "vue";
-import { QScrollArea, SessionStorage } from "quasar";
-import { useRoute } from "vue-router";
-import {  } from "@/stores/theme";
-import { usePageStore, IPageContext } from '@/stores/page';
-import UnderConstruction from './error/UnderConstruction.vue'
+import {
+  ref,
+  onMounted,
+  onBeforeMount,
+  onUnmounted,
+  onActivated,
+  onDeactivated,
+} from 'vue';
+import { QScrollArea, SessionStorage } from 'quasar';
+import { useRoute } from 'vue-router';
+import { } from '@/stores/theme';
+import { usePageStore, type IPageContext } from '@/stores/page';
+import UnderConstruction from '@/components/error/UnderConstruction.vue';
 
-defineOptions({ name: "PageWrapper" });
+defineOptions({ name: 'PageWrapper' });
 
 interface scrollInfo {
   horizontalContainerSize: number;
@@ -25,9 +32,9 @@ interface scrollPosition {
 }
 
 const thumbStyle = {
-  right: "2px",
-  borderRadius: "3px",
-  width: "7px",
+  right: '2px',
+  borderRadius: '3px',
+  width: '7px',
 };
 
 export interface IProps {
@@ -43,20 +50,20 @@ const props = withDefaults(defineProps<IProps>(), {
   options: {},
   name: '',
   layout: 'default',
-  contentActiveStyle: "",
+  contentActiveStyle: '',
   scrollable: false,
-  padding: false
+  padding: false,
 });
 
 const { setupPage } = usePageStore();
 
 const route = useRoute();
 const scrollArea = ref<QScrollArea | null>(null);
-const basePath = ref<string>("");
+const basePath = ref<string>('');
 const showToTopBtn = ref<boolean>(false);
 
 const scrollToPosition = (value: number, duration: number = 0) => {
-  scrollArea.value?.setScrollPosition("vertical", value, duration);
+  scrollArea.value?.setScrollPosition('vertical', value, duration);
 };
 
 const getScrollPosition = () => {
@@ -74,7 +81,7 @@ const toTop = () => {
 };
 
 onBeforeMount(() => {
-  setPageLayout(props.layout ?? 'default');
+  setPageLayout(props.layout ?? 'defaultLayout');
   setupPage(props.options);
 });
 
@@ -104,19 +111,9 @@ onDeactivated(() => {
 </script>
 
 <template>
-  <q-page
-    class="fit page q-pa-sm"
-    :padding="padding"
-  >
-    <q-scroll-area
-      v-if="scrollable"
-      ref="scrollArea"
-      :thumb-style="thumbStyle"
-      :visible="false"
-      style="height: 100%"
-      :content-active-style="contentActiveStyle"
-      @scroll="onScroll"
-    >
+  <q-page class="fit page q-pa-sm" :padding="padding">
+    <q-scroll-area v-if="scrollable" ref="scrollArea" :thumb-style="thumbStyle" :visible="false" style="height: 100%"
+      :content-active-style="contentActiveStyle" @scroll="onScroll">
       <slot>
         <under-construction />
       </slot>
@@ -124,28 +121,14 @@ onDeactivated(() => {
     <slot v-else>
       <under-construction />
     </slot>
-    <q-page-sticky
-      position="bottom-right"
-      :offset="[18, 18]"
-    >
-      <transition
-        appear
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-      >
-        <q-btn
-          v-show="showToTopBtn"
-          color="primary"
-          fab
-          padding="10px"
-          icon="expand_less"
-          @click="toTop"
-        />
+    <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+        <q-btn v-show="showToTopBtn" color="primary" fab padding="10px" icon="expand_less" @click="toTop" />
       </transition>
     </q-page-sticky>
   </q-page>
 </template>
 
 <style lang="scss" scoped>
-@import '../styles/error.scss';
+@import './styles/error.scss';
 </style>

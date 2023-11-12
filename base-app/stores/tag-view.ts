@@ -1,5 +1,5 @@
-import { RouteLocationNormalized, Router } from 'vue-router';
-import { RouteData } from '@/types/index';
+import type { RouteLocationNormalized, Router } from 'vue-router';
+import type { RouteData } from '@/types/index';
 import { getFirst } from '@/utils';
 import { defineStore, storeToRefs } from 'pinia';
 import { useUserAccountStore } from './user-account';

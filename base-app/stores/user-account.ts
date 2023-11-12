@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import { SessionStorage } from 'quasar';
-import { Permission, User } from '@trace/model';
+import type { Permission, User } from '@trace/model';
 import { useTagViewStore } from './tag-view';
 
 export const useUserAccountStore = defineStore(
@@ -43,7 +43,9 @@ export const useUserAccountStore = defineStore(
       user.value = account;
     }
 
-    const setLogout = () => {
+    const signIn = () => { };
+
+    const signout = () => {
       user.value = null;
       accessToken.value = null;
       permissions.value = []
@@ -64,10 +66,13 @@ export const useUserAccountStore = defineStore(
       setAccessToken,
       setUserInfo,
       setUserPermmisions,
-      setLogout
+      signIn,
+      signout
     };
   },
   {
-    persist: true
+    persist: {
+      storage: persistedState.sessionStorage
+    }
   }
 );

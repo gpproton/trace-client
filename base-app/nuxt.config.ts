@@ -20,7 +20,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
-    '@vite-pwa/nuxt'
+    '@vue-macros/nuxt',
+    '@vite-pwa/nuxt',
+    'nuxt3-leaflet'
   ],
   i18n: {
     vueI18n: './i18n.config.ts'
@@ -29,7 +31,7 @@ export default defineNuxtConfig({
     cookieOptions: {
       sameSite: 'strict',
     },
-    storage: 'cookies'
+    storage: 'localStorage'
   },
   css: [
     join(currentDir, './assets/colors.scss'),
@@ -40,12 +42,16 @@ export default defineNuxtConfig({
     plugins: [
       'AddressbarColor',
       'AppVisibility',
+      'AppFullscreen',
       'BottomSheet',
       'Dialog',
       'Loading',
       'LoadingBar',
       'Notify',
       'Dark',
+      'Cookies',
+      'SessionStorage',
+      'Meta',
     ],
     sassVariables: join(currentDir, './assets/main.scss'),
     iconSet: {

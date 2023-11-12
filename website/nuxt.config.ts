@@ -2,5 +2,7 @@
 export default defineNuxtConfig({
   extends: [
     '../base-app'
-  ]
+  ],
+  ssr: false,
+  pwa: {},
 })
