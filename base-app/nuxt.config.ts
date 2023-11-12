@@ -21,7 +21,8 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
     '@vue-macros/nuxt',
-    '@vite-pwa/nuxt'
+    '@vite-pwa/nuxt',
+    'nuxt3-leaflet'
   ],
   i18n: {
     vueI18n: './i18n.config.ts'

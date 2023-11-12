@@ -20,12 +20,12 @@ export const onboardRoutes: Route[] = [
         },
     },
     {
-        path: 'organization-details',
-        name: 'on-board.organization-details',
-        component: () => import('./pages/OrganizationDetails.vue'),
+        path: 'organization-information',
+        name: 'on-board.organization-information',
+        component: () => import('./pages/OrganizationInformation.vue'),
         meta: {
-            title: 'shared.organizationDetails',
-            description: 'Enter required organization details'
+            title: 'shared.organizationInformation',
+            description: 'Enter required organization information'
         },
     },
     {

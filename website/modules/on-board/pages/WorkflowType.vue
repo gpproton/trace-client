@@ -33,7 +33,7 @@ const workflows = [
 
 const proceed = () => {
     onboardStore.addPage()
-    router.push({ name: 'on-board.organization-details' });
+    router.push({ name: 'on-board.organization-information' });
 }
 </script>
 

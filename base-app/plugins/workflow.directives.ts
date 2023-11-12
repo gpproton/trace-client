@@ -30,4 +30,4 @@ export default defineNuxtPlugin((nuxtApp) => {
       workflows: (workflows: Workflow[]) => hasWorkflow(workflows)
     }
   }
-})
+});

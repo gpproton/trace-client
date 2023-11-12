@@ -1,6 +1,6 @@
 import type { RouterConfig } from '@nuxt/schema'
 import type { ActionState, Workflow } from '@trace/model';
-import { getRoutes, setupRootRoute, setupDefaultRoutes, mergeRoutes } from '@/app/routes';
+import { getRoutes, setupRootRoute, setupDefaultRoutes, mergeConstantRoutes } from '@/app/routes';
 import OnboardRoutes from '@/modules/on-board/routes';
 
 declare module "vue-router" {
@@ -17,7 +17,7 @@ declare module "vue-router" {
 }
 
 export default <RouterConfig>{
-  
+
   routes: () => {
     setupRootRoute({
       name: 'index',
@@ -27,7 +27,7 @@ export default <RouterConfig>{
     });
 
     setupDefaultRoutes();
-    mergeRoutes(OnboardRoutes);
+    mergeConstantRoutes(OnboardRoutes);
 
     return getRoutes();
   },
