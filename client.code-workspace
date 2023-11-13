@@ -1,0 +1,66 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "name": "ui-website",
+      "path": "website"
+    },
+    {
+      "name": "ui-docs",
+      "path": "docs"
+    },
+    {
+      "name": "ui-base-app",
+      "path": "base-app"
+    },
+    {
+      "name": "ui-core",
+      "path": "apps/core"
+    },
+    {
+      "name": "ui-finder",
+      "path": "apps/finder"
+    },
+    {
+      "name": "ui-manager",
+      "path": "apps/manager"
+    },
+    {
+      "name": "ui-portal",
+      "path": "apps/portal"
+    },
+    {
+      "name": "ui-support",
+      "path": "apps/support"
+    }
+  ],
+  "settings": {
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "window.zoomLevel": -1,
+    "files.autoSave": "afterDelay",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "editor.formatOnSave": true,
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "wayou.vscode-todo-highlight",
+      "vue.vscode-typescript-vue-plugin",
+      "vue.volar",
+      "sibiraj-s.vscode-scss-formatter",
+      "eliostruyf.vscode-typescript-exportallmodules",
+      "nuxtr.nuxt-vscode-extentions",
+      "vscode-icons-team.vscode-icons",
+      "gruntfuggly.todo-tree"
+    ],
+    "unwantedRecommendations": [
+      "octref.vetur",
+      "hookyqr.beautify",
+      "dbaeumer.jshint",
+      "ms-vscode.vscode-typescript-tslint-plugin"
+    ]
+  }
+}
