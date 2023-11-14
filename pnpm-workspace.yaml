@@ -1,4 +1,4 @@
-packages:
+workspaces:
   - 'packages/*'
   - 'base-app'
   - 'website'
