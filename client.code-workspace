@@ -1,15 +1,12 @@
 {
   "folders": [
     {
+      "name": "root",
       "path": "."
     },
     {
       "name": "ui-website",
       "path": "website"
-    },
-    {
-      "name": "ui-docs",
-      "path": "docs"
     },
     {
       "name": "ui-base",

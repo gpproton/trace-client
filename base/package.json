@@ -14,6 +14,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.1.1",
+    "@nuxtjs/i18n": "next",
     "@pinia-plugin-persistedstate/nuxt": "^1.1.2",
     "@pinia/nuxt": "^0.4.11",
     "@vite-pwa/assets-generator": "^0.0.10",
@@ -34,15 +35,9 @@
     "vue-i18n-locale-message": "^1.16.0"
   },
   "dependencies": {
-    "@intlify/core-base": "9.4.1",
-    "@intlify/message-compiler": "9.4.1",
-    "@intlify/shared": "9.4.1",
-    "@intlify/vue-i18n-bridge": "1.0.1",
-    "@intlify/vue-router-bridge": "1.0.1",
     "@nuxtjs/apollo": "next",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/html-validator": "^1.5.2",
-    "@nuxtjs/i18n": "next",
     "@nuxtjs/robots": "^3.0.0",
     "@quasar/extras": "^1.16.6",
     "@trace/model": "workspace:*",
