@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CoreLayout from '@trace/base-app/components/CoreLayout.vue';
+import CoreLayout from '@trace/base/components/CoreLayout.vue';
 import { profileData } from '@trace/shared';
 import Navigation from '../Navigation';
 

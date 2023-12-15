@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useOnboardStore } from '@trace/base-app/modules/on-board/stores/on-board';
-import ListOption from '@trace/base-app/components/form/ListOption.vue';
+import { useOnboardStore } from '@trace/base/modules/on-board/stores/on-board';
+import ListOption from '@trace/base/components/form/ListOption.vue';
 
 defineOptions({ name: 'ProfileType' });
 

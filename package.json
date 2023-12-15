@@ -20,7 +20,7 @@
   "scripts": {
     "clean": "pnpx rimraf node_modules **/node_modules bun.* **/bun.* **/dist/* pnpm-lock.* **/pnpm-lock.*",
     "dev": "pnpm -r --filter ./apps run dev",
-    "dev:app": "pnpm -r --filter ./base-app run dev",
+    "dev:app": "pnpm -r --filter ./base run dev",
     "dev:support": "pnpm -r --filter ./apps/support run dev",
     "dev:portal": "pnpm -r --filter ./apps/portal run dev",
     "dev:finder": "pnpm -r --filter ./apps/finder run dev",
@@ -47,7 +47,7 @@
   },
   "workspaces": [
     "packages/*",
-    "base-app",
+    "base",
     "website",
     "docs",
     "apps/*"

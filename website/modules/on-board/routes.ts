@@ -1,4 +1,4 @@
-import type { Route } from '@trace/base-app/types/index';
+import type { Route } from '@trace/base/types/index';
 
 export const onboardRoutes: Route[] = [
     {

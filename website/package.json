@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@trace/base-app": "workspace:*",
+    "@trace/base": "workspace:*",
     "@trace/shared": "workspace:*"
   },
   "devDependencies": {

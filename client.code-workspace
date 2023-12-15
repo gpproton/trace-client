@@ -12,8 +12,8 @@
       "path": "docs"
     },
     {
-      "name": "ui-base-app",
-      "path": "base-app"
+      "name": "ui-base",
+      "path": "base"
     },
     {
       "name": "ui-core",

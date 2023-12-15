@@ -1,5 +1,5 @@
 {
-  "name": "@trace/base-app",
+  "name": "@trace/base",
   "type": "module",
   "version": "0.0.1",
   "main": "./nuxt.config.ts",

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import AppLogo from '@trace/base-app/icons/logo.svg';
-import LangSelector from '@trace/base-app/components/extra/LangSelector.vue';
+import AppLogo from '@trace/base/icons/logo.svg';
+import LangSelector from '@trace/base/components/extra/LangSelector.vue';
 import { onboardRoutes } from './routes';
-import { useOnboardStore } from '@trace/base-app/modules/on-board/stores/on-board';
+import { useOnboardStore } from '@trace/base/modules/on-board/stores/on-board';
 
 defineOptions({ name: 'WelcomeLayout' });
 

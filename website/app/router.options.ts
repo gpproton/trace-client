@@ -1,5 +1,5 @@
 import type { RouterConfig } from '@nuxt/schema';
-import { getRoutes, setupRootRoute, mergeConstantRoutes } from '@trace/base-app/app/routes';
+import { getRoutes, setupRootRoute, mergeConstantRoutes } from '@trace/base/app/routes';
 import OnboardRoutes from '@/modules/on-board/routes';
 
 export default <RouterConfig>{
@@ -38,7 +38,7 @@ export default <RouterConfig>{
         children: [
           {
             path: '',
-            component: () => import('@trace/base-app/pages/ErrorNotFound.vue'),
+            component: () => import('@trace/base/pages/ErrorNotFound.vue'),
             meta: {
               title: 'router.error',
               icon: 'sync',

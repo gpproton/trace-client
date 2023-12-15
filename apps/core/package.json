@@ -11,7 +11,7 @@
     "generate-assets": "bunx pwa-assets-generator"
   },
   "dependencies": {
-    "@trace/base-app": "workspace:*",
+    "@trace/base": "workspace:*",
     "@trace/shared": "workspace:*"
   },
   "devDependencies": {

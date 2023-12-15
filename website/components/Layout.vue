@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppLogo from '@trace/base-app/icons/logo.svg';
+import AppLogo from '@trace/base/icons/logo.svg';
 
 defineOptions({ name: 'Layout' });
 
