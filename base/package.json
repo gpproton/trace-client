@@ -14,7 +14,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.1.1",
-    "@nuxtjs/i18n": "next",
+    "@nuxtjs/i18n": "8.0.0-rc.11",
     "@pinia-plugin-persistedstate/nuxt": "^1.1.2",
     "@pinia/nuxt": "^0.4.11",
     "@vite-pwa/assets-generator": "^0.0.10",
@@ -38,7 +38,7 @@
     "vue-i18n-locale-message": "^1.16.0"
   },
   "dependencies": {
-    "@nuxtjs/apollo": "next",
+    "@nuxtjs/apollo": "^5.0.0-alpha.11",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/html-validator": "^1.5.2",
     "@nuxtjs/robots": "^3.0.0",
