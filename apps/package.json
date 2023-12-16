@@ -1,5 +1,5 @@
 {
-  "name": "@trace/core",
+  "name": "@trace/apps",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "generate-assets": "bunx pwa-assets-generator"
+    "generate-assets": "pnpx pwa-assets-generator"
   },
   "dependencies": {
     "@trace/base": "workspace:*",

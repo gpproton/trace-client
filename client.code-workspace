@@ -22,7 +22,7 @@
     },
     {
       "name": "ui-manager",
-      "path": "apps/manager"
+      "path": "manager"
     },
     {
       "name": "ui-portal",
