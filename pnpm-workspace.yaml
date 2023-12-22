@@ -2,5 +2,4 @@ packages:
   - 'packages/*'
   - 'base'
   - 'website'
-  - 'manager'
   - 'apps'
