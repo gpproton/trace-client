@@ -1,23 +1,18 @@
-<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.239112-alpha">
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.271090-alpha">
 
   <PropertyGroup>
-    <StartupCommand>pnpm run dev</StartupCommand>
+    <StartupCommand>npm run dev</StartupCommand>
     <ShouldRunNpmInstall>false</ShouldRunNpmInstall>
     <ShouldRunBuildScript>false</ShouldRunBuildScript>
-    <PublishCommand>pnpm run build</PublishCommand>
-    <ProductionBuildCommand>pnpm run build</ProductionBuildCommand>
-    <CleanCommand>pnpm run clean</CleanCommand>
-    <!--    <BuildCommand>pnpm install</BuildCommand>-->
-    <!--    <TestCommand>pnpm test</TestCommand>-->
-    <!--    <JavaScriptTestRoot>src\</JavaScriptTestRoot>-->
-    <!--    <JavaScriptTestFramework>Jest</JavaScriptTestFramework>-->
+    <PublishCommand>npm run build</PublishCommand>
+    <ProductionBuildCommand>npm run build</ProductionBuildCommand>
+    <CleanCommand>npm run clean</CleanCommand>
     <SpaRoot>$(MSBuildProjectDirectory)\</SpaRoot>
-    <CoreRoot>$(MSBuildProjectDirectory)\core</CoreRoot>
-    <BuildOutputFolder>$(MSBuildProjectDirectory)\support\dist</BuildOutputFolder>
+    <BuildOutputFolder>$(MSBuildProjectDirectory)\dist</BuildOutputFolder>
   </PropertyGroup>
 
   <ItemGroup>
-    <Script Include="**" Exclude="*.esproj;**\node_modules\**;**\.vscode\**" />
+    <Script Include="**" Exclude="*.esproj;**\node_modules\**;**\.vscode\**;**\.git\**" />
   </ItemGroup>
 
   <!-- This target is copied from the ASP.NET SPA template in order to ensure node_modules are in place. -->
