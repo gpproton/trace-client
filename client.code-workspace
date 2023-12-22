@@ -1,7 +1,7 @@
 {
   "folders": [
     {
-      "name": "root",
+      "name": "project",
       "path": "."
     },
     {
@@ -21,10 +21,6 @@
       "path": "apps/finder"
     },
     {
-      "name": "ui-manager",
-      "path": "manager"
-    },
-    {
       "name": "ui-portal",
       "path": "apps/portal"
     },
@@ -40,6 +36,16 @@
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.formatOnSave": true,
+    "dotnet.preferVisualStudioCodeFileSystemWatcher": true,
+    "nuget.autoOpenOutputWindowOnRestore": "on",
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/*/**": true,
+      "**/bin/*/**": true,
+      "**/obj/*/**": true,
+      "**/.output/*/**": true,
+    }
   },
   "extensions": {
     "recommendations": [
