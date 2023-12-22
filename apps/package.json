@@ -5,6 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --port=3010",
+    "clean": "pnpx rimraf node_modules **/node_modules **/dist/* pnpm-lock.*",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
