@@ -5,28 +5,16 @@
       "path": "."
     },
     {
-      "name": "ui-website",
-      "path": "website"
-    },
-    {
       "name": "ui-base",
       "path": "base"
     },
     {
-      "name": "ui-core",
-      "path": "apps/core"
+      "name": "ui-website",
+      "path": "website"
     },
     {
-      "name": "ui-finder",
-      "path": "apps/finder"
-    },
-    {
-      "name": "ui-portal",
-      "path": "apps/portal"
-    },
-    {
-      "name": "ui-support",
-      "path": "apps/support"
+      "name": "ui-apps",
+      "path": "apps"
     }
   ],
   "settings": {

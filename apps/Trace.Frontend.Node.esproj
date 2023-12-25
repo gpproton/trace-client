@@ -7,8 +7,7 @@
     <PublishCommand>npm run build</PublishCommand>
     <ProductionBuildCommand>npm run build</ProductionBuildCommand>
     <CleanCommand>npm run clean</CleanCommand>
-    <SpaRoot>$(MSBuildProjectDirectory)\</SpaRoot>
-    <BuildOutputFolder>$(MSBuildProjectDirectory)\dist</BuildOutputFolder>
+    <BuildOutputFolder>$(MSBuildProjectDirectory)\.output\public</BuildOutputFolder>
   </PropertyGroup>
 
   <ItemGroup>

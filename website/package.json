@@ -1,10 +1,10 @@
 {
   "name": "@trace/website",
-  "version": "0.0.1-preview.4",
+  "version": "0.0.1-preview.5",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt generate",
     "dev": "nuxt dev --port 3005",
     "clean": "pnpx rimraf node_modules **/node_modules **/dist/* pnpm-lock.*",
     "generate": "nuxt generate",
