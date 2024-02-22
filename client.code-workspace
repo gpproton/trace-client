@@ -1,8 +1,12 @@
 {
   "folders": [
     {
-      "name": "project",
-      "path": "."
+      "name": "lib-model",
+      "path": "packages/model"
+    },
+    {
+      "name": "lib-shared",
+      "path": "packages/shared"
     },
     {
       "name": "ui-base",
@@ -15,14 +19,6 @@
     {
       "name": "ui-apps",
       "path": "apps"
-    },
-    {
-      "name": "lib-model",
-      "path": "packages/model"
-    },
-    {
-      "name": "lib-shared",
-      "path": "packages/shared"
     }
   ],
   "settings": {
