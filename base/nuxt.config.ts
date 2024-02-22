@@ -41,7 +41,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@vue-macros/nuxt',
     '@vite-pwa/nuxt',
-    'nuxt3-leaflet'
   ],
   i18n: {
     vueI18n: './i18n.config.ts'

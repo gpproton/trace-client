@@ -13,13 +13,16 @@
   },
   "dependencies": {
     "@trace/base": "workspace:*",
-    "@trace/shared": "workspace:*"
+    "@trace/shared": "workspace:*",
+    "@turf/circle": "^6.5.0",
+    "@turf/turf": "^6.5.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@vite-pwa/assets-generator": "^0.0.10",
     "@trace/model": "workspace:*",
     "@trace/shared": "workspace:*",
+    "nuxt3-leaflet": "^1.0.12",
     "nuxt": "^3.9.0"
   }
 }
