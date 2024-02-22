@@ -18,7 +18,7 @@
  * Modified At: Thu Feb 22 2024
  */
 
-import { appHeader } from '@trace/shared'
+import { appHeader } from '@trace/shared';
 
 export default defineNuxtConfig({
   app: appHeader('/', 'Trace'),
@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     '../base'
   ],
   modules: [
-    'nuxt3-leaflet'
+    'nuxt3-leaflet',
+    './app.core/module'
   ]
 })

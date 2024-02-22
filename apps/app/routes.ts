@@ -61,8 +61,8 @@ export const mergeConstantRoutes = (routes: RouteRecordRaw[] | Route[]) => {
 };
 
 export const getRoutes = () => [
-  ...asyncRootRoute,
   ...constantRoutes,
+  ...asyncRootRoute,
 ];
 
 export const asyncRoutesChildren: Route[] = [];

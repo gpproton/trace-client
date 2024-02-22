@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import IconGoogle from '@/icons/brands/google.svg?url';
-import IconMicrosoft from '@/icons/brands/microsoft.svg?url';
-import IconApple from '@/icons/brands/apple.svg?url';
+import IconGoogle from '@trace/base/icons/brands/google.svg?url';
+import IconMicrosoft from '@trace/base/icons/brands/microsoft.svg?url';
+import IconApple from '@trace/base/icons/brands/apple.svg?url';
 
 const socialLogins = [
     {

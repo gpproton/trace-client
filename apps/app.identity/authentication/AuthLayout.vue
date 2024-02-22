@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import LightHouse from '@/icons/lighthouse.svg?url';
-import AppLogo from '@/icons/logo.svg';
-import LangSelector from '@/components/extra/LangSelector.vue';
+import LightHouse from '@trace/base/icons/lighthouse.svg?url';
+import AppLogo from '@trace/base/icons/logo.svg';
+import LangSelector from '@trace/base/components/LangSelector.vue';
 
 defineOptions({ name: 'AuthLayout' });
 </script>

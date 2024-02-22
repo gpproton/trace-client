@@ -25,6 +25,7 @@ import { LoadingBar } from "quasar";
 import { storeToRefs } from 'pinia';
 import type { RouteLocationNormalized, Router } from "vue-router";
 import { constantRoutes } from '@/app/routes';
+import { findRoute } from '@/utils/permission-util';
 import type { RouteData } from '@trace/base/types/index';
 
 export default defineNuxtPlugin(() => {
@@ -45,11 +46,8 @@ export default defineNuxtPlugin(() => {
 
     if (to.name != null) {
       // is a public route
-      for (let i = 0; i < constantRoutes.length; i++) {
-        if (constantRoutes[i].path === to.path) {
-          return;
-        }
-      }
+      if (findRoute(constantRoutes, to.name.toString()) !== undefined) return;
+
       const storedTagView = (getStoredTagView.value ?? []) as unknown as RouteData[];
       if (
         // @ts-ignore
