@@ -15,6 +15,14 @@
     {
       "name": "ui-apps",
       "path": "apps"
+    },
+    {
+      "name": "lib-model",
+      "path": "packages/model"
+    },
+    {
+      "name": "lib-shared",
+      "path": "packages/shared"
     }
   ],
   "settings": {
@@ -77,7 +85,8 @@
         "markdown",
         "json",
         "jsonc",
-        "shellscript"
+        "shellscript",
+        "vue"
       ],
       "excludeGlob": [
         "./**/*/ignoreme.*"
@@ -97,7 +106,8 @@
       "eliostruyf.vscode-typescript-exportallmodules",
       "nuxtr.nuxt-vscode-extentions",
       "vscode-icons-team.vscode-icons",
-      "gruntfuggly.todo-tree"
+      "gruntfuggly.todo-tree",
+      "psioniq.psi-header"
     ],
     "unwantedRecommendations": [
       "octref.vetur",
