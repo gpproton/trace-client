@@ -12,7 +12,7 @@ export const useServerStore = defineStore(
     const getWorkflow = computed<Workflow | null>(() => tenant.value?.workflow ?? null);
     const setReloading = (value: boolean) => reloading.value = value;
     const setTenant = (value: Tenant) => tenant.value = value;
-    
+
     return {
       getReloading,
       tenant,
