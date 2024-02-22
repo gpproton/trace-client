@@ -4,6 +4,7 @@
   "compilerOptions": {
     "types": [
       "@trace/shared",
+      "@trace/model",
       "@trace/base"
     ]
   }
