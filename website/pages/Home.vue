@@ -1,7 +1,11 @@
 <script setup lang="ts">
-defineOptions({ name: 'Home' })
+import UnderConstruction from '@trace/base/components/error/UnderConstruction.vue';
+
+defineOptions({ name: 'Home' });
 </script>
 
 <template>
-    <page-wrapper />
+  <q-page class="fit page q-pa-sm" :padding="false">
+    <under-construction />
+  </q-page>
 </template>
