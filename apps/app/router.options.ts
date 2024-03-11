@@ -20,7 +20,7 @@
 
 import type { RouterConfig } from '@nuxt/schema'
 import type { ActionState, Workflow } from '@trace/model';
-import { getRoutes, setupRootRoute, setupDefaultRoutes, mergeConstantRoutes } from '@/app/routes';
+import { getRoutes, setupRootRoute, setupDefaultRoutes, mergeAnonymousRoutes } from '@/app/routes';
 import AuthRoutes from '@/app.identity/authentication/routes';
 
 declare module "vue-router" {
@@ -46,7 +46,7 @@ export default <RouterConfig>{
     });
 
     setupDefaultRoutes();
-    mergeConstantRoutes(AuthRoutes);
+    mergeAnonymousRoutes(AuthRoutes);
 
     return getRoutes();
   },

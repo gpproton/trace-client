@@ -20,9 +20,6 @@
 
 import { defineNuxtModule, addPlugin, createResolver, extendPages } from '@nuxt/kit';
 import type { ModuleOptions } from 'nuxt/schema';
-import Navigation from './Navigation';
-
-export { Navigation };
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
@@ -35,12 +32,16 @@ export default defineNuxtModule<ModuleOptions>({
 
     addPlugin(resolver.resolve('./plugins/test'));
     extendPages((pages) => {
-      pages.unshift({
-        name: 'test',
-        path: 'test',
-        file: resolver.resolve('./pages/test.vue')
-      })
-
+      // TODO: evaluate for routes
+      // pages.unshift({
+      //   name: 'test',
+      //   path: 'test',
+      //   file: resolver.resolve('./pages/test.vue')
+      // })
     });
   }
 });
+
+export const routes = [
+
+];

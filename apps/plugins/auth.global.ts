@@ -1,6 +1,6 @@
 import type { Router } from 'vue-router';
 import { useUserAccountStore } from "@/stores/user-account";
-import { constantRoutes } from '@/app/routes';
+import { anonymousRoutes } from '@/app/routes';
 
 export default defineNuxtPlugin(() => {
   const router: Router = useRouter();
@@ -15,7 +15,7 @@ export default defineNuxtPlugin(() => {
   //     if (to.name === 'auth.sign-in') next({ name: 'home' });
   //   } else {
   //     console.log(`Un-authorized navigation ${to.path} :: ${from.path}`)
-  //     const isConstantRoute = constantRoutes.some((item) => {
+  //     const isConstantRoute = anonymousRoutes.some((item) => {
   //       return item.path === to.path;
   //     });
   //     if (isConstantRoute) {

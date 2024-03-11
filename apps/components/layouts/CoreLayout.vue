@@ -64,12 +64,6 @@ const headerMenu: IModule[] = [
     path: '/',
   },
   {
-    title: 'router.testing',
-    name: 'app.testing',
-    icon: 'bi-0-square',
-    path: '/testing',
-  },
-  {
     title: 'router.quick-start',
     name: 'quick-start',
     icon: 'bi-0-square',
@@ -90,74 +84,45 @@ const secondaryItemList = ref<IModule[]>([
     title: 'Content 01',
     separator: true,
   },
-  {
-    name: 'content-02',
-    icon: 'bi-0-square',
-    title: 'Content 02',
-    separator: false,
-  },
-  {
-    name: 'preview-0x',
-    icon: 'bi-0-square',
-    title: 'Preview 0x',
-    separator: false,
-    items: [
-      {
-        name: 'preview-00',
-        icon: 'bi-0-square',
-        title: 'Preview 00',
-        separator: false,
-      },
-      {
-        name: 'preview-01',
-        icon: 'bi-1-square',
-        title: 'Preview 11',
-        separator: false,
-      },
-    ],
-  },
-  {
-    name: 'content-11',
-    icon: 'bi-1-square',
-    color: 'primary',
-    title: 'Content 11',
-    separator: false,
-  },
 ]);
 </script>
 
 <template>
   <q-layout view="lHr lpR fFf" @resize="setSize">
-    <slot name="desktop-sidebar">
+    <!-- TODO: re-evaluate desktop sidebar -->
+    <!-- <slot name="desktop-sidebar">
       <desktop-sidebar v-if="isDesktop" $="showPrimarySidebar" $dark-mode="isDark" :drawer-mini-state="primaryMiniState"
         $show-identity="showIdentityList" :name="name" :identity-menu="identityItems" :overview-menu="overviewItems"
         :secondary-menu="items" :user-profile="userProfile" @update:dark-mode="setThemeState" />
-    </slot>
+    </slot> -->
     <q-page-container>
       <!-- Check inner layout -->
       <q-layout view="lhr lpr lfr">
         <slot name="mobile-header">
           <mobile-header v-show="!isDesktop" $title="title" $search="search" />
         </slot>
-        <slot name="desktop-header">
+        <!-- TODO: re-evaluate desktop header -->
+        <!-- <slot name="desktop-header">
           <desktop-header v-show="isDesktop" $="showSecondarySidebar" $search="search" $title="title"
             $show-title="showTitle" :header-menu="headerMenu" :app-sections="serviceItems"
             :quick-commands="quickCreateItems" :notification-tabs="notificationTabs" />
-        </slot>
-        <slot name="desktop-secondary-sidebar">
+        </slot> -->
+
+        <!-- TODO: re-evaluate desktop secondary sidebar -->
+        <!-- <slot name="desktop-secondary-sidebar">
           <desktop-secondary-sidebar v-if="isDesktop && secondaryItemList.length > 0" $="showSecondarySidebar"
             $items="secondaryItemList" $title="title" />
-        </slot>
+        </slot> -->
 
         <q-page-container class="bg-app-container">
           <slot />
         </q-page-container>
       </q-layout>
     </q-page-container>
-    <!-- Mobile standard navigation menu -->
-    <slot name="mobile-bottom-menu">
+    <!-- TODO: re-evaluate mobile navigation -->
+    <!-- <slot name="mobile-bottom-menu">
       <mobile-bottom-menu style="display: none" :style="isMobile ? { display: 'flex' } : {}" :items="mobileItems"
         :overflow-items="mobileOverviewItems" />
-    </slot>
+    </slot> -->
   </q-layout>
 </template>

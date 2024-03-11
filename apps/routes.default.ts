@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Feb 22 2024
+ * Modified At: Mon Mar 11 2024
  */
 
 import type { Route } from '@trace/base/types/index';
@@ -25,10 +25,6 @@ const routes: Route[] = [
     name: 'home',
     path: '/',
     redirect: { name: 'quick-start' },
-    meta: {
-      title: "router.home",
-      icon: "home",
-    },
   },
   {
     name: 'quick-start',
@@ -40,20 +36,20 @@ const routes: Route[] = [
     },
   },
   {
-    name: 'app.testing',
-    path: "/testing",
-    component: () => import("@trace/base/pages/Testing.vue"),
-    meta: {
-      title: "router.testing",
-      icon: "sync",
-    },
-  },
-  {
     name: 'app.un-authorized',
     path: "/un-authorized",
     component: () => import("@/pages/UnAuthorized.vue"),
     meta: {
       title: "router.un-authorized",
+      icon: "sync",
+    },
+  },
+  {
+    name: 'app.testing',
+    path: "/testing",
+    component: () => import("@trace/base/pages/Testing.vue"),
+    meta: {
+      title: "router.testing",
       icon: "sync",
     },
   },

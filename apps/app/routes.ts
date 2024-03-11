@@ -13,14 +13,14 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Monday, 19th Feb 2024
+ * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Feb 22 2024
+ * Modified At: Mon Mar 11 2024
  */
 
 import type { Route } from "@trace/base/types/index";
 import type { RouteRecordRaw } from "vue-router";
-import routes from './routes.default';
+import routes from '@/routes.default';
 
 export const setupRootRoute = (route: Route) => {
   route.children = asyncRoutesChildren;
@@ -29,7 +29,7 @@ export const setupRootRoute = (route: Route) => {
 
 export const setupDefaultRoutes = () => {
   mergeRoutes(routes);
-  mergeConstantRoutes([
+  mergeAnonymousRoutes([
     {
       path: '/:catchAll(.*)*',
       component: () => import('@/components/layouts/EmptyLayout.vue'),
@@ -53,14 +53,14 @@ export const mergeRoutes = (routes: Route[]) => {
   });
 };
 
-export const mergeConstantRoutes = (routes: RouteRecordRaw[] | Route[]) => {
+export const mergeAnonymousRoutes = (routes: RouteRecordRaw[] | Route[]) => {
   routes.forEach(item => {
-    constantRoutes.push(item as RouteRecordRaw);
+    anonymousRoutes.push(item as RouteRecordRaw);
   })
 };
 
 export const getRoutes = () => [
-  ...constantRoutes,
+  ...anonymousRoutes,
   ...asyncRootRoute,
 ];
 
@@ -68,5 +68,5 @@ export const asyncRoutesChildren: Route[] = [];
 
 export let asyncRootRoute: Route[] = [];
 
-export const constantRoutes: RouteRecordRaw[] = [];
+export const anonymousRoutes: RouteRecordRaw[] = [];
 

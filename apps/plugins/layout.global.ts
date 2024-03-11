@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 22nd Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Feb 22 2024
+ * Modified At: Mon Mar 11 2024
  */
 
 import { useTagViewStore } from "@/stores/tag-view";
@@ -24,7 +24,7 @@ import { useKeepAliveStore } from "@/stores/keep-alive";
 import { LoadingBar } from "quasar";
 import { storeToRefs } from 'pinia';
 import type { RouteLocationNormalized, Router } from "vue-router";
-import { constantRoutes } from '@/app/routes';
+import { anonymousRoutes } from '@/app/routes';
 import { findRoute } from '@/utils/permission-util';
 import type { RouteData } from '@trace/base/types/index';
 
@@ -46,7 +46,7 @@ export default defineNuxtPlugin(() => {
 
     if (to.name != null) {
       // is a public route
-      if (findRoute(constantRoutes, to.name.toString()) !== undefined) return;
+      if (findRoute(anonymousRoutes, to.name.toString()) !== undefined) return;
 
       const storedTagView = (getStoredTagView.value ?? []) as unknown as RouteData[];
       if (
