@@ -96,14 +96,13 @@
     "recommendations": [
       "esbenp.prettier-vscode",
       "wayou.vscode-todo-highlight",
-      "vue.vscode-typescript-vue-plugin",
-      "vue.volar",
       "sibiraj-s.vscode-scss-formatter",
       "eliostruyf.vscode-typescript-exportallmodules",
       "nuxtr.nuxt-vscode-extentions",
       "vscode-icons-team.vscode-icons",
       "gruntfuggly.todo-tree",
-      "psioniq.psi-header"
+      "psioniq.psi-header",
+      "vue.volar"
     ],
     "unwantedRecommendations": [
       "octref.vetur",
