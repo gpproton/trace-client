@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Feb 22 2024
+ * Modified At: Mon Mar 11 2024
  */
 
 import bootstrapIcons from 'quasar/icon-set/svg-bootstrap-icons'
@@ -35,6 +35,7 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxtjs/i18n',
+    '@nuxt/content',
     'nuxt-quasar-ui',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
@@ -42,6 +43,9 @@ export default defineNuxtConfig({
     '@vue-macros/nuxt',
     '@vite-pwa/nuxt',
   ],
+  macros: {
+    setupSFC: true,
+  },
   i18n: {
     vueI18n: './i18n.config.ts'
   },

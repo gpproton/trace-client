@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Feb 22 2024
+ * Modified At: Mon Mar 11 2024
  */
 
 import { appHeader } from '@trace/shared';
@@ -27,6 +27,6 @@ export default defineNuxtConfig({
   ],
   modules: [
     'nuxt3-leaflet',
-    './app.core/app-module'
+    './app.core/app-module',
   ]
 })
