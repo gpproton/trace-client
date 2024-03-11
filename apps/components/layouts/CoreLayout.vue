@@ -17,7 +17,6 @@ interface IProps {
   items: IModule[];
   overviewItems: IModule[];
   identityItems: IModule[];
-  serviceItems: IModule[];
   quickCreateItems: IModule[];
   mobileItems: IModule[];
   mobileOverviewItems: IModule[];
@@ -29,7 +28,6 @@ withDefaults(defineProps<IProps>(), {
   items: () => [],
   overviewItems: () => [],
   identityItems: () => [],
-  serviceItems: () => [],
   quickCreateItems: () => [],
   mobileItems: () => [],
   mobileOverviewItems: () => [],
@@ -55,21 +53,6 @@ const { isDark } = storeToRefs(theme);
 const { setSize } = breakpointStates;
 const { initializeTheme, setThemeState } = theme;
 initializeTheme();
-
-const headerMenu: IModule[] = [
-  {
-    title: 'router.home',
-    name: 'home',
-    icon: 'bi-grid',
-    path: '/',
-  },
-  {
-    title: 'router.quick-start',
-    name: 'quick-start',
-    icon: 'bi-0-square',
-    path: '/testing',
-  },
-];
 
 const secondaryItemList = ref<IModule[]>([
   {
@@ -102,11 +85,10 @@ const secondaryItemList = ref<IModule[]>([
           <mobile-header v-show="!isDesktop" $title="title" $search="search" />
         </slot>
         <!-- TODO: re-evaluate desktop header -->
-        <!-- <slot name="desktop-header">
+        <slot name="desktop-header">
           <desktop-header v-show="isDesktop" v-model="showSecondarySidebar" $search="search" $title="title"
-            $show-title="showTitle" :header-menu="headerMenu" :app-sections="serviceItems"
-            :quick-commands="quickCreateItems" :notification-tabs="notificationTabs" />
-        </slot> -->
+            $show-title="showTitle" :quick-commands="quickCreateItems" :notification-tabs="notificationTabs" />
+        </slot>
 
         <!-- TODO: re-evaluate desktop secondary sidebar -->
         <!-- <slot name="desktop-secondary-sidebar">

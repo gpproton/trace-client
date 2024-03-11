@@ -8,8 +8,6 @@ import TagView from '@/components/header/TagView.vue';
 
 interface IProps {
   quickCommands: IModuleCommands[];
-  appSections: IModule[];
-  headerMenu: IModule[];
   notificationTabs: IModule[];
 }
 
@@ -31,7 +29,6 @@ const { modelValue, search, title, showTitle } = defineModels<{
   <q-header reveal :elevated="false" class="bg-transparent" height-hint="64" bordered
     style="margin-left: 64px; box-shadow: rgba(0, 0, 0, 0) 0px 2px 12px 0px; padding-bottom: 2px">
     <q-toolbar class="row justify-between q-mt-xs">
-
       <div class="q-pr-md">
         <q-btn dense flat square :icon="modelValue ? 'menu_open' : 'menu'" aria-label="Menu" color="primary" size="lg"
           @click="() => modelValue = !modelValue" />
@@ -55,10 +52,6 @@ const { modelValue, search, title, showTitle } = defineModels<{
         <!-- Top level app switcher -->
         <q-btn flat square color="primary" class="border-radius-sm q-px-sm">
           <q-icon color="primary" class="button-icon" name="bi-ui-checks-grid" />
-          <q-menu :offset="[-35, 10]" transition-show="scale" transition-hide="scale" self="top middle"
-            class="border-radius-sm q-pa-sm">
-            <command-list :items="appSections" />
-          </q-menu>
         </q-btn>
         <!-- Notification actions -->
         <q-btn flat square color="primary" class="border-radius-sm q-px-md" @mouseover="bellIconFill = true"
