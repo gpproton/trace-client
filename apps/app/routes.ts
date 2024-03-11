@@ -20,7 +20,6 @@
 
 import type { Route } from "@trace/base/types/index";
 import type { RouteRecordRaw } from "vue-router";
-
 import routes from './routes.default';
 
 export const setupRootRoute = (route: Route) => {

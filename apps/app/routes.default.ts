@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2023 - 2024 drolx Solutions
- * 
+ *
  * Licensed under the Business Source License 1.1 and Trace License
  * you may not use this file except in compliance with the License.
  * Change License: Reciprocal Public License 1.5
@@ -11,7 +11,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
@@ -21,42 +21,42 @@
 import type { Route } from '@trace/base/types/index';
 
 const routes: Route[] = [
-    {
-      name: 'home',
-      path: '/',
-      component: () => import('@/pages/QuickStart.vue'),
-      meta: {
-        title: "router.home",
-        icon: "home",
-      },
+  {
+    name: 'home',
+    path: '/',
+    redirect: { name: 'quick-start' },
+    meta: {
+      title: "router.home",
+      icon: "home",
     },
-    {
-      name: 'quick-start',
-      path: "/quick-start",
-      component: () => import("@/pages/QuickStart.vue"),
-      meta: {
-        title: "router.quick-start",
-        icon: "sync",
-      },
+  },
+  {
+    name: 'quick-start',
+    path: "/quick-start",
+    component: () => import("@/pages/QuickStart.vue"),
+    meta: {
+      title: "router.quick-start",
+      icon: "sync",
     },
-    {
-      name: 'app.testing',
-      path: "/testing",
-      component: () => import("@trace/base/pages/Testing.vue"),
-      meta: {
-        title: "router.testing",
-        icon: "sync",
-      },
+  },
+  {
+    name: 'app.testing',
+    path: "/testing",
+    component: () => import("@trace/base/pages/Testing.vue"),
+    meta: {
+      title: "router.testing",
+      icon: "sync",
     },
-    {
-      name: 'app.un-authorized',
-      path: "/un-authorized",
-      component: () => import("@/pages/UnAuthorized.vue"),
-      meta: {
-        title: "router.un-authorized",
-        icon: "sync",
-      },
+  },
+  {
+    name: 'app.un-authorized',
+    path: "/un-authorized",
+    component: () => import("@/pages/UnAuthorized.vue"),
+    meta: {
+      title: "router.un-authorized",
+      icon: "sync",
     },
-  ];
+  },
+];
 
-  export default routes;
+export default routes;

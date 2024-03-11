@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Feb 22 2024
+ * Modified At: Mon Mar 11 2024
  */
 
 import { defineNuxtModule, addPlugin, createResolver, extendPages } from '@nuxt/kit';
@@ -26,7 +26,7 @@ export { Navigation };
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'App Core',
+    name: 'app-core',
     configKey: 'app.core'
   },
   defaults: {},

@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Feb 22 2024
+ * Modified At: Mon Mar 11 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema'
@@ -37,7 +37,6 @@ declare module "vue-router" {
 }
 
 export default <RouterConfig>{
-
   routes: () => {
     setupRootRoute({
       name: 'index',

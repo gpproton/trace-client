@@ -27,6 +27,6 @@ export default defineNuxtConfig({
   ],
   modules: [
     'nuxt3-leaflet',
-    './app.core/module'
+    './app.core/app-module'
   ]
 })
