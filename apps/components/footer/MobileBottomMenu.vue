@@ -18,7 +18,7 @@ const moreItems = ref(false);
 
 <template>
   <q-footer class="app-footer q-pa-xs q-mb-sm q-mx-sm">
-    <q-menu v-if="props.overflowItems.length > 0 && moreItems" $="moreItems" :offset="[0, 20]" fit auto-close
+    <q-menu v-if="props.overflowItems.length > 0 && moreItems" v-model="moreItems" :offset="[0, 20]" fit auto-close
       class="border-radius-md">
       <q-list padding>
         <template v-for="(item, index) in props.overflowItems" :key="index">
@@ -35,7 +35,7 @@ const moreItems = ref(false);
         </template>
       </q-list>
     </q-menu>
-    <q-tabs $="state" active-color="action" align="justify" no-caps switch-indicator narrow-indicator
+    <q-tabs v-model="state" active-color="action" align="justify" no-caps switch-indicator narrow-indicator
       indicator-color="action" content-class="mobile-footer-item" class="text-space">
       <q-route-tab v-for="(item, index) in props.items" :key="index" :name="item.name" :to="{ name: item.name }"
         :icon="item.icon" class="border-radius-md">
@@ -43,7 +43,7 @@ const moreItems = ref(false);
           {{ '23+' }}
         </q-badge>
       </q-route-tab>
-      <q-route-tab $="moreItems" name="more" icon="bi-grid-3x3-gap" class="border-radius-md"
+      <q-route-tab v-model="moreItems" name="more" icon="bi-grid-3x3-gap" class="border-radius-md"
         @click="() => (moreItems = !moreItems)" />
     </q-tabs>
   </q-footer>

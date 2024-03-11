@@ -54,7 +54,7 @@ const passwordState = reactive({
     </div>
 
     <div class="q-gutter-y-md q-my-md">
-      <q-input $="usernameState" outlined no-error-icon type="text" :label="$t('auth.usernameOrEmail')"
+      <q-input v-model="usernameState" outlined no-error-icon type="text" :label="$t('auth.usernameOrEmail')"
         class="border-radius-sm">
         <template #prepend>
           <q-icon name="bi-person" color="accent" />
@@ -63,7 +63,7 @@ const passwordState = reactive({
           <q-btn icon="bi-arrow-repeat" color="accent" round dense flat />
         </template>
       </q-input>
-      <q-input $="passwordState.value" outlined no-error-icon :type="passwordState.show ? 'text' : 'password'"
+      <q-input v-model="passwordState.value" outlined no-error-icon :type="passwordState.show ? 'text' : 'password'"
         :label="$t('auth.password')" class="border-radius-sm">
         <template #prepend>
           <q-icon name="bi-lock" color="accent" />

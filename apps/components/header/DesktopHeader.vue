@@ -3,7 +3,6 @@ import { ref } from 'vue';
 import type { IModule, IModuleCommands } from '@trace/shared';
 import CommandList from '@/components/extra/CommandList.vue';
 import NotificationDialog from '@/components/extra/NotificationDialog.vue';
-// import SwitcherButton from '@/components/extra/SwitcherButton.vue';
 import Breadcrumbs from './Breadcrumbs.vue';
 import TagView from '@/components/header/TagView.vue';
 
@@ -39,13 +38,7 @@ const { modelValue, search, title, showTitle } = defineModels<{
       </div>
       <breadcrumbs class="text-weight-bold" :show-icon="false" v-if="$q.screen.gt.sm" />
       <q-space />
-
-      <!-- <q-toolbar-title class="q-px-sm">
-        <div class="row items-center">
-          <switcher-button v-show="headerMenu.length > 0" class="gt-sm" :items="headerMenu" dense route />
-        </div>
-      </q-toolbar-title> -->
-      <q-input $="search" dense filled label="Search items" class="q-mx-sm border-radius-sm">
+      <q-input v-model="search" dense filled label="Search items" class="q-mx-sm border-radius-sm">
         <template #prepend>
           <q-avatar>
             <q-icon size="sm" name="bi-search" />

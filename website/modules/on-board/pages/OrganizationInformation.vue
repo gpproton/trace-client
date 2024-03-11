@@ -18,7 +18,7 @@ const organizationWebsite = ref('');
             <q-form class="q-gutter-md">
                 <q-input filled v-model="organizationName" label="Organization name" />
                 <q-input filled v-model="organizationWebsite" label="Website" />
-                <q-toggle $="licenseToggle" label="I accept the license and terms" />
+                <q-toggle v-model="licenseToggle" label="I accept the license and terms" />
                 <div class="q-mt-xl full-width row justify-between">
                     <q-btn no-caps flat size="lg" class="border-radius-sm" color="primary" label="Back" />
                     <q-btn no-caps size="lg" class="border-radius-sm" color="primary" label="Continue" />

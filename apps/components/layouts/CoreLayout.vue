@@ -91,7 +91,7 @@ const secondaryItemList = ref<IModule[]>([
   <q-layout view="lHr lpR fFf" @resize="setSize">
     <!-- TODO: re-evaluate desktop sidebar -->
     <!-- <slot name="desktop-sidebar">
-      <desktop-sidebar v-if="isDesktop" $="showPrimarySidebar" $dark-mode="isDark" :drawer-mini-state="primaryMiniState"
+      <desktop-sidebar v-if="isDesktop" v-model="showPrimarySidebar" $dark-mode="isDark" :drawer-mini-state="primaryMiniState"
         $show-identity="showIdentityList" :name="name" :identity-menu="identityItems" :overview-menu="overviewItems"
         :secondary-menu="items" :user-profile="userProfile" @update:dark-mode="setThemeState" />
     </slot> -->
@@ -103,14 +103,14 @@ const secondaryItemList = ref<IModule[]>([
         </slot>
         <!-- TODO: re-evaluate desktop header -->
         <!-- <slot name="desktop-header">
-          <desktop-header v-show="isDesktop" $="showSecondarySidebar" $search="search" $title="title"
+          <desktop-header v-show="isDesktop" v-model="showSecondarySidebar" $search="search" $title="title"
             $show-title="showTitle" :header-menu="headerMenu" :app-sections="serviceItems"
             :quick-commands="quickCreateItems" :notification-tabs="notificationTabs" />
         </slot> -->
 
         <!-- TODO: re-evaluate desktop secondary sidebar -->
         <!-- <slot name="desktop-secondary-sidebar">
-          <desktop-secondary-sidebar v-if="isDesktop && secondaryItemList.length > 0" $="showSecondarySidebar"
+          <desktop-secondary-sidebar v-if="isDesktop && secondaryItemList.length > 0" v-model="showSecondarySidebar"
             $items="secondaryItemList" $title="title" />
         </slot> -->
 

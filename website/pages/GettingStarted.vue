@@ -19,7 +19,7 @@ const registerNote = 'Enter your email to start using trace';
                 <div class="q-gutter-y-sm q-px-xs">
                     <div class="text-primary">{{ registerNote }}</div>
                     <div class="row q-gutter-x-sm">
-                        <q-input $="email" class="col" filled hide-bottom-space placeholder="your@email.com" />
+                        <q-input v-model="email" class="col" filled hide-bottom-space placeholder="your@email.com" />
                         <q-btn no-caps color="primary" class="border-radius-sm q-px-lg text-h6"
                             :label="$t('router.startNow')" :to="{ name: 'on-board' }" />
                     </div>
