@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 22nd Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon Mar 11 2024
+ * Modified At: Tue Mar 12 2024
  */
 
 import { useTagViewStore } from "@/stores/tag-view";
@@ -25,7 +25,7 @@ import { LoadingBar } from "quasar";
 import { storeToRefs } from 'pinia';
 import type { RouteLocationNormalized, Router } from "vue-router";
 import { anonymousRoutes } from '@/app/routes';
-import { findRoute } from '@/utils/permission-util';
+import { getRouteByName } from '@trace/base/types/index';
 import type { RouteData } from '@trace/base/types/index';
 
 export default defineNuxtPlugin(() => {
@@ -33,11 +33,9 @@ export default defineNuxtPlugin(() => {
   const tagViewStore = useTagViewStore();
   const breadCrumbsStore = useBreadcrumbsStore();
   const keepAliveStore = useKeepAliveStore();
-
   const { setTagView, addTagView } = tagViewStore;
   const { getTagView, getStoredTagView } = storeToRefs(tagViewStore);
   const { setKeepAliveList } = keepAliveStore;
-  const { getBreadCrumbs } = storeToRefs(breadCrumbsStore);
   const { setBreadcrumbs } = breadCrumbsStore;
 
   router.beforeEach((to, from) => {
@@ -46,7 +44,7 @@ export default defineNuxtPlugin(() => {
 
     if (to.name != null) {
       // is a public route
-      if (findRoute(anonymousRoutes, to.name.toString()) !== undefined) return;
+      if (getRouteByName(anonymousRoutes, to.name.toString()) !== undefined) return;
 
       const storedTagView = (getStoredTagView.value ?? []) as unknown as RouteData[];
       if (
