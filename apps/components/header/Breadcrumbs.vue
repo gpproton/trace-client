@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useBreadcrumbsStore } from "@/stores/breadcrumbs";
-import type { RouteData } from "@trace/base/types/index";
 import { storeToRefs } from 'pinia';
 
 defineOptions({ name: 'BreadCrumbs' });

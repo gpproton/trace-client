@@ -15,33 +15,19 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon Mar 11 2024
+ * Modified At: Tue Mar 12 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema'
-import type { ActionState, Workflow } from '@trace/model';
 import { getRoutes, setupRootRoute, setupDefaultRoutes, mergeAnonymousRoutes } from '@/app/routes';
 import AuthRoutes from '@/app.identity/authentication/routes';
-
-declare module "vue-router" {
-  interface RouteMeta {
-    permission?: ActionState
-    workflows?: Workflow[];
-    anonymous?: boolean;
-    title: string;
-    icon?: string;
-    itemLabel?: string;
-    keepAlive?: boolean;
-    isOpen?: boolean;
-  }
-}
 
 export default <RouterConfig>{
   routes: () => {
     setupRootRoute({
       name: 'index',
       path: '/',
-      component: () => import('@/components/layouts/Layout.vue'),
+      component: () => import('@/layouts/Layout.vue'),
       redirect: '/'
     });
 

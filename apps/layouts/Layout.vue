@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { profileData } from '@trace/shared';
-import CoreLayout from '@/components/layouts/CoreLayout.vue';
+import CoreLayout from '@/layouts/CoreLayout.vue';
 import SampleNavigation from '@trace/shared/SampleNavigation';
 import RouterInject from '@/components/RouterInject.vue';
 

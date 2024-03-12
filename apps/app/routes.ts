@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon Mar 11 2024
+ * Modified At: Tue Mar 12 2024
  */
 
 import type { Route } from "@trace/base/types/index";
@@ -32,7 +32,7 @@ export const setupDefaultRoutes = () => {
   mergeAnonymousRoutes([
     {
       path: '/:catchAll(.*)*',
-      component: () => import('@/components/layouts/EmptyLayout.vue'),
+      component: () => import('@/layouts/EmptyLayout.vue'),
       children: [
         {
           path: '',
