@@ -42,6 +42,10 @@ const routes: Route[] = [
     meta: {
       title: "router.testing",
       icon: "sync",
+      permission: {
+        feature: 'default',
+        type: 'read'
+      }
     },
   },
 ];

@@ -48,24 +48,28 @@ export interface RouteData {
 }
 
 export interface RouteMenu {
-  permission?: ActionState | false;
+  permission?: boolean | ActionState;
   title?: string;
   icon?: string;
   name: RouteRecordName | null | undefined;
   children?: RouteMenu[];
 }
 
-export const getRouteByName = (routes: RouteRecordRaw[], name: string): RouteRecordRaw | undefined => {
-  for (const route of routes) {
-    if (route.name === name) return route;
-    if (route.children) {
-      const innerResult = getRouteByName(route.children, name);
-      if (innerResult) return innerResult;
-    }
+export const getRouteByName = (routes: Route[], name: string): Route | undefined => {
+  const isRouteName = (element: Route): boolean => {
+    if (element.name === name) return true;
+    if (Array.isArray(element.children)) element.children.find(isRouteName);
+
+    return false;
   }
 
-  return undefined;
+  return routes.find(isRouteName);
 };
+
+export const getRouteChildren = (routes: Route[], name: string): Route[] => {
+  const result = getRouteByName(routes, name);
+  return typeof (result?.children) !== 'undefined' ? result?.children : [];
+}
 
 export const getRoutesByName = (routes: Route[], names: string[]) => {
   /** names array filter helper function */
@@ -79,24 +83,13 @@ export const getRoutesByName = (routes: Route[], names: string[]) => {
   routes.filter(filterRouteByNames);
 }
 
-export const getRouteChildren = (routes: Route[], name: string) => {
-  const filterRoute = (element: Route) => {
-
-  }
-
-}
-
 export const getAuthenticatedRoutes = (routes: Route[], authenticated: boolean = true): Route[] => {
   /** auth filter helper function */
   const filterRoute = (element: Route): boolean => {
-    let authState: boolean;
-    authState = authenticated === element.meta?.permission || authenticated === element.meta?.requiresAuth;
-    if (authenticated && !authState) {
-      authState = typeof (element.meta?.permission) === 'object';
-      authState = typeof (element.meta?.permission) === 'undefined';
-    }
+    let authState: boolean = false;
+    if (!authenticated) authState = typeof (element.meta?.permission) === 'boolean' && !element.meta?.permission;
+    if (authenticated && typeof (element.meta?.permission) !== 'boolean') authState = typeof (element.meta?.permission) === 'undefined' || typeof (element.meta?.permission) === 'object' || element.meta?.requiresAuth === true;
     if (Array.isArray(element.children)) element.children.filter(filterRoute);
-
 
     return authState;
   }
@@ -104,9 +97,9 @@ export const getAuthenticatedRoutes = (routes: Route[], authenticated: boolean =
   return routes.filter(filterRoute);
 }
 
-export const getMenuRoutes = (routes: Route[]) => {
+export const getMenuRoutes = (routes: Route[], rootName: string = '') => {
   /** menu filter helper function */
-  const filterMenu = (result: RouteMenu[], value: Route): any => {
+  const isMenuRoute = (result: RouteMenu[], value: Route): any => {
     if (!value.meta?.menu) return;
     const item: RouteMenu = {
       title: value.meta.title,
@@ -114,11 +107,12 @@ export const getMenuRoutes = (routes: Route[]) => {
       icon: value.meta.icon,
       permission: value.meta.permission
     }
-    if (value.children) item.children = value.children.reduce(filterMenu, []);
+    if (value.children) item.children = value.children.reduce(isMenuRoute, []);
     result.push(item)
 
     return result;
   }
+  if (rootName.length > 0) return getRouteChildren(routes, rootName).reduce(isMenuRoute, []);
 
-  return routes.reduce(filterMenu, []);
+  return routes.reduce(isMenuRoute, []);
 };

@@ -20,6 +20,7 @@
 
 import 'vue-router';
 import '#app';
+import type { ActionState } from '@trace/model';
 
 declare module '@vue-js-cron/quasar';
 
@@ -33,7 +34,7 @@ declare module '#app' {
 declare module "vue-router" {
   interface RouteMeta {
     requiresAuth?: boolean;
-    permission?: ActionState | boolean;
+    permission?: boolean | ActionState;
     menu?: boolean;
     title?: string;
     icon?: string;

@@ -31,9 +31,6 @@ export const routes = [
     path: '/',
     component: () => import('@/layouts/Layout.vue'),
     redirect: '/',
-    meta: {
-      permission: false
-    },
     children: [
       ...defaultRoutes,
     ]

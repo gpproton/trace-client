@@ -18,10 +18,9 @@
  * Modified At: Wed Mar 13 2024
  */
 
-import type { Route } from "@trace/base/types/index";
-import type { RouteRecordRaw } from "vue-router";
+import { getAuthenticatedRoutes, type Route } from "@trace/base/types";
+import { routes } from '@/app/router.options';
 
+export const authtenticatedRoutes: Route[] = getAuthenticatedRoutes(routes, true);
 export const authtenticatedRoutesChildren: Route[] = [];
-export const authtenticatedRoutes: Route[] = [];
-export const anonymousRoutes: RouteRecordRaw[] = [];
-
+export const anonymousRoutes: Route[] = getAuthenticatedRoutes(routes, false);
