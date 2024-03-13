@@ -15,14 +15,14 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 22nd Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Feb 22 2024
+ * Modified At: Wed Mar 13 2024
  */
 
 import type { Router } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useRouterStore } from "@/stores/router";
 import { useUserAccountStore } from "@/stores/user-account";
-import { asyncRootRoute, asyncRoutesChildren } from '@/app/routes';
+import { authtenticatedRoutes, authtenticatedRoutesChildren } from '@/app/routes';
 import { constructionRouters } from '@/utils/permission-util';
 import type { RouteRecordRaw } from 'vue-router';
 
@@ -53,11 +53,11 @@ export default defineNuxtPlugin(() => {
   //     }
 
   //     // And set the corresponding route according to the permissions
-  //     const accessRoutes = deepClone(asyncRoutesChildren);
-  //     asyncRootRoute[0].children = constructionRouters(accessRoutes);
-  //     routerStore.setRoutes(asyncRootRoute);
+  //     const accessRoutes = deepClone(authtenticatedRoutesChildren);
+  //     authtenticatedRoutes[0].children = constructionRouters(accessRoutes);
+  //     routerStore.setRoutes(authtenticatedRoutes);
   //     // If you are prompted that addRoutes is deprecated, use the spread operator to complete the operation
-  //     for (const item of asyncRootRoute) {
+  //     for (const item of authtenticatedRoutes) {
   //       router.addRoute(item as RouteRecordRaw);
   //     }
   //     // If addRoutes is not completed, the guard will execute it again

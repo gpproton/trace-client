@@ -15,11 +15,10 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue Mar 12 2024
+ * Modified At: Wed Mar 13 2024
  */
 import type { Route } from "@trace/base/types/index";
 import { useAppPermission } from "@/composables/permission"
-import type { RouteRecordRaw } from "vue-router";
 
 export const constructionRouters = (router: Route[]) => {
   const { hasPermission } = useAppPermission();

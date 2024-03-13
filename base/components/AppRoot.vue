@@ -23,6 +23,8 @@ onMounted(() => {
 <template>
   <VitePwaManifest />
   <loading-indicator>
-    <NuxtPage />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </loading-indicator>
 </template>

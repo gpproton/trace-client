@@ -15,25 +15,59 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue Mar 12 2024
+ * Modified At: Wed Mar 13 2024
  */
 
-import type { RouterConfig } from '@nuxt/schema'
-import { getRoutes, setupRootRoute, setupDefaultRoutes, mergeAnonymousRoutes } from '@/app/routes';
+import type { RouterConfig } from '@nuxt/schema';
+import type { RouteRecordRaw } from "vue-router";
+import type { Route } from '@trace/base/types';
+import defaultRoutes from '@/routes.default';
 import AuthRoutes from '@/app.identity/authentication/routes';
+import OnboardRoutes from '@/app.identity/on-board/routes';
+
+export const routes = [
+  {
+    name: 'index',
+    path: '/',
+    component: () => import('@/layouts/Layout.vue'),
+    redirect: '/',
+    meta: {
+      permission: false
+    },
+    children: [
+      ...defaultRoutes,
+    ]
+  },
+  ...AuthRoutes,
+  ...OnboardRoutes,
+  {
+    path: '/:catchAll(.*)*',
+    component: () => import('@/layouts/EmptyLayout.vue'),
+    meta: {
+      permission: false
+    },
+    children: [
+      {
+        path: '',
+        component: () => import('@trace/base/pages/ErrorNotFound.vue'),
+        meta: {
+          permission: false,
+          title: 'router.error',
+        },
+      },
+    ]
+  },
+  {
+    name: 'un-authorized',
+    path: "/un-authorized",
+    component: () => import("@/pages/UnAuthorized.vue"),
+    meta: {
+      permission: false,
+      title: "router.un-authorized",
+    },
+  },
+] as Route[];
 
 export default <RouterConfig>{
-  routes: () => {
-    setupRootRoute({
-      name: 'index',
-      path: '/',
-      component: () => import('@/layouts/Layout.vue'),
-      redirect: '/'
-    });
-
-    setupDefaultRoutes();
-    mergeAnonymousRoutes(AuthRoutes);
-
-    return getRoutes();
-  },
+  routes: () => routes as RouteRecordRaw[],
 }

@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2023 - 2024 drolx Solutions
- * 
+ *
  * Licensed under the Business Source License 1.1 and Trace License
  * you may not use this file except in compliance with the License.
  * Change License: Reciprocal Public License 1.5
@@ -11,18 +11,34 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Monday, 19th Feb 2024
+ * Created At: Tuesday, 12th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Feb 22 2024
+ * Modified At: Wed Mar 13 2024
  */
 
-declare module '@vue-js-cron/quasar'
+import 'vue-router';
+import '#app';
+
+declare module '@vue-js-cron/quasar';
 
 declare module '#app' {
   interface NuxtApp {
     $permit(action: ActionState): boolean
     $permission(action: ActionState): boolean
+  }
+}
+
+declare module "vue-router" {
+  interface RouteMeta {
+    requiresAuth?: boolean;
+    permission?: ActionState | boolean;
+    menu?: boolean;
+    title?: string;
+    icon?: string;
+    keepAlive?: boolean;
+    isOpen?: boolean;
+    getter?: string;
   }
 }

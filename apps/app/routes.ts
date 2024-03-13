@@ -15,58 +15,13 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue Mar 12 2024
+ * Modified At: Wed Mar 13 2024
  */
 
 import type { Route } from "@trace/base/types/index";
 import type { RouteRecordRaw } from "vue-router";
-import routes from '@/routes.default';
 
-export const setupRootRoute = (route: Route) => {
-  route.children = asyncRoutesChildren;
-  asyncRootRoute = [route];
-};
-
-export const setupDefaultRoutes = () => {
-  mergeRoutes(routes);
-  mergeAnonymousRoutes([
-    {
-      path: '/:catchAll(.*)*',
-      component: () => import('@/layouts/EmptyLayout.vue'),
-      children: [
-        {
-          path: '',
-          component: () => import('@trace/base/pages/ErrorNotFound.vue'),
-          meta: {
-            title: 'router.error',
-            icon: 'sync',
-          },
-        },
-      ]
-    },
-  ]);
-};
-
-export const mergeRoutes = (routes: Route[]) => {
-  routes.forEach(item => {
-    asyncRoutesChildren.push(item);
-  });
-};
-
-export const mergeAnonymousRoutes = (routes: RouteRecordRaw[] | Route[]) => {
-  routes.forEach(item => {
-    anonymousRoutes.push(item as RouteRecordRaw);
-  })
-};
-
-export const getRoutes = () => [
-  ...anonymousRoutes,
-  ...asyncRootRoute,
-];
-
-export const asyncRoutesChildren: Route[] = [];
-
-export let asyncRootRoute: Route[] = [];
-
+export const authtenticatedRoutesChildren: Route[] = [];
+export const authtenticatedRoutes: Route[] = [];
 export const anonymousRoutes: RouteRecordRaw[] = [];
 

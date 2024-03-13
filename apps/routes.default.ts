@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon Mar 11 2024
+ * Modified At: Wed Mar 13 2024
  */
 
 import type { Route } from '@trace/base/types/index';
@@ -32,15 +32,6 @@ const routes: Route[] = [
     component: () => import("@/pages/QuickStart.vue"),
     meta: {
       title: "router.quick-start",
-      icon: "sync",
-    },
-  },
-  {
-    name: 'app.un-authorized',
-    path: "/un-authorized",
-    component: () => import("@/pages/UnAuthorized.vue"),
-    meta: {
-      title: "router.un-authorized",
       icon: "sync",
     },
   },
