@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed Mar 13 2024
+ * Modified At: Thu Mar 14 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
@@ -24,6 +24,7 @@ import type { Route } from '@trace/base/types';
 import defaultRoutes from '@/routes.default';
 import AuthRoutes from '@/app.identity/authentication/routes';
 import OnboardRoutes from '@/app.identity/on-board/routes';
+import { ServiceVariant } from '@trace/shared';
 
 export const routes = [
   {
@@ -31,6 +32,9 @@ export const routes = [
     path: '/',
     component: () => import('@/layouts/Layout.vue'),
     redirect: '/',
+    props: {
+      workspace: ServiceVariant.Identity
+    },
     children: [
       ...defaultRoutes,
     ]

@@ -22,13 +22,13 @@ export default abstract class BaseMenu implements IBaseMenu {
       name: 'core',
       title: 'Core',
       icon: 'bi-signpost-2',
-      path: ServiceVariant.CORE,
+      path: ServiceVariant.Core,
     },
     {
       name: 'find',
       title: 'Finder',
       icon: 'bi-compass',
-      path: ServiceVariant.FINDER,
+      path: ServiceVariant.Track,
     },
     {
       name: 'support',
@@ -40,7 +40,7 @@ export default abstract class BaseMenu implements IBaseMenu {
       name: 'portal',
       title: 'Portal',
       icon: 'bi-hurricane',
-      path: ServiceVariant.PORTAL,
+      path: ServiceVariant.Portal,
     }
   ];
 
