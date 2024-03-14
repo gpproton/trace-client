@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed Mar 13 2024
+ * Modified At: Thu Mar 14 2024
  */
 
 import type { ActionState } from "@trace/model";
@@ -96,6 +96,11 @@ export const getAuthenticatedRoutes = (routes: Route[], authenticated: boolean =
 
   return routes.filter(filterRoute);
 }
+
+export const getRouteParents = (routes: Route[], routeName: string) => {
+  const find = ({ name, children }: Route) => name === routeName || children && children.some(find)
+  return routes.filter(find);
+};
 
 export const getMenuRoutes = (routes: Route[], rootName: string = '') => {
   /** menu filter helper function */
