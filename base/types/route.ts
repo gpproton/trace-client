@@ -96,18 +96,10 @@ export const getAuthenticatedRoutes = (routes: Route[], authenticated: boolean =
   return routes.filter(filterRoute);
 }
 
-export const getRouteParents = (routes: Route[], routeName: string): Route[] => {
-  const find = ({ name, children }: Route) => name === routeName || children && children.some(find)
+export const getRouteParent = (routes: Route[], routeName: string): Route[] => {
+  const find = ({ name, children }: Route) => name === routeName || children && children.some(find);
   return routes.filter(find);
 };
-
-export const getRouteMenuByType = (routes: Route[], routeName: string, menuType: true | 'app' | 'module') => {
-  const routeStack = getRouteParents(routes, routeName);
-  const find = ({ meta, children }: Route) => meta?.menu === menuType || children && children.some(find)
-  const filtered = routeStack.filter(find);
-
-  return getMenuRoutes(filtered)
-}
 
 export const getMenuRoutes = (routes: Route[], rootName: string = '') => {
   /** menu filter helper function */
@@ -127,4 +119,12 @@ export const getMenuRoutes = (routes: Route[], rootName: string = '') => {
   if (rootName.length > 0) return getRouteChildren(routes, rootName).reduce(isMenuRoute, []);
 
   return routes.reduce(isMenuRoute, []);
+};
+
+export const getRouteMenuByType = (routes: Route[], routeName: string, menuType: true | 'app' | 'module'): RouteMenu[] => {
+  const routeStack = getRouteParent(routes, routeName);
+  const find = ({ meta, children }: Route) => meta?.menu === menuType || children && children.some(find)
+  const filtered = routeStack.filter(find);
+
+  return getMenuRoutes(filtered);
 };
