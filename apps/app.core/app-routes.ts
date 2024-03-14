@@ -13,32 +13,22 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Monday, 19th Feb 2024
+ * Created At: Thursday, 14th Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Thu Mar 14 2024
  */
 
-import { defineNuxtModule, addPlugin, createResolver, extendPages } from '@nuxt/kit';
-import type { ModuleOptions } from 'nuxt/schema';
+import type { Route } from '@trace/base/types';
+import { addCatchAll, addUnAuthorized } from '@/routes.default';
+import overviewRoute from '@/app/overviews/routes';
 
-export default defineNuxtModule<ModuleOptions>({
-  meta: {
-    name: 'app-core',
-    configKey: 'app.core'
+export default [
+  addCatchAll('core'),
+  addUnAuthorized('core'),
+  {
+    path: '',
+    name: 'core-root',
+    redirect: { name: 'core.overview' },
   },
-  defaults: {},
-  setup(options, nuxt) {
-    const resolver = createResolver(import.meta.url);
-
-    addPlugin(resolver.resolve('./plugins/test'));
-    extendPages((pages) => {
-      // TODO: evaluate for routes
-      // pages.unshift({
-      //   name: 'test',
-      //   path: 'test',
-      //   file: resolver.resolve('./pages/test.vue')
-      // })
-    });
-  }
-});
-
+  overviewRoute
+] as Route[];

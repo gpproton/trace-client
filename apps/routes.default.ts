@@ -15,17 +15,12 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed Mar 13 2024
+ * Modified At: Thu Mar 14 2024
  */
 
 import type { Route } from '@trace/base/types/index';
 
 const routes: Route[] = [
-  {
-    name: 'home',
-    path: '/',
-    redirect: { name: 'quick-start' },
-  },
   {
     name: 'quick-start',
     path: "/quick-start",
@@ -49,5 +44,28 @@ const routes: Route[] = [
     },
   },
 ];
+
+export const addCatchAll = (key: string = ''): Route => ({
+  path: `:catchAll(.*)*`,
+  name: key === '' ? 'error' : `${key}-error`,
+  component: () => import('@trace/base/pages/ErrorNotFound.vue'),
+  meta: {
+    permission: false,
+    title: 'router.error',
+  },
+  props: {
+    home: key === '' ? 'home' : key
+  }
+});
+
+export const addUnAuthorized = (key: string = ''): Route => ({
+  path: 'un-authorized',
+  name: key === '' ? 'un-authorized' : `${key}-un-authorized`,
+  component: () => import("@/pages/UnAuthorized.vue"),
+  meta: {
+    permission: false,
+    title: "router.un-authorized",
+  },
+});
 
 export default routes;

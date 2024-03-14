@@ -31,7 +31,7 @@ const inviteMessage = `Select appropriate option to proceed. If you are unaware 
             <div class="q-mt-xl">
 
                 <div class="row">
-                    <q-btn no-caps size="lg" :to="{ name: 'on-board.create-account' }" outline color="primary"
+                    <q-btn no-caps size="lg" :to="{ name: 'user-boarding.create-account' }" outline color="primary"
                         class="full-width q-mt-lg border-radius-sm">
                         <q-icon name="bi-envelope-at" size="2rem" class="q-mr-lg" color="primary" />
                         <span>{{ 'Sign up with Email' }}</span>

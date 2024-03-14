@@ -15,10 +15,11 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed Mar 13 2024
+ * Modified At: Thu Mar 14 2024
  */
 
 import type { Route } from "@trace/base/types/index";
+import { ServiceVariant } from "@trace/shared";
 
 const routes: Route[] = [
   {
@@ -28,6 +29,9 @@ const routes: Route[] = [
     component: () => import("./AuthLayout.vue"),
     meta: {
       permission: false
+    },
+    props: {
+      workspace: ServiceVariant.Identity
     },
     children: [
       {

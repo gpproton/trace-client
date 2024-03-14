@@ -21,50 +21,31 @@
 import type { RouterConfig } from '@nuxt/schema';
 import type { RouteRecordRaw } from "vue-router";
 import type { Route } from '@trace/base/types';
-import defaultRoutes from '@/routes.default';
-import AuthRoutes from '@/app.identity/authentication/routes';
-import OnboardRoutes from '@/app.identity/on-board/routes';
+import defaultRoutes, { addCatchAll, addUnAuthorized } from '@/routes.default';
+import { routes as identityRoutes } from '@/app.identity/app-routes';
+import coreRoutes from '@/app.core/app-routes';
 import { ServiceVariant } from '@trace/shared';
 
 export const routes = [
   {
-    name: 'index',
+    name: 'home',
     path: '/',
-    component: () => import('@/layouts/Layout.vue'),
-    redirect: '/',
-    props: {
-      workspace: ServiceVariant.Identity
-    },
+    redirect: { name: 'quick-start' },
+    component: () => import('@/layouts/EmptyLayout.vue'),
     children: [
+      addCatchAll(),
+      addUnAuthorized(),
       ...defaultRoutes,
     ]
   },
-  ...AuthRoutes,
-  ...OnboardRoutes,
+  ...identityRoutes,
   {
-    path: '/:catchAll(.*)*',
-    component: () => import('@/layouts/EmptyLayout.vue'),
-    meta: {
-      permission: false
-    },
-    children: [
-      {
-        path: '',
-        component: () => import('@trace/base/pages/ErrorNotFound.vue'),
-        meta: {
-          permission: false,
-          title: 'router.error',
-        },
-      },
-    ]
-  },
-  {
-    name: 'un-authorized',
-    path: "/un-authorized",
-    component: () => import("@/pages/UnAuthorized.vue"),
-    meta: {
-      permission: false,
-      title: "router.un-authorized",
+    name: ServiceVariant.Core,
+    path: `/${ServiceVariant.Core}`,
+    component: () => import('@/layouts/Layout.vue'),
+    children: coreRoutes,
+    props: {
+      workspace: ServiceVariant.Core
     },
   },
 ] as Route[];
@@ -72,3 +53,4 @@ export const routes = [
 export default <RouterConfig>{
   routes: () => routes as RouteRecordRaw[],
 }
+

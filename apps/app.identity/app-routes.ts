@@ -13,32 +13,15 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Monday, 19th Feb 2024
+ * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Thu Mar 14 2024
  */
 
-import { defineNuxtModule, addPlugin, createResolver, extendPages } from '@nuxt/kit';
-import type { ModuleOptions } from 'nuxt/schema';
+import AuthRoutes from './authentication/routes';
+import UserBoardingRoutes from './user-boarding/routes';
 
-export default defineNuxtModule<ModuleOptions>({
-  meta: {
-    name: 'app-core',
-    configKey: 'app.core'
-  },
-  defaults: {},
-  setup(options, nuxt) {
-    const resolver = createResolver(import.meta.url);
-
-    addPlugin(resolver.resolve('./plugins/test'));
-    extendPages((pages) => {
-      // TODO: evaluate for routes
-      // pages.unshift({
-      //   name: 'test',
-      //   path: 'test',
-      //   file: resolver.resolve('./pages/test.vue')
-      // })
-    });
-  }
-});
-
+export const routes = [
+  ...AuthRoutes,
+  ...UserBoardingRoutes,
+];

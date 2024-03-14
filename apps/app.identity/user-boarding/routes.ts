@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed Mar 13 2024
+ * Modified At: Thu Mar 14 2024
  */
 
 import type { Route } from '@trace/base/types/index';
@@ -23,7 +23,7 @@ import type { Route } from '@trace/base/types/index';
 export const onboardRoutes: Route[] = [
   {
     path: 'create-account',
-    name: 'on-board.create-account',
+    name: 'user-boarding.create-account',
     component: () => import('./pages/CreateAccount.vue'),
     meta: {
       permission: false,
@@ -33,7 +33,7 @@ export const onboardRoutes: Route[] = [
   },
   {
     path: 'account-verification',
-    name: 'on-board.account-verification',
+    name: 'user-boarding.account-verification',
     component: () => import('./pages/AccountVerification.vue'),
     meta: {
       permission: false,
@@ -43,7 +43,7 @@ export const onboardRoutes: Route[] = [
   },
   {
     path: 'account-options',
-    name: 'on-board.account-options',
+    name: 'user-boarding.account-options',
     component: () => import('./pages/AccountOptions.vue'),
     meta: {
       permission: false,
@@ -53,7 +53,7 @@ export const onboardRoutes: Route[] = [
   },
   {
     path: 'confirmation',
-    name: 'on-board.confirmation',
+    name: 'user-boarding.confirmation',
     component: () => import('./pages/AccountConfirmation.vue'),
     meta: {
       permission: false,
@@ -65,9 +65,9 @@ export const onboardRoutes: Route[] = [
 
 const routes: Route[] = [
   {
-    path: '/on-board',
-    name: 'on-board',
-    redirect: { name: 'on-board.getting-started' },
+    path: '/user-boarding',
+    name: 'user-boarding',
+    redirect: { name: 'user-boarding.getting-started' },
     component: () => import('./OnboardLayout.vue'),
     children: onboardRoutes,
     meta: {
@@ -75,9 +75,9 @@ const routes: Route[] = [
     },
   },
   {
-    path: '/on-board/getting-started',
-    name: 'on-board.secondary',
-    redirect: { name: 'on-board.getting-started' },
+    path: '/user-boarding/getting-started',
+    name: 'user-boarding.secondary',
+    redirect: { name: 'user-boarding.getting-started' },
     component: () => import('./WelcomeLayout.vue'),
     meta: {
       permission: false,
@@ -85,7 +85,7 @@ const routes: Route[] = [
     children: [
       {
         path: '',
-        name: 'on-board.getting-started',
+        name: 'user-boarding.getting-started',
         component: () => import('./pages/GetttingStarted.vue'),
         meta: {
           permission: false,

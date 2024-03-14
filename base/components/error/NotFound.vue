@@ -4,6 +4,12 @@ import { useAppBreakpoints } from '@/composables/breakpoints';
 import { storeToRefs } from 'pinia';
 
 defineOptions({ name: 'NotFound' });
+interface IProps {
+  home?: string;
+}
+withDefaults(defineProps<IProps>(), {
+  home: 'home',
+});
 
 const breakpointStates = useAppBreakpoints();
 const { isDesktop } = storeToRefs(breakpointStates);
@@ -16,7 +22,7 @@ const { isDesktop } = storeToRefs(breakpointStates);
     <div class="text-center q-mt-lg">
       <transition v-show="isDesktop" appear enter-active-class="animated backInUp"
         leave-active-class="animated backInDown">
-        <q-btn color="primary" class="border-radius-sm" size="lg" no-caps :to="{ name: 'home' }" outline
+        <q-btn color="primary" class="border-radius-sm" size="lg" no-caps :to="{ name: home }" outline
           style="width: 200px">
           Home
         </q-btn>
