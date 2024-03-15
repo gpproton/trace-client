@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 14th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 14 2024
+ * Modified At: Fri Mar 15 2024
  */
 
 import type { Route } from '@trace/base/types';
@@ -25,10 +25,5 @@ import overviewRoute from '@/app/overviews/routes';
 export default [
   addCatchAll('core'),
   addUnAuthorized('core'),
-  {
-    path: '',
-    name: 'core-root',
-    redirect: { name: 'core.overview' },
-  },
   overviewRoute
 ] as Route[];

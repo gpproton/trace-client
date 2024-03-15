@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon Mar 11 2024
+ * Modified At: Fri Mar 15 2024
  */
 
 import bootstrapIcons from 'quasar/icon-set/svg-bootstrap-icons'
@@ -27,12 +27,6 @@ import { dirname, join } from 'path'
 const currentDir = dirname(fileURLToPath(import.meta.url));
 export default defineNuxtConfig({
   ssr: false,
-  pwa: {},
-  vite: {
-    plugins: [
-      svgLoader(),
-    ],
-  },
   modules: [
     '@nuxtjs/i18n',
     '@nuxt/content',
@@ -43,6 +37,12 @@ export default defineNuxtConfig({
     '@vue-macros/nuxt',
     '@vite-pwa/nuxt',
   ],
+  pwa: {},
+  vite: {
+    plugins: [
+      svgLoader(),
+    ],
+  },
   macros: {
     setupSFC: true,
   },

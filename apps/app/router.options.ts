@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 14 2024
+ * Modified At: Fri Mar 15 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
@@ -31,7 +31,7 @@ export const routes = [
     name: 'home',
     path: '/',
     redirect: { name: 'quick-start' },
-    component: () => import('@/layouts/EmptyLayout.vue'),
+    component: () => import('@/app/EmptyLayout.vue'),
     children: [
       addCatchAll(),
       addUnAuthorized(),
@@ -42,11 +42,11 @@ export const routes = [
   {
     name: ServiceVariant.Core,
     path: `/${ServiceVariant.Core}`,
-    component: () => import('@/layouts/Layout.vue'),
+    component: () => import('@/app/Layout.vue'),
     children: coreRoutes,
-    props: {
-      workspace: ServiceVariant.Core
-    },
+    meta: { menu: 'app' },
+    redirect: { name: `${ServiceVariant.Core}.overview` },
+    props: { workspace: ServiceVariant.Core },
   },
 ] as Route[];
 

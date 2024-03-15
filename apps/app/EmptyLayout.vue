@@ -1,5 +1,6 @@
 <script setup lang="ts">
-defineOptions({ name: 'EmptyLayout' });
+// NOTE: Affects nested layout if enabled
+// defineOptions({ name: 'EmptyLayout' });
 </script>
 
 <template>

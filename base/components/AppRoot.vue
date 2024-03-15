@@ -21,10 +21,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <VitePwaManifest />
   <loading-indicator>
-    <NuxtLayout>
+      <NuxtPwaAssets />
+      <PwaFaviconImage />
+      <PwaMaskableImage />
+      <PwaTransparentImage />
       <NuxtPage />
-    </NuxtLayout>
   </loading-indicator>
 </template>

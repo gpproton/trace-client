@@ -14,7 +14,8 @@ import { profileData } from '@trace/shared';
 import SampleNavigation from '@trace/shared/SampleNavigation';
 import RouterInject from '@/components/RouterInject.vue';
 
-defineOptions({ name: 'Layout' });
+// NOTE: Affects nested layout if enabled
+// defineOptions({ name: 'Layout' });
 
 const {
   items,

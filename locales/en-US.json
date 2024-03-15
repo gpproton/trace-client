@@ -48,6 +48,9 @@
     "selectWorkflow": "How will you use trace?"
   },
   "shared": {
+    "overview": "Overview",
+    "dashboard": "Dashboard",
+    "trends": "Trends",
     "notification": "Notification",
     "user": "User",
     "profileType": "Profile Type",

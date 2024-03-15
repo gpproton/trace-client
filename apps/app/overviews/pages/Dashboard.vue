@@ -1,5 +1,9 @@
 <script setup lang="ts">
 defineOptions({ name: 'OverviewDashboard' });
+
+definePageMeta({
+  layout: false,
+});
 </script>
 
 <template>

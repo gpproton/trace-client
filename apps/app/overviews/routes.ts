@@ -15,26 +15,23 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 14th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 14 2024
+ * Modified At: Fri Mar 15 2024
  */
 
-import type { Route } from '@trace/base/types/index';
+import type { Route } from '@trace/base/types';
 
 export default {
   name: 'core.overview',
   path: 'overview',
+  meta: { menu: 'module' },
+  redirect: { name: 'core.overview.dashboard' },
   children: [
-    {
-      path: '',
-      name: 'core.overview-root',
-      // redirect: { name: 'core.overview.dashboard' },
-    },
     {
       name: 'core.overview.dashboard',
       path: 'dashboard',
       component: () => import('./pages/Dashboard.vue'),
       meta: {
-        title: 'router.dashboard',
+        title: 'shared.dashboard',
         icon: 'sync',
       },
     },
@@ -43,7 +40,7 @@ export default {
       path: 'trends',
       component: () => import('./pages/Trends.vue'),
       meta: {
-        title: 'router.trends',
+        title: 'shared.trends',
         icon: 'sync',
       },
     },
