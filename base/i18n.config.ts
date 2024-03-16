@@ -37,7 +37,6 @@ const loadLocaleMessages = () => {
 
 export default defineI18nConfig(() => {
   const messages = loadLocaleMessages();
-  console.log(messages);
 
   return {
     legacy: false,

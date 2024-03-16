@@ -13,13 +13,12 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Monday, 19th Feb 2024
+ * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 15 2024
+ * Modified At: Sat Mar 16 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
-import type { RouteRecordRaw } from "vue-router";
 import type { Route } from '@trace/base/types';
 import defaultRoutes, { addCatchAll, addUnAuthorized } from '@/routes.default';
 import { routes as identityRoutes } from '@/app.identity/app-routes';
@@ -39,18 +38,23 @@ export const routes = [
     ]
   },
   ...identityRoutes,
-  {
-    name: ServiceVariant.Core,
-    path: `/${ServiceVariant.Core}`,
-    component: () => import('@/app/Layout.vue'),
-    children: coreRoutes,
-    meta: { menu: 'app' },
-    redirect: { name: `${ServiceVariant.Core}.overview` },
-    props: { workspace: ServiceVariant.Core },
-  },
 ] as Route[];
 
 export default <RouterConfig>{
-  routes: () => routes as RouteRecordRaw[],
+
+  routes: () => {
+    routes.push(addAppRoutes(ServiceVariant.Core, () => import('@/app/Layout.vue'), coreRoutes))
+
+    return routes
+  }
 }
 
+export const addAppRoutes = (app: ServiceVariant, component: any, children: Route[]): Route => ({
+  name: app,
+  path: `/${app}`,
+  component: component,
+  children: children,
+  meta: { menu: 'app' },
+  redirect: { name: `${app}.overview` },
+  props: { workspace: app },
+});

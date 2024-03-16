@@ -15,11 +15,12 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed Mar 13 2024
+ * Modified At: Sat Mar 16 2024
  */
 
 import { getAuthenticatedRoutes, type Route } from "@trace/base/types";
 import { routes } from '@/app/router.options';
+import type { ServiceVariant } from "@trace/shared";
 
 export const authtenticatedRoutes: Route[] = getAuthenticatedRoutes(routes, true);
 export const authtenticatedRoutesChildren: Route[] = [];
