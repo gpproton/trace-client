@@ -15,12 +15,12 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Feb 22 2024
+ * Modified At: Sat Mar 16 2024
  */
 
 import { defineStore } from 'pinia';
 import { useI18n } from 'vue-i18n';
-import { languages } from '@/i18n.config';
+import { languageSelection } from '@trace/locales';
 
 export const useLanguageStore = defineStore(
   'language',
@@ -29,7 +29,7 @@ export const useLanguageStore = defineStore(
     const language = ref<string>();
     const getLocale = computed(() => locale.value);
     const getActiveCountry = computed<string>(() => {
-      const value = languages.find((item) => item.value === locale.value);
+      const value = languageSelection.find((item) => item.value === locale.value);
       return value?.countryCode ?? 'US';
     });
 
@@ -45,7 +45,7 @@ export const useLanguageStore = defineStore(
     return {
       locale,
       language,
-      languages,
+      languages: languageSelection,
       getLocale,
       getActiveCountry,
       setLocale,

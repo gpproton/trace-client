@@ -13,33 +13,8 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Tuesday, 12th Mar 2024
+ * Created At: Saturday, 16th Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Sat Mar 16 2024
  */
 
-import 'vue-router';
-import '#app';
-import type { ActionState } from '@trace/model';
-
-declare module '@vue-js-cron/quasar';
-
-declare module '#app' {
-  interface NuxtApp {
-    $permit(action: ActionState): boolean
-    $permission(action: ActionState): boolean
-  }
-}
-
-declare module "vue-router" {
-  interface RouteMeta {
-    requiresAuth?: boolean;
-    permission?: boolean | ActionState;
-    menu?: boolean | 'app' | 'module';
-    title?: string;
-    icon?: string;
-    keepAlive?: boolean;
-    isOpen?: boolean;
-    getter?: string;
-  }
-}

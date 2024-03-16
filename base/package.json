@@ -20,6 +20,7 @@
     "@pinia/nuxt": "^0.5.1",
     "@trace/model": "workspace:*",
     "@trace/shared": "workspace:*",
+    "@trace/locales": "workspace:*",
     "@vite-pwa/assets-generator": "^0.2.4",
     "@vite-pwa/nuxt": "^0.6.0",
     "@vue-macros/nuxt": "^1.9.21",

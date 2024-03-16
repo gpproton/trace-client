@@ -59,7 +59,6 @@ export default defineNuxtConfig({
     join(currentDir, './assets/colors.scss'),
     join(currentDir, './assets/qusar-mod.scss')
   ],
-
   quasar: {
     plugins: [
       'AddressbarColor',

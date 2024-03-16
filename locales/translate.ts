@@ -18,31 +18,22 @@
  * Modified At: Sat Mar 16 2024
  */
 
-import { defaultTranslation, defaultLanguage } from '@trace/locales';
+import fs from 'node:fs';
+import { translateFile } from './override.ts';
+import { defaultTranslation, defaultLanguage, languageSelection } from './index.ts';
 
-const loadLocaleMessages = () => {
-  const locales = import.meta.glob('../locales/output/*.json', { eager: true });
-  const messages: Record<string, any> = {}
-  messages[defaultLanguage] = defaultTranslation;
-  Object.keys(locales).forEach(key => {
-    const matched = key.match(/([A-Za-z0-9-_]+)\./i)
-    if (matched && matched.length > 1) {
-      const locale = matched[1]
-      messages[locale] = locales[key]
-    }
-  })
+const path = `output/${defaultLanguage}.json`;
+const json = JSON.stringify(defaultTranslation);
+const toLanguages: string[] = languageSelection.filter(e => e.value !== defaultLanguage).map(e => e.value);
 
-  return messages
-}
-
-export default defineI18nConfig(() => {
-  const messages = loadLocaleMessages();
-  console.log(messages);
-
-  return {
-    legacy: false,
-    globalInjection: true,
-    locale: defaultLanguage,
-    messages
-  }
+fs.writeFile(path, json, (error) => {
+  if (error) throw error;
+  console.log("updated en translation");
+  toLanguages.forEach(e => {
+    const name = languageSelection.find(x => x.value === e)?.name;
+    console.log(`Translating - ${name}`);
+    const timout = setInterval(() => { }, 3600);
+    translateFile(path, defaultLanguage, [e], '');
+    clearTimeout(timout)
+  });
 });
