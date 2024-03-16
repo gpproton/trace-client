@@ -9,6 +9,10 @@
       "path": "packages/shared"
     },
     {
+      "name": "locales",
+      "path": "locales"
+    },
+    {
       "name": "ui-base",
       "path": "base"
     },
