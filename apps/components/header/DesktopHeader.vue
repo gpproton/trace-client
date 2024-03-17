@@ -50,7 +50,7 @@ const { modelValue, search, title, showTitle } = defineModels<{
       </q-input>
       <div class="header-icon-button q-gutter-xs vertical-middle">
         <!-- Top level app switcher -->
-        <q-btn flat square color="primary" class="border-radius-sm q-px-sm">
+        <q-btn flat square color="primary" :to="{ name: 'quick-start' }" class="border-radius-sm q-px-sm">
           <q-icon color="primary" class="button-icon" name="bi-ui-checks-grid" />
         </q-btn>
         <!-- Notification actions -->

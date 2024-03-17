@@ -13,26 +13,21 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Thursday, 14th Mar 2024
+ * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Sun Mar 17 2024
  */
 
-import { addCatchAll, addUnAuthorized } from '@/routes.default';
-import addOverviewRoute from '@/app/overviews/module-routes';
-import addContactRoute from '@/app/contacts/module-routes';
-import addRoutesRoute from '@/app/routes/module-routes';
-import addLocationsRoute from '@/app/locations/module-routes';
-import addTrackingRoute from '@/app/live-tracking/module-routes';
-import { ServiceVariant } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
+import type { ServiceVariant } from '@trace/shared';
 
-export default [
-  addCatchAll(ServiceVariant.Core),
-  addUnAuthorized(ServiceVariant.Core),
-  addOverviewRoute(ServiceVariant.Core),
-  addTrackingRoute(ServiceVariant.Core),
-  addContactRoute(ServiceVariant.Core),
-  addRoutesRoute(ServiceVariant.Core),
-  addLocationsRoute(ServiceVariant.Core)
-] as Route[];
+export default (service: ServiceVariant): Route => ({
+  name: `${service}.routes`,
+  path: 'routes',
+  component: () => import('./pages/RouteView.vue'),
+  meta: {
+    menu: 'module',
+    title: 'shared.routes',
+    icon: 'bi-sign-turn-right',
+  },
+});
