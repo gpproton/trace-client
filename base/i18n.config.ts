@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 16 2024
+ * Modified At: Sun Mar 17 2024
  */
 
 import { defaultTranslation, defaultLanguage } from '@trace/locales';
@@ -23,14 +23,14 @@ import { defaultTranslation, defaultLanguage } from '@trace/locales';
 const loadLocaleMessages = () => {
   const locales = import.meta.glob('../locales/output/*.json', { eager: true });
   const messages: Record<string, any> = {}
-  messages[defaultLanguage] = defaultTranslation;
   Object.keys(locales).forEach(key => {
     const matched = key.match(/([A-Za-z0-9-_]+)\./i)
     if (matched && matched.length > 1) {
       const locale = matched[1]
       messages[locale] = locales[key]
     }
-  })
+  });
+  messages[defaultLanguage] = defaultTranslation;
 
   return messages
 }
