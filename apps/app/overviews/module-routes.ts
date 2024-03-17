@@ -34,7 +34,7 @@ export default (service: ServiceVariant): Route => ({
       meta: {
         menu: true,
         title: 'shared.dashboard',
-        icon: 'bi-grid',
+        icon: 'bi-columns-gap',
       },
     },
     {
@@ -44,7 +44,7 @@ export default (service: ServiceVariant): Route => ({
       meta: {
         menu: true,
         title: 'shared.trends',
-        icon: 'bi-grid',
+        icon: 'bi-clipboard-data',
       },
     },
   ]

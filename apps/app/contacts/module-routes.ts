@@ -28,6 +28,6 @@ export default (service: ServiceVariant): Route => ({
   meta: {
     menu: 'module',
     title: 'shared.contacts',
-    icon: 'bi-people',
+    icon: 'bi-person-bounding-box',
   },
 });
