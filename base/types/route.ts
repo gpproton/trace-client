@@ -87,12 +87,13 @@ export const getMenuRoutes = (routes: Route[], rootName: string = '') => {
   return routes.reduce(isMenuRoute, []);
 };
 
-export const getRouteMenuByType = (routes: Route[], routeName: string, menuType: MenuType): RouteMenu[] => {
+export const getRouteMenuByType = (routes: Route[], routeName: string, menuTypes: MenuType[]): RouteMenu[] => {
   const routeStack = getRouteParent(routes, routeName);
   const find = (result: Route[], value: Route): Route[] => {
-    if (Array.isArray(value.children) && value.meta?.menu === menuType) value.children = value.children.reduce(find, []);
-    if (value.meta?.menu === menuType) result.push(value);
-    if (Array.isArray(value.children) && value.meta?.menu !== menuType) {
+    const isFound = menuTypes.includes(value.meta?.menu);
+    if (Array.isArray(value.children) && isFound) value.children = value.children.reduce(find, []);
+    if (isFound) result.push(value);
+    if (Array.isArray(value.children) && !isFound) {
       const children = value.children.reduce(find, []);
       children.forEach(e => {
         result.push(e);

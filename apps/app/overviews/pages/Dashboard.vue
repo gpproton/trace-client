@@ -10,7 +10,7 @@ defineOptions({ name: 'OverviewDashboard' });
 const triggerTest = () => {
   const routes = router.options.routes as Route[];
   // const result = getRouteMenuByType(routes, route.name, true);
-  const result = getRouteMenuByType(routes, route.name, true);
+  const result = getRouteMenuByType(routes, route.name, [true]);
   console.log(result);
 };
 </script>

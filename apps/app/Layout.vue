@@ -22,7 +22,7 @@ import type { RouteMenu } from '@trace/base/typings';
 const router = useRouter();
 const route = useRoute();
 
-let modulesMenu = getRouteMenuByType(router.options.routes, route.name, 'module');
+let modulesMenu = getRouteMenuByType(router.options.routes, route.name, ['module', true]);
 
 const {
   identityItems,

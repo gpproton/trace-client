@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<IProps>(), {
       ">
     <q-list v-if="item.children !== undefined" :dense="props.dense" bordered padding>
       <template v-for="(menuItem, index) in item.children" :key="index">
-        <q-item class="secondary-expansion-item" v-ripple clickable :to="menuItem.name !== undefined ? { name: menuItem.name } : { name: '#' }
+        <q-item v-ripple clickable :to="menuItem.name !== undefined ? { name: menuItem.name } : { name: '#' }
           ">
           <q-item-section v-if="item.icon != undefined" avatar>
             <q-icon :name="menuItem.icon" />
@@ -39,6 +39,12 @@ const props = withDefaults(defineProps<IProps>(), {
 
 :deep(.q-item) {
   border-radius: $border-radius-sm;
+}
+
+:deep(.q-list) {
+  margin-top: 8px;
+  border-radius: $border-radius-sm;
+  padding: 0.25rem;
 }
 
 .seperator-icon {
