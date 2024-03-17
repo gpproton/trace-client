@@ -13,33 +13,21 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Friday, 15th Mar 2024
+ * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Sun Mar 17 2024
  */
 
-export default {
-  overview: "Overview",
-  dashboard: "Dashboard",
-  trends: "Trends",
-  contacts: 'Contacts',
-  calendar: 'Calendar',
-  engagements: 'Engagements',
-  activities: 'Activities',
-  liveTracking: 'Tracking',
-  locations: 'Locations',
-  routes: 'Routes',
-  notification: "Notification",
-  user: "User",
-  profileType: "Profile Type",
-  workflowType: "Workflow Type",
-  gettingStarted: "Getting Started",
-  welcomeAboard: "Welcome Aboard",
-  representative: "Representative Information",
-  organizationInformation: "Organization Information",
-  privacyPolicy: "Privacy policy",
-  copyright: "Copyright",
-  registration: "Registration",
-  verification: "Verification",
-  confirmation: "Confirmation"
-}
+import type { Route } from '@trace/base/typings';
+import type { ServiceVariant } from '@trace/shared';
+
+export default (service: ServiceVariant): Route => ({
+  name: `${service}.calendar`,
+  path: 'calendar',
+  component: () => import('./pages/CalendarView.vue'),
+  meta: {
+    menu: 'module',
+    title: 'shared.calendar',
+    icon: 'bi-calendar4-week',
+  },
+});
