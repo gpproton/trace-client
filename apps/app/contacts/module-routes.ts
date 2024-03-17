@@ -13,20 +13,21 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Thursday, 14th Mar 2024
+ * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Sun Mar 17 2024
  */
 
 import type { Route } from '@trace/base/types';
-import { addCatchAll, addUnAuthorized } from '@/routes.default';
-import addOverviewRoute from '@/app/overviews/module-routes';
-import addContactRoute from '@/app/contacts/module-routes';
-import { ServiceVariant } from '@trace/shared';
+import type { ServiceVariant } from '@trace/shared';
 
-export default [
-  addCatchAll(ServiceVariant.Core),
-  addUnAuthorized(ServiceVariant.Core),
-  addOverviewRoute(ServiceVariant.Core),
-  addContactRoute(ServiceVariant.Core)
-] as Route[];
+export default (service: ServiceVariant): Route => ({
+  name: `${service}.contacts`,
+  path: 'contacts',
+  component: () => import('./pages/ContactOverview.vue'),
+  meta: {
+    menu: 'module',
+    title: 'shared.contacts',
+    icon: 'sync',
+  },
+});

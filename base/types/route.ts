@@ -15,9 +15,10 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 16 2024
+ * Modified At: Sun Mar 17 2024
  */
 
+import type { MenuType } from "@/typings";
 import type { ActionState } from "@trace/model";
 import type {
   RouteMeta,
@@ -104,7 +105,7 @@ export const getRouteParent = (routes: Route[], routeName: string): Route[] => {
 export const getMenuRoutes = (routes: Route[], rootName: string = '') => {
   /** menu filter helper function */
   const isMenuRoute = (result: RouteMenu[], value: Route): any => {
-    if (!value.meta?.menu) return;
+    if (!value.meta) return;
     const item: RouteMenu = {
       title: value.meta.title,
       name: value.name,
@@ -121,10 +122,21 @@ export const getMenuRoutes = (routes: Route[], rootName: string = '') => {
   return routes.reduce(isMenuRoute, []);
 };
 
-export const getRouteMenuByType = (routes: Route[], routeName: string, menuType: true | 'app' | 'module'): RouteMenu[] => {
+export const getRouteMenuByType = (routes: Route[], routeName: string, menuType: MenuType): RouteMenu[] => {
   const routeStack = getRouteParent(routes, routeName);
-  const find = ({ meta, children }: Route) => meta?.menu === menuType || children && children.some(find)
-  const filtered = routeStack.filter(find);
+  const find = (result: Route[], value: Route): Route[] => {
+    if (Array.isArray(value.children) && value.meta?.menu === menuType) value.children = value.children.reduce(find, []);
+    if (value.meta?.menu === menuType) result.push(value);
+    if (Array.isArray(value.children) && value.meta?.menu !== menuType) {
+      const children = value.children.reduce(find, []);
+      children.forEach(e => {
+        result.push(e);
+      })
+    }
 
-  return getMenuRoutes(filtered);
+    return result;
+  }
+  const items = routeStack.reduce(find, []);
+
+  return getMenuRoutes(items);
 };

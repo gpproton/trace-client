@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { IModule } from '@trace/shared';
 import LinkSecondaryItem from './LinkSecondaryItem.vue';
+import type { RouteMenu } from '@trace/base/types';
 
 defineOptions({ name: 'SidebarListItem' });
 
 interface IProps {
-  item: IModule;
+  item: RouteMenu;
   dense?: boolean;
   iconSize?: string;
 }
@@ -17,7 +17,7 @@ withDefaults(defineProps<IProps>(), {
 </script>
 
 <template>
-  <q-item v-if="item.items == undefined" :to="{ name: item.name }" clickable :dense="dense"
+  <q-item v-if="item.children == undefined" :to="{ name: item.name }" clickable :dense="dense"
     active-class="app-list-item-active">
     <q-item-section avatar>
       <q-icon :size="iconSize" :name="item.icon" />

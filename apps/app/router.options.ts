@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 16 2024
+ * Modified At: Sun Mar 17 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
@@ -24,6 +24,16 @@ import defaultRoutes, { addCatchAll, addUnAuthorized } from '@/routes.default';
 import { routes as identityRoutes } from '@/app.identity/app-routes';
 import coreRoutes from '@/app.core/app-routes';
 import { ServiceVariant } from '@trace/shared';
+
+export const addAppRoutes = (app: ServiceVariant, component: any, children: Route[]): Route => ({
+  name: app,
+  path: `/${app}`,
+  component: component,
+  children: children,
+  meta: { menu: 'app' },
+  redirect: { name: `${app}.overview` },
+  props: { workspace: app },
+});
 
 export const routes = [
   {
@@ -37,24 +47,11 @@ export const routes = [
       ...defaultRoutes,
     ]
   },
+  addAppRoutes(ServiceVariant.Core, () => import('@/app/Layout.vue'), coreRoutes),
   ...identityRoutes,
 ] as Route[];
 
 export default <RouterConfig>{
-
-  routes: () => {
-    routes.push(addAppRoutes(ServiceVariant.Core, () => import('@/app/Layout.vue'), coreRoutes))
-
-    return routes
-  }
+  routes: () => routes
 }
 
-export const addAppRoutes = (app: ServiceVariant, component: any, children: Route[]): Route => ({
-  name: app,
-  path: `/${app}`,
-  component: component,
-  children: children,
-  meta: { menu: 'app' },
-  redirect: { name: `${app}.overview` },
-  props: { workspace: app },
-});

@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Tuesday, 12th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 16 2024
+ * Modified At: Sun Mar 17 2024
  */
 
 import 'vue-router';
@@ -31,11 +31,12 @@ declare module '#app' {
   }
 }
 
+declare type MenuType = boolean | 'app' | 'module' | 'x';
 declare module "vue-router" {
   interface RouteMeta {
     requiresAuth?: boolean;
     permission?: boolean | ActionState;
-    menu?: boolean | 'app' | 'module';
+    menu?: MenuType;
     title?: string;
     icon?: string;
     keepAlive?: boolean;

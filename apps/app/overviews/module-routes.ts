@@ -15,34 +15,37 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 14th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 15 2024
+ * Modified At: Sun Mar 17 2024
  */
 
 import type { Route } from '@trace/base/types';
+import type { ServiceVariant } from '@trace/shared';
 
-export default {
-  name: 'core.overview',
+export default (service: ServiceVariant): Route => ({
+  name: `${service}.overview`,
   path: 'overview',
-  meta: { menu: 'module' },
-  redirect: { name: 'core.overview.dashboard' },
+  meta: { menu: 'module', title: 'shared.overview' },
+  redirect: { name: `${service}.overview.dashboard` },
   children: [
     {
-      name: 'core.overview.dashboard',
+      name: `${service}.overview.dashboard`,
       path: 'dashboard',
       component: () => import('./pages/Dashboard.vue'),
       meta: {
+        menu: true,
         title: 'shared.dashboard',
         icon: 'sync',
       },
     },
     {
-      name: 'core.overview.trends',
+      name: `${service}.overview.trends`,
       path: 'trends',
       component: () => import('./pages/Trends.vue'),
       meta: {
+        menu: true,
         title: 'shared.trends',
         icon: 'sync',
       },
     },
   ]
-} as Route;
+});

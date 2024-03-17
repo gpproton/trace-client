@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { IModule } from '@trace/shared';
 import SidebarListItem from './SidebarListItem.vue';
+import type { RouteMenu } from '@trace/base/types';
 
 defineOptions({ name: 'SidebarList' });
 
 interface IProps {
-  items: IModule[];
+  items: RouteMenu[];
   mini?: boolean;
 }
 
