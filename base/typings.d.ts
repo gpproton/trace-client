@@ -19,6 +19,10 @@
  */
 
 import 'vue-router';
+import type {
+  RouteRecordName,
+  RouteRecordRedirectOption,
+} from "vue-router";
 import '#app';
 import type { ActionState } from '@trace/model';
 
@@ -43,4 +47,33 @@ declare module "vue-router" {
     isOpen?: boolean;
     getter?: string;
   }
+}
+
+declare interface Route {
+  name: string;
+  path: string;
+  redirect?: RouteRecordRedirectOption | undefined;
+  component?: any;
+  children?: Route[];
+  meta?: RouteMeta;
+  props?: boolean | Record<string, any> | ((to: any) => Record<string, any>);
+}
+
+declare interface RouteData {
+  permission?: ActionState | false;
+  title: string;
+  fullPath: string;
+  icon?: string;
+  keepAlive?: boolean;
+  name: RouteRecordName | null | undefined;
+  isHidden?: unknown;
+  children?: RouteData[];
+}
+
+declare interface RouteMenu {
+  permission?: boolean | ActionState;
+  title?: string;
+  icon?: string;
+  name: RouteRecordName | null | undefined;
+  children?: RouteMenu[];
 }

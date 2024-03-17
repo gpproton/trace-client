@@ -18,13 +18,13 @@
  * Modified At: Sun Mar 17 2024
  */
 
-import type { Route } from '@trace/base/types';
+import type { Route } from '@trace/base/typings';
 import type { ServiceVariant } from '@trace/shared';
 
 export default (service: ServiceVariant): Route => ({
   name: `${service}.overview`,
   path: 'overview',
-  meta: { menu: 'module', title: 'shared.overview' },
+  meta: { menu: 'module', title: 'shared.overview', icon: 'bi-grid' },
   redirect: { name: `${service}.overview.dashboard` },
   children: [
     {
@@ -34,7 +34,7 @@ export default (service: ServiceVariant): Route => ({
       meta: {
         menu: true,
         title: 'shared.dashboard',
-        icon: 'sync',
+        icon: 'bi-grid',
       },
     },
     {
@@ -44,7 +44,7 @@ export default (service: ServiceVariant): Route => ({
       meta: {
         menu: true,
         title: 'shared.trends',
-        icon: 'sync',
+        icon: 'bi-grid',
       },
     },
   ]

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import LinkSecondaryItem from './LinkSecondaryItem.vue';
-import type { RouteMenu } from '@trace/base/types';
+import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: 'SidebarListItem' });
 
@@ -23,7 +23,7 @@ withDefaults(defineProps<IProps>(), {
       <q-icon :size="iconSize" :name="item.icon" />
     </q-item-section>
     <q-item-section class="app-list-item-text">
-      <q-item-label>{{ item.title }}</q-item-label>
+      <q-item-label>{{ $t(item.title as string) }}</q-item-label>
     </q-item-section>
   </q-item>
   <link-secondary-item v-else v-bind="$attrs" :icon-size="iconSize" :item="item" />

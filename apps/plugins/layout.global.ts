@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 22nd Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue Mar 12 2024
+ * Modified At: Sun Mar 17 2024
  */
 
 import { useTagViewStore } from "@/stores/tag-view";
@@ -25,8 +25,8 @@ import { LoadingBar } from "quasar";
 import { storeToRefs } from 'pinia';
 import type { RouteLocationNormalized, Router } from "vue-router";
 import { anonymousRoutes } from '@/app/routes';
-import { getRouteByName } from '@trace/base/types/index';
-import type { RouteData } from '@trace/base/types/index';
+import type { RouteData } from '@trace/base/typings';
+import { getRouteByName } from "@trace/base/types";
 
 export default defineNuxtPlugin(() => {
   const router: Router = useRouter();

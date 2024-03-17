@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SidebarListItem from './SidebarListItem.vue';
-import type { RouteMenu } from '@trace/base/types';
+import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: 'SidebarList' });
 

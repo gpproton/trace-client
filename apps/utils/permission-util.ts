@@ -15,9 +15,9 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed Mar 13 2024
+ * Modified At: Sun Mar 17 2024
  */
-import type { Route } from "@trace/base/types/index";
+import type { Route } from "@trace/base/typings";
 import { useAppPermission } from "@/composables/permission"
 
 export const constructionRouters = (router: Route[]) => {

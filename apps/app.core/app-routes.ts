@@ -18,11 +18,11 @@
  * Modified At: Sun Mar 17 2024
  */
 
-import type { Route } from '@trace/base/types';
 import { addCatchAll, addUnAuthorized } from '@/routes.default';
 import addOverviewRoute from '@/app/overviews/module-routes';
 import addContactRoute from '@/app/contacts/module-routes';
 import { ServiceVariant } from '@trace/shared';
+import type { Route } from '@trace/base/typings';
 
 export default [
   addCatchAll(ServiceVariant.Core),

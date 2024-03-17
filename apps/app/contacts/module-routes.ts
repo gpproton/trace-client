@@ -18,7 +18,7 @@
  * Modified At: Sun Mar 17 2024
  */
 
-import type { Route } from '@trace/base/types';
+import type { Route } from '@trace/base/typings';
 import type { ServiceVariant } from '@trace/shared';
 
 export default (service: ServiceVariant): Route => ({
@@ -28,6 +28,6 @@ export default (service: ServiceVariant): Route => ({
   meta: {
     menu: 'module',
     title: 'shared.contacts',
-    icon: 'sync',
+    icon: 'bi-people',
   },
 });

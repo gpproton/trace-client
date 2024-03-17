@@ -4,15 +4,16 @@ import SidebarList from '@/components/drawer/SidebarList.vue';
 import SidebarHeader from '@/components/drawer/SidebarHeader.vue';
 import SidebarUser from '@/components/drawer/SidebarUser.vue';
 import ThemeSwitcher from '@/components/extra/ThemeSwitcher.vue';
+import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: 'DesktopSidebar' });
 
 interface IProps {
   name: string;
   userProfile: IProfile;
-  overviewMenu: IModule[];
-  secondaryMenu: IModule[];
-  identityMenu: IModule[];
+  overviewMenu?: RouteMenu[];
+  secondaryMenu: RouteMenu[];
+  // identityMenu: RouteMenu[];
 }
 
 const props = withDefaults(defineProps<IProps>(), {
@@ -43,12 +44,12 @@ onUnmounted(() => clearTimeout(timeout.value));
     <sidebar-header v-model="drawerMiniState" class="q-mt-sm" :name="props.name" />
     <q-scroll-area class="fit fixed-bottom" style="padding-top: 96px; padding-bottom: 110px">
       <div v-show="!showIdentity">
-        <sidebar-list :items="overviewMenu" />
+        <!-- <sidebar-list :items="overviewMenu" /> -->
         <q-separator class="q-mx-sm" />
         <sidebar-list :items="secondaryMenu" />
       </div>
       <div v-show="showIdentity">
-        <sidebar-list :items="identityMenu" />
+        <!-- <sidebar-list :items="identityMenu" /> -->
       </div>
     </q-scroll-area>
 
@@ -59,7 +60,6 @@ onUnmounted(() => clearTimeout(timeout.value));
         <q-btn v-show="showIdentity" no-caps size="lg" color="primary" text-color="primary-inverted"
           icon="bi-box-arrow-in-right" label="Sign Out" class="full-width text-weight-thin border-radius-sm q-my-md" />
       </div>
-
       <!-- App user widget for mini and normal state -->
       <sidebar-user @click="toggleIdentityMenu" $mini="drawerMiniState" :profile="userProfile"
         :class="drawerMiniState ? 'q-mb-sm' : 'full-width q-px-sm q-mb-sm'" />

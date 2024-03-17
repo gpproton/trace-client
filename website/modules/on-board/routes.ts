@@ -15,10 +15,10 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Feb 22 2024
+ * Modified At: Sun Mar 17 2024
  */
 
-import type { Route } from '@trace/base/types/index';
+import type { Route } from '@trace/base/typings';
 
 export const onboardRoutes: Route[] = [
   {

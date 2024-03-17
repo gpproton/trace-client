@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { type Route } from "@trace/base/types/index"
+import { type Route } from "@trace/base/typings"
 
 export const useRouterStore = defineStore(
   'routes',

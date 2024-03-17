@@ -19,11 +19,11 @@
  */
 
 import type { RouterConfig } from '@nuxt/schema';
-import type { Route } from '@trace/base/types';
 import defaultRoutes, { addCatchAll, addUnAuthorized } from '@/routes.default';
 import { routes as identityRoutes } from '@/app.identity/app-routes';
 import coreRoutes from '@/app.core/app-routes';
 import { ServiceVariant } from '@trace/shared';
+import type { Route } from '@trace/base/typings';
 
 export const addAppRoutes = (app: ServiceVariant, component: any, children: Route[]): Route => ({
   name: app,

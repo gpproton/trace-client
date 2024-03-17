@@ -15,11 +15,11 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue Mar 12 2024
+ * Modified At: Sun Mar 17 2024
  */
 
 import { defineStore } from 'pinia';
-import type { RouteData } from "@trace/base/types/index";
+import type { RouteData } from "@trace/base/typings";
 import type { RouteRecordNormalized, LocationQuery } from "vue-router";
 import { getFirst } from "@trace/base/utils/index";
 

@@ -18,42 +18,7 @@
  * Modified At: Sun Mar 17 2024
  */
 
-import type { MenuType } from "@/typings";
-import type { ActionState } from "@trace/model";
-import type {
-  RouteMeta,
-  RouteRecordName,
-  RouteRecordRedirectOption,
-} from "vue-router";
-
-export interface Route {
-  name: string;
-  path: string;
-  redirect?: RouteRecordRedirectOption | undefined;
-  component?: any;
-  children?: Route[];
-  meta?: RouteMeta;
-  props?: boolean | Record<string, any> | ((to: any) => Record<string, any>);
-}
-
-export interface RouteData {
-  permission?: ActionState | false;
-  title: string;
-  fullPath: string;
-  icon?: string;
-  keepAlive?: boolean;
-  name: RouteRecordName | null | undefined;
-  isHidden?: unknown;
-  children?: RouteData[];
-}
-
-export interface RouteMenu {
-  permission?: boolean | ActionState;
-  title?: string;
-  icon?: string;
-  name: RouteRecordName | null | undefined;
-  children?: RouteMenu[];
-}
+import type { MenuType, Route, RouteMenu } from "@/typings";
 
 export const getRouteByName = (routes: Route[], name: string): Route | undefined => {
   const isRouteName = (element: Route): boolean => {
@@ -71,7 +36,7 @@ export const getRouteChildren = (routes: Route[], name: string): Route[] => {
   return typeof (result?.children) !== 'undefined' ? result?.children : [];
 }
 
-export const getRoutesByName = (routes: Route[], names: string[]) => {
+export const getRoutesByNames = (routes: Route[], names: string[]): Route[] => {
   /** names array filter helper function */
   const filterRouteByNames = (element: Route): boolean => {
     if (names.includes(element.name)) return true;
@@ -80,7 +45,7 @@ export const getRoutesByName = (routes: Route[], names: string[]) => {
     return false;
   }
 
-  routes.filter(filterRouteByNames);
+  return routes.filter(filterRouteByNames);
 }
 
 export const getAuthenticatedRoutes = (routes: Route[], authenticated: boolean = true): Route[] => {
@@ -105,7 +70,7 @@ export const getRouteParent = (routes: Route[], routeName: string): Route[] => {
 export const getMenuRoutes = (routes: Route[], rootName: string = '') => {
   /** menu filter helper function */
   const isMenuRoute = (result: RouteMenu[], value: Route): any => {
-    if (!value.meta) return;
+    if (value.meta.menu === undefined) return;
     const item: RouteMenu = {
       title: value.meta.title,
       name: value.name,
@@ -139,4 +104,10 @@ export const getRouteMenuByType = (routes: Route[], routeName: string, menuType:
   const items = routeStack.reduce(find, []);
 
   return getMenuRoutes(items);
+};
+
+export const getMenusByNames = (routes: Route[], names: string[], menuType: MenuType = true): RouteMenu[] => {
+  const filtered = getRoutesByNames(routes, names);
+
+  return getMenuRoutes(filtered);
 };
