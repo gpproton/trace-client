@@ -26,6 +26,7 @@ export default {
   calendar: 'Calendar',
   engagements: 'Engagements',
   activities: 'Activities',
+  leads: 'Leads',
   liveTracking: 'Tracking',
   locations: 'Locations',
   routes: 'Routes',

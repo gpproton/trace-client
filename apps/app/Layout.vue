@@ -16,13 +16,12 @@ import RouterInject from '@/components/RouterInject.vue';
 import { getRouteMenuByType } from '@trace/base/types';
 import type { RouteMenu } from '@trace/base/typings';
 
-// NOTE: Affects nested layout if enabled
-// defineOptions({ name: 'Layout' });
-
 const router = useRouter();
-const route = useRoute();
-
-let modulesMenu = getRouteMenuByType(router.options.routes, route.name, ['module', true]);
+const route = router.currentRoute.value;
+const modulesMenu: RouteMenu[] = getRouteMenuByType(router.options.routes, route.name, ['module', true]);
+const featureMenu: RouteMenu[] = getRouteMenuByType(router.options.routes, route.name, [true]);
+const mobileMenu: RouteMenu[] = [];
+const mobileOverflowMenu: RouteMenu[] = [];
 
 const {
   identityItems,
@@ -38,10 +37,6 @@ interface IProps {
 
 const props = withDefaults(defineProps<IProps>(), {
   name: 'Trace',
-});
-
-onMounted(() => {
-  console.log(modulesMenu);
 });
 
 const showTitle = ref(true);
@@ -70,25 +65,23 @@ initializeTheme();
   <q-layout view="lHr lpR fFf" @resize="setSize">
     <!-- TODO: re-evaluate desktop sidebar -->
     <slot name="desktop-sidebar">
-      <desktop-sidebar v-if="isDesktop" v-model="showPrimarySidebar" $dark-mode="isDark" :drawer-mini-state="primaryMiniState"
-        $show-identity="showIdentityList" :name="name" :secondary-menu="modulesMenu" :user-profile="profileData" @update:dark-mode="setThemeState" />
+      <desktop-sidebar v-if="isDesktop" v-model="showPrimarySidebar" v-model:dark-mode="isDark" :drawer-mini-state="primaryMiniState"
+        v-model:show-identity="showIdentityList" :name="name" :secondary-menu="modulesMenu" :user-profile="profileData" @update:dark-mode="setThemeState" />
     </slot>
     <q-page-container>
       <q-layout view="lhr lpr lfr">
         <slot name="mobile-header">
-          <mobile-header v-show="!isDesktop" $title="title" $search="search" />
+          <mobile-header v-show="!isDesktop" v-model:title="title" v-model:search="search" />
         </slot>
         <!-- TODO: re-evaluate desktop header -->
         <slot name="desktop-header">
           <desktop-header v-show="isDesktop" v-model="showSecondarySidebar" $search="search" $title="title"
-            $show-title="showTitle" :quick-commands="quickCreateItems" :notification-tabs="notificationTabs" />
+            v-model:show-title="showTitle" :quick-commands="quickCreateItems" :notification-tabs="notificationTabs" />
         </slot>
-
         <!-- TODO: re-evaluate desktop secondary sidebar -->
-        <!-- <slot name="desktop-secondary-sidebar">
-          <desktop-secondary-sidebar v-if="isDesktop && secondaryItemList.length > 0" v-model="showSecondarySidebar"
-            $items="secondaryItemList" $title="title" />
-        </slot> -->
+        <slot name="desktop-secondary-sidebar" v-if="isDesktop && featureMenu.length > 0">
+          <desktop-secondary-sidebar :menu-items="featureMenu" v-model="showSecondarySidebar" $title="title" />
+        </slot>
 
         <q-page-container class="bg-app-container">
           <slot>
@@ -98,9 +91,9 @@ initializeTheme();
       </q-layout>
     </q-page-container>
     <!-- TODO: re-evaluate mobile navigation -->
-    <!-- <slot name="mobile-bottom-menu">
-      <mobile-bottom-menu style="display: none" :style="isMobile ? { display: 'flex' } : {}" :items="mobileItems"
-        :overflow-items="mobileOverviewItems" />
-    </slot> -->
+    <slot name="mobile-bottom-menu">
+      <mobile-bottom-menu style="display: none" :style="isMobile ? { display: 'flex' } : {}" :items="mobileMenu"
+        :overflow-items="mobileOverflowMenu" />
+    </slot>
   </q-layout>
 </template>

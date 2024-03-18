@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import type { IModule } from '@trace/shared';
 import SidebarListItem from '@/components/drawer/SidebarListItem.vue';
+import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: "DesktopSecondarySidebar" });
 
-const { modelValue, title, items } = defineModels<{
+interface IProps {
+  menuItems: RouteMenu[];
+}
+
+withDefaults(defineProps<IProps>(), {});
+
+const { modelValue, title } = defineModels<{
   modelValue: ModelOptions<boolean, { defaultValue: false; deep: true }>;
   title:  ModelOptions<string, { defaultValue: 'Secondary Title'; deep: true }>;
-  items: IModule[];
 }>();
-
-onMounted(() => {
-  if (items.value.length > 0) {
-    modelValue.value = true;
-  }
-});
 </script>
 
 <template>
@@ -26,9 +25,9 @@ onMounted(() => {
     </q-toolbar>
     <q-separator size="1" class="q-mb-md" />
     <q-list padding class="text-primary">
-      <template v-for="(item, index) in items" :key="index">
+      <template v-for="(item, index) in menuItems" :key="index">
         <sidebar-list-item :item="item" :dense="false" />
-        <q-separator v-if="item.separator" :key="'sep' + index" />
+        <!-- <q-separator v-if="item.separator" :key="'sep' + index" /> -->
       </template>
     </q-list>
   </q-drawer>

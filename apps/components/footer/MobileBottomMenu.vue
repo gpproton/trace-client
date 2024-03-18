@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { IModule } from '@trace/shared';
+import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: 'MobileBottomMenu' });
 
 interface IProps {
-  items: IModule[];
-  overflowItems?: IModule[];
+  items: RouteMenu[];
+  overflowItems?: RouteMenu[];
 }
 
 const props = withDefaults(defineProps<IProps>(), {
@@ -37,7 +37,7 @@ const moreItems = ref(false);
     </q-menu>
     <q-tabs v-model="state" active-color="action" align="justify" no-caps switch-indicator narrow-indicator
       indicator-color="action" content-class="mobile-footer-item" class="text-space">
-      <q-route-tab v-for="(item, index) in props.items" :key="index" :name="item.name" :to="{ name: item.name }"
+      <q-route-tab v-for="(item, index) in props.items" :key="index" :name="item.name as string" :to="{ name: item.name }"
         :icon="item.icon" class="border-radius-md">
         <q-badge v-show="item.name === 'overview'" floating color="red-7" rounded>
           {{ '23+' }}
