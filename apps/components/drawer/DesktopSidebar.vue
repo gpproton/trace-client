@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IModule, IProfile } from '@trace/shared';
+import type { IProfile } from '@trace/shared';
 import SidebarList from '@/components/drawer/SidebarList.vue';
 import SidebarHeader from '@/components/drawer/SidebarHeader.vue';
 import SidebarUser from '@/components/drawer/SidebarUser.vue';
@@ -13,7 +13,7 @@ interface IProps {
   userProfile: IProfile;
   overviewMenu?: RouteMenu[];
   secondaryMenu: RouteMenu[];
-  // identityMenu: RouteMenu[];
+  identityMenu: RouteMenu[];
 }
 
 const props = withDefaults(defineProps<IProps>(), {
@@ -49,7 +49,7 @@ onUnmounted(() => clearTimeout(timeout.value));
         <sidebar-list :items="secondaryMenu" />
       </div>
       <div v-show="showIdentity">
-        <!-- <sidebar-list :items="identityMenu" /> -->
+        <sidebar-list :items="identityMenu" />
       </div>
     </q-scroll-area>
 

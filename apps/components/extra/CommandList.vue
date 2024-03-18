@@ -22,7 +22,7 @@ const closeModal = (value: boolean) => {
       <q-item-section class="no-margin no-padding" avatar>
         <q-icon color="primary" :name="quickCreateItem.icon" />
       </q-item-section>
-      <q-item-section class="text-body1 text-weight-bold text-primary" style="margin-left: -1rem">
+      <q-item-section class="text-body1 text-weight-bold text-primary no-wrap" style="margin-left: -1rem">
         {{ quickCreateItem.title }}
       </q-item-section>
 

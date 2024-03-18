@@ -15,10 +15,11 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 17 2024
+ * Modified At: Tue Mar 19 2024
  */
 
 export default {
+  help: "Help",
   overview: "Overview",
   dashboard: "Dashboard",
   trends: "Trends",
@@ -32,6 +33,8 @@ export default {
   routes: 'Routes',
   notification: "Notification",
   user: "User",
+  account: "Account",
+  settings: "Settings",
   profileType: "Profile Type",
   workflowType: "Workflow Type",
   gettingStarted: "Getting Started",

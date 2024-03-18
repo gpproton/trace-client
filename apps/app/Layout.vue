@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 import { useLayoutStore } from '@/stores/layout';
 import { useThemeStore } from '@/stores/theme';
-import type { ServiceVariant } from '@trace/shared';
+import type { IModule, IModuleCommands, ServiceVariant } from '@trace/shared';
 import DesktopHeader from '@/components/header/DesktopHeader.vue';
 import DesktopSidebar from '@/components/drawer/DesktopSidebar.vue';
 import DesktopSecondarySidebar from '@/components/drawer/DesktopSecondarySidebar.vue';
 import MobileHeader from '@/components/header/MobileHeader.vue';
 import MobileBottomMenu from '@/components/footer/MobileBottomMenu.vue';
 import { profileData } from '@trace/shared';
-import SampleNavigation from '@trace/shared/SampleNavigation';
 import RouterInject from '@/components/RouterInject.vue';
 import { getRouteMenuByType } from '@trace/base/types';
 import type { RouteMenu } from '@trace/base/typings';
@@ -23,19 +22,50 @@ const featureMenu: RouteMenu[] = getRouteMenuByType(router.options.routes, route
 const mobileMenu: RouteMenu[] = [];
 const mobileOverflowMenu: RouteMenu[] = [];
 
-const {
-  identityItems,
-  quickCreateItems,
-  notificationTabs,
-} = SampleNavigation;
-
-
 interface IProps {
   name?: string;
   workspace?: ServiceVariant;
 }
 
-const props = withDefaults(defineProps<IProps>(), {
+
+const quickCreateItems: IModuleCommands[] = [
+{
+  name: 'action-1',
+  title: 'Action 1',
+  icon: 'bi-check-circle',
+  command: '1',
+},
+{
+  name: 'action-2',
+  title: 'Action 2',
+  icon: 'bi-file-earmark-text',
+  path: 'sample-2',
+  command: '2',
+}
+];
+const identityItems: RouteMenu[] = [
+    { title: 'shared.account', icon: 'bi-person', name: 'account.profile' },
+    {
+      title: 'shared.settings',
+      icon: 'bi-gear-wide-connected',
+      name: 'account.settings',
+    },
+    { title: 'shared.help', icon: 'bi-question-circle', name: 'help' },
+];
+const notificationTabs: IModule[] = [
+    {
+      name: '1',
+      icon: '',
+      title: 'Task',
+    },
+    {
+      name: '2',
+      icon: '',
+      title: 'Unread',
+    },
+ ];
+
+withDefaults(defineProps<IProps>(), {
   name: 'Trace',
 });
 
@@ -58,7 +88,6 @@ const { isDark } = storeToRefs(theme);
 const { setSize } = breakpointStates;
 const { initializeTheme, setThemeState } = theme;
 initializeTheme();
-
 </script>
 
 <template>
@@ -66,7 +95,7 @@ initializeTheme();
     <!-- TODO: re-evaluate desktop sidebar -->
     <slot name="desktop-sidebar">
       <desktop-sidebar v-if="isDesktop" v-model="showPrimarySidebar" v-model:dark-mode="isDark" :drawer-mini-state="primaryMiniState"
-        v-model:show-identity="showIdentityList" :name="name" :secondary-menu="modulesMenu" :user-profile="profileData" @update:dark-mode="setThemeState" />
+        v-model:show-identity="showIdentityList" :name="name" :identity-menu="identityItems" :secondary-menu="modulesMenu" :user-profile="profileData" @update:dark-mode="setThemeState" />
     </slot>
     <q-page-container>
       <q-layout view="lhr lpr lfr">
