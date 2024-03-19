@@ -35,7 +35,7 @@ const props = withDefaults(defineProps<IProps>(), {
 </template>
 
 <style lang="scss" scoped>
-@import '../styles/list-items.scss';
+@import '../styles/list-items';
 
 :deep(.q-item) {
   border-radius: $border-radius-sm;

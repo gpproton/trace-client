@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SidebarListItem from '@/components/drawer/SidebarListItem.vue';
+import LinkItem from '@/components/drawer/LinkItem.vue';
 import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: "DesktopSecondarySidebar" });
@@ -19,7 +19,7 @@ const { modelValue, title, menuItems } = defineModels<{
     <q-separator size="1" class="q-mb-md" />
     <q-list padding class="text-primary">
       <template v-for="(item, index) in menuItems" :key="index">
-        <sidebar-list-item :item="item" :dense="false" />
+        <link-item :item="item" :dense="false" />
         <q-separator v-if="index !== menuItems.length - 1" :key="'sep' + index" />
       </template>
     </q-list>
