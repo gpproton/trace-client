@@ -29,13 +29,15 @@ export const useLanguageStore = defineStore(
     const language = ref<string>();
     const getLocale = computed(() => locale.value);
     const getActiveCountry = computed<string>(() => {
-      const value = languageSelection.find((item) => item.value === locale.value);
+      const value = languageSelection.find(
+        (item) => item.value === locale.value,
+      );
       return value?.countryCode ?? 'US';
     });
 
     const setLocale = (value: string) => {
       language.value = value;
-      locale.value = value
+      locale.value = value;
     };
 
     const bootstrapLocale = () => {
@@ -49,10 +51,10 @@ export const useLanguageStore = defineStore(
       getLocale,
       getActiveCountry,
       setLocale,
-      bootstrapLocale
+      bootstrapLocale,
     };
   },
   {
-    persist: true
-  }
+    persist: true,
+  },
 );

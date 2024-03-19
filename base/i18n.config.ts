@@ -22,18 +22,18 @@ import { defaultTranslation, defaultLanguage } from '@trace/locales';
 
 const loadLocaleMessages = () => {
   const locales = import.meta.glob('../locales/output/*.json', { eager: true });
-  const messages: Record<string, any> = {}
-  Object.keys(locales).forEach(key => {
-    const matched = key.match(/([A-Za-z0-9-_]+)\./i)
+  const messages: Record<string, any> = {};
+  Object.keys(locales).forEach((key) => {
+    const matched = key.match(/([A-Za-z0-9-_]+)\./i);
     if (matched && matched.length > 1) {
-      const locale = matched[1]
-      messages[locale] = locales[key]
+      const locale = matched[1];
+      messages[locale] = locales[key];
     }
   });
   messages[defaultLanguage] = defaultTranslation;
 
-  return messages
-}
+  return messages;
+};
 
 export default defineI18nConfig(() => {
   const messages = loadLocaleMessages();
@@ -42,6 +42,6 @@ export default defineI18nConfig(() => {
     legacy: false,
     globalInjection: true,
     locale: defaultLanguage,
-    messages
-  }
+    messages,
+  };
 });

@@ -1,15 +1,15 @@
-import { Notify, LoadingBar } from "quasar";
+import { Notify, LoadingBar } from 'quasar';
 
 export default defineNuxtPlugin(() => {
   Notify.setDefaults({
     progress: true,
-    position: "top",
+    position: 'top',
     timeout: 3000,
   });
 
   LoadingBar.setDefaults({
-    color: "primary",
-    size: "2.5px",
-    position: "top",
+    color: 'primary',
+    size: '2.5px',
+    position: 'top',
   });
-})
+});

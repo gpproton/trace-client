@@ -18,52 +18,67 @@
  * Modified At: Tue Mar 19 2024
  */
 
-import type { MenuType, Route, RouteMenu } from "@/typings";
+import type { MenuType, Route, RouteMenu } from '@/typings';
 
-export const getRouteByName = (routes: Route[], name: string): Route | undefined => {
+export const getRouteByName = (
+  routes: Route[],
+  name: string,
+): Route | undefined => {
   const isRouteName = (element: Route): boolean => {
     if (element.name === name) return true;
     if (Array.isArray(element.children)) element.children.find(isRouteName);
 
     return false;
-  }
+  };
 
   return routes.find(isRouteName);
 };
 
 export const getRouteChildren = (routes: Route[], name: string): Route[] => {
   const result = getRouteByName(routes, name);
-  return typeof (result?.children) !== 'undefined' ? result?.children : [];
-}
+  return typeof result?.children !== 'undefined' ? result?.children : [];
+};
 
 export const getRoutesByNames = (routes: Route[], names: string[]): Route[] => {
   /** names array filter helper function */
   const filterRouteByNames = (element: Route): boolean => {
     if (names.includes(element.name)) return true;
-    if (Array.isArray(element.children)) element.children.filter(filterRouteByNames);
+    if (Array.isArray(element.children))
+      element.children.filter(filterRouteByNames);
 
     return false;
-  }
+  };
 
   return routes.filter(filterRouteByNames);
-}
+};
 
-export const getAuthenticatedRoutes = (routes: Route[], authenticated: boolean = true): Route[] => {
+export const getAuthenticatedRoutes = (
+  routes: Route[],
+  authenticated: boolean = true,
+): Route[] => {
   /** auth filter helper function */
   const filterRoute = (element: Route): boolean => {
     let authState: boolean = false;
-    if (!authenticated) authState = typeof (element.meta?.permission) === 'boolean' && !element.meta?.permission;
-    if (authenticated && typeof (element.meta?.permission) !== 'boolean') authState = typeof (element.meta?.permission) === 'undefined' || typeof (element.meta?.permission) === 'object' || element.meta?.requiresAuth === true;
+    if (!authenticated)
+      authState =
+        typeof element.meta?.permission === 'boolean' &&
+        !element.meta?.permission;
+    if (authenticated && typeof element.meta?.permission !== 'boolean')
+      authState =
+        typeof element.meta?.permission === 'undefined' ||
+        typeof element.meta?.permission === 'object' ||
+        element.meta?.requiresAuth === true;
     if (Array.isArray(element.children)) element.children.filter(filterRoute);
 
     return authState;
-  }
+  };
 
   return routes.filter(filterRoute);
-}
+};
 
 export const getRouteParent = (routes: Route[], routeName: string): Route[] => {
-  const find = ({ name, children }: Route) => name === routeName || children && children.some(find);
+  const find = ({ name, children }: Route) =>
+    name === routeName || (children && children.some(find));
   return routes.filter(find);
 };
 
@@ -77,39 +92,44 @@ export const getMenuRoutes = (routes: Route[], rootName: string = '') => {
       icon: value.meta.icon,
       permission: value.meta.permission,
       hideChildren: value.meta.hideChildren,
-    }
+    };
     if (value.children) item.children = value.children.reduce(isMenuRoute, []);
-    result.push(item)
+    result.push(item);
 
     return result;
-  }
-  if (rootName.length > 0) return getRouteChildren(routes, rootName).reduce(isMenuRoute, []);
+  };
+  if (rootName.length > 0)
+    return getRouteChildren(routes, rootName).reduce(isMenuRoute, []);
 
   return routes.reduce(isMenuRoute, []);
 };
 
-export const getRouteMenuByType = (routes: Route[], routeName: string, menuTypes: MenuType[]): RouteMenu[] => {
+export const getRouteMenuByType = (
+  routes: Route[],
+  routeName: string,
+  menuTypes: MenuType[],
+): RouteMenu[] => {
   const routeStack = getRouteParent(routes, routeName);
   const find = (result: Route[], value: Route): Route[] => {
     const isFound = menuTypes.includes(value.meta?.menu);
-    if (Array.isArray(value.children) && isFound) value.children = value.children.reduce(find, []);
+    if (Array.isArray(value.children) && isFound)
+      value.children = value.children.reduce(find, []);
     if (isFound) result.push(value);
     if (Array.isArray(value.children) && !isFound) {
       const children = value.children.reduce(find, []);
-      children.forEach(e => {
+      children.forEach((e) => {
         result.push(e);
-      })
+      });
     }
 
     return result;
-  }
+  };
   const items = routeStack.reduce(find, []);
 
   return getMenuRoutes(items);
 };
 
-export const getMenusByNames = (routes: Route[], names: string[], menuType: MenuType = true): RouteMenu[] => {
-  const filtered = getRoutesByNames(routes, names);
-
-  return getMenuRoutes(filtered);
-};
+export const getMenusByNames = (
+  routes: Route[],
+  names: string[],
+): RouteMenu[] => getMenuRoutes(getRoutesByNames(routes, names));

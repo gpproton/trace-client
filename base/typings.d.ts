@@ -19,10 +19,7 @@
  */
 
 import 'vue-router';
-import type {
-  RouteRecordName,
-  RouteRecordRedirectOption,
-} from "vue-router";
+import type { RouteRecordName, RouteRecordRedirectOption } from 'vue-router';
 import '#app';
 import type { ActionState } from '@trace/model';
 
@@ -30,13 +27,13 @@ declare module '@vue-js-cron/quasar';
 
 declare module '#app' {
   interface NuxtApp {
-    $permit(action: ActionState): boolean
-    $permission(action: ActionState): boolean
+    $permit(action: ActionState): boolean;
+    $permission(action: ActionState): boolean;
   }
 }
 
 declare type MenuType = boolean | 'app' | 'module' | 'x';
-declare module "vue-router" {
+declare module 'vue-router' {
   interface RouteMeta {
     requiresAuth?: boolean;
     permission?: boolean | ActionState;

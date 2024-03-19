@@ -3,7 +3,7 @@ import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import { onMounted } from 'vue';
 import { useLanguageStore } from '@/stores/language';
 
-defineOptions({ name: 'AppRoot' });;
+defineOptions({ name: 'AppRoot' });
 
 interface IProps {
   layout?: string;
@@ -22,11 +22,11 @@ onMounted(() => {
 
 <template>
   <loading-indicator>
-      <NuxtPwaAssets />
-      <!-- TODO: apply image to PWA components later -->
-      <!-- <PwaFaviconImage /> -->
-      <!-- <PwaMaskableImage /> -->
-      <!-- <PwaTransparentImage /> -->
-      <NuxtPage />
+    <NuxtPwaAssets />
+    <!-- TODO: apply image to PWA components later -->
+    <!-- <PwaFaviconImage /> -->
+    <!-- <PwaMaskableImage /> -->
+    <!-- <PwaTransparentImage /> -->
+    <NuxtPage />
   </loading-indicator>
 </template>
