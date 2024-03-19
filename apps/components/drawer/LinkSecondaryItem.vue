@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<IProps>(), {
 
 <template>
   <q-expansion-item :expand-separator="item.separator" :icon="props.item.icon" :label="$t(props.item.title as string)"
-    :hide-expand-icon="item.children == undefined"
+    :hide-expand-icon="item.children == undefined || item.hideChildren"
     :class="iconSize.length > 0 ? 'seperator-icon' : ''" active-class="app-list-item-active" :to="props.item.name !== undefined ? { name: props.item.name } : { name: '#' }
       ">
     <q-list v-if="item.children !== undefined" :dense="props.dense" bordered padding>

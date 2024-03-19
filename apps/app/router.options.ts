@@ -25,14 +25,14 @@ import coreRoutes from '@/app.core/app-routes';
 import { ServiceVariant } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
-export const addAppRoutes = (app: ServiceVariant, component: any, children: Route[]): Route => ({
+export const addAppRoutes = (app: ServiceVariant, component: any, children: Route[], overview: string[] = []): Route => ({
   name: app,
   path: `/${app}`,
   component: component,
   children: children,
   meta: { menu: 'app' },
   redirect: { name: `${app}-overview` },
-  props: { workspace: app },
+  props: { workspace: app, overviewFilter: overview },
 });
 
 export const routes = [
@@ -47,7 +47,7 @@ export const routes = [
       ...defaultRoutes,
     ]
   },
-  addAppRoutes(ServiceVariant.Core, () => import('@/app/Layout.vue'), coreRoutes),
+  addAppRoutes(ServiceVariant.Core, () => import('@/app/Layout.vue'), coreRoutes, ['core-overview', 'core-calendar']),
   ...identityRoutes,
 ] as Route[];
 

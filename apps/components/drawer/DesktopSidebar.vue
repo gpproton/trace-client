@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IProfile } from '@trace/shared';
+import type { IProfile, ServiceVariant } from '@trace/shared';
 import SidebarList from '@/components/drawer/SidebarList.vue';
 import SidebarHeader from '@/components/drawer/SidebarHeader.vue';
 import SidebarUser from '@/components/drawer/SidebarUser.vue';
@@ -9,22 +9,22 @@ import type { RouteMenu } from '@trace/base/typings';
 defineOptions({ name: 'DesktopSidebar' });
 
 interface IProps {
-  name: string;
   userProfile: IProfile;
   identityMenu: RouteMenu[];
+  overviewFilter: string[];
 }
 
-const props = withDefaults(defineProps<IProps>(), {
-  name: 'Trace',
-});
-const { modelValue, darkMode, drawerMiniState, showIdentity, overviewMenu, secondaryMenu } = defineModels<{
+const props = defineProps<IProps>();
+const { modelValue, workspace, darkMode, drawerMiniState, showIdentity, modules } = defineModels<{
+  workspace: ServiceVariant;
   modelValue: boolean;
   darkMode: boolean;
   drawerMiniState: boolean;
   showIdentity: boolean;
-  overviewMenu?: RouteMenu[];
-  secondaryMenu: RouteMenu[];
+  modules: RouteMenu[];
 }>();
+const overviewModuleMenu = computed(() => modules.value.filter(e => e.name !== undefined && props.overviewFilter.includes(e.name as string)));
+const genralModuleMenu = computed(() => modules.value.filter(e => e.name !== undefined && !props.overviewFilter.includes(e.name as string)));
 
 const timeout = ref();
 const setMiniDrawer = (value: boolean) => drawerMiniState.value = value;
@@ -32,7 +32,8 @@ const toggleIdentityMenu = () => showIdentity.value = !showIdentity.value;
 
 watch(drawerMiniState, () => {
   timeout.value = setTimeout(() => {
-    if (drawerMiniState.value) showIdentity.value = false;
+    // TODO: Review any better option
+    // if (drawerMiniState.value) showIdentity.value = false;
   }, 250);
 });
 onUnmounted(() => clearTimeout(timeout.value));
@@ -41,12 +42,12 @@ onUnmounted(() => clearTimeout(timeout.value));
 <template>
   <q-drawer v-model="modelValue" show-if-above bordered :width="295" :mini-width="64" side="left" :mini="drawerMiniState"
     mini-to-overlay @mouseover="setMiniDrawer(false)" @mouseout="setMiniDrawer(true)">
-    <sidebar-header v-model="drawerMiniState" class="q-mt-sm" :name="props.name" />
+    <sidebar-header v-model="drawerMiniState" v-model:workspace="workspace" class="q-mt-sm" />
     <q-scroll-area class="fit fixed-bottom" style="padding-top: 96px; padding-bottom: 110px">
       <div v-show="!showIdentity">
-        <!-- <sidebar-list :items="overviewMenu" /> -->
+        <sidebar-list :items="overviewModuleMenu" />
         <q-separator class="q-mx-sm" />
-        <sidebar-list :items="secondaryMenu" />
+        <sidebar-list :items="genralModuleMenu" />
       </div>
       <div v-show="showIdentity">
         <sidebar-list :items="identityMenu" />

@@ -1,16 +1,12 @@
 <script setup lang="ts">
 import AppLogo from '@trace/base/icons/logo.svg';
+import type { ServiceVariant } from '@trace/shared';
 
 defineOptions({ name: 'SidebarHeader' });
-const { modelValue } = defineModels<{
+const { modelValue, workspace } = defineModels<{
   modelValue: boolean;
-}>()
-
-interface IProps {
-  name: string;
-}
-
-const props = defineProps<IProps>();
+  workspace: ServiceVariant;
+}>();
 </script>
 
 <template>
@@ -23,7 +19,7 @@ const props = defineProps<IProps>();
       <div class="col-9 row">
         <div class="col-10 text-no-wrap q-pl-md">
           <div class="text-h5 text-weight-medium text-primary">
-            {{ props.name }}
+            {{ workspace.toString() }}
           </div>
           <div class="text-accent-more">
             {{ 'Workspace' }}

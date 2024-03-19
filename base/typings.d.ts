@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Tuesday, 12th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 17 2024
+ * Modified At: Tue Mar 19 2024
  */
 
 import 'vue-router';
@@ -41,6 +41,7 @@ declare module "vue-router" {
     requiresAuth?: boolean;
     permission?: boolean | ActionState;
     menu?: MenuType;
+    hideChildren?: boolean;
     title?: string;
     icon?: string;
     keepAlive?: boolean;
@@ -76,4 +77,5 @@ declare interface RouteMenu {
   icon?: string;
   name: RouteRecordName | null | undefined;
   children?: RouteMenu[];
+  hideChildren?: boolean;
 }

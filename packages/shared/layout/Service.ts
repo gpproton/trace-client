@@ -15,10 +15,11 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 14 2024
+ * Modified At: Tue Mar 19 2024
  */
 
 export enum ServiceVariant {
+  Default = 'default',
   Identity = 'identity',
   Portal = 'portal',
   Track = 'finder',

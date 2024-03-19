@@ -15,6 +15,33 @@ import RouterInject from '@/components/RouterInject.vue';
 import { getRouteMenuByType } from '@trace/base/types';
 import type { RouteMenu } from '@trace/base/typings';
 
+interface IProps {
+  workspace: ServiceVariant;
+  overviewFilter?: string[];
+  mobileFilter?: string[];
+}
+
+const showTitle = ref(true);
+const breakpointStates = useAppBreakpoints();
+const layoutStores = useLayoutStore();
+const theme = useThemeStore();
+const {
+  title,
+  search,
+  showPrimarySidebar,
+  primaryMiniState,
+  showSecondarySidebar,
+  showIdentityList,
+} = storeToRefs(layoutStores);
+
+const { isDesktop, isMobile } = storeToRefs(breakpointStates);
+const { isDark } = storeToRefs(theme);
+const { setSize } = breakpointStates;
+const { initializeTheme, setThemeState } = theme;
+
+// TODO: Move theme trigger to app-root
+initializeTheme();
+
 const modulesMenu = computed<RouteMenu[]>(() => {
     const router = useRouter();
     const route = router.currentRoute.value;
@@ -27,17 +54,21 @@ const moduleFeatures = computed<RouteMenu[]>(() => {
   const routeName: string = route.name;
   const children = modulesMenu.value.filter(e => e.name === routeName.split('.')[0]).flatMap(e => e.children ? e.children : []);
 
-  return children;
+  return route.meta.hideChildren ? [] : children;
+});
+
+watchEffect(() => {
+  showSecondarySidebar.value = isDesktop.value && moduleFeatures.value.length > 0;
 });
 
 const mobileMenu: RouteMenu[] = [];
 const mobileOverflowMenu: RouteMenu[] = [];
+const props = withDefaults(defineProps<IProps>(), {
+  overviewFilter: () => [],
+  mobileFilter: () => []
+});
 
-interface IProps {
-  name?: string;
-  workspace?: ServiceVariant;
-}
-
+const workspaceValue = computed(() => props.workspace);
 const quickCreateItems: IModuleCommands[] = [
 {
   name: 'action-1',
@@ -74,43 +105,14 @@ const notificationTabs: IModule[] = [
       title: 'Unread',
     },
  ];
-
-withDefaults(defineProps<IProps>(), {
-  name: 'Trace',
-});
-
-const showTitle = ref(true);
-const breakpointStates = useAppBreakpoints();
-const layoutStores = useLayoutStore();
-const theme = useThemeStore();
-
-const {
-  title,
-  search,
-  showPrimarySidebar,
-  primaryMiniState,
-  showSecondarySidebar,
-  showIdentityList,
-} = storeToRefs(layoutStores);
-
-const { isDesktop, isMobile } = storeToRefs(breakpointStates);
-const { isDark } = storeToRefs(theme);
-const { setSize } = breakpointStates;
-const { initializeTheme, setThemeState } = theme;
-
-watchEffect(() => {
-  showSecondarySidebar.value = isDesktop.value && moduleFeatures.value.length > 0;
-});
-
-initializeTheme();
 </script>
 
 <template>
   <q-layout view="lHr lpR fFf" @resize="setSize">
     <!-- TODO: re-evaluate desktop sidebar -->
     <slot name="desktop-sidebar">
-      <desktop-sidebar v-if="isDesktop" v-model="showPrimarySidebar" v-model:dark-mode="isDark" :drawer-mini-state="primaryMiniState"
-        v-model:show-identity="showIdentityList" :name="name" :identity-menu="identityItems" :secondary-menu="modulesMenu" :user-profile="profileData" @update:dark-mode="setThemeState" />
+      <desktop-sidebar v-if="isDesktop" v-model:workspace="workspaceValue"  v-model="showPrimarySidebar" v-model:dark-mode="isDark" :drawer-mini-state="primaryMiniState"
+        v-model:show-identity="showIdentityList" :identity-menu="identityItems" v-model:modules="modulesMenu" :user-profile="profileData" @update:dark-mode="setThemeState" :overview-filter="overviewFilter" />
     </slot>
     <q-page-container>
       <q-layout view="lhr lpr lfr">

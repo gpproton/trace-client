@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 17 2024
+ * Modified At: Tue Mar 19 2024
  */
 
 import type { MenuType, Route, RouteMenu } from "@/typings";
@@ -75,7 +75,8 @@ export const getMenuRoutes = (routes: Route[], rootName: string = '') => {
       title: value.meta.title,
       name: value.name,
       icon: value.meta.icon,
-      permission: value.meta.permission
+      permission: value.meta.permission,
+      hideChildren: value.meta.hideChildren,
     }
     if (value.children) item.children = value.children.reduce(isMenuRoute, []);
     result.push(item)

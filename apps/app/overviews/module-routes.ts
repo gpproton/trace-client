@@ -24,7 +24,7 @@ import type { ServiceVariant } from '@trace/shared';
 export default (service: ServiceVariant): Route => ({
   name: `${service}-overview`,
   path: 'overview',
-  meta: { menu: 'module', title: 'shared.overview', icon: 'bi-grid' },
+  meta: { menu: 'module', title: 'shared.overview', icon: 'bi-grid', hideChildren: true },
   redirect: { name: `${service}-overview.dashboard` },
   children: [
     {
