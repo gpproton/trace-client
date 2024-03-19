@@ -2,6 +2,20 @@
   "name": "@trace/apps",
   "private": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drolx/trace-client.git"
+  },
+  "keywords": [
+    "gps",
+    "track"
+  ],
+  "author": "radioActive DROID <me@godwin.dev>",
+  "license": "BSL-1.1",
+  "bugs": {
+    "url": "https://github.com/drolx/trace-client/issues"
+  },
+  "homepage": "https://trace.ng",
   "scripts": {
     "build": "nuxt generate",
     "dev": "nuxt dev --port=3010",
@@ -10,7 +24,10 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "generate-assets": "pnpx pwa-assets-generator",
-    "lint": "eslint ."
+    "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
+    "lint:prettier": "prettier --check .",
+    "lint": "pnpm lint:js && yarn lint:prettier",
+    "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
   },
   "dependencies": {
     "@trace/base": "workspace:*",
