@@ -15,14 +15,14 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 17 2024
+ * Modified At: Tue Mar 19 2024
  */
 
 import type { Route } from '@trace/base/typings';
 import type { ServiceVariant } from '@trace/shared';
 
 export default (service: ServiceVariant): Route => ({
-  name: `${service}.live-tracking`,
+  name: `${service}-live-tracking`,
   path: 'live-tracking',
   component: () => import('./pages/LiveTrackingView.vue'),
   meta: {

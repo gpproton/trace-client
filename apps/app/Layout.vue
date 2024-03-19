@@ -15,10 +15,21 @@ import RouterInject from '@/components/RouterInject.vue';
 import { getRouteMenuByType } from '@trace/base/types';
 import type { RouteMenu } from '@trace/base/typings';
 
-const router = useRouter();
-const route = router.currentRoute.value;
-const modulesMenu: RouteMenu[] = getRouteMenuByType(router.options.routes, route.name, ['module', true]);
-const featureMenu: RouteMenu[] = getRouteMenuByType(router.options.routes, route.name, [true]);
+const modulesMenu = computed<RouteMenu[]>(() => {
+    const router = useRouter();
+    const route = router.currentRoute.value;
+
+    return getRouteMenuByType(router.options.routes, route.name, ['module', true]);
+});
+
+const moduleFeatures = computed<RouteMenu[]>(() => {
+  const route = useRoute();
+  const routeName: string = route.name;
+  const children = modulesMenu.value.filter(e => e.name === routeName.split('.')[0]).flatMap(e => e.children ? e.children : []);
+
+  return children;
+});
+
 const mobileMenu: RouteMenu[] = [];
 const mobileOverflowMenu: RouteMenu[] = [];
 
@@ -26,7 +37,6 @@ interface IProps {
   name?: string;
   workspace?: ServiceVariant;
 }
-
 
 const quickCreateItems: IModuleCommands[] = [
 {
@@ -87,6 +97,11 @@ const { isDesktop, isMobile } = storeToRefs(breakpointStates);
 const { isDark } = storeToRefs(theme);
 const { setSize } = breakpointStates;
 const { initializeTheme, setThemeState } = theme;
+
+watchEffect(() => {
+  showSecondarySidebar.value = isDesktop.value && moduleFeatures.value.length > 0;
+});
+
 initializeTheme();
 </script>
 
@@ -104,12 +119,12 @@ initializeTheme();
         </slot>
         <!-- TODO: re-evaluate desktop header -->
         <slot name="desktop-header">
-          <desktop-header v-show="isDesktop" v-model="showSecondarySidebar" $search="search" $title="title"
+          <desktop-header v-show="isDesktop" v-model="showSecondarySidebar" v-model:show-secondary-sidebar-toogle="showSecondarySidebar" v-model:search="search" $title="title"
             v-model:show-title="showTitle" :quick-commands="quickCreateItems" :notification-tabs="notificationTabs" />
         </slot>
         <!-- TODO: re-evaluate desktop secondary sidebar -->
-        <slot name="desktop-secondary-sidebar" v-if="isDesktop && featureMenu.length > 0">
-          <desktop-secondary-sidebar :menu-items="featureMenu" v-model="showSecondarySidebar" $title="title" />
+        <slot name="desktop-secondary-sidebar" v-if="isDesktop && moduleFeatures.length > 0">
+          <desktop-secondary-sidebar :menu-items="moduleFeatures" v-model="showSecondarySidebar" $title="title" />
         </slot>
 
         <q-page-container class="bg-app-container">

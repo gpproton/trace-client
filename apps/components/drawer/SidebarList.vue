@@ -5,9 +5,12 @@ import type { RouteMenu } from '@trace/base/typings';
 defineOptions({ name: 'SidebarList' });
 
 interface IProps {
-  items: RouteMenu[];
   mini?: boolean;
 }
+
+const { items } = defineModels<{
+  items: RouteMenu[];
+}>();
 
 withDefaults(defineProps<IProps>(), {
   mini: true,

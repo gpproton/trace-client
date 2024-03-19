@@ -15,20 +15,20 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 14th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 17 2024
+ * Modified At: Tue Mar 19 2024
  */
 
 import type { Route } from '@trace/base/typings';
 import type { ServiceVariant } from '@trace/shared';
 
 export default (service: ServiceVariant): Route => ({
-  name: `${service}.overview`,
+  name: `${service}-overview`,
   path: 'overview',
   meta: { menu: 'module', title: 'shared.overview', icon: 'bi-grid' },
-  redirect: { name: `${service}.overview.dashboard` },
+  redirect: { name: `${service}-overview.dashboard` },
   children: [
     {
-      name: `${service}.overview.dashboard`,
+      name: `${service}-overview.dashboard`,
       path: 'dashboard',
       component: () => import('./pages/Dashboard.vue'),
       meta: {
@@ -38,14 +38,14 @@ export default (service: ServiceVariant): Route => ({
       },
     },
     {
-      name: `${service}.overview.trends`,
+      name: `${service}-overview.trends`,
       path: 'trends',
       component: () => import('./pages/Trends.vue'),
       meta: {
         menu: true,
         title: 'shared.trends',
         icon: 'bi-clipboard-data',
-      },
+      }
     },
   ]
 });

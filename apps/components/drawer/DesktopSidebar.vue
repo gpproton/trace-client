@@ -11,19 +11,19 @@ defineOptions({ name: 'DesktopSidebar' });
 interface IProps {
   name: string;
   userProfile: IProfile;
-  overviewMenu?: RouteMenu[];
-  secondaryMenu: RouteMenu[];
   identityMenu: RouteMenu[];
 }
 
 const props = withDefaults(defineProps<IProps>(), {
   name: 'Trace',
 });
-const { modelValue, darkMode, drawerMiniState, showIdentity } = defineModels<{
+const { modelValue, darkMode, drawerMiniState, showIdentity, overviewMenu, secondaryMenu } = defineModels<{
   modelValue: boolean;
   darkMode: boolean;
   drawerMiniState: boolean;
   showIdentity: boolean;
+  overviewMenu?: RouteMenu[];
+  secondaryMenu: RouteMenu[];
 }>();
 
 const timeout = ref();

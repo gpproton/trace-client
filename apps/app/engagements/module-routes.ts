@@ -15,16 +15,16 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 17 2024
+ * Modified At: Tue Mar 19 2024
  */
 
 import type { Route } from '@trace/base/typings';
 import type { ServiceVariant } from '@trace/shared';
 
 export default (service: ServiceVariant): Route => ({
-  name: `${service}.engagements`,
+  name: `${service}-engagements`,
   path: 'engagements',
-  redirect: { name: `${service}.engagements.activities` },
+  redirect: { name: `${service}-engagements.activities` },
   meta: {
     menu: 'module',
     title: 'shared.engagements',
@@ -32,7 +32,7 @@ export default (service: ServiceVariant): Route => ({
   },
   children: [
     {
-      name: `${service}.engagements.activities`,
+      name: `${service}-engagements.activities`,
       path: 'activities',
       component: () => import('./pages/ActivitiesView.vue'),
       meta: {
@@ -42,7 +42,7 @@ export default (service: ServiceVariant): Route => ({
       },
     },
     {
-      name: `${service}.engagements.leads`,
+      name: `${service}-engagements.leads`,
       path: 'leads',
       component: () => import('./pages/LeadsView.vue'),
       meta: {

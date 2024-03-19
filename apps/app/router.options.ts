@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 17 2024
+ * Modified At: Tue Mar 19 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
@@ -31,7 +31,7 @@ export const addAppRoutes = (app: ServiceVariant, component: any, children: Rout
   component: component,
   children: children,
   meta: { menu: 'app' },
-  redirect: { name: `${app}.overview` },
+  redirect: { name: `${app}-overview` },
   props: { workspace: app },
 });
 

@@ -12,12 +12,12 @@ interface IProps {
 }
 
 const bellIconFill = ref(false);
-
 withDefaults(defineProps<IProps>(), {
   notificationTabs: () => [],
 });
 
-const { modelValue, search, title, showTitle } = defineModels<{
+const { modelValue, search, title, showTitle, showSecondarySidebarToogle } = defineModels<{
+  showSecondarySidebarToogle: boolean;
   modelValue: ModelOptions<boolean, { defaultValue: false; deep: true }>;
   search: ModelOptions<string, { defaultValue: ''; deep: true }>;
   title: ModelOptions<string, { defaultValue: 'Title'; deep: true }>;
@@ -29,7 +29,7 @@ const { modelValue, search, title, showTitle } = defineModels<{
   <q-header reveal :elevated="false" class="bg-transparent" height-hint="64" bordered
     style="margin-left: 64px; box-shadow: rgba(0, 0, 0, 0) 0px 2px 12px 0px; padding-bottom: 2px">
     <q-toolbar class="row justify-between q-mt-xs">
-      <div class="q-pr-md">
+      <div v-show="showSecondarySidebarToogle" class="q-pr-md">
         <q-btn dense flat square :icon="modelValue ? 'menu_open' : 'menu'" aria-label="Menu" color="primary" size="lg"
           @click="() => modelValue = !modelValue" />
       </div>
