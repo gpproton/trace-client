@@ -21,14 +21,15 @@ const { modelValue, title, menuItems } = defineModels<{
     behavior="desktop"
     side="left"
     bordered
+    class="q-px-8"
   >
     <q-toolbar>
       <q-toolbar-title class="q-px-sm">{{ '' }}</q-toolbar-title>
     </q-toolbar>
     <q-separator size="1" class="q-mb-md" />
-    <q-list padding class="text-primary">
+    <q-list padding class="text-primary q-px-xs">
       <template v-for="(item, index) in menuItems" :key="index">
-        <link-item :item="item" :dense="false" />
+        <link-item :item="item" :dense="false" class="q-my-xs" />
         <q-separator
           v-if="index !== menuItems.length - 1"
           :key="'sep' + index"
