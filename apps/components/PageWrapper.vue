@@ -9,7 +9,7 @@ import {
 } from 'vue';
 import { QScrollArea, SessionStorage } from 'quasar';
 import { useRoute } from 'vue-router';
-import { } from '@/stores/theme';
+import {} from '@/stores/theme';
 import { usePageStore, type IPageContext } from '@/stores/page';
 import UnderConstruction from '@trace/base/components/error/UnderConstruction.vue';
 
@@ -112,8 +112,15 @@ onDeactivated(() => {
 
 <template>
   <q-page class="fit page q-pa-sm" :padding="padding">
-    <q-scroll-area v-if="scrollable" ref="scrollArea" :thumb-style="thumbStyle" :visible="false" style="height: 100%"
-      :content-active-style="contentActiveStyle" @scroll="onScroll">
+    <q-scroll-area
+      v-if="scrollable"
+      ref="scrollArea"
+      :thumb-style="thumbStyle"
+      :visible="false"
+      style="height: 100%"
+      :content-active-style="contentActiveStyle"
+      @scroll="onScroll"
+    >
       <slot>
         <under-construction />
       </slot>
@@ -122,8 +129,19 @@ onDeactivated(() => {
       <under-construction />
     </slot>
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
-      <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
-        <q-btn v-show="showToTopBtn" color="primary" fab padding="10px" icon="expand_less" @click="toTop" />
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
+        <q-btn
+          v-show="showToTopBtn"
+          color="primary"
+          fab
+          padding="10px"
+          icon="expand_less"
+          @click="toTop"
+        />
       </transition>
     </q-page-sticky>
   </q-page>

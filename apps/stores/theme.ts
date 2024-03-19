@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { colors, setCssVar, Dark } from "quasar";
+import { colors, setCssVar, Dark } from 'quasar';
 import { ref, computed } from 'vue';
 // import { StatusBar, Style } from '@capacitor/status-bar';
 
@@ -8,9 +8,9 @@ export const useThemeStore = defineStore(
   () => {
     const isClient = typeof window !== 'undefined';
     const { getPaletteColor, lighten, luminosity } = colors;
-    const appArimaryColor = isClient ? getPaletteColor("primary") : '#3949ab';
-    const darkColor = "#1d1d1d";
-    const darkPageColor = "#121212";
+    const appArimaryColor = isClient ? getPaletteColor('primary') : '#3949ab';
+    const darkColor = '#1d1d1d';
+    const darkPageColor = '#121212';
 
     const primary = ref(appArimaryColor);
     const lightState = ref<boolean>(false);
@@ -30,11 +30,21 @@ export const useThemeStore = defineStore(
     // };
 
     const primaryColor = computed(() => primary.value);
-    const baseBgColor = computed(() => Dark.isActive ? darkPageColor : "#f7f9fa");
-    const drawerBgColor = computed(() => Dark.isActive ? darkPageColor : primary.value);
-    const drawerTextColor = computed(() => luminosity(primary.value) > 0.4 ? "#000000" : "#ffffff");
-    const headerBgColor = computed(() => Dark.isActive ? darkColor : "#ffffff");
-    const headerTextColor = computed(() => Dark.isActive ? "#ffffff" : "#000000");
+    const baseBgColor = computed(() =>
+      Dark.isActive ? darkPageColor : '#f7f9fa',
+    );
+    const drawerBgColor = computed(() =>
+      Dark.isActive ? darkPageColor : primary.value,
+    );
+    const drawerTextColor = computed(() =>
+      luminosity(primary.value) > 0.4 ? '#000000' : '#ffffff',
+    );
+    const headerBgColor = computed(() =>
+      Dark.isActive ? darkColor : '#ffffff',
+    );
+    const headerTextColor = computed(() =>
+      Dark.isActive ? '#ffffff' : '#000000',
+    );
 
     const activeBgColor = computed(() => {
       if (Dark.isActive) {
@@ -47,15 +57,15 @@ export const useThemeStore = defineStore(
 
     const activeTextColor = computed(() => {
       if (Dark.isActive) {
-        return "#ffffff";
+        return '#ffffff';
       }
-      return luminosity(primary.value) > 0.4 ? "#ffffff" : primary.value;
+      return luminosity(primary.value) > 0.4 ? '#ffffff' : primary.value;
     });
 
     const setThemeColor = (color: string) => {
       primary.value = color;
-      setCssVar("primary", color);
-    }
+      setCssVar('primary', color);
+    };
 
     const initializeTheme = async () => {
       Dark.set(lightState.value);
@@ -97,5 +107,5 @@ export const useThemeStore = defineStore(
   },
   {
     persist: true,
-  }
+  },
 );

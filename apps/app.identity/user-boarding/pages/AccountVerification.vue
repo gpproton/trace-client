@@ -3,5 +3,5 @@ defineOptions({ name: 'AccountVerification' });
 </script>
 
 <template>
-    <div>Account Verification</div>
+  <div>Account Verification</div>
 </template>

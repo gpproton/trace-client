@@ -7,13 +7,13 @@ import { useTagViewStore } from './tag-view';
 export const useUserAccountStore = defineStore(
   'userAccount',
   () => {
-    const accessToken = ref<string | null>(null)
+    const accessToken = ref<string | null>(null);
     const permissions = ref<Permission[]>([
       {
         module: 'default',
         feature: 'default.0',
-        actions: { create: true, read: true, update: false, delete: true }
-      }
+        actions: { create: true, read: true, update: false, delete: true },
+      },
     ]);
     const user = ref<User | null>({
       id: 'ac707e42-74c4-4107-beba-4897107bf9f7',
@@ -27,35 +27,37 @@ export const useUserAccountStore = defineStore(
       roleId: '821f68cd-4b26-4682-ad96-123ac0d30504',
       roleName: 'Default',
       firstName: 'John',
-      lastName: 'Doe'
+      lastName: 'Doe',
     });
 
     const getUserName = computed(() => user.value);
     const getUserPermmisions = computed(() => permissions.value);
     const getAccessToken = computed(() => accessToken.value);
-    const getFirstCharacterOfUserName = computed(() => user.value!.username ? user.value!.username.charAt(0).toUpperCase() : "X");
+    const getFirstCharacterOfUserName = computed(() =>
+      user.value!.username ? user.value!.username.charAt(0).toUpperCase() : 'X',
+    );
 
-    const setUserInfo = (value: User) => user.value = value;
-    const setAccessToken = (value: string) => accessToken.value = value;
+    const setUserInfo = (value: User) => (user.value = value);
+    const setAccessToken = (value: string) => (accessToken.value = value);
     const setUserPermmisions = (values: Permission[]) => {
       const account = user.value;
       permissions.value = values;
       user.value = account;
-    }
+    };
 
-    const signIn = () => { };
+    const signIn = () => {};
 
     const signout = () => {
       user.value = null;
       accessToken.value = null;
-      permissions.value = []
+      permissions.value = [];
       const tagViewStore = useTagViewStore();
       tagViewStore.removeAllTagView();
       SessionStorage.clear();
 
       const router = useRouter();
-      router.push({ name: "auth.sign-in" });
-    }
+      router.push({ name: 'auth.sign-in' });
+    };
 
     return {
       user,
@@ -67,12 +69,12 @@ export const useUserAccountStore = defineStore(
       setUserInfo,
       setUserPermmisions,
       signIn,
-      signout
+      signout,
     };
   },
   {
     persist: {
-      storage: persistedState.sessionStorage
-    }
-  }
+      storage: persistedState.sessionStorage,
+    },
+  },
 );

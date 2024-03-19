@@ -18,9 +18,9 @@
  * Modified At: Thu Feb 22 2024
  */
 
-import { useUserAccountStore } from "@/stores/user-account";
+import { useUserAccountStore } from '@/stores/user-account';
 import { useServerStore } from '@trace/base/stores/server';
-import { type ActionState, Workflow } from "@trace/model";
+import { type ActionState, Workflow } from '@trace/model';
 import { storeToRefs } from 'pinia';
 
 export const useAppPermission = () => {
@@ -31,8 +31,9 @@ export const useAppPermission = () => {
     const { getUserPermmisions } = storeToRefs(userStore);
     const permission = getUserPermmisions.value;
     if (permission) {
-      const featurePermission = permission.find(x => {
-        const checkModule = action.module === undefined || x.module == action.module;
+      const featurePermission = permission.find((x) => {
+        const checkModule =
+          action.module === undefined || x.module == action.module;
         const checkFeature = action.feature === x.feature;
         const checkType = x.actions[action.type] === true;
 
@@ -48,10 +49,13 @@ export const useAppPermission = () => {
     const { getWorkflow } = storeToRefs(serverStore);
     const workflow = getWorkflow.value;
     if (workflow) {
-      return getWorkflow.value === Workflow.System || Object.values(workflows).includes(workflow);
+      return (
+        getWorkflow.value === Workflow.System ||
+        Object.values(workflows).includes(workflow)
+      );
     }
     return false;
-  }
+  };
 
   return {
     hasPermission,

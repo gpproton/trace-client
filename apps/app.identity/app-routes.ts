@@ -21,7 +21,4 @@
 import AuthRoutes from './authentication/routes';
 import UserBoardingRoutes from './user-boarding/routes';
 
-export const routes = [
-  ...AuthRoutes,
-  ...UserBoardingRoutes,
-];
+export const routes = [...AuthRoutes, ...UserBoardingRoutes];

@@ -4,7 +4,13 @@ defineOptions({ name: 'IdentityForm' });
 
 <template>
   <div class="identity-form">
-    <q-form autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" class="q-pa-md">
+    <q-form
+      autocorrect="off"
+      autocapitalize="off"
+      autocomplete="off"
+      spellcheck="false"
+      class="q-pa-md"
+    >
       <div class="q-mb-lg">
         <div class="text-primary text-h3">
           <slot name="title" />
@@ -17,7 +23,10 @@ defineOptions({ name: 'IdentityForm' });
       <slot />
       <slot name="footer">
         <div class="full-width row items-center justify-end q-pa-xs q-px-md">
-          <router-link class="identity-link identity-text" :to="{ name: 'auth.sign-in' }">
+          <router-link
+            class="identity-link identity-text"
+            :to="{ name: 'auth.sign-in' }"
+          >
             <q-icon name="bi-arrow-left" color="action" size="1.2em" />
             <span class="q-ml-xs">{{ $t('auth.signIn') }}</span>
           </router-link>

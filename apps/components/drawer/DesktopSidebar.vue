@@ -15,7 +15,14 @@ interface IProps {
 }
 
 const props = defineProps<IProps>();
-const { modelValue, workspace, darkMode, drawerMiniState, showIdentity, modules } = defineModels<{
+const {
+  modelValue,
+  workspace,
+  darkMode,
+  drawerMiniState,
+  showIdentity,
+  modules,
+} = defineModels<{
   workspace: ServiceVariant;
   modelValue: boolean;
   darkMode: boolean;
@@ -23,12 +30,22 @@ const { modelValue, workspace, darkMode, drawerMiniState, showIdentity, modules 
   showIdentity: boolean;
   modules: RouteMenu[];
 }>();
-const overviewModuleMenu = computed(() => modules.value.filter(e => e.name !== undefined && props.overviewFilter.includes(e.name as string)));
-const genralModuleMenu = computed(() => modules.value.filter(e => e.name !== undefined && !props.overviewFilter.includes(e.name as string)));
+const overviewModuleMenu = computed(() =>
+  modules.value.filter(
+    (e) =>
+      e.name !== undefined && props.overviewFilter.includes(e.name as string),
+  ),
+);
+const genralModuleMenu = computed(() =>
+  modules.value.filter(
+    (e) =>
+      e.name !== undefined && !props.overviewFilter.includes(e.name as string),
+  ),
+);
 
 const timeout = ref();
-const setMiniDrawer = (value: boolean) => drawerMiniState.value = value;
-const toggleIdentityMenu = () => showIdentity.value = !showIdentity.value;
+const setMiniDrawer = (value: boolean) => (drawerMiniState.value = value);
+const toggleIdentityMenu = () => (showIdentity.value = !showIdentity.value);
 
 watch(drawerMiniState, () => {
   timeout.value = setTimeout(() => {
@@ -40,10 +57,27 @@ onUnmounted(() => clearTimeout(timeout.value));
 </script>
 
 <template>
-  <q-drawer v-model="modelValue" show-if-above bordered :width="295" :mini-width="64" side="left" :mini="drawerMiniState"
-    mini-to-overlay @mouseover="setMiniDrawer(false)" @mouseout="setMiniDrawer(true)">
-    <sidebar-header v-model="drawerMiniState" v-model:workspace="workspace" class="q-mt-sm" />
-    <q-scroll-area class="fit fixed-bottom" style="padding-top: 96px; padding-bottom: 110px">
+  <q-drawer
+    v-model="modelValue"
+    show-if-above
+    bordered
+    :width="295"
+    :mini-width="64"
+    side="left"
+    :mini="drawerMiniState"
+    mini-to-overlay
+    @mouseover="setMiniDrawer(false)"
+    @mouseout="setMiniDrawer(true)"
+  >
+    <sidebar-header
+      v-model="drawerMiniState"
+      v-model:workspace="workspace"
+      class="q-mt-sm"
+    />
+    <q-scroll-area
+      class="fit fixed-bottom"
+      style="padding-top: 96px; padding-bottom: 110px"
+    >
       <div v-show="!showIdentity">
         <sidebar-list :items="overviewModuleMenu" />
         <q-separator class="q-mx-sm" />
@@ -56,14 +90,29 @@ onUnmounted(() => clearTimeout(timeout.value));
 
     <!-- Fixed navigation action -->
     <div class="fixed-bottom full-width column items-center q-mb-sm">
-      <div v-show="!drawerMiniState" class="full-width q-px-lg q-mb-md column items-center">
+      <div
+        v-show="!drawerMiniState"
+        class="full-width q-px-lg q-mb-md column items-center"
+      >
         <theme-switcher v-show="showIdentity" v-model="darkMode" />
-        <q-btn v-show="showIdentity" no-caps size="lg" color="primary" text-color="primary-inverted"
-          icon="bi-box-arrow-in-right" label="Sign Out" class="full-width text-weight-thin border-radius-sm q-my-md" />
+        <q-btn
+          v-show="showIdentity"
+          no-caps
+          size="lg"
+          color="primary"
+          text-color="primary-inverted"
+          icon="bi-box-arrow-in-right"
+          label="Sign Out"
+          class="full-width text-weight-thin border-radius-sm q-my-md"
+        />
       </div>
       <!-- App user widget for mini and normal state -->
-      <sidebar-user @click="toggleIdentityMenu" $mini="drawerMiniState" :profile="userProfile"
-        :class="drawerMiniState ? 'q-mb-sm' : 'full-width q-px-sm q-mb-sm'" />
+      <sidebar-user
+        $mini="drawerMiniState"
+        :profile="userProfile"
+        :class="drawerMiniState ? 'q-mb-sm' : 'full-width q-px-sm q-mb-sm'"
+        @click="toggleIdentityMenu"
+      />
     </div>
   </q-drawer>
 </template>

@@ -18,7 +18,6 @@
  * Modified At: Thu Feb 22 2024
  */
 
-
 export default defineNuxtPlugin((nuxtApp) => {
   console.log('Plugin injected by app.core!');
 });

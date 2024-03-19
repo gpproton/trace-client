@@ -18,68 +18,68 @@
  * Modified At: Sun Mar 17 2024
  */
 
-import type { Route } from "@trace/base/typings";
-import { ServiceVariant } from "@trace/shared";
+import type { Route } from '@trace/base/typings';
+import { ServiceVariant } from '@trace/shared';
 
 const routes: Route[] = [
   {
-    path: "/authentication",
-    name: "auth",
+    path: '/authentication',
+    name: 'auth',
     redirect: { name: 'auth.sign-in' },
-    component: () => import("./AuthLayout.vue"),
+    component: () => import('./AuthLayout.vue'),
     meta: {
-      permission: false
+      permission: false,
     },
     props: {
-      workspace: ServiceVariant.Identity
+      workspace: ServiceVariant.Identity,
     },
     children: [
       {
-        path: "sign-in",
-        name: "auth.sign-in",
-        component: () => import("./pages/SignIn.vue"),
+        path: 'sign-in',
+        name: 'auth.sign-in',
+        component: () => import('./pages/SignIn.vue'),
         meta: {
-          title: "Sign In",
-          permission: false
+          title: 'Sign In',
+          permission: false,
         },
       },
       {
-        path: "forgot-password",
-        name: "auth.forgot-password",
-        component: () => import("./pages/ForgotPassword.vue"),
+        path: 'forgot-password',
+        name: 'auth.forgot-password',
+        component: () => import('./pages/ForgotPassword.vue'),
         meta: {
-          title: "Forgot Password",
-          permission: false
+          title: 'Forgot Password',
+          permission: false,
         },
       },
       {
-        path: "password-update",
-        name: "auth.password-update",
-        component: () => import("./pages/PasswordUpdate.vue"),
+        path: 'password-update',
+        name: 'auth.password-update',
+        component: () => import('./pages/PasswordUpdate.vue'),
         meta: {
-          title: "Password Update",
-          permission: false
+          title: 'Password Update',
+          permission: false,
         },
       },
       {
-        path: "otp-choice",
-        name: "auth.otp-choice",
-        component: () => import("./pages/OtpChoice.vue"),
+        path: 'otp-choice',
+        name: 'auth.otp-choice',
+        component: () => import('./pages/OtpChoice.vue'),
         meta: {
-          title: "OTP Choice",
-          permission: false
+          title: 'OTP Choice',
+          permission: false,
         },
       },
       {
-        path: "verify-otp",
-        name: "auth.verify-otp",
-        component: () => import("./pages/VerifyOtp.vue"),
+        path: 'verify-otp',
+        name: 'auth.verify-otp',
+        component: () => import('./pages/VerifyOtp.vue'),
         meta: {
-          title: "Verify OTP",
-          permission: false
+          title: 'Verify OTP',
+          permission: false,
         },
-      }
-    ]
+      },
+    ],
   },
 ];
 

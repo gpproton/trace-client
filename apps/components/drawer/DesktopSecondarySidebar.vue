@@ -2,17 +2,26 @@
 import LinkItem from '@/components/drawer/LinkItem.vue';
 import type { RouteMenu } from '@trace/base/typings';
 
-defineOptions({ name: "DesktopSecondarySidebar" });
+defineOptions({ name: 'DesktopSecondarySidebar' });
 
 const { modelValue, title, menuItems } = defineModels<{
   menuItems: RouteMenu[];
   modelValue: ModelOptions<boolean, { defaultValue: false; deep: true }>;
-  title:  ModelOptions<string, { defaultValue: 'Secondary Title'; deep: true }>;
+  title: ModelOptions<string, { defaultValue: 'Secondary Title'; deep: true }>;
 }>();
 </script>
 
 <template>
-  <q-drawer v-if="modelValue" v-model="modelValue" :width="230" show-if-above persistent behavior="desktop" side="left" bordered>
+  <q-drawer
+    v-if="modelValue"
+    v-model="modelValue"
+    :width="230"
+    show-if-above
+    persistent
+    behavior="desktop"
+    side="left"
+    bordered
+  >
     <q-toolbar>
       <q-toolbar-title class="q-px-sm">{{ '' }}</q-toolbar-title>
     </q-toolbar>
@@ -20,7 +29,10 @@ const { modelValue, title, menuItems } = defineModels<{
     <q-list padding class="text-primary">
       <template v-for="(item, index) in menuItems" :key="index">
         <link-item :item="item" :dense="false" />
-        <q-separator v-if="index !== menuItems.length - 1" :key="'sep' + index" />
+        <q-separator
+          v-if="index !== menuItems.length - 1"
+          :key="'sep' + index"
+        />
       </template>
     </q-list>
   </q-drawer>
@@ -28,10 +40,10 @@ const { modelValue, title, menuItems } = defineModels<{
 
 <style lang="scss" scoped>
 :deep(.qlist) {
-.q-list {
-  :hover {
-    background-color: var(--q-app-background);
+  .q-list {
+    :hover {
+      background-color: var(--q-app-background);
+    }
   }
-}
 }
 </style>

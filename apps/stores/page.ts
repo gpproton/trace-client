@@ -14,7 +14,6 @@ export interface IContext {
 }
 
 export const usePageStore = defineStore('page-state', () => {
-
   const title = ref('Page Default');
   const description = ref('');
   const script = ref({});
@@ -40,6 +39,6 @@ export const usePageStore = defineStore('page-state', () => {
     description,
     script,
     style,
-    setupPage
+    setupPage,
   };
 });

@@ -7,50 +7,79 @@ defineOptions({ name: 'PasswordUpdate' });
 
 const router = useRouter();
 const passwordState = reactive({
-    value: '',
-    confirmValue: '',
-    show: false,
-    showConfirm: false,
+  value: '',
+  confirmValue: '',
+  show: false,
+  showConfirm: false,
 });
 
 const updatePassword = () => {
-    router.push({
-        name: 'auth.sign-in',
-    });
+  router.push({
+    name: 'auth.sign-in',
+  });
 };
 </script>
 
 <template>
-    <identity-form>
-        <template #title>Update Password</template>
-        <q-input standout v-model="passwordState.value" no-error-icon :type="passwordState.show ? 'text' : 'password'"
-            label="New Password" class="border-radius-sm q-my-lg">
-            <template #prepend>
-                <q-icon name="bi-lock" color="accent" />
-            </template>
-            <template #append>
-                <q-btn :icon="passwordState.show ? 'bi-eye-fill' : 'bi-eye'" color="accent"
-                    @click="passwordState.show = !passwordState.show" round dense flat />
-            </template>
-        </q-input>
+  <identity-form>
+    <template #title>Update Password</template>
+    <q-input
+      v-model="passwordState.value"
+      standout
+      no-error-icon
+      :type="passwordState.show ? 'text' : 'password'"
+      label="New Password"
+      class="border-radius-sm q-my-lg"
+    >
+      <template #prepend>
+        <q-icon name="bi-lock" color="accent" />
+      </template>
+      <template #append>
+        <q-btn
+          :icon="passwordState.show ? 'bi-eye-fill' : 'bi-eye'"
+          color="accent"
+          round
+          dense
+          flat
+          @click="passwordState.show = !passwordState.show"
+        />
+      </template>
+    </q-input>
 
-        <q-input standout v-model="passwordState.confirmValue" no-error-icon
-            :type="passwordState.showConfirm ? 'text' : 'password'" label="Confirm New Password"
-            class="border-radius-sm q-my-lg">
-            <template #prepend>
-                <q-icon name="bi-lock" color="accent" />
-            </template>
-            <template #append>
-                <q-btn :icon="passwordState.showConfirm ? 'bi-eye-fill' : 'bi-eye'" color="accent"
-                    @click="passwordState.showConfirm = !passwordState.showConfirm" round dense flat />
-            </template>
-        </q-input>
+    <q-input
+      v-model="passwordState.confirmValue"
+      standout
+      no-error-icon
+      :type="passwordState.showConfirm ? 'text' : 'password'"
+      label="Confirm New Password"
+      class="border-radius-sm q-my-lg"
+    >
+      <template #prepend>
+        <q-icon name="bi-lock" color="accent" />
+      </template>
+      <template #append>
+        <q-btn
+          :icon="passwordState.showConfirm ? 'bi-eye-fill' : 'bi-eye'"
+          color="accent"
+          round
+          dense
+          flat
+          @click="passwordState.showConfirm = !passwordState.showConfirm"
+        />
+      </template>
+    </q-input>
 
-        <div class="q-my-md">
-            <q-btn label="Submit" color="action" size="lg" no-caps class="full-width border-radius-sm text-weight-medium"
-                @click="updatePassword" />
-        </div>
-    </identity-form>
+    <div class="q-my-md">
+      <q-btn
+        label="Submit"
+        color="action"
+        size="lg"
+        no-caps
+        class="full-width border-radius-sm text-weight-medium"
+        @click="updatePassword"
+      />
+    </div>
+  </identity-form>
 </template>
 
 <style lang="scss" scoped>

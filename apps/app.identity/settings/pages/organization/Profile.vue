@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({ name: 'account.profile' });
-defineOptions({ name: 'AccountProfile' })
+defineOptions({ name: 'AccountProfile' });
 </script>
 
 <template>

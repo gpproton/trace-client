@@ -25,7 +25,12 @@ import coreRoutes from '@/app.core/app-routes';
 import { ServiceVariant } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
-export const addAppRoutes = (app: ServiceVariant, component: any, children: Route[], overview: string[] = []): Route => ({
+export const addAppRoutes = (
+  app: ServiceVariant,
+  component: any,
+  children: Route[],
+  overview: string[] = [],
+): Route => ({
   name: app,
   path: `/${app}`,
   component: component,
@@ -41,17 +46,17 @@ export const routes = [
     path: '/',
     redirect: { name: 'quick-start' },
     component: () => import('@/app/EmptyLayout.vue'),
-    children: [
-      addCatchAll(),
-      addUnAuthorized(),
-      ...defaultRoutes,
-    ]
+    children: [addCatchAll(), addUnAuthorized(), ...defaultRoutes],
   },
-  addAppRoutes(ServiceVariant.Core, () => import('@/app/Layout.vue'), coreRoutes, ['core-overview', 'core-calendar']),
+  addAppRoutes(
+    ServiceVariant.Core,
+    () => import('@/app/Layout.vue'),
+    coreRoutes,
+    ['core-overview', 'core-calendar'],
+  ),
   ...identityRoutes,
 ] as Route[];
 
 export default <RouterConfig>{
-  routes: () => routes
-}
-
+  routes: () => routes,
+};

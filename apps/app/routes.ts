@@ -18,10 +18,13 @@
  * Modified At: Sun Mar 17 2024
  */
 
-import { getAuthenticatedRoutes } from "@trace/base/types";
+import { getAuthenticatedRoutes } from '@trace/base/types';
 import { routes } from '@/app/router.options';
-import type { Route } from "@trace/base/typings";
+import type { Route } from '@trace/base/typings';
 
-export const authtenticatedRoutes: Route[] = getAuthenticatedRoutes(routes, true);
+export const authtenticatedRoutes: Route[] = getAuthenticatedRoutes(
+  routes,
+  true,
+);
 export const authtenticatedRoutesChildren: Route[] = [];
 export const anonymousRoutes: Route[] = getAuthenticatedRoutes(routes, false);

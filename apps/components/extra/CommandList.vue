@@ -16,24 +16,38 @@ const closeModal = (value: boolean) => {
 
 <template>
   <q-list style="min-width: 175px">
-    <q-item v-for="(quickCreateItem, quickCreateIndex) in props.items" :key="quickCreateIndex"
-      :to="{ name: quickCreateItem.name }" active-class="bg-primary" class="border-radius-sm" clickable
-      @click="closeModal(false)">
+    <q-item
+      v-for="(quickCreateItem, quickCreateIndex) in props.items"
+      :key="quickCreateIndex"
+      :to="{ name: quickCreateItem.name }"
+      active-class="bg-primary"
+      class="border-radius-sm"
+      clickable
+      @click="closeModal(false)"
+    >
       <q-item-section class="no-margin no-padding" avatar>
         <q-icon color="primary" :name="quickCreateItem.icon" />
       </q-item-section>
-      <q-item-section class="text-body1 text-weight-bold text-primary no-wrap" style="margin-left: -1rem">
+      <q-item-section
+        class="text-body1 text-weight-bold text-primary no-wrap"
+        style="margin-left: -1rem"
+      >
         {{ quickCreateItem.title }}
       </q-item-section>
 
       <q-item-section side>
-        <div v-if="(quickCreateItem as IModuleCommands).command != undefined"
-          class="row items-center justify-center q-px-none q-mx-none" style="min-width: 5rem">
+        <div
+          v-if="(quickCreateItem as IModuleCommands).command != undefined"
+          class="row items-center justify-center q-px-none q-mx-none"
+          style="min-width: 5rem"
+        >
           <span class="col list-span-pill text-center">
             <q-icon size="1.5em" name="bi-command" />
           </span>
-          <span class="col list-span-pill text-weight-bold text-body1 text-center q-ml-xs">{{ (quickCreateItem as
-            IModuleCommands).command }}</span>
+          <span
+            class="col list-span-pill text-weight-bold text-body1 text-center q-ml-xs"
+            >{{ (quickCreateItem as IModuleCommands).command }}</span
+          >
         </div>
         <div v-else>&nbsp;</div>
       </q-item-section>

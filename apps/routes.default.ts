@@ -18,29 +18,29 @@
  * Modified At: Sun Mar 17 2024
  */
 
-import type { Route } from "@trace/base/typings";
+import type { Route } from '@trace/base/typings';
 
 const routes: Route[] = [
   {
     name: 'quick-start',
-    path: "/quick-start",
-    component: () => import("@/pages/QuickStart.vue"),
+    path: '/quick-start',
+    component: () => import('@/pages/QuickStart.vue'),
     meta: {
-      title: "router.quick-start",
-      icon: "sync",
+      title: 'router.quick-start',
+      icon: 'sync',
     },
   },
   {
     name: 'app.testing',
-    path: "/testing",
-    component: () => import("@trace/base/pages/Testing.vue"),
+    path: '/testing',
+    component: () => import('@trace/base/pages/Testing.vue'),
     meta: {
-      title: "router.testing",
-      icon: "sync",
+      title: 'router.testing',
+      icon: 'sync',
       permission: {
         feature: 'default',
-        type: 'read'
-      }
+        type: 'read',
+      },
     },
   },
 ];
@@ -54,17 +54,17 @@ export const addCatchAll = (key: string = ''): Route => ({
     title: 'router.error',
   },
   props: {
-    home: key === '' ? 'home' : key
-  }
+    home: key === '' ? 'home' : key,
+  },
 });
 
 export const addUnAuthorized = (key: string = ''): Route => ({
   path: 'un-authorized',
   name: key === '' ? 'un-authorized' : `${key}-un-authorized`,
-  component: () => import("@/pages/UnAuthorized.vue"),
+  component: () => import('@/pages/UnAuthorized.vue'),
   meta: {
     permission: false,
-    title: "router.un-authorized",
+    title: 'router.un-authorized',
   },
 });
 

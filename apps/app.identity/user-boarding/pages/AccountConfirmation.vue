@@ -3,5 +3,5 @@ defineOptions({ name: 'AccountConfirmation' });
 </script>
 
 <template>
-    <div>Account Confirmation</div>
+  <div>Account Confirmation</div>
 </template>

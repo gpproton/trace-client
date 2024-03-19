@@ -1,6 +1,6 @@
-import { EventBus } from "quasar";
+import { EventBus } from 'quasar';
 
 export default defineNuxtPlugin((nuxtApp) => {
-    const bus = new EventBus();
-    nuxtApp.vueApp.provide("bus", bus);
-})
+  const bus = new EventBus();
+  nuxtApp.vueApp.provide('bus', bus);
+});

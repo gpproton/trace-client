@@ -12,7 +12,10 @@ defineOptions({ name: 'AuthLayout' });
       <div class="row fit" style="max-height: 100vh">
         <q-card square flat class="col window-height column justify-between">
           <q-toolbar class="text-primary q-pa-xs q-mx-sm">
-            <app-logo style="height: 38px; width: 38px; fill: var(--q-primary)" class="border-radius-sm text-primary" />
+            <app-logo
+              style="height: 38px; width: 38px; fill: var(--q-primary)"
+              class="border-radius-sm text-primary"
+            />
             <q-toolbar-title class="text-h5 text-weight-bold">
               {{ 'Trace' }}
             </q-toolbar-title>
@@ -35,9 +38,19 @@ defineOptions({ name: 'AuthLayout' });
             </div>
           </div>
         </q-card>
-        <q-card square flat class="col-6 gt-sm window-height bg-primary hide-scrollbar">
-          <q-img no-native-menu no-spinner :src="LightHouse" alt="Trace Lighthouse" width="calc(38vw)"
-            class="absolute-center" />
+        <q-card
+          square
+          flat
+          class="col-6 gt-sm window-height bg-primary hide-scrollbar"
+        >
+          <q-img
+            no-native-menu
+            no-spinner
+            :src="LightHouse"
+            alt="Trace Lighthouse"
+            width="calc(38vw)"
+            class="absolute-center"
+          />
         </q-card>
       </div>
     </q-page-container>

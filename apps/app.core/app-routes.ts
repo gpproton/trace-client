@@ -38,5 +38,5 @@ export default [
   addTrackingRoute(ServiceVariant.Core),
   addContactRoute(ServiceVariant.Core),
   addRoutesRoute(ServiceVariant.Core),
-  addLocationsRoute(ServiceVariant.Core)
+  addLocationsRoute(ServiceVariant.Core),
 ] as Route[];

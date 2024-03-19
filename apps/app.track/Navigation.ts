@@ -44,7 +44,6 @@ export class Navigation extends BaseMenu {
         path: 'devices',
       },
 
-
       {
         title: 'Tags',
         icon: 'bi-tags',

@@ -50,6 +50,6 @@ export default (service: ServiceVariant): Route => ({
         title: 'shared.leads',
         icon: 'bi-signpost-2',
       },
-    }
-  ]
+    },
+  ],
 });

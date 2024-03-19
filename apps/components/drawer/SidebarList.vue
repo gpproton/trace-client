@@ -19,8 +19,14 @@ withDefaults(defineProps<IProps>(), {
 
 <template>
   <q-list v-bind="$attrs" padding>
-    <link-item v-for="(item, index) in items" :key="index" class="q-mb-xs q-mx-sm border-radius-sm" :item="item"
-      :dense="false" icon-size="2rem" />
+    <link-item
+      v-for="(item, index) in items"
+      :key="index"
+      class="q-mb-xs q-mx-sm border-radius-sm"
+      :item="item"
+      :dense="false"
+      icon-size="2rem"
+    />
   </q-list>
 </template>
 

@@ -6,11 +6,12 @@ export default defineNuxtPlugin((nuxtApp) => {
   const { hasPermission } = useAppPermission();
   const updateElVisible = (el: HTMLElement, permission: ActionState) => {
     if (!permission)
-      throw new Error(`need permission: like v-permit="{ feature: 'name', type: ActionType.Read }"`);
+      throw new Error(
+        `need permission: like v-permit="{ feature: 'name', type: ActionType.Read }"`,
+      );
 
-    if (!hasPermission(permission))
-      el.parentElement?.removeChild(el);
-  }
+    if (!hasPermission(permission)) el.parentElement?.removeChild(el);
+  };
 
   const permissionDirective: Directive<HTMLElement, ActionState> = {
     mounted(el, binding) {
@@ -21,13 +22,13 @@ export default defineNuxtPlugin((nuxtApp) => {
     },
   };
 
-  nuxtApp.vueApp.directive('permit', permissionDirective)
-  nuxtApp.vueApp.directive('permission', permissionDirective)
+  nuxtApp.vueApp.directive('permit', permissionDirective);
+  nuxtApp.vueApp.directive('permission', permissionDirective);
 
   return {
     provide: {
       permit: (action: ActionState) => hasPermission(action),
-      permission: (action: ActionState) => hasPermission(action)
-    }
-  }
-})
+      permission: (action: ActionState) => hasPermission(action),
+    },
+  };
+});

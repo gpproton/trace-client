@@ -20,9 +20,12 @@
 
 import type { Router } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useRouterStore } from "@/stores/router";
-import { useUserAccountStore } from "@/stores/user-account";
-import { authtenticatedRoutes, authtenticatedRoutesChildren } from '@/app/routes';
+import { useRouterStore } from '@/stores/router';
+import { useUserAccountStore } from '@/stores/user-account';
+import {
+  authtenticatedRoutes,
+  authtenticatedRoutesChildren,
+} from '@/app/routes';
 import { constructionRouters } from '@/utils/permission-util';
 import type { RouteRecordRaw } from 'vue-router';
 
@@ -64,5 +67,4 @@ export default defineNuxtPlugin(() => {
   //     next({ ...to, replace: true });
   //   }
   // });
-
 });

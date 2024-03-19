@@ -26,11 +26,12 @@ export default defineNuxtPlugin((nuxtApp) => {
   const { hasWorkflow } = useAppPermission();
   const updateElVisible = (el: HTMLElement, workflows: Workflow[]) => {
     if (!workflows)
-      throw new Error(`need permission: like v-works="['telematics', 'system']"`);
+      throw new Error(
+        `need permission: like v-works="['telematics', 'system']"`,
+      );
 
-    if (!hasWorkflow(workflows))
-      el.parentElement?.removeChild(el);
-  }
+    if (!hasWorkflow(workflows)) el.parentElement?.removeChild(el);
+  };
 
   const workflowDirective: Directive<HTMLElement, Workflow[]> = {
     mounted(el, binding) {
@@ -41,13 +42,13 @@ export default defineNuxtPlugin((nuxtApp) => {
     },
   };
 
-  nuxtApp.vueApp.directive('works', workflowDirective)
-  nuxtApp.vueApp.directive('workflows', workflowDirective)
+  nuxtApp.vueApp.directive('works', workflowDirective);
+  nuxtApp.vueApp.directive('workflows', workflowDirective);
 
   return {
     provide: {
       works: (workflows: Workflow[]) => hasWorkflow(workflows),
-      workflows: (workflows: Workflow[]) => hasWorkflow(workflows)
-    }
-  }
+      workflows: (workflows: Workflow[]) => hasWorkflow(workflows),
+    },
+  };
 });

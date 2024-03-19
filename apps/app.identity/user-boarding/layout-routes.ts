@@ -1,8 +1,8 @@
 const links = [
-    {
-        name: 'support',
-        label: 'router.support'
-    },
+  {
+    name: 'support',
+    label: 'router.support',
+  },
 ];
 
 export default links;

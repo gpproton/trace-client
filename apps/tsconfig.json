@@ -2,24 +2,12 @@
   // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "types": [
-      "@trace/shared",
-      "@trace/model",
-      "@trace/base"
-    ],
+    "types": ["@trace/shared", "@trace/model", "@trace/base"],
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@@/*": [
-        "./*"
-      ],
-      "~/*": [
-        "./*"
-      ],
-      "~~/*": [
-        "./*"
-      ]
+      "@/*": ["./*"],
+      "@@/*": ["./*"],
+      "~/*": ["./*"],
+      "~~/*": ["./*"]
     }
   }
 }

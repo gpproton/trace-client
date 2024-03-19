@@ -28,7 +28,7 @@ export const onboardRoutes: Route[] = [
     meta: {
       permission: false,
       title: 'Create Account',
-      description: 'Provide personal information required to use our plaform'
+      description: 'Provide personal information required to use our plaform',
     },
   },
   {
@@ -38,7 +38,7 @@ export const onboardRoutes: Route[] = [
     meta: {
       permission: false,
       title: 'Verification',
-      description: 'Verify mobile number for account'
+      description: 'Verify mobile number for account',
     },
   },
   {
@@ -48,7 +48,7 @@ export const onboardRoutes: Route[] = [
     meta: {
       permission: false,
       title: 'Account Options',
-      description: 'Select required and optional settings for you account'
+      description: 'Select required and optional settings for you account',
     },
   },
   {
@@ -58,9 +58,9 @@ export const onboardRoutes: Route[] = [
     meta: {
       permission: false,
       title: 'Confirmation',
-      description: 'Complete onboarding process for your account'
+      description: 'Complete onboarding process for your account',
     },
-  }
+  },
 ];
 
 const routes: Route[] = [
@@ -91,8 +91,8 @@ const routes: Route[] = [
           permission: false,
           title: 'Getting started',
         },
-      }
-    ]
+      },
+    ],
   },
 ];
 

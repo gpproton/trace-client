@@ -18,13 +18,18 @@
  * Modified At: Thu Mar 14 2024
  */
 
-import { defineNuxtModule, addPlugin, createResolver, extendPages } from '@nuxt/kit';
+import {
+  defineNuxtModule,
+  addPlugin,
+  createResolver,
+  extendPages,
+} from '@nuxt/kit';
 import type { ModuleOptions } from 'nuxt/schema';
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: 'app-core',
-    configKey: 'app.core'
+    configKey: 'app.core',
   },
   defaults: {},
   setup(options, nuxt) {
@@ -39,6 +44,5 @@ export default defineNuxtModule<ModuleOptions>({
       //   file: resolver.resolve('./pages/test.vue')
       // })
     });
-  }
+  },
 });
-

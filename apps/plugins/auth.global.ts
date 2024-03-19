@@ -1,5 +1,5 @@
 import type { Router } from 'vue-router';
-import { useUserAccountStore } from "@/stores/user-account";
+import { useUserAccountStore } from '@/stores/user-account';
 import { anonymousRoutes } from '@/app/routes';
 
 export default defineNuxtPlugin(() => {
@@ -25,5 +25,4 @@ export default defineNuxtPlugin(() => {
   //     }
   //   }
   // });
-
-})
+});

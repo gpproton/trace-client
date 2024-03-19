@@ -3,5 +3,5 @@ defineOptions({ name: 'AccountOptions' });
 </script>
 
 <template>
-    <div>Account Options</div>
+  <div>Account Options</div>
 </template>

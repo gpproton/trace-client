@@ -7,16 +7,24 @@ import links from './layout-routes';
 defineOptions({ name: 'WelcomeLayout' });
 
 const intro = `A few clicks away from maximum cohesiveness.`;
-const extraInfo = 'Trace allows full transportation digitization allowing adaptation to workflow/process';
+const extraInfo =
+  'Trace allows full transportation digitization allowing adaptation to workflow/process';
 </script>
 
 <template>
   <q-layout view="hHh LpR fff">
     <q-page-container>
       <div class="row fit" style="max-height: 100vh">
-        <q-card square fit class="gt-sm col-4 bg-primary window-height column justify-between">
+        <q-card
+          square
+          fit
+          class="gt-sm col-4 bg-primary window-height column justify-between"
+        >
           <q-toolbar class="q-pa-md">
-            <app-logo style="height: 38px; width: 38px; fill: #fff" class="border-radius-sm text-primary" />
+            <app-logo
+              style="height: 38px; width: 38px; fill: #fff"
+              class="border-radius-sm text-primary"
+            />
             <q-toolbar-title class="text-h5 text-white text-weight-bold">
               {{ 'Trace' }}
             </q-toolbar-title>
@@ -25,15 +33,27 @@ const extraInfo = 'Trace allows full transportation digitization allowing adapta
             <div class="text-white text-h3 text-weight-medium">{{ intro }}</div>
             <div class="text-white q-mr-lg">{{ extraInfo }}</div>
           </div>
-          <q-img no-native-menu no-spinner :src="OnboardAsset" alt="Trace Asset" width="calc(28vw)" />
+          <q-img
+            no-native-menu
+            no-spinner
+            :src="OnboardAsset"
+            alt="Trace Asset"
+            width="calc(28vw)"
+          />
         </q-card>
         <q-card square fit class="col window-height column justify-between">
           <q-toolbar class="q-px-md">
             <lang-selector />
             <q-space />
             <q-tabs no-caps shrink stretch content-class="text-primary">
-              <q-route-tab v-for="(link, index) in links" :key="index" :to="{ name: link.name }" :name="link.name"
-                class="text-body1">{{ $t(link.label) }}</q-route-tab>
+              <q-route-tab
+                v-for="(link, index) in links"
+                :key="index"
+                :to="{ name: link.name }"
+                :name="link.name"
+                class="text-body1"
+                >{{ $t(link.label) }}</q-route-tab
+              >
             </q-tabs>
           </q-toolbar>
           <div class="q-pa-sm col-10">
@@ -42,8 +62,11 @@ const extraInfo = 'Trace allows full transportation digitization allowing adapta
           <div class="row q-py-md">
             <div class="q-px-lg">
               <span>{{ 'Already have an account?' }}</span>
-              <nuxt-link style="text-decoration: none;" class="text-body1 text-primary q-ml-sm"
-                :to="{ name: 'auth.sign-in' }">
+              <nuxt-link
+                style="text-decoration: none"
+                class="text-body1 text-primary q-ml-sm"
+                :to="{ name: 'auth.sign-in' }"
+              >
                 {{ $t('auth.signIn') }}
               </nuxt-link>
             </div>

@@ -18,12 +18,12 @@
  * Modified At: Tue Mar 19 2024
  */
 
-import { useTagViewStore } from "@/stores/tag-view";
-import { useBreadcrumbsStore } from "@/stores/breadcrumbs";
-import { useKeepAliveStore } from "@/stores/keep-alive";
-import { LoadingBar } from "quasar";
+import { useTagViewStore } from '@/stores/tag-view';
+import { useBreadcrumbsStore } from '@/stores/breadcrumbs';
+import { useKeepAliveStore } from '@/stores/keep-alive';
+import { LoadingBar } from 'quasar';
 import { storeToRefs } from 'pinia';
-import type { RouteLocationNormalized, Router } from "vue-router";
+import type { RouteLocationNormalized, Router } from 'vue-router';
 import type { RouteData } from '@trace/base/typings';
 
 export default defineNuxtPlugin(() => {
@@ -44,7 +44,8 @@ export default defineNuxtPlugin(() => {
       // is a public route
       if (to.meta.permission === false) return;
 
-      const storedTagView = (getStoredTagView.value ?? []) as unknown as RouteData[];
+      const storedTagView = (getStoredTagView.value ??
+        []) as unknown as RouteData[];
       if (
         // @ts-ignore
         getTagView.value.length === 0 &&

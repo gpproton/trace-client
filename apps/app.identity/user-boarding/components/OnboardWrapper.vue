@@ -6,10 +6,10 @@ const { addPage } = useOnboardStore();
 defineOptions({ name: 'OnboardWrapper' });
 
 onBeforeUnmount(() => {
-    addPage();
+  addPage();
 });
 </script>
 
 <template>
-    <slot />
+  <slot />
 </template>

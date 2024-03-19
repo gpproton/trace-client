@@ -17,8 +17,8 @@
  * Modified By: Godwin peter .O
  * Modified At: Sun Mar 17 2024
  */
-import type { Route } from "@trace/base/typings";
-import { useAppPermission } from "@/composables/permission"
+import type { Route } from '@trace/base/typings';
+import { useAppPermission } from '@/composables/permission';
 
 export const constructionRouters = (router: Route[]) => {
   const { hasPermission } = useAppPermission();
@@ -26,17 +26,14 @@ export const constructionRouters = (router: Route[]) => {
     const permission = item.meta?.permission;
     if (!permission) return true;
 
-    return hasPermission(permission)
+    return hasPermission(permission);
   });
 
   // construct router with user permission
   for (const i in temp) {
     if (temp[i].children) {
-      temp[i].children = constructionRouters(
-        temp[i].children as Route[]
-      );
+      temp[i].children = constructionRouters(temp[i].children as Route[]);
     }
   }
   return temp;
-}
-
+};
