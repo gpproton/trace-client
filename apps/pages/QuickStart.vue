@@ -79,7 +79,7 @@ const apps: AppOption[] = [
               >
                 <q-icon :name="app.icon" color="secondary" size="4em"></q-icon>
                 <div class="text-h6 text-secondary text-weight-bold">
-                  {{ app.name }}
+                  {{ $t(`router.${app.name}`) }}
                 </div>
               </q-card>
             </div>
