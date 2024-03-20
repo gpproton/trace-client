@@ -27,7 +27,7 @@ const links = [
     <q-layout view="hHh lpR fff">
         <q-header class="bg-white text-white q-pa-md">
             <q-toolbar>
-                <app-logo style="height: 42px; fill: var(--q-primary)" class="border-radius-sm text-primary" />
+                <app-logo class="app-logo" />
                 <q-toolbar-title class="text-h5 text-primary text-weight-bold">
                     {{ 'Trace' }}
                 </q-toolbar-title>

@@ -25,7 +25,7 @@ const getStatus = computed(() => {
       <div class="row fit" style="max-height: 100vh">
         <q-card square fit class="gt-sm col-5 bg-grey-1 window-height column justify-between">
           <q-toolbar class="q-pa-md">
-            <app-logo style="height: 38px; width: 38px; fill: var(--q-primary)" class="border-radius-sm text-primary" />
+            <app-logo class="app-logo" />
             <q-toolbar-title class="text-h5 text-primary text-weight-bold">
               {{ 'Trace' }}
             </q-toolbar-title>

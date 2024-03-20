@@ -38,10 +38,8 @@ const apps: AppOption[] = [
           fit
           class="gt-sm col-5 bg-app-background window-height column justify-between"
         >
-          <q-toolbar class="q-pa-md">
-            <app-logo
-              style="height: 38px; width: 38px; fill: var(--q-primary)"
-              class="border-radius-sm text-primary"
+          <q-toolbar class="q-py-sm q-px-md">
+            <app-logo class="app-logo"
             />
             <q-toolbar-title class="text-h5 text-primary text-weight-bold">
               {{ 'Trace' }}

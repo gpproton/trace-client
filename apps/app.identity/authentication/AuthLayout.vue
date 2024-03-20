@@ -12,10 +12,7 @@ defineOptions({ name: 'AuthLayout' });
       <div class="row fit" style="max-height: 100vh">
         <q-card square flat class="col window-height column justify-between">
           <q-toolbar class="text-primary q-pa-xs q-mx-sm">
-            <app-logo
-              style="height: 38px; width: 38px; fill: var(--q-primary)"
-              class="border-radius-sm text-primary"
-            />
+            <app-logo class="app-logo" />
             <q-toolbar-title class="text-h5 text-weight-bold">
               {{ 'Trace' }}
             </q-toolbar-title>
@@ -56,12 +53,3 @@ defineOptions({ name: 'AuthLayout' });
     </q-page-container>
   </q-layout>
 </template>
-
-<style lang="scss" scoped>
-.app-logo {
-  width: 96px;
-  height: 96px;
-  fill: white;
-  border-radius: $border-radius-sm;
-}
-</style>

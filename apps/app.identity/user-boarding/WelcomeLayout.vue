@@ -20,11 +20,8 @@ const extraInfo =
           fit
           class="gt-sm col-4 bg-primary window-height column justify-between"
         >
-          <q-toolbar class="q-pa-md">
-            <app-logo
-              style="height: 38px; width: 38px; fill: #fff"
-              class="border-radius-sm text-primary"
-            />
+          <q-toolbar class="q-px-md">
+            <app-logo class="welcome-logo" />
             <q-toolbar-title class="text-h5 text-white text-weight-bold">
               {{ 'Trace' }}
             </q-toolbar-title>
@@ -42,7 +39,7 @@ const extraInfo =
           />
         </q-card>
         <q-card square fit class="col window-height column justify-between">
-          <q-toolbar class="q-px-md">
+          <q-toolbar class="q-py-sm q-px-md">
             <lang-selector />
             <q-space />
             <q-tabs no-caps shrink stretch content-class="text-primary">
@@ -76,3 +73,13 @@ const extraInfo =
     </q-page-container>
   </q-layout>
 </template>
+
+<style lang="scss" scoped>
+.welcome-logo {
+  height: 38px;
+  width: 38px;
+  :deep(path) {
+    fill: #fff !important;
+  }
+}
+</style>
