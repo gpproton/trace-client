@@ -22,7 +22,7 @@ export enum ServiceVariant {
   Default = 'default',
   Identity = 'identity',
   Portal = 'portal',
-  Track = 'finder',
+  Track = 'track',
   Core = 'core',
   Support = 'support',
 }
