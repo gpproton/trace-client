@@ -50,7 +50,10 @@ const getStatus = computed(() => {
             </q-list>
           </div>
           <div class="q-px-md q-py-sm text-primary">
-            {{ 'All right reserved @Trace' }}
+            {{ 'All right reserved.' }}
+            <span class="text-primary" href="https://drolx.com">{{
+              'drolx Solutions'
+            }}</span>
           </div>
         </q-card>
         <q-card square fit class="col window-height">

@@ -46,7 +46,10 @@ const { getColor, getIcon } = onboardStore;
             </q-timeline>
           </div>
           <div class="q-pa-md text-primary">
-            {{ 'All right reserved @Trace' }}
+            {{ 'All right reserved.' }}
+            <span class="text-primary" href="https://drolx.com">{{
+              'drolx Solutions'
+            }}</span>
           </div>
         </q-card>
         <q-card square fit class="col window-height">

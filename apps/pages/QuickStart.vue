@@ -39,15 +39,17 @@ const apps: AppOption[] = [
           class="gt-sm col-5 bg-app-background window-height column justify-between"
         >
           <q-toolbar class="q-py-sm q-px-md">
-            <app-logo class="app-logo"
-            />
+            <app-logo class="app-logo" />
             <q-toolbar-title class="text-h5 text-primary text-weight-bold">
               {{ 'Trace' }}
             </q-toolbar-title>
           </q-toolbar>
           <div class="q-pa-lg"></div>
-          <div class="q-px-md q-py-sm text-primary">
-            {{ 'All right reserved @Trace' }}
+          <div class="q-px-md q-py-sm text-grey">
+            {{ 'All right reserved.' }}
+            <span class="text-primary" href="https://drolx.com">{{
+              'drolx Solutions'
+            }}</span>
           </div>
         </q-card>
         <q-card square fit class="col window-height">
@@ -67,7 +69,7 @@ const apps: AppOption[] = [
               >{{ $t('auth.signOut') }}</q-btn
             >
           </q-toolbar>
-          <div class="full-height q-mt-xl q-pa-md">
+          <div class="q-mt-xl q-pa-md">
             <div class="row justify-center align-center">
               <q-card
                 v-for="app in apps"

@@ -48,7 +48,7 @@ const extraInfo =
                 :key="index"
                 :to="{ name: link.name }"
                 :name="link.name"
-                class="text-body1"
+                class="text-body1 border-radius-sm"
                 >{{ $t(link.label) }}</q-route-tab
               >
             </q-tabs>

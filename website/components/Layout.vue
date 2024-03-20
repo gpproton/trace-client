@@ -46,7 +46,10 @@ const links = [
             </slot>
         </q-page-container>
         <q-footer class="bg-secondary text-white q-pa-md">
-            <div>{{ 'All right reserved @Trace' }}</div>
+            <div> {{ 'All right reserved.' }}
+            <span class="text-primary" href="https://drolx.com">{{
+              'drolx Solutions'
+            }}</span></div>
         </q-footer>
     </q-layout>
 </template>

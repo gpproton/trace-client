@@ -24,12 +24,14 @@ const inviteMessage = `Select appropriate option to proceed. If you are unaware 
 <template>
   <div class="row justify-center">
     <q-card square flat class="q-mt-lg q-pa-md onboard-form">
-      <div>
-        <div class="text-h3">{{ $t('shared.gettingStarted') }}</div>
-        <div class="text-grey q-px-sm">{{ inviteMessage }}</div>
+      <div style="max-width: 80%">
+        <div class="text-h3 text-grey-7">{{ $t('shared.gettingStarted') }}</div>
+        <div class="text-grey q-px-sm q-my-md">
+          {{ inviteMessage }}
+        </div>
       </div>
       <div class="q-mt-xl">
-        <div class="row">
+        <div class="row justify-center">
           <q-btn
             no-caps
             size="lg"
@@ -37,6 +39,7 @@ const inviteMessage = `Select appropriate option to proceed. If you are unaware 
             outline
             color="primary"
             class="full-width q-mt-lg border-radius-sm"
+            style="max-width: 420px"
           >
             <q-icon
               name="bi-envelope-at"
