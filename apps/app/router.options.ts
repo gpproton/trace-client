@@ -50,7 +50,7 @@ export const routes = [
   },
   addAppRoutes(
     ServiceVariant.Core,
-    () => import('@/app/Layout.vue'),
+    () => import('@/app/AppLayout.vue'),
     coreRoutes,
     ['core-overview', 'core-calendar'],
   ),

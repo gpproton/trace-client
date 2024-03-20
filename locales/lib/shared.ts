@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue Mar 19 2024
+ * Modified At: Wed Mar 20 2024
  */
 
 export default {
@@ -28,7 +28,7 @@ export default {
   engagements: 'Engagements',
   activities: 'Activities',
   leads: 'Leads',
-  liveTracking: 'Tracking',
+  liveTracking: 'Live Tracking',
   locations: 'Locations',
   routes: 'Routes',
   notification: "Notification",
