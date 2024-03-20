@@ -64,4 +64,4 @@ const { getColor, getIcon } = onboardStore;
       </div>
     </q-page-container>
   </q-layout>
-</template>
+</template>./module-routes

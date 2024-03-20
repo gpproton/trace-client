@@ -13,12 +13,7 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Friday, 8th Mar 2024
+ * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Wed Mar 20 2024
  */
-
-import AuthModuleRoutes from './authentication/module-routes';
-import UserBoardingRoutes from './user-boarding/module-routes';
-
-export const routes = [...AuthModuleRoutes, ...UserBoardingRoutes];
