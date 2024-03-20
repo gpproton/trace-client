@@ -60,7 +60,7 @@ const apps: AppOption[] = [
               no-caps
               color="primary"
               class="text-body1 border-radius-sm"
-              >{{ $t('router.support') }}</q-btn
+              >{{ $t('router.faq') }}</q-btn
             >
             <q-btn
               no-caps

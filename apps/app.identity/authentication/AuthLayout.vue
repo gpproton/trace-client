@@ -24,10 +24,11 @@ defineOptions({ name: 'AuthLayout' });
             <router-view class="absolute-center" />
           </q-card>
           <div class="row q-pa-sm q-gutter-x-md">
-            <div class="text-primary">
-              {{
-                `${$t('shared.copyright')} @Trace ${new Date().getFullYear()}`
-              }}
+            <div>
+              {{ $t('shared.copyright') }}
+              <span class="text-primary" href="https://drolx.com">{{
+                '@ ' + 'drolx Solutions'
+              }}</span>
             </div>
             <div>|</div>
             <div class="text-primary">

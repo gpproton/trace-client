@@ -24,6 +24,7 @@ export default {
   support: 'Support',
   track: 'Track',
   home: "Home",
+  faq: "FAQ's",
   pricing: "Pricing",
   solutions: "Solutions",
   contact: "Contact",
