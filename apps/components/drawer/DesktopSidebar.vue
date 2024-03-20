@@ -72,7 +72,7 @@ onUnmounted(() => clearTimeout(timeout.value));
     <sidebar-header
       v-model="drawerMiniState"
       v-model:workspace="workspace"
-      class="q-mt-sm"
+      class="q-mt-none"
     />
     <q-scroll-area
       class="fit fixed-bottom"

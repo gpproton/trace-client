@@ -10,7 +10,7 @@ const { modelValue, workspace } = defineModels<{
 </script>
 
 <template>
-  <q-toolbar class="q-pa-none" style="min-height: 72px">
+  <q-toolbar class="q-pa-none" style="min-height: 64px">
     <div v-show="modelValue" class="q-mx-auto" style="height: 49px">
       <app-logo class="app-logo self-start col-1 q-mx-auto" />
     </div>
