@@ -30,14 +30,15 @@
     "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
   },
   "dependencies": {
-    "@trace/base": "workspace:*",
-    "@trace/shared": "workspace:*",
-    "@turf/circle": "^6.5.0",
-    "@turf/turf": "^6.5.0",
-    "@turf/center-of-mass": "^6.5.0",
     "@geoman-io/leaflet-geoman-free": "^2.16.0",
     "@googlemaps/js-api-loader": "^1.16.6",
     "@mapbox/polyline": "^1.2.1",
+    "@trace/base": "workspace:*",
+    "@trace/shared": "workspace:*",
+    "@turf/center-of-mass": "^6.5.0",
+    "@turf/circle": "^6.5.0",
+    "@turf/turf": "^6.5.0",
+    "echarts": "^5.5.0",
     "leaflet-contextmenu": "^1.4.0",
     "leaflet-control-geocoder": "^2.4.0",
     "leaflet-easybutton": "^2.4.0",
@@ -55,14 +56,14 @@
     "@nuxt/devtools": "latest",
     "@trace/model": "workspace:*",
     "@trace/shared": "workspace:*",
-    "@vite-pwa/assets-generator": "^0.2.4",
-    "nuxt": "^3.11.1",
-    "nuxt3-leaflet": "^1.0.12",
     "@types/leaflet": "^1.9.8",
     "@types/leaflet-rotatedmarker": "^0.2.5",
     "@types/leaflet-routing-machine": "^3.2.8",
     "@types/leaflet.markercluster": "^1.5.4",
     "@types/leaflet.pm": "^0.13.8",
-    "@types/leaflet.polylinemeasure": "^1.0.4"
+    "@types/leaflet.polylinemeasure": "^1.0.4",
+    "@vite-pwa/assets-generator": "^0.2.4",
+    "nuxt": "^3.11.1",
+    "nuxt3-leaflet": "^1.0.12"
   }
 }
