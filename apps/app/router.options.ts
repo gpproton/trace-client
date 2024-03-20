@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue Mar 19 2024
+ * Modified At: Wed Mar 20 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
