@@ -53,7 +53,7 @@ const apps: AppOption[] = [
           </div>
         </q-card>
         <q-card square fit class="col window-height">
-          <q-toolbar class="q-px-md">
+          <q-toolbar class="q-px-md q-gutter-sm">
             <q-space />
             <q-btn
               flat
