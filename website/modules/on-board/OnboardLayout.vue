@@ -12,7 +12,7 @@ const { status } = onboardStore;
 const getStatus = computed(() => {
   return (name: string) => {
     const state = status(name);
-    if (state === null) return 'item-inactive'
+    if (state === null) return 'item-inactive';
 
     return state ? 'item-completed' : 'item-active';
   };
@@ -23,7 +23,11 @@ const getStatus = computed(() => {
   <q-layout view="hHh LpR fff">
     <q-page-container>
       <div class="row fit" style="max-height: 100vh">
-        <q-card square fit class="gt-sm col-5 bg-grey-1 window-height column justify-between">
+        <q-card
+          square
+          fit
+          class="gt-sm col-5 bg-grey-1 window-height column justify-between"
+        >
           <q-toolbar class="q-pa-md">
             <app-logo class="app-logo" />
             <q-toolbar-title class="text-h5 text-primary text-weight-bold">
@@ -32,19 +36,42 @@ const getStatus = computed(() => {
           </q-toolbar>
           <div class="q-pa-lg">
             <q-list>
-              <q-item class="q-my-md" v-for="(item, index ) in onboardRoutes" :key="index">
+              <q-item
+                v-for="(item, index) in onboardRoutes"
+                :key="index"
+                class="q-my-md"
+              >
                 <q-item-section avatar>
                   <div class="item-dot" :class="getStatus(item.name)">
-                    <q-icon v-if="getStatus(item.name) === 'item-completed'" color="white" name="bi-check" size="sm" />
+                    <q-icon
+                      v-if="getStatus(item.name) === 'item-completed'"
+                      color="white"
+                      name="bi-check"
+                      size="sm"
+                    />
                   </div>
                 </q-item-section>
-                <q-item-section class="text-h6"
-                  :class="getStatus(item.name) === 'item-active' ? 'text-accent' : 'text-grey-6'">{{
-                    $t(`${item.meta?.title}`)
-                  }}</q-item-section>
-                <q-item-section v-if="getStatus(item.name) === 'item-active'" side>
-                  <q-icon name="bi-arrow-right"
-                    :class="getStatus(item.name) === 'item-active' ? 'text-accent' : 'text-grey-6'" />
+                <q-item-section
+                  class="text-h6"
+                  :class="
+                    getStatus(item.name) === 'item-active'
+                      ? 'text-accent'
+                      : 'text-grey-6'
+                  "
+                  >{{ $t(`${item.meta?.title}`) }}</q-item-section
+                >
+                <q-item-section
+                  v-if="getStatus(item.name) === 'item-active'"
+                  side
+                >
+                  <q-icon
+                    name="bi-arrow-right"
+                    :class="
+                      getStatus(item.name) === 'item-active'
+                        ? 'text-accent'
+                        : 'text-grey-6'
+                    "
+                  />
                 </q-item-section>
               </q-item>
             </q-list>
@@ -60,8 +87,13 @@ const getStatus = computed(() => {
           <q-toolbar class="q-px-md">
             <lang-selector />
             <q-space />
-            <q-btn flat no-caps color="primary" class="text-body1 border-radius-sm">{{ $t('router.support')
-            }}</q-btn>
+            <q-btn
+              flat
+              no-caps
+              color="primary"
+              class="text-body1 border-radius-sm"
+              >{{ $t('router.support') }}</q-btn
+            >
           </q-toolbar>
           <div class="q-pa-sm">
             <slot>

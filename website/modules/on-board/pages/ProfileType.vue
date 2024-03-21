@@ -12,19 +12,19 @@ const profiles = [
   {
     title: 'Individual',
     description: 'Single user profile',
-    icon: 'bi-person-badge-fill'
+    icon: 'bi-person-badge-fill',
   },
   {
     title: 'Organization',
     description: 'Organiation with multiple users',
-    icon: 'business'
-  }
+    icon: 'business',
+  },
 ];
 
 const proceed = () => {
-  onboardStore.addPage()
+  onboardStore.addPage();
   router.push({ name: 'on-board.workflow-type' });
-}
+};
 </script>
 
 <template>
@@ -34,11 +34,25 @@ const proceed = () => {
         <div class="text-h4">{{ $t('onboard.selectProfile') }}</div>
         <div class="text-grey">{{ message }}</div>
       </div>
-      <list-option :items="profiles" v-model="profile" />
+      <list-option v-model="profile" :items="profiles" />
       <div class="q-my-xl full-width row justify-between">
-        <q-btn no-caps flat @click="() => router.back()" size="lg" class="border-radius-sm" color="primary"
-          label="Back" />
-        <q-btn no-caps size="lg" @click="proceed" class="border-radius-sm" color="primary" label="Continue" />
+        <q-btn
+          no-caps
+          flat
+          size="lg"
+          class="border-radius-sm"
+          color="primary"
+          label="Back"
+          @click="() => router.back()"
+        />
+        <q-btn
+          no-caps
+          size="lg"
+          class="border-radius-sm"
+          color="primary"
+          label="Continue"
+          @click="proceed"
+        />
       </div>
     </q-card>
   </div>

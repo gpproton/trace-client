@@ -9,7 +9,11 @@
     "clean": "pnpx rimraf node_modules **/node_modules **/dist/* pnpm-lock.*",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
+    "lint:prettier": "prettier --check .",
+    "lint": "pnpm lint:js && yarn lint:prettier",
+    "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
   },
   "dependencies": {
     "@trace/base": "workspace:*",
@@ -17,7 +21,15 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
     "nuxt": "^3.11.1",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   }

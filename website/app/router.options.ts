@@ -43,7 +43,7 @@ export default <RouterConfig>{
           name: 'getting-started',
           component: () => import('@/pages/GettingStarted.vue'),
         },
-      ]
+      ],
     },
     OnboardRoutes,
     {
@@ -58,7 +58,7 @@ export default <RouterConfig>{
             icon: 'sync',
           },
         },
-      ]
+      ],
     },
-  ]
-}
+  ],
+};

@@ -3,5 +3,5 @@ defineOptions({ name: 'Reprensentative' });
 </script>
 
 <template>
-    <div>Reprensentative</div>
+  <div>Reprensentative</div>
 </template>

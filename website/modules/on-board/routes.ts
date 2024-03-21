@@ -27,7 +27,7 @@ export const onboardRoutes: Route[] = [
     component: () => import('./pages/ProfileType.vue'),
     meta: {
       title: 'shared.profileType',
-      description: 'Select your preffered profile type'
+      description: 'Select your preffered profile type',
     },
   },
   {
@@ -36,7 +36,7 @@ export const onboardRoutes: Route[] = [
     component: () => import('./pages/WorkflowType.vue'),
     meta: {
       title: 'shared.workflowType',
-      description: 'Choose organization operation type'
+      description: 'Choose organization operation type',
     },
   },
   {
@@ -45,7 +45,7 @@ export const onboardRoutes: Route[] = [
     component: () => import('./pages/OrganizationInformation.vue'),
     meta: {
       title: 'shared.organizationInformation',
-      description: 'Enter required organization information'
+      description: 'Enter required organization information',
     },
   },
   {
@@ -54,7 +54,7 @@ export const onboardRoutes: Route[] = [
     component: () => import('./pages/Registration.vue'),
     meta: {
       title: 'shared.registration',
-      description: 'Start registration process for account'
+      description: 'Start registration process for account',
     },
   },
   {
@@ -63,7 +63,7 @@ export const onboardRoutes: Route[] = [
     component: () => import('./pages/Reprensentative.vue'),
     meta: {
       title: 'shared.representative',
-      description: 'Required representative details for account'
+      description: 'Required representative details for account',
     },
   },
   {
@@ -72,7 +72,7 @@ export const onboardRoutes: Route[] = [
     component: () => import('./pages/Verify.vue'),
     meta: {
       title: 'shared.verification',
-      description: 'OPT verification for representative'
+      description: 'OPT verification for representative',
     },
   },
   {
@@ -81,7 +81,7 @@ export const onboardRoutes: Route[] = [
     component: () => import('./pages/Confirmation.vue'),
     meta: {
       title: 'shared.confirmation',
-      description: ''
+      description: '',
     },
   },
 ];
@@ -91,7 +91,7 @@ const routes: Route = {
   name: 'on-board',
   redirect: { name: 'on-board.profile-type' },
   component: () => import('./OnboardLayout.vue'),
-  children: onboardRoutes
+  children: onboardRoutes,
 };
 
 export default routes;

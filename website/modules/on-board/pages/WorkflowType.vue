@@ -12,29 +12,29 @@ const workflows = [
   {
     title: 'Telematics',
     description: 'Provides access to GPS tracking',
-    icon: 'bi-compass'
+    icon: 'bi-compass',
   },
   {
     title: 'Courier',
     description: 'Organize sending goods to customers',
-    icon: 'bi-box'
+    icon: 'bi-box',
   },
   {
     title: 'Logistics',
     description: 'Maximize logistics processes end to end',
-    icon: 'bi-truck'
+    icon: 'bi-truck',
   },
   {
     title: 'Passenger',
     description: 'Allow organizing and processing passengers',
-    icon: 'bi-bus-front'
+    icon: 'bi-bus-front',
   },
 ];
 
 const proceed = () => {
-  onboardStore.addPage()
+  onboardStore.addPage();
   router.push({ name: 'on-board.organization-information' });
-}
+};
 </script>
 
 <template>
@@ -44,11 +44,25 @@ const proceed = () => {
         <div class="text-h3">{{ $t('onboard.selectWorkflow') }}</div>
         <div class="text-grey">{{ message }}</div>
       </div>
-      <list-option :items="workflows" v-model="workflow" />
+      <list-option v-model="workflow" :items="workflows" />
       <div class="q-my-lg full-width row justify-between">
-        <q-btn no-caps flat size="lg" @click="() => router.back()" class="border-radius-sm" color="primary"
-          label="Back" />
-        <q-btn no-caps size="lg" @click="proceed" class="border-radius-sm" color="primary" label="Continue" />
+        <q-btn
+          no-caps
+          flat
+          size="lg"
+          class="border-radius-sm"
+          color="primary"
+          label="Back"
+          @click="() => router.back()"
+        />
+        <q-btn
+          no-caps
+          size="lg"
+          class="border-radius-sm"
+          color="primary"
+          label="Continue"
+          @click="proceed"
+        />
       </div>
     </q-card>
   </div>
