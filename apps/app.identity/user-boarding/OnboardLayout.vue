@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppLogo from '@trace/base/icons/logo.svg';
 import LangSelector from '@trace/base/components/LangSelector.vue';
-import { onboardRoutes } from './routes';
+import { onboardRoutes } from './module-routes';
 import { useOnboardStore } from '@trace/base/composables/on-board';
 
 defineOptions({ name: 'OnboardLayout' });
@@ -64,4 +64,5 @@ const { getColor, getIcon } = onboardStore;
       </div>
     </q-page-container>
   </q-layout>
-</template>./module-routes
+</template>
+./module-routes
