@@ -25,6 +25,7 @@ export default {
   trends: "Trends",
   contacts: 'Contacts',
   calendar: 'Calendar',
+  timeline: 'Timeline',
   engagements: 'Engagements',
   activities: 'Activities',
   leads: 'Leads',

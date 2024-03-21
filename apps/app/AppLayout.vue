@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 import { useLayoutStore } from '@/stores/layout';
@@ -21,7 +20,6 @@ interface IProps {
   mobileFilter?: string[];
 }
 
-const showTitle = ref(true);
 const breakpointStates = useAppBreakpoints();
 const layoutStores = useLayoutStore();
 const theme = useThemeStore();
@@ -62,9 +60,9 @@ const moduleFeatures = computed<RouteMenu[]>(() => {
   return route.meta.hideChildren ? [] : children;
 });
 
+const showSecondaryToggle = computed(() => moduleFeatures.value.length > 0);
 watchEffect(() => {
-  showSecondarySidebar.value =
-    isDesktop.value && moduleFeatures.value.length > 0;
+  showSecondarySidebar.value = moduleFeatures.value.length > 0;
 });
 
 const mobileMenu: RouteMenu[] = [];
@@ -145,10 +143,8 @@ const notificationTabs: IModule[] = [
           <desktop-header
             v-show="isDesktop"
             v-model="showSecondarySidebar"
-            v-model:show-secondary-sidebar-toogle="showSecondarySidebar"
+            v-model:show-secondary-sidebar-toogle="showSecondaryToggle"
             v-model:search="search"
-            v-model:show-title="showTitle"
-            $title="title"
             :quick-commands="quickCreateItems"
             :notification-tabs="notificationTabs"
           />
@@ -161,7 +157,6 @@ const notificationTabs: IModule[] = [
           <desktop-secondary-sidebar
             v-model="showSecondarySidebar"
             :menu-items="moduleFeatures"
-            $title="title"
           />
         </slot>
 

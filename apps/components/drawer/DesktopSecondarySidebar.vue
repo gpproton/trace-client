@@ -4,10 +4,9 @@ import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: 'DesktopSecondarySidebar' });
 
-const { modelValue, title, menuItems } = defineModels<{
+const { modelValue, menuItems } = defineModels<{
   menuItems: RouteMenu[];
   modelValue: ModelOptions<boolean, { defaultValue: false; deep: true }>;
-  title: ModelOptions<string, { defaultValue: 'Secondary Title'; deep: true }>;
 }>();
 </script>
 

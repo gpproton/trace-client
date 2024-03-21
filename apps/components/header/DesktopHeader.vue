@@ -16,14 +16,11 @@ withDefaults(defineProps<IProps>(), {
   notificationTabs: () => [],
 });
 
-const { modelValue, search, title, showTitle, showSecondarySidebarToogle } =
-  defineModels<{
-    showSecondarySidebarToogle: boolean;
-    modelValue: ModelOptions<boolean, { defaultValue: false; deep: true }>;
-    search: ModelOptions<string, { defaultValue: ''; deep: true }>;
-    title: ModelOptions<string, { defaultValue: 'Title'; deep: true }>;
-    showTitle: ModelOptions<boolean, { defaultValue: true; deep: true }>;
-  }>();
+const { modelValue, search, showSecondarySidebarToogle } = defineModels<{
+  showSecondarySidebarToogle: boolean;
+  modelValue: ModelOptions<boolean, { defaultValue: false; deep: true }>;
+  search: ModelOptions<string, { defaultValue: ''; deep: true }>;
+}>();
 </script>
 
 <template>
