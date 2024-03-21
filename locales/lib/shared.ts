@@ -30,6 +30,7 @@ export default {
   activities: 'Activities',
   leads: 'Leads',
   liveTracking: 'Live Tracking',
+  map: 'Map',
   locations: 'Locations',
   routes: 'Routes',
   notification: "Notification",

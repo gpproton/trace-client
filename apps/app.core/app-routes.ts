@@ -33,7 +33,7 @@ export default [
   addCatchAll(ServiceVariant.Core),
   addUnAuthorized(ServiceVariant.Core),
   addOverviewRoute(ServiceVariant.Core),
-  addEngagementRoute(ServiceVariant.Track),
+  addEngagementRoute(ServiceVariant.Core),
   addCalendarRoute(ServiceVariant.Core),
   addTrackingRoute(ServiceVariant.Core),
   addContactRoute(ServiceVariant.Core),
