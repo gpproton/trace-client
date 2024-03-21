@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023 - 2024 drolx Solutions
  *
- * Licensed under the Business Source License 1.1 and Trace License
+ * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
  * you may not use this file except in compliance with the License.
  * Change License: Reciprocal Public License 1.5
  *     https://mariadb.com/bsl11
@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed Mar 20 2024
+ * Modified At: Thu Mar 21 2024
  */
 
 @import './quasar.variables.scss';
@@ -64,6 +64,7 @@ body {
   .text-weight-thiner {
     font-weight: 100 !important;
   }
+
   .text-weight-thin {
     font-weight: 300 !important;
   }
@@ -79,18 +80,19 @@ body {
   --q-page-container-height: calc(100vh - var(--q-header-height));
   --q-page-content-height: calc(var(--q-page-container-height) * 0.9);
 
-.app-logo {
-  width: 48px;
-  height: 48px;
-  :deep(path) {
-    fill: var(--q-primary);
-  }
+  .app-logo {
+    width: 48px;
+    height: 48px;
 
-  .cls-1 {
+    :deep(path) {
+      fill: var(--q-primary);
+    }
+
+    .cls-1 {
       fill: var(--q-primary) !important;
       fill-rule: evenodd;
+    }
   }
-}
 
   .page-container {
     min-height: var(--q-page-container-height);
@@ -101,6 +103,7 @@ body {
     align-items: stretch;
     justify-content: flex-start;
     background-color: var(--q-app-background);
+
     .page-content {
       min-height: var(--q-page-content-height);
       max-height: var(--q-page-content-height);

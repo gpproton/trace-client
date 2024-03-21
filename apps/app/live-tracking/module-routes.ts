@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023 - 2024 drolx Solutions
  *
- * Licensed under the Business Source License 1.1 and Trace License
+ * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
  * you may not use this file except in compliance with the License.
  * Change License: Reciprocal Public License 1.5
  *     https://mariadb.com/bsl11
@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed Mar 20 2024
+ * Modified At: Thu Mar 21 2024
  */
 
 import type { Route } from '@trace/base/typings';
