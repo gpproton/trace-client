@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { QCalendarDay, today } from '@quasar/quasar-ui-qcalendar/src/index.js';
+import { QCalendarDay, today } from '@quasar/quasar-ui-qcalendar';
 import '@quasar/quasar-ui-qcalendar/src/QCalendarVariables.sass';
 import '@quasar/quasar-ui-qcalendar/src/QCalendarTransitions.sass';
 import '@quasar/quasar-ui-qcalendar/src/QCalendarDay.sass';
@@ -29,14 +29,7 @@ const onClickHeadDay = (data: any) => console.log('onClickHeadDay', data);
   <page-wrapper>
     <div class="subcontent">
       <div class="row justify-center">
-        <div
-          style="
-            display: flex;
-            max-width: calc(100vw - 72px);
-            width: 100%;
-            height: calc(100vh - 115px);
-          "
-        >
+        <div class="calendar-style">
           <q-calendar-day
             ref="calendarRef"
             v-model="selectedDate"
@@ -62,3 +55,12 @@ const onClickHeadDay = (data: any) => console.log('onClickHeadDay', data);
     </div>
   </page-wrapper>
 </template>
+
+<style lang="scss" scoped>
+.calendar-style {
+  display: flex;
+  max-width: calc(100vw - 72px);
+  width: 100%;
+  height: calc(100vh - 164px);
+}
+</style>

@@ -24,10 +24,33 @@ import type { ServiceVariant } from '@trace/shared';
 export default (service: ServiceVariant): Route => ({
   name: `${service}-calendar`,
   path: 'calendar',
-  component: () => import('./pages/CalendarView.vue'),
+  redirect: { name: `${service}-calendar.personal` },
+  component: () => import('./CalendarLayout.vue'),
   meta: {
     menu: 'module',
     title: 'shared.calendar',
     icon: 'bi-calendar4-week',
   },
+  children: [
+    {
+      name: `${service}-calendar.personal`,
+      path: 'personal',
+      component: () => import('./pages/CalendarView.vue'),
+      meta: {
+        title: 'shared.calendar',
+        icon: 'bi-calendar4-week',
+        menu: true,
+      },
+    },
+    {
+      name: `${service}-calendar.timeline`,
+      path: 'timeline',
+      component: () => import('./pages/CalendarTaskTimline.vue'),
+      meta: {
+        title: 'shared.timeline',
+        icon: 'bi-calendar4-week',
+        menu: true,
+      },
+    },
+  ],
 });
