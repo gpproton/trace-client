@@ -1,16 +1,9 @@
 <script setup lang="ts">
-import {
-  ref,
-  onMounted,
-  onBeforeMount,
-  onUnmounted,
-  onActivated,
-  onDeactivated,
-} from 'vue';
+import { ref, onMounted, onUnmounted, onActivated, onDeactivated } from 'vue';
 import { QScrollArea, SessionStorage } from 'quasar';
 import { useRoute } from 'vue-router';
 import {} from '@/stores/theme';
-import { usePageStore, type IPageContext } from '@/stores/page';
+import { type IPageContext } from '@/stores/page';
 import UnderConstruction from '@trace/base/components/error/UnderConstruction.vue';
 
 defineOptions({ name: 'PageWrapper' });
@@ -40,22 +33,18 @@ const thumbStyle = {
 export interface IProps {
   options?: IPageContext | any;
   name?: string;
-  layout?: string;
   contentActiveStyle?: string;
   scrollable?: boolean;
   padding?: boolean;
 }
 
-const props = withDefaults(defineProps<IProps>(), {
+withDefaults(defineProps<IProps>(), {
   options: {},
   name: '',
-  layout: 'default',
   contentActiveStyle: '',
   scrollable: false,
   padding: false,
 });
-
-const { setupPage } = usePageStore();
 
 const route = useRoute();
 const scrollArea = ref<QScrollArea | null>(null);
@@ -79,11 +68,6 @@ const onScroll = (info: scrollInfo) => {
 const toTop = () => {
   scrollToPosition(0, 300);
 };
-
-onBeforeMount(() => {
-  setPageLayout(props.layout ?? 'defaultLayout');
-  setupPage(props.options);
-});
 
 onMounted(() => {
   basePath.value = route.fullPath;

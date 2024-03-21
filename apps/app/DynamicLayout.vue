@@ -1,12 +1,41 @@
-<script lang="ts" setup>
-// NOTE: Affects nested layout if enabled
-// defineOptions({ name: 'DynamicLayout' });
+<script setup lang="ts">
+import type { ServiceVariant } from '@trace/shared';
+import AppLayout from './AppLayout.vue';
+import { markRaw, provide, watch, shallowRef } from 'vue';
+import { useRoute } from 'vue-router';
+
+interface IProps {
+  workspace: ServiceVariant;
+}
+
+const layout = shallowRef();
 const route = useRoute();
-const layout = route.meta.layout ?? import('@/layouts/BlankLayout.vue');
+defineProps<IProps>();
+watch(
+  () => computed(() => route.path),
+  async () => {
+    const route = useRoute();
+    const metaLayout = route.meta.layout;
+    try {
+      const component =
+        metaLayout &&
+        (await import(/* @vite-ignore */ `@/app/${metaLayout}.vue`));
+      layout.value = markRaw(component?.default || AppLayout);
+    } catch (e) {
+      layout.value = markRaw(AppLayout);
+    }
+
+    console.log('Current path: ', route.path);
+    console.log('Current meta: ', route.meta.layout);
+    console.log('Current layout: ', route.meta.layout);
+  },
+  { immediate: true },
+);
+provide('app:layout', layout);
 </script>
 
 <template>
-  <component :is="layout || 'div'">
-    <router-view />
+  <component :is="layout" :workspace="workspace">
+    <router-view></router-view>
   </component>
 </template>

@@ -75,4 +75,5 @@ declare interface RouteMenu {
   name: RouteRecordName | null | undefined;
   children?: RouteMenu[];
   hideChildren?: boolean;
+  layout?: string;
 }

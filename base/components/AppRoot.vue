@@ -5,14 +5,6 @@ import { useLanguageStore } from '@/stores/language';
 
 defineOptions({ name: 'AppRoot' });
 
-interface IProps {
-  layout?: string;
-}
-
-withDefaults(defineProps<IProps>(), {
-  layout: 'default-layout',
-});
-
 onMounted(() => {
   const localeStore = useLanguageStore();
   const { bootstrapLocale } = localeStore;
