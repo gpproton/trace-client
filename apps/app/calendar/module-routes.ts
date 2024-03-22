@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Fri Mar 22 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -30,6 +30,7 @@ export default (service: ServiceVariant): Route => ({
     menu: 'module',
     title: 'shared.calendar',
     icon: 'bi-calendar4-week',
+    hideChildren: true,
   },
   children: [
     {

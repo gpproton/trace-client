@@ -44,46 +44,41 @@ const onClickInterval = (data: any) => console.log('onClickInterval', data);
 </script>
 
 <template>
-  <page-wrapper>
-    <div class="subcontent">
-      <div class="row justify-center">
-        <div class="calendar-style">
-          <q-calendar-resource
-            ref="calendarRef"
-            v-model="selectedDate"
-            v-model:model-resources="resources"
-            :hour24-format="true"
-            resource-key="id"
-            resource-label="name"
-            bordered
-            :style="styles"
-            @change="onChange"
-            @moved="onMoved"
-            @resource-expanded="onResourceExpanded"
-            @click-date="onClickDate"
-            @click-time="onClickTime"
-            @click-resource="onClickResource"
-            @click-head-resources="onClickHeadResources"
-            @click-interval="onClickInterval"
-          >
-            <template #resource-label="{ scope: { resource } }">
-              <div class="col-12">
-                <q-chip
-                  class="text-caption"
-                  color="app-background text-primary"
-                >
-                  <q-avatar>
-                    <q-icon size="xs" :name="resource.icon" />
-                  </q-avatar>
-                  {{ resource.name }}
-                </q-chip>
-              </div>
-            </template>
-          </q-calendar-resource>
-        </div>
+  <div class="subcontent">
+    <div class="row justify-center">
+      <div class="calendar-style">
+        <q-calendar-resource
+          ref="calendarRef"
+          v-model="selectedDate"
+          v-model:model-resources="resources"
+          :hour24-format="true"
+          resource-key="id"
+          resource-label="name"
+          bordered
+          :style="styles"
+          @change="onChange"
+          @moved="onMoved"
+          @resource-expanded="onResourceExpanded"
+          @click-date="onClickDate"
+          @click-time="onClickTime"
+          @click-resource="onClickResource"
+          @click-head-resources="onClickHeadResources"
+          @click-interval="onClickInterval"
+        >
+          <template #resource-label="{ scope: { resource } }">
+            <div class="col-12">
+              <q-chip class="text-caption" color="app-background text-primary">
+                <q-avatar>
+                  <q-icon size="xs" :name="resource.icon" />
+                </q-avatar>
+                {{ resource.name }}
+              </q-chip>
+            </div>
+          </template>
+        </q-calendar-resource>
       </div>
     </div>
-  </page-wrapper>
+  </div>
 </template>
 
 <style lang="scss" scoped>

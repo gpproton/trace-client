@@ -26,34 +26,32 @@ const onClickHeadDay = (data: any) => console.log('onClickHeadDay', data);
 </script>
 
 <template>
-  <page-wrapper>
-    <div class="subcontent">
-      <div class="row justify-center">
-        <div class="calendar-style">
-          <q-calendar-day
-            ref="calendarRef"
-            v-model="selectedDate"
-            class="border-rounded-sm"
-            view="week"
-            short-weekday-label
-            :hour24-format="true"
-            :date-header="dateHeader"
-            :weekday-align="weekdayAlign"
-            :date-align="dateAlign"
-            animated
-            bordered
-            @change="onChange"
-            @moved="onMoved"
-            @click-date="onClickDate"
-            @click-time="onClickTime"
-            @click-interval="onClickInterval"
-            @click-head-intervals="onClickHeadIntervals"
-            @click-head-day="onClickHeadDay"
-          />
-        </div>
+  <div class="subcontent">
+    <div class="row justify-center">
+      <div class="calendar-style">
+        <q-calendar-day
+          ref="calendarRef"
+          v-model="selectedDate"
+          class="border-rounded-sm"
+          view="week"
+          short-weekday-label
+          :hour24-format="true"
+          :date-header="dateHeader"
+          :weekday-align="weekdayAlign"
+          :date-align="dateAlign"
+          animated
+          bordered
+          @change="onChange"
+          @moved="onMoved"
+          @click-date="onClickDate"
+          @click-time="onClickTime"
+          @click-interval="onClickInterval"
+          @click-head-intervals="onClickHeadIntervals"
+          @click-head-day="onClickHeadDay"
+        />
       </div>
     </div>
-  </page-wrapper>
+  </div>
 </template>
 
 <style lang="scss" scoped>

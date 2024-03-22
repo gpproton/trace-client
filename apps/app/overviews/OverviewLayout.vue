@@ -1,20 +1,9 @@
 <script lang="ts" setup>
+import { useLayoutRouteStore } from '@/composables/layout-routes';
 import SwitcherButton from '@/components/extra/SwitcherButton.vue';
-import type { RouteMenu } from '@trace/base/typings';
 
-const navigations: RouteMenu[] = [
-  {
-    name: 'core-overview.dashboard',
-    title: 'Dashboard',
-    icon: '',
-  },
-  {
-    name: 'core-overview.trends',
-    title: 'Trends',
-    icon: '',
-  },
-];
-
+const { moduleChildrenFn } = useLayoutRouteStore();
+const navigations = computed(() => moduleChildrenFn());
 const selected = ref('Status');
 const dashboardTypes: string[] = ['Status', 'Availability'];
 </script>

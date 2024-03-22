@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
+import { provide } from 'vue';
 import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 import { useLayoutStore } from '@/stores/layout';
+import { useLayoutRouteStore } from '@/composables/layout-routes';
 import { useThemeStore } from '@/stores/theme';
 import type { IModule, IModuleCommands, ServiceVariant } from '@trace/shared';
 import DesktopHeader from '@/components/header/DesktopHeader.vue';
@@ -11,7 +13,6 @@ import MobileHeader from '@/components/header/MobileHeader.vue';
 import MobileBottomMenu from '@/components/footer/MobileBottomMenu.vue';
 import { profileData } from '@trace/shared';
 import RouterInject from '@/components/RouterInject.vue';
-import { getRouteMenuByType } from '@trace/base/types';
 import type { RouteMenu } from '@trace/base/typings';
 
 interface IProps {
@@ -23,6 +24,9 @@ interface IProps {
 const breakpointStates = useAppBreakpoints();
 const layoutStores = useLayoutStore();
 const theme = useThemeStore();
+
+const { modulesMenuFn, moduleFeaturesFn } = useLayoutRouteStore();
+
 const {
   title,
   search,
@@ -40,26 +44,8 @@ const { initializeTheme, setThemeState } = theme;
 // TODO: Move theme trigger to app-root
 initializeTheme();
 
-const modulesMenu = computed<RouteMenu[]>(() => {
-  const router = useRouter();
-  const route = router.currentRoute.value;
-
-  return getRouteMenuByType(router.options.routes, route.name, [
-    'module',
-    true,
-  ]);
-});
-
-const moduleFeatures = computed<RouteMenu[]>(() => {
-  const route = useRoute();
-  const routeName: string = route.name;
-  const children = modulesMenu.value
-    .filter((e) => e.name === routeName.split('.')[0])
-    .flatMap((e) => (e.children ? e.children : []));
-
-  return route.meta.hideChildren ? [] : children;
-});
-
+const modulesMenu = computed<RouteMenu[]>(() => modulesMenuFn());
+const moduleFeatures = computed<RouteMenu[]>(() => moduleFeaturesFn());
 const showSecondaryToggle = computed(() => moduleFeatures.value.length > 0);
 watchEffect(() => {
   showSecondarySidebar.value = moduleFeatures.value.length > 0;
