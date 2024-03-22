@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { reactive } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useUserAccountStore } from '@/stores/user-account';
 import IdentityForm from '../components/IdentityForm.vue';
 import IconGoogle from '@trace/base/icons/brands/google.svg?url';
 import IconMicrosoft from '@trace/base/icons/brands/microsoft.svg?url';
 import IconApple from '@trace/base/icons/brands/apple.svg?url';
 
 defineOptions({ name: 'SignIn' });
+
+const router = useRouter();
 
 const socialLogins = [
   {
@@ -22,10 +26,29 @@ const socialLogins = [
   },
 ];
 
-const usernameState = ref(null);
-const passwordState = reactive({
-  value: '',
+const authState = reactive({
+  Username: '',
+  Password: '',
   show: false,
+});
+
+const triggerAuth = () => {
+  const userAccount = useUserAccountStore();
+  const { setAccessToken } = userAccount;
+  console.log('triggered auth here');
+  if (authState.Username === 'dev' && authState.Password === 'dev') {
+    console.log(
+      `Username: ${authState.Username} :: Password: ${authState.Password}`,
+    );
+    setAccessToken('xx-xx-xx-xx');
+    router.push({ name: 'home' });
+  }
+};
+
+onMounted(() => {
+  const userAccount = useUserAccountStore();
+  const { getAccessToken } = storeToRefs(userAccount);
+  console.log(`Debug Access Token: ${getAccessToken.value}`);
 });
 </script>
 
@@ -69,12 +92,13 @@ const passwordState = reactive({
 
     <div class="q-gutter-y-md q-my-md">
       <q-input
-        v-model="usernameState"
+        v-model="authState.Username"
         outlined
         no-error-icon
         type="text"
         :label="$t('auth.usernameOrEmail')"
         class="border-radius-sm"
+        @enter="triggerAuth"
       >
         <template #prepend>
           <q-icon name="bi-person" color="accent" />
@@ -84,24 +108,25 @@ const passwordState = reactive({
         </template>
       </q-input>
       <q-input
-        v-model="passwordState.value"
+        v-model="authState.Password"
         outlined
         no-error-icon
-        :type="passwordState.show ? 'text' : 'password'"
+        :type="authState.show ? 'text' : 'password'"
         :label="$t('auth.password')"
         class="border-radius-sm"
+        @enter="triggerAuth"
       >
         <template #prepend>
           <q-icon name="bi-lock" color="accent" />
         </template>
         <template #append>
           <q-btn
-            :icon="passwordState.show ? 'bi-eye-fill' : 'bi-eye'"
+            :icon="authState.show ? 'bi-eye-fill' : 'bi-eye'"
             color="accent"
             round
             dense
             flat
-            @click="passwordState.show = !passwordState.show"
+            @click="authState.show = !authState.show"
           />
         </template>
       </q-input>
@@ -112,7 +137,7 @@ const passwordState = reactive({
         size="lg"
         no-caps
         class="full-width border-radius-sm text-weight-medium"
-        @click="() => {}"
+        @click="triggerAuth"
       />
     </div>
 

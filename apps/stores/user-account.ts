@@ -1,3 +1,23 @@
+/*
+ * Copyright (c) 2023 - 2024 drolx Solutions
+ *
+ * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
+ * you may not use this file except in compliance with the License.
+ * Change License: Reciprocal Public License 1.5
+ *     https://mariadb.com/bsl11
+ *     https://opensource.org/license/rpl-1-5
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Author: Godwin peter .O (me@godwin.dev)
+ * Created At: Friday, 8th Mar 2024
+ * Modified By: Godwin peter .O
+ * Modified At: Fri Mar 22 2024
+ */
+
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import { SessionStorage } from 'quasar';
@@ -7,7 +27,6 @@ import { useTagViewStore } from './tag-view';
 export const useUserAccountStore = defineStore(
   'userAccount',
   () => {
-    const accessToken = ref<string | null>(null);
     const permissions = ref<Permission[]>([
       {
         module: 'default',
@@ -15,6 +34,8 @@ export const useUserAccountStore = defineStore(
         actions: { create: true, read: true, update: false, delete: true },
       },
     ]);
+    // TODO: Fix pinia session storage issues
+    // const accessToken = ref<string | null>();
     const user = ref<User | null>({
       id: 'ac707e42-74c4-4107-beba-4897107bf9f7',
       tenantId: '60dccc53-d969-4bb5-a08b-dcf14feab87c',
@@ -32,13 +53,16 @@ export const useUserAccountStore = defineStore(
 
     const getUserName = computed(() => user.value);
     const getUserPermmisions = computed(() => permissions.value);
-    const getAccessToken = computed(() => accessToken.value);
+    const getAccessToken = computed<string | null>(() =>
+      SessionStorage.getItem('access_token'),
+    );
     const getFirstCharacterOfUserName = computed(() =>
       user.value!.username ? user.value!.username.charAt(0).toUpperCase() : 'X',
     );
 
     const setUserInfo = (value: User) => (user.value = value);
-    const setAccessToken = (value: string) => (accessToken.value = value);
+    const setAccessToken = (value: string) =>
+      SessionStorage.set('access_token', value);
     const setUserPermmisions = (values: Permission[]) => {
       const account = user.value;
       permissions.value = values;
@@ -49,7 +73,6 @@ export const useUserAccountStore = defineStore(
 
     const signout = () => {
       user.value = null;
-      accessToken.value = null;
       permissions.value = [];
       const tagViewStore = useTagViewStore();
       tagViewStore.removeAllTagView();
