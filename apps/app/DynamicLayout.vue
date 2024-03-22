@@ -24,10 +24,6 @@ watch(
     } catch (e) {
       layout.value = markRaw(AppLayout);
     }
-
-    console.log('Current path: ', route.path);
-    console.log('Current meta: ', route.meta.layout);
-    console.log('Current layout: ', route.meta.layout);
   },
   { immediate: true },
 );

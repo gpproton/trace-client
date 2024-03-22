@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 14th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Fri Mar 22 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -24,6 +24,7 @@ import type { ServiceVariant } from '@trace/shared';
 export default (service: ServiceVariant): Route => ({
   name: `${service}-overview`,
   path: 'overview',
+  component: () => import('./OverviewLayout.vue'),
   meta: {
     menu: 'module',
     title: 'shared.overview',

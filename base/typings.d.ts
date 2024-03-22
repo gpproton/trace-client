@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Tuesday, 12th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Fri Mar 22 2024
  */
 
 import 'vue-router';
@@ -43,7 +43,7 @@ declare module 'vue-router' {
     icon?: string;
     keepAlive?: boolean;
     isOpen?: boolean;
-    getter?: string;
+    layout?: string;
   }
 }
 

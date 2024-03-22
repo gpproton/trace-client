@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { IModule } from '@trace/shared';
+import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: 'SwitcherButton' });
 
 interface IProps {
-  items: IModule[];
+  items: RouteMenu[];
   dense?: boolean;
   route?: boolean;
   flat?: boolean;
@@ -45,19 +45,19 @@ const { modelValue } = defineModels<{
       <q-route-tab
         v-for="(moduleItem, moduleIndex) in props.items"
         :key="moduleIndex"
-        :name="moduleItem.name"
+        :name="moduleItem.name as string"
         :to="{ name: moduleItem.name }"
         class="border-radius-sm q-ma-xs q-px-none"
         content-class="q-px-md"
       >
-        {{ $t(moduleItem.title) }}
+        {{ $t(moduleItem.title as string) }}
       </q-route-tab>
     </template>
     <q-tab
       v-for="(moduleItem, moduleIndex) in props.items"
       v-else
       :key="moduleIndex"
-      :name="moduleItem.name"
+      :name="moduleItem.name as string"
       class="border-radius-sm q-ma-xs"
       content-class="q-px-sm"
     >
