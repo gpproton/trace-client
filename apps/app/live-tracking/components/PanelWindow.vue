@@ -22,13 +22,12 @@ const windowVisibility = ref(true);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 32px;
-  margin-bottom: 32px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .panel-content {
   width: 385px;
-  min-height: calc(100vh - 175px);
-  // max-height: calc(100vh - 96px);
+  min-height: calc(100vh - 165px);
 }
 </style>
