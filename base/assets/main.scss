@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Fri Mar 22 2024
  */
 
 @import './quasar.variables.scss';
@@ -92,6 +92,11 @@ body {
       fill: var(--q-primary) !important;
       fill-rule: evenodd;
     }
+  }
+
+  .footer-link {
+    text-decoration: none;
+    color: var(--q-primary);
   }
 
   .page-container {

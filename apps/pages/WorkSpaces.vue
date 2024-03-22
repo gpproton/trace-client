@@ -51,9 +51,9 @@ const apps: AppOption[] = [
           <div class="q-pa-lg"></div>
           <div class="q-px-md q-py-sm text-grey">
             {{ 'All right reserved.' }}
-            <span class="text-primary" href="https://drolx.com">{{
+            <NuxtLink class="footer-link" to="https://drolx.com">{{
               'drolx Solutions'
-            }}</span>
+            }}</NuxtLink>
           </div>
         </q-card>
         <q-card square fit class="col window-height">
@@ -74,7 +74,7 @@ const apps: AppOption[] = [
             >
           </q-toolbar>
           <div class="q-mt-xl q-px-md q-py-lg">
-            <div class="text-h3 text-weight-light text-accent q-px-sm q-my-xl">
+            <div class="text-h3 text-weight-light text-primary q-px-sm q-my-xl">
               {{ $t('router.work-spaces') }}
             </div>
             <div class="row justify-start align-center">

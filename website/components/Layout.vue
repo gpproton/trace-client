@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import AppLogo from '@trace/base/icons/logo.svg';
 
-defineOptions({ name: 'Layout' });
-
 const links = [
   {
     name: 'home',
@@ -62,9 +60,9 @@ const links = [
     <q-footer class="bg-secondary text-white q-pa-md">
       <div>
         {{ 'All right reserved.' }}
-        <span class="text-primary" href="https://drolx.com">{{
+        <NuxtLink class="footer-link" to="https://drolx.com">{{
           'drolx Solutions'
-        }}</span>
+        }}</NuxtLink>
       </div>
     </q-footer>
   </q-layout>

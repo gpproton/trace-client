@@ -78,9 +78,9 @@ const getStatus = computed(() => {
           </div>
           <div class="q-px-md q-py-sm text-primary">
             {{ 'All right reserved.' }}
-            <span class="text-primary" href="https://drolx.com">{{
+            <NuxtLink class="footer-link" to="https://drolx.com">{{
               'drolx Solutions'
-            }}</span>
+            }}</NuxtLink>
           </div>
         </q-card>
         <q-card square fit class="col window-height">

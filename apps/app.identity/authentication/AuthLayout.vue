@@ -25,15 +25,15 @@ defineOptions({ name: 'AuthLayout' });
           </q-card>
           <div class="row q-pa-sm q-gutter-x-md">
             <div>
-              {{ $t('shared.copyright') }}
-              <span class="text-primary" href="https://drolx.com">{{
-                '@ ' + 'drolx Solutions'
-              }}</span>
+              {{ $t('shared.copyright') + ' @ ' }}
+              <NuxtLink class="footer-link" to="https://drolx.com">{{
+                'drolx Solutions'
+              }}</NuxtLink>
             </div>
             <div>|</div>
-            <div class="text-primary">
+            <NuxtLink class="footer-link" to="#">
               {{ $t('shared.privacyPolicy') }}
-            </div>
+            </NuxtLink>
           </div>
         </q-card>
         <q-card
