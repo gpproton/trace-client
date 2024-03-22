@@ -8,8 +8,7 @@
 
 <style>
 .map-view {
-  width: calc(100vw - 65px);
-  height: calc(100vh - 105px);
-  border: 1px red solid;
+  min-width: calc(100vw - 65px);
+  height: calc(100vh - 155px);
 }
 </style>

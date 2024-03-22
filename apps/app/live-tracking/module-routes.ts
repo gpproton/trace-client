@@ -22,28 +22,28 @@ import type { Route } from '@trace/base/typings';
 import type { ServiceVariant } from '@trace/shared';
 
 export default (service: ServiceVariant): Route => ({
-  name: `${service}-live-tracking`,
-  path: 'live-tracking',
-  redirect: { name: `${service}-live-tracking.map` },
+  name: `${service}-tracking`,
+  path: 'tracking',
+  redirect: { name: `${service}-tracking.live-view` },
   component: () => import('@/app/LiveLayout.vue'),
   props: {
     workspce: service,
   },
   meta: {
     menu: 'module',
-    title: 'shared.liveTracking',
+    title: 'shared.tracking',
     icon: 'bi-pin-map',
     hideChildren: true,
     layout: 'LiveLayout',
   },
   children: [
     {
-      name: `${service}-live-tracking.map`,
-      path: 'map',
+      name: `${service}-tracking.live-view`,
+      path: 'live-view',
       component: () => import('./pages/LiveView.vue'),
       meta: {
         menu: true,
-        title: 'shared.map',
+        title: 'shared.liveView',
         icon: 'bi-pin-map',
         layout: 'LiveLayout',
       },
