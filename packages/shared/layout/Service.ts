@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Fri Mar 22 2024
  */
 
 export enum ServiceVariant {
@@ -25,6 +25,7 @@ export enum ServiceVariant {
   Track = 'track',
   Core = 'core',
   Support = 'support',
+  Dispatch = 'dispatch',
 }
 
 export interface ITenantProfile {

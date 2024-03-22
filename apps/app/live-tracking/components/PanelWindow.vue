@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import PanelToggle from './PanelToggle.vue';
 
 const windowVisibility = ref(true);
+
+// TODO: prop for minimum width
 </script>
 
 <template>

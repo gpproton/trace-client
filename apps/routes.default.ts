@@ -15,18 +15,18 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Fri Mar 22 2024
  */
 
 import type { Route } from '@trace/base/typings';
 
 const routes: Route[] = [
   {
-    name: 'quick-start',
-    path: '/quick-start',
-    component: () => import('@/pages/QuickStart.vue'),
+    name: 'work-spaces',
+    path: '/work-spaces',
+    component: () => import('@/pages/WorkSpaces.vue'),
     meta: {
-      title: 'router.quick-start',
+      title: 'router.work-spaces',
       icon: 'sync',
     },
   },

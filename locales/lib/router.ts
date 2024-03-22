@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Fri Mar 22 2024
  */
 
 export default {
@@ -23,6 +23,7 @@ export default {
   portal: 'Portal',
   support: 'Support',
   track: 'Track',
+  dispatch: 'Dispatch',
   home: "Home",
   faq: "FAQ's",
   pricing: "Pricing",
@@ -31,7 +32,7 @@ export default {
   back: "Go Back",
   'un-authorized': "Unauthorized",
   error: "Error",
-  'quick-start': "Quick Start",
+  'work-spaces': "Work Spaces",
   getStarted: "Get Started",
   startNow: "Start Now",
   docs: "Docs",

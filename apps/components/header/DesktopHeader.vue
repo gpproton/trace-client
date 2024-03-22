@@ -80,7 +80,7 @@ const { modelValue, search, showSecondarySidebarToogle } = defineModels<{
           flat
           square
           color="primary"
-          :to="{ name: 'quick-start' }"
+          :to="{ name: 'work-spaces' }"
           class="border-radius-sm q-px-sm"
         >
           <q-icon

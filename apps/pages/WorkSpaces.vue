@@ -23,6 +23,10 @@ const apps: AppOption[] = [
     icon: 'bi-signpost-2',
   },
   {
+    name: ServiceVariant.Dispatch,
+    icon: 'bi-people',
+  },
+  {
     name: ServiceVariant.Support,
     icon: 'bi-headset',
   },
@@ -69,8 +73,11 @@ const apps: AppOption[] = [
               >{{ $t('auth.signOut') }}</q-btn
             >
           </q-toolbar>
-          <div class="q-mt-xl q-pa-md">
-            <div class="row justify-center align-center">
+          <div class="q-mt-xl q-px-md q-py-lg">
+            <div class="text-h3 text-weight-light text-accent q-px-sm q-my-xl">
+              {{ $t('router.work-spaces') }}
+            </div>
+            <div class="row justify-start align-center">
               <q-card
                 v-for="app in apps"
                 :key="app.name"
@@ -78,7 +85,7 @@ const apps: AppOption[] = [
                 @click="() => router.push({ name: app.name })"
               >
                 <q-icon :name="app.icon" color="secondary" size="4em"></q-icon>
-                <div class="text-h6 text-secondary text-weight-bold">
+                <div class="text-h6 text-secondary text-weight-regular q-py-sm">
                   {{ $t(`router.${app.name}`) }}
                 </div>
               </q-card>
@@ -92,8 +99,8 @@ const apps: AppOption[] = [
 
 <style lang="scss" scoped>
 .app-box {
-  width: 120px;
-  height: 120px;
+  width: 125px;
+  height: 125px;
   text-transform: capitalize;
 }
 </style>
