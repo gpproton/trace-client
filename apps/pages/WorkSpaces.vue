@@ -24,7 +24,7 @@ const apps: AppOption[] = [
   },
   {
     name: ServiceVariant.Dispatch,
-    icon: 'bi-people',
+    icon: 'bi-truck',
   },
   {
     name: ServiceVariant.Support,
