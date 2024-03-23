@@ -11,6 +11,10 @@ interface AppOption {
 const router = useRouter();
 const apps: AppOption[] = [
   {
+    name: Workspace.Account,
+    icon: 'bi-person-gear',
+  },
+  {
     name: Workspace.Core,
     icon: 'bi-compass',
   },
@@ -29,10 +33,6 @@ const apps: AppOption[] = [
   {
     name: Workspace.Support,
     icon: 'bi-headset',
-  },
-  {
-    name: Workspace.Account,
-    icon: 'bi-person-gear',
   },
 ];
 </script>

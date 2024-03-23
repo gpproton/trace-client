@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-defineOptions({ name: 'LeadsView' });
+defineOptions({ name: 'ConversationsView' });
 </script>
 
 <template>

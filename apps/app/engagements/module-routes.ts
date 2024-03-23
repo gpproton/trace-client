@@ -42,6 +42,26 @@ export default (service: Workspace): Route => ({
       },
     },
     {
+      name: `${service}-engagements.conversations`,
+      path: 'conversations',
+      component: () => import('./pages/ConversationsView.vue'),
+      meta: {
+        menu: true,
+        title: 'shared.conversations',
+        icon: 'bi-chat-left-dots',
+      },
+    },
+    {
+      name: `${service}-engagements.meetings`,
+      path: 'meetings',
+      component: () => import('./pages/MeetingsView.vue'),
+      meta: {
+        menu: true,
+        title: 'shared.meetings',
+        icon: 'bi-calendar-check',
+      },
+    },
+    {
       name: `${service}-engagements.leads`,
       path: 'leads',
       component: () => import('./pages/LeadsView.vue'),
@@ -49,6 +69,26 @@ export default (service: Workspace): Route => ({
         menu: true,
         title: 'shared.leads',
         icon: 'bi-signpost-2',
+      },
+    },
+    {
+      name: `${service}-engagements.quotations`,
+      path: 'quotations',
+      component: () => import('./pages/quotations/QuotationsView.vue'),
+      meta: {
+        menu: true,
+        title: 'shared.quotations',
+        icon: 'bi-receipt',
+      },
+    },
+    {
+      name: `${service}-engagements.pipeline`,
+      path: 'pipeline',
+      component: () => import('./pages/pipeline/PipelineView.vue'),
+      meta: {
+        menu: true,
+        title: 'shared.pipeline',
+        icon: 'bi-arrow-left-right',
       },
     },
   ],

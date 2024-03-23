@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 22 2024
+ * Modified At: Sat Mar 23 2024
  */
 
 export default {
@@ -28,7 +28,11 @@ export default {
   timeline: 'Timeline',
   engagements: 'Engagements',
   activities: 'Activities',
+  conversations: 'Conversations',
+  meetings: 'Meetings',
   leads: 'Leads',
+  quotations: 'Quotations',
+  pipeline: 'Pipeline',
   liveTracking: 'Live Tracking',
   liveView: 'Live View',
   tracking: 'Tracking',
