@@ -30,6 +30,7 @@ export default (service: Workspace): Route => ({
     title: 'shared.overview',
     icon: 'bi-grid',
     hideChildren: true,
+    removeChildren: true,
   },
   redirect: { name: `${service}-overview.dashboard` },
   children: [

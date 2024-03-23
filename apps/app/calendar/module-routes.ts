@@ -31,6 +31,7 @@ export default (service: Workspace): Route => ({
     title: 'shared.calendar',
     icon: 'bi-calendar4-week',
     hideChildren: true,
+    removeChildren: true,
   },
   children: [
     {

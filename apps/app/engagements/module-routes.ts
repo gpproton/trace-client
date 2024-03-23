@@ -29,6 +29,7 @@ export default (service: Workspace): Route => ({
     menu: 'module',
     title: 'shared.engagements',
     icon: 'bi-activity',
+    hideChildren: true,
   },
   children: [
     {

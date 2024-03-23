@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 22 2024
+ * Modified At: Sat Mar 23 2024
  */
 
 import { defineStore } from 'pinia';
@@ -34,7 +34,7 @@ export interface IContext {
 }
 
 export const usePageStore = defineStore('page-state', () => {
-  const title = ref('Page Default');
+  const title = ref('');
   const description = ref('');
   const script = ref({});
   const style = ref({});

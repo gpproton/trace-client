@@ -34,6 +34,7 @@ export default (service: Workspace): Route => ({
     title: 'shared.tracking',
     icon: 'bi-pin-map',
     hideChildren: true,
+    removeChildren: true,
     layout: 'LiveLayout',
   },
   children: [
