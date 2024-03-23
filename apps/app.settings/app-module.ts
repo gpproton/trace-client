@@ -13,29 +13,7 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Wednesday, 20th Mar 2024
+ * Created At: Saturday, 23rd Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Sat Mar 23 2024
  */
-
-export default {
-  core: 'Core',
-  portal: 'Portal',
-  support: 'Support',
-  track: 'Track',
-  dispatch: 'Dispatch',
-  settings: 'Settings',
-  home: 'Home',
-  faq: "FAQ's",
-  pricing: 'Pricing',
-  solutions: 'Solutions',
-  contact: 'Contact',
-  back: 'Go Back',
-  'un-authorized': 'Unauthorized',
-  error: 'Error',
-  'work-spaces': 'Work Spaces',
-  getStarted: 'Get Started',
-  startNow: 'Start Now',
-  docs: 'Docs',
-  testing: 'Testing',
-};

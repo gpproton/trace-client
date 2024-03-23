@@ -19,7 +19,7 @@
  */
 
 export enum Workspace {
-  Default = 'default',
+  Settings = 'settings',
   Identity = 'identity',
   Portal = 'portal',
   Track = 'track',
