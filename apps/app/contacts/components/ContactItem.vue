@@ -1,8 +1,9 @@
 <template>
   <q-item clickable>
     <q-item-section avatar>
-      <q-avatar>
-        <img :src="avatar" />
+      <q-avatar color="secondary" text-color="white">
+        <span v-if="avatar === undefined">XA</span>
+        <img v-else :src="avatar" />
       </q-avatar>
     </q-item-section>
 
@@ -15,13 +16,14 @@
   </q-item>
 </template>
 
-<script>
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'ContactItem',
-  props: ['avatar', 'name', 'position'],
-});
+<script lang="ts" setup>
+interface IProps {
+  avatar?: string;
+  name: string;
+  position: string;
+}
+defineOptions({ name: 'ContactItem' });
+defineProps<IProps>();
 </script>
 
 <style scoped></style>

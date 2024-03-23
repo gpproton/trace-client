@@ -1,46 +1,50 @@
-<script>
-import { defineComponent, defineAsyncComponent } from 'vue';
-import { useQuasar } from 'quasar';
+<script lang="ts" setup>
+import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import ContactDetailItem from '../components/ContactDetailItem.vue';
+import ContactItem from '../components/ContactItem.vue';
 
-// defineOptions({ name: 'ContactOverview' });
+defineOptions({ name: 'ContactOverview' });
 
-const detail_list = [
+const breakpointStates = useAppBreakpoints();
+const { isDesktop } = storeToRefs(breakpointStates);
+const detailList = [
   {
     icon: 'phone',
     label: 'Phone',
     field: 'phone',
-    text_color: 'blue',
+    textColor: 'blue',
   },
   {
     icon: 'phone_iphone',
     label: 'Secondary Phone',
-    field: 'secondary_phone',
-    text_color: 'orange',
+    field: 'secondaryPhone',
+    textColor: 'orange',
   },
   {
     icon: 'mail',
     label: 'Personal Email',
     field: 'email',
-    text_color: 'grey-8',
+    textColor: 'grey-8',
   },
   {
     icon: 'business_center',
     label: 'Company Email',
-    field: 'company_email',
-    text_color: 'grey-8',
+    field: 'companyEmail',
+    textColor: 'grey-8',
   },
   {
     icon: 'location_on',
     label: 'Address',
     field: 'address',
-    text_color: 'grey-8',
+    textColor: 'grey-8',
   },
   {
     icon: 'home_work',
     label: 'Website',
     field: 'website',
-    text_color: 'grey-8',
+    textColor: 'grey-8',
   },
 ];
 
@@ -48,66 +52,43 @@ const contacts_list = [
   {
     name: 'Brunhilde Panswick',
     position: 'Administrator',
-    avatar: 'https://cdn.drolx.com/img/avatar2.jpg',
     email: 'test.@drolx.com',
-    company_email: 'test.@drolx.com',
+    companyEmail: 'test.@drolx.com',
     website: 'http://test1.dev/',
     phone: '175.718.4633 x878',
-    secondary_phone: '175.718.4633 x878',
+    secondaryPhone: '175.718.4633 x878',
     address: 'Calgary, Canada',
   },
   {
     name: 'Winfield Stapforth',
     position: 'Administrator',
-    avatar: 'https://cdn.drolx.com/img/avatar6.jpg',
     email: 'test2.@drolx.com',
-    company_email: 'test.@drolx.com',
+    companyEmail: 'test.@drolx.com',
     website: 'http://test2.dev/',
     phone: '175.718.4633 x878',
-    secondary_phone: '175.718.4633 x878',
+    secondaryPhone: '175.718.4633 x878',
     address: 'Calgary, Canada',
   },
 ];
 
-export default defineComponent({
-  name: 'Contact',
-  components: {
-    ContactDetailItem: defineAsyncComponent(
-      () => import('../components/ContactDetailItem.vue'),
-    ),
-    ContactItem: defineAsyncComponent(
-      () => import('../components/ContactItem.vue'),
-    ),
-  },
-  setup() {
-    const $q = useQuasar();
-    const size = ref({ width: '200px', height: '200px' });
+const search = ref('');
+const size = ref({ width: '200px', height: '200px' });
+const selectedContact = ref({});
+const onResize = (size_dynamic) => {
+  size.value = size_dynamic;
+};
 
-    return {
-      tab: ref('all'),
-      search: ref(''),
-      size,
-      contacts_list,
-      selected_contact: ref({}),
-      detail_list,
-
-      onResize(size_dynamic) {
-        size.value = size_dynamic;
-      },
-    };
-  },
-  mounted() {
-    if (!this.$q.screen.lt.sm) {
-      this.selected_contact = this.contacts_list[0];
-    }
-  },
+onMounted(() => {
+  if (isDesktop) {
+    selectedContact.value = contacts_list[0];
+  }
 });
 </script>
 
 <template>
   <page-wrapper>
     <q-resize-observer @resize="onResize" />
-    <div v-if="!$q.screen.lt.sm" class="row">
+    <div v-if="isDesktop" class="row">
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <q-card class="no-shadow" bordered>
           <q-list
@@ -127,7 +108,7 @@ export default defineComponent({
             <span
               v-for="(contact, index) in contacts_list"
               :key="index"
-              @click="selected_contact = contact"
+              @click="selectedContact = contact"
             >
               <contact-item
                 :avatar="contact.avatar"
@@ -146,19 +127,20 @@ export default defineComponent({
         >
           <q-toolbar class="text-black">
             <q-btn round flat class="q-pa-sm">
-              <q-avatar size="80px">
-                <img :src="selected_contact.avatar" />
+              <q-avatar size="80px" color="secondary" text-color="white">
+                <span v-if="selectedContact.avatar === undefined">XA</span>
+                <img v-else :src="selectedContact.avatar" />
               </q-avatar>
             </q-btn>
 
             <q-item class="q-subtitle-1 q-pl-md">
               <q-item-section>
                 <q-item-label lines="1">{{
-                  selected_contact.name
+                  selectedContact.name
                 }}</q-item-label>
                 <q-item-label caption lines="2">
                   <span class="text-weight-bold">{{
-                    selected_contact.position
+                    selectedContact.position
                   }}</span>
                 </q-item-label>
               </q-item-section>
@@ -171,19 +153,16 @@ export default defineComponent({
           </q-toolbar>
           <q-separator></q-separator>
 
-          <div
-            v-for="(detail, detail_index) in detail_list"
-            :key="detail_index"
-          >
+          <div v-for="(detail, detail_index) in detailList" :key="detail_index">
             <contact-detail-item
               :icon="detail.icon"
-              :text_color="detail.text_color"
-              :value="selected_contact[detail['field']]"
+              :text-color="detail.textColor"
+              :value="selectedContact[detail['field']]"
               :label="detail.label"
             ></contact-detail-item>
 
             <q-separator
-              v-if="detail_index != detail_list.length - 1"
+              v-if="detail_index != detailList.length - 1"
               inset="item"
             ></q-separator>
           </div>
@@ -192,7 +171,7 @@ export default defineComponent({
     </div>
 
     <div v-else>
-      <div v-if="Object.keys(selected_contact).length == 0">
+      <div v-if="Object.keys(selectedContact).length == 0">
         <q-list
           class="q-pa-none full-height"
           :style="{ height: size['height'] - 28 + 'px !important' }"
@@ -211,7 +190,7 @@ export default defineComponent({
           <span
             v-for="(contact, index) in contacts_list"
             :key="index"
-            @click="selected_contact = contact"
+            @click="selectedContact = contact"
           >
             <contact-item
               :avatar="contact.avatar"
@@ -230,18 +209,18 @@ export default defineComponent({
           <q-toolbar class="text-black">
             <q-btn round flat class="q-pa-sm">
               <q-avatar size="80px">
-                <img :src="selected_contact.avatar" />
+                <img :src="selectedContact.avatar" />
               </q-avatar>
             </q-btn>
 
             <q-item class="q-subtitle-1 q-pl-md">
               <q-item-section>
                 <q-item-label lines="1">{{
-                  selected_contact.name
+                  selectedContact.name
                 }}</q-item-label>
                 <q-item-label caption lines="2">
                   <span class="text-weight-bold">{{
-                    selected_contact.position
+                    selectedContact.position
                   }}</span>
                 </q-item-label>
               </q-item-section>
@@ -255,24 +234,21 @@ export default defineComponent({
               round
               flat
               icon="keyboard_backspace"
-              @click="selected_contact = {}"
+              @click="selectedContact = {}"
             />
           </q-toolbar>
           <q-separator></q-separator>
 
-          <div
-            v-for="(detail, detail_index) in detail_list"
-            :key="detail_index"
-          >
+          <div v-for="(detail, detail_index) in detailList" :key="detail_index">
             <contact-detail-item
               :icon="detail.icon"
-              :text_color="detail.text_color"
-              :value="selected_contact[detail['field']]"
+              :text-color="detail.textColor"
+              :value="selectedContact[detail['field']]"
               :label="detail.label"
             ></contact-detail-item>
 
             <q-separator
-              v-if="detail_index != detail_list.length - 1"
+              v-if="detail_index != detailList.length - 1"
               inset="item"
             ></q-separator>
           </div>
