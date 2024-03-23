@@ -22,9 +22,7 @@ interface IProps {
 const breakpointStates = useAppBreakpoints();
 const layoutStores = useLayoutStore();
 const theme = useThemeStore();
-
 const { modulesMenuFn, moduleFeaturesFn } = useLayoutRouteStore();
-
 const {
   title,
   search,
@@ -32,7 +30,6 @@ const {
   primaryMiniState,
   showSecondarySidebar,
 } = storeToRefs(layoutStores);
-
 const { isDesktop, isMobile } = storeToRefs(breakpointStates);
 const { isDark } = storeToRefs(theme);
 const { setSize } = breakpointStates;
@@ -75,7 +72,26 @@ const quickCreateItems: IModuleCommands[] = [
 
 <template>
   <q-layout view="lHr lpR fFf" @resize="setSize">
-    <!-- TODO: re-evaluate desktop sidebar -->
+    <!-- Mobile layout contents -->
+    <slot v-if="isMobile" name="mobile-header">
+      <mobile-header v-model:title="title" v-model:search="search" />
+    </slot>
+    <q-page-container v-if="isMobile">
+      <slot>
+        <router-inject />
+      </slot>
+    </q-page-container>
+    <!-- TODO: re-evaluate mobile navigation -->
+    <slot v-if="isMobile" name="mobile-bottom-menu">
+      <mobile-bottom-menu
+        style="display: none"
+        :style="isMobile ? { display: 'flex' } : {}"
+        :items="mobileMenu"
+        :overflow-items="mobileOverflowMenu"
+      />
+    </slot>
+
+    <!-- Desktop layout contents -->
     <slot name="desktop-sidebar">
       <desktop-sidebar
         v-if="isDesktop"
@@ -88,36 +104,23 @@ const quickCreateItems: IModuleCommands[] = [
         @update:dark-mode="setThemeState"
       />
     </slot>
-    <q-page-container>
+    <!-- Desktop and page content -->
+    <q-page-container v-if="isDesktop">
       <q-layout view="lhr lpr lfr">
-        <slot name="mobile-header">
-          <mobile-header
-            v-show="!isDesktop"
-            v-model:title="title"
-            v-model:search="search"
-          />
-        </slot>
-        <!-- TODO: re-evaluate desktop header -->
         <slot name="desktop-header">
           <desktop-header
-            v-show="isDesktop"
             v-model="showSecondarySidebar"
             v-model:show-secondary-sidebar-toogle="showSecondaryToggle"
             v-model:search="search"
             :quick-commands="quickCreateItems"
           />
         </slot>
-        <!-- TODO: re-evaluate desktop secondary sidebar -->
-        <slot
-          v-if="isDesktop && moduleFeatures.length > 0"
-          name="desktop-secondary-sidebar"
-        >
+        <slot v-if="moduleFeatures.length > 0" name="desktop-secondary-sidebar">
           <desktop-secondary-sidebar
             v-model="showSecondarySidebar"
             :menu-items="moduleFeatures"
           />
         </slot>
-
         <q-page-container class="bg-app-container">
           <slot>
             <router-inject />
@@ -125,15 +128,5 @@ const quickCreateItems: IModuleCommands[] = [
         </q-page-container>
       </q-layout>
     </q-page-container>
-
-    <!-- TODO: re-evaluate mobile navigation -->
-    <slot name="mobile-bottom-menu">
-      <mobile-bottom-menu
-        style="display: none"
-        :style="isMobile ? { display: 'flex' } : {}"
-        :items="mobileMenu"
-        :overflow-items="mobileOverflowMenu"
-      />
-    </slot>
   </q-layout>
 </template>
