@@ -38,7 +38,7 @@ export default defineNuxtPlugin(() => {
   const { setBreadcrumbs } = breadCrumbsStore;
 
   const apps: Workspace[] = [
-    Workspace.Settings,
+    Workspace.Account,
     Workspace.Core,
     Workspace.Portal,
     Workspace.Support,

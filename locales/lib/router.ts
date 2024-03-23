@@ -24,6 +24,7 @@ export default {
   support: 'Support',
   track: 'Track',
   dispatch: 'Dispatch',
+  account: 'Account',
   settings: 'Settings',
   home: 'Home',
   faq: "FAQ's",

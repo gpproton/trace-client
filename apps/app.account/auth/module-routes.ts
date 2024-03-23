@@ -23,7 +23,7 @@ import { Workspace } from '@trace/shared';
 
 const routes: Route[] = [
   {
-    path: '/authentication',
+    path: '/auth',
     name: 'auth',
     redirect: { name: 'auth.sign-in' },
     component: () => import('./AuthLayout.vue'),

@@ -31,8 +31,8 @@ const apps: AppOption[] = [
     icon: 'bi-headset',
   },
   {
-    name: Workspace.Settings,
-    icon: 'bi-gear',
+    name: Workspace.Account,
+    icon: 'bi-person-gear',
   },
 ];
 </script>

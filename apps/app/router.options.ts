@@ -20,7 +20,7 @@
 
 import type { RouterConfig } from '@nuxt/schema';
 import defaultRoutes, { addCatchAll, addUnAuthorized } from '@/routes.default';
-import { routes as identityRoutes } from '@/app.identity/app-routes';
+import { routes as identityRoutes } from '@/app.account/app-routes';
 import coreRoutes from '@/app.core/app-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
