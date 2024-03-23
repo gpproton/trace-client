@@ -18,6 +18,11 @@
  * Modified At: Sat Mar 23 2024
  */
 import AuthModuleRoutes from './auth/module-routes';
+import RecoveryModuleRoutes from './recovery/module-routes';
 import UserBoardingRoutes from './user-boarding/module-routes';
 
-export const routes = [...AuthModuleRoutes, ...UserBoardingRoutes];
+export const routes = [
+  ...AuthModuleRoutes,
+  ...RecoveryModuleRoutes,
+  ...UserBoardingRoutes,
+];

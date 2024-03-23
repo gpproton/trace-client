@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import IdentityForm from '../components/IdentityForm.vue';
+import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
 
 defineOptions({ name: 'PasswordUpdate' });
 
@@ -83,5 +83,5 @@ const updatePassword = () => {
 </template>
 
 <style lang="scss" scoped>
-@import './identity.scss';
+@import '@/app.account/shared/styles/identity.scss';
 </style>

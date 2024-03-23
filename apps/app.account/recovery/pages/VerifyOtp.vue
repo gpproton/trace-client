@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import IdentityForm from '../components/IdentityForm.vue';
+import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
 
 defineOptions({ name: 'VerifyOtp' });
 
 const router = useRouter();
-const otpInput = ref([]);
+const otpInput = ref<any>([]);
 const otpInputValue = ref(['', '', '', '']);
 // const otpValues = computed(() => otpInputValue.value.join(''));
 
@@ -85,7 +85,7 @@ const handleKey = (index: number) => {
 </template>
 
 <style lang="scss" scoped>
-@import './identity.scss';
+@import '@/app.account/shared/styles/identity.scss';
 
 .verify-input {
   width: 64px;

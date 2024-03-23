@@ -43,42 +43,15 @@ const routes: Route[] = [
           permission: false,
         },
       },
-      {
-        path: 'forgot-password',
-        name: 'auth.forgot-password',
-        component: () => import('./pages/ForgotPassword.vue'),
-        meta: {
-          title: 'Forgot Password',
-          permission: false,
-        },
-      },
-      {
-        path: 'password-update',
-        name: 'auth.password-update',
-        component: () => import('./pages/PasswordUpdate.vue'),
-        meta: {
-          title: 'Password Update',
-          permission: false,
-        },
-      },
-      {
-        path: 'otp-choice',
-        name: 'auth.otp-choice',
-        component: () => import('./pages/OtpChoice.vue'),
-        meta: {
-          title: 'OTP Choice',
-          permission: false,
-        },
-      },
-      {
-        path: 'verify-otp',
-        name: 'auth.verify-otp',
-        component: () => import('./pages/VerifyOtp.vue'),
-        meta: {
-          title: 'Verify OTP',
-          permission: false,
-        },
-      },
+      // {
+      //   path: 'two-factor',
+      //   name: 'auth.two-factor',
+      //   component: () => import('./pages/VerifyOtp.vue'),
+      //   meta: {
+      //     title: 'Two Factor OTP',
+      //     permission: false,
+      //   },
+      // },
     ],
   },
 ];

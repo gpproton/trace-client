@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import IdentityForm from '../components/IdentityForm.vue';
+import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
 
 defineOptions({ name: 'OtpChoice' });
 
@@ -93,7 +93,7 @@ const verifyOtp = () => {
 </template>
 
 <style lang="scss" scoped>
-@import './identity.scss';
+@import '@/app.account/shared/styles/identity.scss';
 
 .identity-list-item {
   border-radius: $border-radius-sm;

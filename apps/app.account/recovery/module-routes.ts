@@ -15,5 +15,64 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Saturday, 16th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Sun Mar 24 2024
  */
+
+import type { Route } from '@trace/base/typings';
+import { Workspace } from '@trace/shared';
+
+const base = 'account-recovery';
+const routes: Route[] = [
+  {
+    path: `/${base}`,
+    name: `${base}`,
+    redirect: { name: `${base}.forgot-password` },
+    component: () => import('./RecoveryLayout.vue'),
+    meta: {
+      permission: false,
+    },
+    props: {
+      workspace: Workspace.Identity,
+    },
+    children: [
+      {
+        path: 'forgot-password',
+        name: `${base}.forgot-password`,
+        component: () => import('./pages/ForgotPassword.vue'),
+        meta: {
+          title: 'Forgot Password',
+          permission: false,
+        },
+      },
+      {
+        path: 'password-update',
+        name: `${base}.password-update`,
+        component: () => import('./pages/PasswordUpdate.vue'),
+        meta: {
+          title: 'Password Update',
+          permission: false,
+        },
+      },
+      {
+        path: 'otp-choice',
+        name: `${base}.otp-choice`,
+        component: () => import('./pages/OtpChoice.vue'),
+        meta: {
+          title: 'OTP Choice',
+          permission: false,
+        },
+      },
+      {
+        path: 'verify-otp',
+        name: `${base}.verify-otp`,
+        component: () => import('./pages/VerifyOtp.vue'),
+        meta: {
+          title: 'Verify OTP',
+          permission: false,
+        },
+      },
+    ],
+  },
+];
+
+export default routes;

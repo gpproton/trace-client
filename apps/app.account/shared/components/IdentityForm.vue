@@ -37,5 +37,5 @@ defineOptions({ name: 'IdentityForm' });
 </template>
 
 <style lang="scss" scoped>
-@import '../pages/identity.scss';
+@import '../styles/identity.scss';
 </style>

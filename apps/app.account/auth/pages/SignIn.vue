@@ -2,7 +2,7 @@
 import { reactive } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useUserAccountStore } from '@/stores/user-account';
-import IdentityForm from '../components/IdentityForm.vue';
+import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
 import IconGoogle from '@trace/base/icons/brands/google.svg?url';
 import IconMicrosoft from '@trace/base/icons/brands/microsoft.svg?url';
 import IconApple from '@trace/base/icons/brands/apple.svg?url';
@@ -145,7 +145,7 @@ onMounted(() => {
       <div class="row items-center q-py-xs q-px-xs justify-end">
         <router-link
           class="identity-link identity-text"
-          :to="{ name: 'auth.forgot-password' }"
+          :to="{ name: 'account-recovery.forgot-password' }"
         >
           {{ $t('auth.forgotPassword') }}
         </router-link>
@@ -155,5 +155,5 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-@import './identity.scss';
+@import '@/app.account/shared/styles/identity.scss';
 </style>
