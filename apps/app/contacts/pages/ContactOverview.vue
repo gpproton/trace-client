@@ -9,7 +9,28 @@ defineOptions({ name: 'ContactOverview' });
 
 const breakpointStates = useAppBreakpoints();
 const { isDesktop } = storeToRefs(breakpointStates);
-const detailList = [
+
+type ContactDetailItem = {
+  icon: string;
+  label: string;
+  field: string;
+  textColor: string;
+  avatar?: string;
+};
+
+type ContactItem = {
+  name: string;
+  position: string;
+  email: string;
+  companyEmail: string;
+  website: string;
+  phone: string;
+  secondaryPhone: string;
+  address: string;
+  avatar?: string;
+};
+
+const detailList: ContactDetailItem[] = [
   {
     icon: 'phone',
     label: 'Phone',
@@ -48,7 +69,7 @@ const detailList = [
   },
 ];
 
-const contacts_list = [
+const contactsLlist: ContactItem[] = [
   {
     name: 'Brunhilde Panswick',
     position: 'Administrator',
@@ -71,16 +92,20 @@ const contacts_list = [
   },
 ];
 
+type Size = {
+  width: string | number | any;
+  height: string | number | any;
+};
 const search = ref('');
-const size = ref({ width: '200px', height: '200px' });
-const selectedContact = ref({});
-const onResize = (size_dynamic) => {
-  size.value = size_dynamic;
+const size = ref<Size>({ width: '200px', height: '200px' });
+const selectedContact = ref<ContactItem | any>({});
+const onResize = (sizeDynamic: Size) => {
+  size.value = sizeDynamic;
 };
 
 onMounted(() => {
   if (isDesktop) {
-    selectedContact.value = contacts_list[0];
+    selectedContact.value = contactsLlist[0];
   }
 });
 </script>
@@ -93,7 +118,7 @@ onMounted(() => {
         <q-card class="no-shadow" bordered>
           <q-list
             class="q-pa-none full-height"
-            :style="{ height: size['height'] - 28 + 'px !important' }"
+            :style="{ height: size.height - 28 + 'px !important' }"
           >
             <q-item-label class="text-center q-pa-sm">
               <q-input v-model="search" outlined>
@@ -103,10 +128,10 @@ onMounted(() => {
               </q-input>
             </q-item-label>
             <q-item-label header class="text-center"
-              >{{ contacts_list.length }} Contacts</q-item-label
+              >{{ contactsLlist.length }} Contacts</q-item-label
             >
             <span
-              v-for="(contact, index) in contacts_list"
+              v-for="(contact, index) in contactsLlist"
               :key="index"
               @click="selectedContact = contact"
             >
@@ -184,11 +209,11 @@ onMounted(() => {
             </q-input>
           </q-item-label>
           <q-item-label header class="text-center"
-            >{{ contacts_list.length }} Contacts</q-item-label
+            >{{ contactsLlist.length }} Contacts</q-item-label
           >
 
           <span
-            v-for="(contact, index) in contacts_list"
+            v-for="(contact, index) in contactsLlist"
             :key="index"
             @click="selectedContact = contact"
           >
