@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Sat Mar 23 2024
  */
 
 import type { IModule } from '@trace/shared';
@@ -31,7 +31,6 @@ export const useLayoutStore = defineStore('app-layout', () => {
   const showPrimarySidebar = ref<boolean>(false);
   const primaryMiniState = ref<boolean>(true);
   const showSecondarySidebar = ref<boolean>(false);
-  const showIdentityList = ref<boolean>(false);
 
   const setLayoutOptions = () => {};
 
@@ -43,7 +42,6 @@ export const useLayoutStore = defineStore('app-layout', () => {
     showPrimarySidebar,
     primaryMiniState,
     showSecondarySidebar,
-    showIdentityList,
     setLayoutOptions,
   };
 });

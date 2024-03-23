@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IProfile, Workspace } from '@trace/shared';
+import type { Workspace } from '@trace/shared';
 import SidebarList from '@/components/drawer/SidebarList.vue';
 import SidebarHeader from '@/components/drawer/SidebarHeader.vue';
 import ThemeSwitcher from '@/components/extra/ThemeSwitcher.vue';
@@ -8,8 +8,6 @@ import type { RouteMenu } from '@trace/base/typings';
 defineOptions({ name: 'DesktopSidebar' });
 
 interface IProps {
-  userProfile: IProfile;
-  identityMenu: RouteMenu[];
   overviewFilter: string[];
 }
 

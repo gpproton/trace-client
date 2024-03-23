@@ -4,13 +4,12 @@ import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 import { useLayoutStore } from '@/stores/layout';
 import { useLayoutRouteStore } from '@/composables/layout-routes';
 import { useThemeStore } from '@/stores/theme';
-import type { IModule, IModuleCommands, Workspace } from '@trace/shared';
+import type { IModuleCommands, Workspace } from '@trace/shared';
 import DesktopHeader from '@/components/header/DesktopHeader.vue';
 import DesktopSidebar from '@/components/drawer/DesktopSidebar.vue';
 import DesktopSecondarySidebar from '@/components/drawer/DesktopSecondarySidebar.vue';
 import MobileHeader from '@/components/header/MobileHeader.vue';
 import MobileBottomMenu from '@/components/footer/MobileBottomMenu.vue';
-import { profileData } from '@trace/shared';
 import RouterInject from '@/components/RouterInject.vue';
 import type { RouteMenu } from '@trace/base/typings';
 
@@ -32,7 +31,6 @@ const {
   showPrimarySidebar,
   primaryMiniState,
   showSecondarySidebar,
-  showIdentityList,
 } = storeToRefs(layoutStores);
 
 const { isDesktop, isMobile } = storeToRefs(breakpointStates);
@@ -73,27 +71,6 @@ const quickCreateItems: IModuleCommands[] = [
     command: '2',
   },
 ];
-const identityItems: RouteMenu[] = [
-  { title: 'shared.account', icon: 'bi-person', name: 'account.profile' },
-  {
-    title: 'shared.settings',
-    icon: 'bi-gear-wide-connected',
-    name: 'account.settings',
-  },
-  { title: 'shared.help', icon: 'bi-question-circle', name: 'help' },
-];
-const notificationTabs: IModule[] = [
-  {
-    name: '1',
-    icon: '',
-    title: 'Task',
-  },
-  {
-    name: '2',
-    icon: '',
-    title: 'Unread',
-  },
-];
 </script>
 
 <template>
@@ -105,11 +82,8 @@ const notificationTabs: IModule[] = [
         v-model:workspace="workspaceValue"
         v-model="showPrimarySidebar"
         v-model:dark-mode="isDark"
-        v-model:show-identity="showIdentityList"
         v-model:modules="modulesMenu"
         :drawer-mini-state="primaryMiniState"
-        :identity-menu="identityItems"
-        :user-profile="profileData"
         :overview-filter="overviewFilter"
         @update:dark-mode="setThemeState"
       />
@@ -131,7 +105,6 @@ const notificationTabs: IModule[] = [
             v-model:show-secondary-sidebar-toogle="showSecondaryToggle"
             v-model:search="search"
             :quick-commands="quickCreateItems"
-            :notification-tabs="notificationTabs"
           />
         </slot>
         <!-- TODO: re-evaluate desktop secondary sidebar -->
