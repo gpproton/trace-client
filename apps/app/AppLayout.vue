@@ -152,6 +152,7 @@ const notificationTabs: IModule[] = [
         </q-page-container>
       </q-layout>
     </q-page-container>
+
     <!-- TODO: re-evaluate mobile navigation -->
     <slot name="mobile-bottom-menu">
       <mobile-bottom-menu

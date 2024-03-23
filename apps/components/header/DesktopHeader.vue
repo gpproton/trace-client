@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { IModule, IModuleCommands } from '@trace/shared';
+import type { IModuleCommands } from '@trace/shared';
 import CommandList from '@/components/extra/CommandList.vue';
 import NotificationDialog from '@/components/extra/NotificationDialog.vue';
 import Breadcrumbs from './Breadcrumbs.vue';
@@ -8,14 +8,10 @@ import TagView from '@/components/header/TagView.vue';
 
 interface IProps {
   quickCommands: IModuleCommands[];
-  notificationTabs: IModule[];
 }
 
+defineProps<IProps>();
 const bellIconFill = ref(false);
-withDefaults(defineProps<IProps>(), {
-  notificationTabs: () => [],
-});
-
 const { modelValue, search, showSecondarySidebarToogle } = defineModels<{
   showSecondarySidebarToogle: boolean;
   modelValue: ModelOptions<boolean, { defaultValue: false; deep: true }>;
@@ -112,7 +108,7 @@ const { modelValue, search, showSecondarySidebarToogle } = defineModels<{
             transition-hide="scale"
             class="border-radius-sm q-pa-none"
           >
-            <notification-dialog :items="notificationTabs" />
+            <notification-dialog />
           </q-menu>
         </q-btn>
         <!-- Quick new items triggers-->
