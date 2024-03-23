@@ -19,7 +19,6 @@
  */
 
 import type { Route } from '@trace/base/typings';
-import { Workspace } from '@trace/shared';
 
 const base = 'account-recovery';
 const routes: Route[] = [
@@ -30,9 +29,6 @@ const routes: Route[] = [
     component: () => import('./RecoveryLayout.vue'),
     meta: {
       permission: false,
-    },
-    props: {
-      workspace: Workspace.Identity,
     },
     children: [
       {

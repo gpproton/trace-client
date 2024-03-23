@@ -15,5 +15,31 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Sun Mar 24 2024
  */
+
+import type { Route } from '@trace/base/typings';
+
+const base = 'admin';
+const routes: Route[] = [
+  {
+    path: `/${base}`,
+    name: `${base}`,
+    redirect: { name: `${base}.summary` },
+    meta: {
+      permission: false,
+    },
+    children: [
+      {
+        path: 'summary',
+        name: `${base}.summary`,
+        component: () => import('./pages/TenantSummary.vue'),
+        meta: {
+          title: 'Admin Summary',
+        },
+      },
+    ],
+  },
+];
+
+export default routes;
