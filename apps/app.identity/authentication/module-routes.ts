@@ -15,11 +15,11 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Sat Mar 23 2024
  */
 
 import type { Route } from '@trace/base/typings';
-import { ServiceVariant } from '@trace/shared';
+import { Workspace } from '@trace/shared';
 
 const routes: Route[] = [
   {
@@ -31,7 +31,7 @@ const routes: Route[] = [
       permission: false,
     },
     props: {
-      workspace: ServiceVariant.Identity,
+      workspace: Workspace.Identity,
     },
     children: [
       {

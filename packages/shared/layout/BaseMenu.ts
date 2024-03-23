@@ -15,12 +15,12 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Sat Mar 23 2024
  */
 
 import { IBaseMenu } from './IBaseMenu';
 import { IModule, IModuleCommands } from './IModule';
-import { ServiceVariant } from './Service';
+import { Workspace } from './Service';
 
 export default abstract class BaseMenu implements IBaseMenu {
   GetState() {
@@ -30,7 +30,7 @@ export default abstract class BaseMenu implements IBaseMenu {
     this.mobileStrings = this.mobileItems.map((e) => e.name);
     this.mobileOverviewItems = this.filterExtendedMenu(
       this.modules,
-      this.mobileItems
+      this.mobileItems,
     );
 
     return this;
@@ -42,13 +42,13 @@ export default abstract class BaseMenu implements IBaseMenu {
       name: 'core',
       title: 'Core',
       icon: 'bi-signpost-2',
-      path: ServiceVariant.Core,
+      path: Workspace.Core,
     },
     {
       name: 'find',
       title: 'Finder',
       icon: 'bi-compass',
-      path: ServiceVariant.Track,
+      path: Workspace.Track,
     },
     {
       name: 'support',
@@ -60,8 +60,8 @@ export default abstract class BaseMenu implements IBaseMenu {
       name: 'portal',
       title: 'Portal',
       icon: 'bi-hurricane',
-      path: ServiceVariant.Portal,
-    }
+      path: Workspace.Portal,
+    },
   ];
 
   identityItems: IModule[] = [
@@ -108,7 +108,7 @@ export default abstract class BaseMenu implements IBaseMenu {
   protected filterModule = (
     items: IModule[],
     filter: Array<string>,
-    include = true
+    include = true,
   ): IModule[] => {
     return items.filter((e) => {
       const addOrRemove = filter.includes(e.name);
@@ -118,7 +118,7 @@ export default abstract class BaseMenu implements IBaseMenu {
 
   protected filterMobileMenu = (
     items: IModule[],
-    includedItems: Array<string> = []
+    includedItems: Array<string> = [],
   ): IModule[] => {
     const mobileMenu: IModule[] = items.filter((e) => {
       return includedItems.includes(e.name);
@@ -129,7 +129,7 @@ export default abstract class BaseMenu implements IBaseMenu {
 
   protected filterExtendedMenu = (
     items: IModule[],
-    excludedItems: IModule[] = []
+    excludedItems: IModule[] = [],
   ): IModule[] => {
     return items
       .filter((e) => {

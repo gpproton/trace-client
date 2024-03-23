@@ -4,7 +4,7 @@ import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 import { useLayoutStore } from '@/stores/layout';
 import { useLayoutRouteStore } from '@/composables/layout-routes';
 import { useThemeStore } from '@/stores/theme';
-import type { IModule, IModuleCommands, ServiceVariant } from '@trace/shared';
+import type { IModule, IModuleCommands, Workspace } from '@trace/shared';
 import DesktopHeader from '@/components/header/DesktopHeader.vue';
 import DesktopSidebar from '@/components/drawer/DesktopSidebar.vue';
 import DesktopSecondarySidebar from '@/components/drawer/DesktopSecondarySidebar.vue';
@@ -15,7 +15,7 @@ import RouterInject from '@/components/RouterInject.vue';
 import type { RouteMenu } from '@trace/base/typings';
 
 interface IProps {
-  workspace: ServiceVariant;
+  workspace: Workspace;
   overviewFilter?: string[];
   mobileFilter?: string[];
 }

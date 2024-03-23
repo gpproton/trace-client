@@ -15,18 +15,18 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 22 2024
+ * Modified At: Sat Mar 23 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
 import defaultRoutes, { addCatchAll, addUnAuthorized } from '@/routes.default';
 import { routes as identityRoutes } from '@/app.identity/app-routes';
 import coreRoutes from '@/app.core/app-routes';
-import { ServiceVariant } from '@trace/shared';
+import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
 export const addAppRoutes = (
-  app: ServiceVariant,
+  app: Workspace,
   component: any,
   children: Route[],
   overview: string[] = [],
@@ -49,7 +49,7 @@ export const routes = [
     children: [addCatchAll(), addUnAuthorized(), ...defaultRoutes],
   },
   addAppRoutes(
-    ServiceVariant.Core,
+    Workspace.Core,
     () => import('@/app/DynamicLayout.vue'),
     coreRoutes,
     ['core-overview', 'core-calendar'],

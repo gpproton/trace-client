@@ -15,13 +15,13 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 22 2024
+ * Modified At: Sat Mar 23 2024
  */
 
 import type { Route } from '@trace/base/typings';
-import type { ServiceVariant } from '@trace/shared';
+import type { Workspace } from '@trace/shared';
 
-export default (service: ServiceVariant): Route => ({
+export default (service: Workspace): Route => ({
   name: `${service}-tracking`,
   path: 'tracking',
   redirect: { name: `${service}-tracking.live-view` },

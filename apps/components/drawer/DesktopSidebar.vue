@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IProfile, ServiceVariant } from '@trace/shared';
+import type { IProfile, Workspace } from '@trace/shared';
 import SidebarList from '@/components/drawer/SidebarList.vue';
 import SidebarHeader from '@/components/drawer/SidebarHeader.vue';
 import SidebarUser from '@/components/drawer/SidebarUser.vue';
@@ -23,7 +23,7 @@ const {
   showIdentity,
   modules,
 } = defineModels<{
-  workspace: ServiceVariant;
+  workspace: Workspace;
   modelValue: boolean;
   darkMode: boolean;
   drawerMiniState: boolean;

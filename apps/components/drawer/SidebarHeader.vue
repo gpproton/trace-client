@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import AppLogo from '@trace/base/icons/logo.svg';
-import type { ServiceVariant } from '@trace/shared';
+import type { Workspace } from '@trace/shared';
 
 defineOptions({ name: 'SidebarHeader' });
 const { modelValue, workspace } = defineModels<{
   modelValue: boolean;
-  workspace: ServiceVariant;
+  workspace: Workspace;
 }>();
 </script>
 

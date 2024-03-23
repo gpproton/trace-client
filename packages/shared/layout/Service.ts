@@ -15,10 +15,10 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 22 2024
+ * Modified At: Sat Mar 23 2024
  */
 
-export enum ServiceVariant {
+export enum Workspace {
   Default = 'default',
   Identity = 'identity',
   Portal = 'portal',

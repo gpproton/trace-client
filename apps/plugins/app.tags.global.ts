@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 22nd Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Sat Mar 23 2024
  */
 
 import { useTagViewStore } from '@/stores/tag-view';
@@ -25,7 +25,7 @@ import { LoadingBar } from 'quasar';
 import { storeToRefs } from 'pinia';
 import type { RouteLocationNormalized, Router } from 'vue-router';
 import type { RouteData } from '@trace/base/typings';
-import { ServiceVariant } from '@trace/shared';
+import { Workspace } from '@trace/shared';
 
 export default defineNuxtPlugin(() => {
   const router: Router = useRouter();
@@ -37,11 +37,11 @@ export default defineNuxtPlugin(() => {
   const { setKeepAliveList } = keepAliveStore;
   const { setBreadcrumbs } = breadCrumbsStore;
 
-  const apps: ServiceVariant[] = [
-    ServiceVariant.Core,
-    ServiceVariant.Portal,
-    ServiceVariant.Support,
-    ServiceVariant.Track
+  const apps: Workspace[] = [
+    Workspace.Core,
+    Workspace.Portal,
+    Workspace.Support,
+    Workspace.Track,
   ];
 
   router.beforeEach((to, from) => {
@@ -49,15 +49,13 @@ export default defineNuxtPlugin(() => {
     LoadingBar.start();
 
     // Filter for only sun applications
-    if (apps.filter(e => to.fullPath.startsWith(`/${e}`)).length < 1) return;
+    if (apps.filter((e) => to.fullPath.startsWith(`/${e}`)).length < 1) return;
     if (to.name != null) {
       // is a public route
       if (to.meta.permission === false) return;
-      const storedTagView = (getStoredTagView.value ?? []) as unknown as RouteData[];
-      if (
-        getTagView.value.length === 0 &&
-        storedTagView.length !== 0
-      ) {
+      const storedTagView = (getStoredTagView.value ??
+        []) as unknown as RouteData[];
+      if (getTagView.value.length === 0 && storedTagView.length !== 0) {
         setTagView(storedTagView);
         setKeepAliveList(storedTagView);
       } else if (from.fullPath !== to.fullPath) {

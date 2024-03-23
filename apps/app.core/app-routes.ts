@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 14th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Sat Mar 23 2024
  */
 
 import { addCatchAll, addUnAuthorized } from '@/routes.default';
@@ -26,17 +26,17 @@ import addEngagementRoute from '@/app/engagements/module-routes';
 import addRoutesRoute from '@/app/routes/module-routes';
 import addLocationsRoute from '@/app/locations/module-routes';
 import addTrackingRoute from '@/app/live-tracking/module-routes';
-import { ServiceVariant } from '@trace/shared';
+import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
 export default [
-  addCatchAll(ServiceVariant.Core),
-  addUnAuthorized(ServiceVariant.Core),
-  addOverviewRoute(ServiceVariant.Core),
-  addEngagementRoute(ServiceVariant.Core),
-  addCalendarRoute(ServiceVariant.Core),
-  addTrackingRoute(ServiceVariant.Core),
-  addContactRoute(ServiceVariant.Core),
-  addRoutesRoute(ServiceVariant.Core),
-  addLocationsRoute(ServiceVariant.Core),
+  addCatchAll(Workspace.Core),
+  addUnAuthorized(Workspace.Core),
+  addOverviewRoute(Workspace.Core),
+  addEngagementRoute(Workspace.Core),
+  addCalendarRoute(Workspace.Core),
+  addTrackingRoute(Workspace.Core),
+  addContactRoute(Workspace.Core),
+  addRoutesRoute(Workspace.Core),
+  addLocationsRoute(Workspace.Core),
 ] as Route[];

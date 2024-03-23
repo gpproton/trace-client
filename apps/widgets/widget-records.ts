@@ -15,17 +15,17 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 22nd Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 22 2024
+ * Modified At: Sat Mar 23 2024
  */
 
-import { type ServiceVariant } from '@trace/shared';
+import { type Workspace } from '@trace/shared';
 import LargeWidget from './LargeWidget.vue';
 import MediumWidget from './MediumWidget.vue';
 import SmallWidget from './SmallWidget.vue';
 
 interface IWidget {
   id: string;
-  services?: ServiceVariant[];
+  services?: Workspace[];
   title: string;
   width: number;
   height: number;

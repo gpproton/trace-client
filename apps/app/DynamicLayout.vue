@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { ServiceVariant } from '@trace/shared';
+import type { Workspace } from '@trace/shared';
 import AppLayout from './AppLayout.vue';
 import { markRaw, provide, watch, shallowRef } from 'vue';
 import { useRoute } from 'vue-router';
 
 interface IProps {
-  workspace: ServiceVariant;
+  workspace: Workspace;
 }
 
 const layout = shallowRef();

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppLogo from '@trace/base/icons/logo.svg';
-import { ServiceVariant } from '@trace/shared';
+import { Workspace } from '@trace/shared';
 
 defineOptions({ name: 'QuickStart' });
 
@@ -11,23 +11,23 @@ interface AppOption {
 const router = useRouter();
 const apps: AppOption[] = [
   {
-    name: ServiceVariant.Core,
+    name: Workspace.Core,
     icon: 'bi-compass',
   },
   {
-    name: ServiceVariant.Track,
+    name: Workspace.Track,
     icon: 'bi-pin-map',
   },
   {
-    name: ServiceVariant.Portal,
+    name: Workspace.Portal,
     icon: 'bi-signpost-2',
   },
   {
-    name: ServiceVariant.Dispatch,
+    name: Workspace.Dispatch,
     icon: 'bi-truck',
   },
   {
-    name: ServiceVariant.Support,
+    name: Workspace.Support,
     icon: 'bi-headset',
   },
 ];
