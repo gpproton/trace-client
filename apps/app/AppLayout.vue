@@ -61,12 +61,12 @@ const quickCreateItems: IModuleCommands[] = [
 </script>
 
 <template>
-  <q-layout view="lHr lpR fFf" @resize="setSize">
+  <q-layout view="lHr lpR fFf" class="no-scroll" @resize="setSize">
     <!-- Mobile layout contents -->
     <slot v-if="isMobile" name="mobile-header">
       <mobile-header v-model:title="title" v-model:search="search" />
     </slot>
-    <q-page-container v-if="isMobile">
+    <q-page-container v-if="isMobile" class="no-scroll">
       <slot>
         <router-inject />
       </slot>
@@ -95,7 +95,7 @@ const quickCreateItems: IModuleCommands[] = [
       />
     </slot>
     <!-- Desktop and page content -->
-    <q-page-container v-if="isDesktop">
+    <q-page-container v-if="isDesktop" class="no-scroll">
       <q-layout view="hHh lpR fFf">
         <slot name="desktop-header">
           <desktop-header
@@ -111,7 +111,7 @@ const quickCreateItems: IModuleCommands[] = [
             :menu-items="moduleFeatures"
           />
         </slot>
-        <q-page-container class="bg-app-container">
+        <q-page-container class="bg-app-container no-scroll">
           <slot>
             <router-inject />
           </slot>

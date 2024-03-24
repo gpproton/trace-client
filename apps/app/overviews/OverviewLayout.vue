@@ -9,15 +9,15 @@ const dashboardTypes: string[] = ['Status', 'Availability'];
 </script>
 
 <template>
-  <page-wrapper>
-    <div class="row justify-between align-center q-px-sm q-py-xs">
+  <page-wrapper :scrollable="true">
+    <q-toolbar class="align-center q-px-sm q-py-xs">
       <switcher-button
         style="width: 240px"
         :dense="true"
         :route="true"
         :items="navigations"
       ></switcher-button>
-
+      <q-space />
       <div class="row q-gutter-md">
         <q-select
           v-model="selected"
@@ -30,10 +30,10 @@ const dashboardTypes: string[] = ['Status', 'Availability'];
           dense
           icon="bi-sliders2"
           color="accent"
-          class="q-px-md border-radius-sm"
+          class="q-px-md q-py-sm border-radius-sm"
         ></q-btn>
       </div>
-    </div>
+    </q-toolbar>
     <router-view></router-view>
   </page-wrapper>
 </template>

@@ -26,45 +26,20 @@ const overflowModules = computed<RouteMenu[]>(() =>
     (e) => !props.overflowFilters.includes(e.name as string),
   ),
 );
+
+const toogleMenuOverflow = () => (moreItems.value = !moreItems.value);
 </script>
 
 <template>
-  <q-footer class="app-footer q-pa-xs q-mb-sm q-mx-sm">
-    <q-menu
-      v-if="overflowModules.length > 0 && moreItems"
-      v-model="moreItems"
-      :offset="[0, 20]"
-      fit
-      auto-close
-      class="border-radius-md"
-    >
-      <q-list padding>
-        <template v-for="(item, index) in overflowModules" :key="index">
-          <q-item
-            :to="{ name: item.name }"
-            class="border-radius-sm text-accent-more"
-            active-class="text-action"
-            clickable
-          >
-            <q-item-section avatar>
-              <q-icon size="1.7em" color="primary" :name="item.icon" />
-            </q-item-section>
-            <q-item-section class="text-h6 text-weight-regular" no-wrap>
-              {{ item.title }}
-            </q-item-section>
-          </q-item>
-          <q-separator
-            v-if="index < overflowModules.length - 1"
-            color="app-background"
-            class="q-mx-sm"
-          />
-        </template>
-      </q-list>
-    </q-menu>
+  <q-footer
+    v-if="overflowModules.length > 0"
+    class="row justify-center app-footer q-pa-xs q-mb-none q-mx-sm"
+  >
     <q-tabs
       v-model="state"
       active-color="action"
-      align="justify"
+      align="center"
+      strech
       no-caps
       switch-indicator
       narrow-indicator
@@ -94,8 +69,39 @@ const overflowModules = computed<RouteMenu[]>(() =>
         name="more"
         icon="bi-grid-3x3-gap"
         class="border-radius-md"
-        @click="() => (moreItems = !moreItems)"
-      />
+        @click="toogleMenuOverflow"
+      >
+        <q-menu
+          v-if="overflowModules.length > 0 && moreItems"
+          v-model="moreItems"
+          :offset="[40, 20]"
+          auto-close
+          class="border-radius-md q-pa-sm full-width"
+        >
+          <q-list padding>
+            <template v-for="(item, index) in overflowModules" :key="index">
+              <q-item
+                :to="{ name: item.name }"
+                class="border-radius-sm text-accent-more"
+                active-class="text-action"
+                clickable
+              >
+                <q-item-section avatar>
+                  <q-icon size="1.7em" color="primary" :name="item.icon" />
+                </q-item-section>
+                <q-item-section class="text-h6 text-weight-regular" no-wrap>
+                  {{ $t(item.title as string) }}
+                </q-item-section>
+              </q-item>
+              <q-separator
+                v-if="index < overflowModules.length - 1"
+                color="app-background"
+                class="q-mx-sm"
+              />
+            </template>
+          </q-list>
+        </q-menu>
+      </q-route-tab>
     </q-tabs>
   </q-footer>
 </template>

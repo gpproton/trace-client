@@ -3,7 +3,5 @@ defineOptions({ name: 'RouteView' });
 </script>
 
 <template>
-  <page-wrapper>
-    <div>{{ 'Routes' }}</div>
-  </page-wrapper>
+  <page-wrapper> </page-wrapper>
 </template>

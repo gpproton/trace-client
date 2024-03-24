@@ -101,7 +101,7 @@ onDeactivated(() => {
       ref="scrollArea"
       :thumb-style="thumbStyle"
       :visible="false"
-      style="height: 100%"
+      style="height: calc(100vh - 130px)"
       :content-active-style="contentActiveStyle"
       @scroll="onScroll"
     >
