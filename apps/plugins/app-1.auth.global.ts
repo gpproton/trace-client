@@ -15,12 +15,13 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 22 2024
+ * Modified At: Sun Mar 24 2024
  */
 
 import type { Router } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useUserAccountStore } from '@/stores/user-account';
+import { workspaceApps } from '@trace/shared';
 
 export default defineNuxtPlugin(() => {
   const router: Router = useRouter();
@@ -28,7 +29,10 @@ export default defineNuxtPlugin(() => {
   const { getAccessToken } = storeToRefs(userAccount);
 
   router.beforeEach((to, from, next) => {
+    const isWorkspaceApp =
+      workspaceApps.filter((e) => to.fullPath.startsWith(`/${e}/`)).length > 0;
     const accessToken = getAccessToken.value;
+    console.log(to.fullPath);
 
     if (accessToken) {
       console.log(`Authorized navigation to:${to.path} :: from:${from.path}`);
@@ -40,7 +44,9 @@ export default defineNuxtPlugin(() => {
       console.log(
         `Un-authorized navigation to:${to.path} :: from:${from.path}`,
       );
-      if (to.meta.permission === false) {
+      if (isWorkspaceApp) {
+        next({ name: 'un-authorized' });
+      } else if (to.meta.permission === false) {
         next();
       } else {
         next({ name: 'auth.sign-in' });

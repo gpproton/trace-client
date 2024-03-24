@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 22nd Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 23 2024
+ * Modified At: Sun Mar 24 2024
  */
 
 import { useTagViewStore } from '@/stores/tag-view';
@@ -25,7 +25,7 @@ import { LoadingBar } from 'quasar';
 import { storeToRefs } from 'pinia';
 import type { RouteLocationNormalized, Router } from 'vue-router';
 import type { RouteData } from '@trace/base/typings';
-import { Workspace } from '@trace/shared';
+import { workspaceApps } from '@trace/shared';
 
 export default defineNuxtPlugin(() => {
   const router: Router = useRouter();
@@ -37,21 +37,15 @@ export default defineNuxtPlugin(() => {
   const { setKeepAliveList } = keepAliveStore;
   const { setBreadcrumbs } = breadCrumbsStore;
 
-  const apps: Workspace[] = [
-    Workspace.Account,
-    Workspace.Core,
-    Workspace.Portal,
-    Workspace.Support,
-    Workspace.Track,
-    Workspace.Dispatch,
-  ];
-
   router.beforeEach((to, from) => {
     LoadingBar.stop();
     LoadingBar.start();
 
-    // Filter for only sun applications
-    if (apps.filter((e) => to.fullPath.startsWith(`/${e}`)).length < 1) return;
+    // Filter for only wrkspaces
+    if (
+      workspaceApps.filter((e) => to.fullPath.startsWith(`/${e}/`)).length < 1
+    )
+      return;
     if (to.name != null) {
       // is a public route
       if (to.meta.permission === false) return;

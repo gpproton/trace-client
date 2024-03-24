@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 23 2024
+ * Modified At: Sun Mar 24 2024
  */
 
 export enum Workspace {
@@ -33,3 +33,12 @@ export interface ITenantProfile {
   name: string;
   domain: string;
 }
+
+export const workspaceApps: Workspace[] = [
+  Workspace.Account,
+  Workspace.Core,
+  Workspace.Portal,
+  Workspace.Support,
+  Workspace.Track,
+  Workspace.Dispatch,
+];
