@@ -44,6 +44,98 @@ const routes: Route = {
       },
     },
     {
+      path: 'members',
+      name: `${base}.members`,
+      redirect: { name: `${base}.member-accounts` },
+      meta: {
+        menu: true,
+        title: 'shared.members',
+        icon: 'bi-people',
+      },
+      children: [
+        {
+          path: 'accounts',
+          name: `${base}.member-accounts`,
+          component: () => import('./pages/members/TenantMembers.vue'),
+          meta: {
+            menu: true,
+            title: 'shared.members',
+            icon: 'bi-people',
+          },
+        },
+        {
+          path: 'invites',
+          name: `${base}.member-invites`,
+          component: () => import('./pages/members/TenantMemberInvite.vue'),
+          meta: {
+            menu: true,
+            title: 'shared.invites',
+            icon: 'bi-person-plus',
+          },
+        },
+        {
+          path: 'roles',
+          name: `${base}.member-roles`,
+          component: () => import('./pages/members/TenantMemberRoles.vue'),
+          meta: {
+            menu: true,
+            title: 'shared.roles',
+            icon: 'bi-shield-check',
+          },
+        },
+        {
+          path: 'teams',
+          name: `${base}.teams`,
+          component: () => import('./pages/members/TenantTeams.vue'),
+          meta: {
+            menu: true,
+            title: 'shared.teams',
+            icon: 'bi-globe',
+          },
+        },
+      ],
+    },
+    {
+      path: 'general',
+      name: `${base}.general`,
+      component: () => import('./pages/TenantGeneralSettings.vue'),
+      meta: {
+        menu: true,
+        title: 'shared.settings',
+        icon: 'bi-gear',
+      },
+    },
+    {
+      path: 'alerts',
+      name: `${base}.alerts`,
+      component: () => import('./pages/TenantAlertSettings.vue'),
+      meta: {
+        menu: true,
+        title: 'shared.alerts',
+        icon: 'bi-bell',
+      },
+    },
+    {
+      path: 'map',
+      name: `${base}.map`,
+      component: () => import('./pages/TenantMapSettings.vue'),
+      meta: {
+        menu: true,
+        title: 'router.mapSettings',
+        icon: 'bi-compass',
+      },
+    },
+    {
+      path: 'integration',
+      name: `${base}.integration`,
+      component: () => import('./pages/TenantIntegration.vue'),
+      meta: {
+        menu: true,
+        title: 'shared.integration',
+        icon: 'bi-intersect',
+      },
+    },
+    {
       path: 'domain',
       name: `${base}.domain`,
       component: () => import('./pages/TenantDomainSetting.vue'),

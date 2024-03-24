@@ -106,7 +106,7 @@ const quickCreateItems: IModuleCommands[] = [
     </slot>
     <!-- Desktop and page content -->
     <q-page-container v-if="isDesktop">
-      <q-layout view="lhr lpr lfr">
+      <q-layout view="hHh lpR fFf">
         <slot name="desktop-header">
           <desktop-header
             v-model="showSecondarySidebar"

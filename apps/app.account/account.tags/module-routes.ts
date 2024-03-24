@@ -31,6 +31,7 @@ const routes: Route = {
     menu: 'module',
     icon: 'bi-bookmarks',
     hideChildren: true,
+    removeChildren: true,
   },
   children: [
     {

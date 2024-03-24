@@ -14,18 +14,14 @@ const { modelValue, menuItems } = defineModels<{
   <q-drawer
     v-if="modelValue"
     v-model="modelValue"
-    :width="230"
+    :width="250"
     show-if-above
     persistent
     behavior="desktop"
     side="left"
     bordered
-    class="q-px-8"
+    class="q-px-xs q-py-sm"
   >
-    <q-toolbar>
-      <q-toolbar-title class="q-px-sm">{{ '' }}</q-toolbar-title>
-    </q-toolbar>
-    <q-separator size="1" class="q-mb-md" />
     <q-list padding class="text-primary q-px-xs">
       <template v-for="(item, index) in menuItems" :key="index">
         <link-item :item="item" :dense="false" class="q-my-xs" />
