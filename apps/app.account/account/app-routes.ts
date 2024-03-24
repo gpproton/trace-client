@@ -33,8 +33,8 @@ const routes: Route[] = [
     meta: {
       menu: 'module',
       hideChildren: true,
-      title: 'Account Profile',
-      icon: 'bi-gear',
+      title: 'shared.profile',
+      icon: 'bi-person',
     },
   },
   {
@@ -43,8 +43,8 @@ const routes: Route[] = [
     component: () => import('./pages/AccountSessions.vue'),
     meta: {
       menu: 'module',
-      title: 'Account Sessions',
-      icon: 'bi-gear',
+      title: 'shared.sessions',
+      icon: 'bi-clock-history',
     },
   },
   {
@@ -53,8 +53,8 @@ const routes: Route[] = [
     component: () => import('./pages/AccountPassword.vue'),
     meta: {
       menu: 'module',
-      title: 'Account Password',
-      icon: 'bi-gear',
+      title: 'auth.password',
+      icon: 'bi-shield-lock',
     },
   },
   {
@@ -63,8 +63,8 @@ const routes: Route[] = [
     component: () => import('./pages/LinkedAccounts.vue'),
     meta: {
       menu: 'module',
-      title: 'Linked Account',
-      icon: 'bi-gear',
+      title: 'auth.linkedAccount',
+      icon: 'bi-link-45deg',
     },
   },
   AccountTags,

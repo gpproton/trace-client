@@ -19,16 +19,17 @@
  */
 
 import type { Route } from '@trace/base/typings';
+import { Workspace } from '@trace/shared';
 
-const base = 'account-settings';
+const base = `${Workspace.Account}-settings`;
 const routes: Route = {
-  path: `${base}`,
+  path: `account`,
   name: `${base}`,
   redirect: { name: `${base}.general` },
   meta: {
     menu: 'module',
     hideChildren: true,
-    title: 'Settings',
+    title: 'shared.settings',
     icon: 'bi-gear',
   },
   children: [
@@ -38,7 +39,7 @@ const routes: Route = {
       component: () => import('./pages/GeneralSettings.vue'),
       meta: {
         menu: true,
-        title: 'Account Settings',
+        title: 'router.generalSettings',
         icon: 'bi-gear',
       },
     },
@@ -48,8 +49,8 @@ const routes: Route = {
       component: () => import('./pages/AlertSettings.vue'),
       meta: {
         menu: true,
-        title: 'Account Alerts',
-        icon: 'bi-gear',
+        title: 'router.accountAlerts',
+        icon: 'bi-bell',
       },
     },
     {
@@ -58,8 +59,8 @@ const routes: Route = {
       component: () => import('./pages/AppearanceSettings.vue'),
       meta: {
         menu: true,
-        title: 'Appearance Settings',
-        icon: 'bi-gear',
+        title: 'router.appearanceSettings',
+        icon: 'bi-palette',
       },
     },
     {
@@ -68,8 +69,8 @@ const routes: Route = {
       component: () => import('./pages/MapSettings.vue'),
       meta: {
         menu: true,
-        title: 'Map Settings',
-        icon: 'bi-gear',
+        title: 'router.mapSettings',
+        icon: 'bi-compass',
       },
     },
   ],

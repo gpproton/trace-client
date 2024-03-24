@@ -19,17 +19,18 @@
  */
 
 import type { Route } from '@trace/base/typings';
+import { Workspace } from '@trace/shared';
 
-const base = 'account-admin';
+const base = `${Workspace.Account}-admin`;
 const routes: Route = {
-  path: `${base}`,
+  path: `admin`,
   name: `${base}`,
   redirect: { name: `${base}.summary` },
   meta: {
     menu: 'module',
     hideChildren: true,
-    title: 'Administration',
-    icon: 'bi-gear',
+    title: 'shared.administration',
+    icon: 'bi-person-gear',
   },
   children: [
     {
@@ -38,8 +39,8 @@ const routes: Route = {
       component: () => import('./pages/TenantSummary.vue'),
       meta: {
         menu: true,
-        title: 'Administration Summary',
-        icon: 'bi-gear',
+        title: 'shared.summary',
+        icon: 'bi-front',
       },
     },
     {
@@ -48,8 +49,8 @@ const routes: Route = {
       component: () => import('./pages/TenantDomainSetting.vue'),
       meta: {
         menu: true,
-        title: 'Domain Setting',
-        icon: 'bi-gear',
+        title: 'router.domainSetting',
+        icon: 'bi-globe',
       },
     },
   ],

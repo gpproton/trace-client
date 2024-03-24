@@ -23,13 +23,13 @@ import { Workspace } from '@trace/shared';
 
 const base = `${Workspace.Account}-tags`;
 const routes: Route = {
-  path: `tags`,
   name: `${base}`,
-  redirect: { name: `${base}.general` },
+  path: `tags`,
+  redirect: { name: `${base}.active` },
   meta: {
-    title: 'Tags',
+    title: 'shared.tags',
     menu: 'module',
-    icon: 'bi-gear',
+    icon: 'bi-bookmarks',
     hideChildren: true,
   },
   children: [
@@ -39,8 +39,8 @@ const routes: Route = {
       component: () => import('./pages/TagsView.vue'),
       meta: {
         menu: true,
-        title: 'Active Tags',
-        icon: 'bi-gear',
+        title: 'shared.tags',
+        icon: 'bi-bookmarks',
       },
     },
   ],

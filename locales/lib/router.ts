@@ -19,7 +19,7 @@
  */
 
 export default {
-  
+
   home: 'Home',
   faq: "FAQ's",
   pricing: 'Pricing',
@@ -32,4 +32,9 @@ export default {
   startNow: 'Start Now',
   docs: 'Docs',
   testing: 'Testing',
+  generalSettings: 'General Settings',
+  accountAlerts: 'Account Alerts',
+  appearanceSettings: 'AppearanceSettings',
+  mapSettings: 'Map Settings',
+  domainSetting: 'Domain Setting',
 };

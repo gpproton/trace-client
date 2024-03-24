@@ -19,8 +19,11 @@
  */
 
 export default {
+  active: 'Active',
   account: 'Account',
   settings: 'Settings',
+  administration: 'Administration',
+  summary: 'Summary',
   core: 'Core',
   portal: 'Portal',
   support: 'Support',
@@ -30,6 +33,7 @@ export default {
   overview: 'Overview',
   dashboard: 'Dashboard',
   trends: 'Trends',
+  contact: 'Contact',
   contacts: 'Contacts',
   calendar: 'Calendar',
   timeline: 'Timeline',
@@ -48,7 +52,9 @@ export default {
   routes: 'Routes',
   notification: 'Notification',
   user: 'User',
-  contact: 'Contact',
+  tags: 'Tags',
+  profile: 'Profile',
+  sessions: 'Sessions',
   profileType: 'Profile Type',
   workflowType: 'Workflow Type',
   gettingStarted: 'Getting Started',
