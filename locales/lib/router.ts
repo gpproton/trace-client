@@ -15,22 +15,15 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 23 2024
+ * Modified At: Sun Mar 24 2024
  */
 
 export default {
-  core: 'Core',
-  portal: 'Portal',
-  support: 'Support',
-  track: 'Track',
-  dispatch: 'Dispatch',
-  account: 'Account',
-  settings: 'Settings',
+  
   home: 'Home',
   faq: "FAQ's",
   pricing: 'Pricing',
   solutions: 'Solutions',
-  contact: 'Contact',
   back: 'Go Back',
   'un-authorized': 'Unauthorized',
   error: 'Error',

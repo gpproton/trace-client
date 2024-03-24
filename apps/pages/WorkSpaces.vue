@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppLogo from '@trace/base/icons/logo.svg';
+import WorkspaceIcon from '@trace/base/icons/workspace.svg?url';
 import { Workspace } from '@trace/shared';
 
 defineOptions({ name: 'QuickStart' });
@@ -52,7 +53,16 @@ const apps: AppOption[] = [
               {{ 'Trace' }}
             </q-toolbar-title>
           </q-toolbar>
-          <div class="q-pa-lg"></div>
+          <div class="q-pa-lg">
+            <q-img
+              no-native-menu
+              no-spinner
+              :src="WorkspaceIcon"
+              alt="Trace Workspace"
+              width="calc(33vw)"
+              class="absolute-center"
+            />
+          </div>
           <div class="q-px-md q-py-sm text-grey">
             {{ 'All right reserved.' }}
             <NuxtLink class="footer-link" to="https://drolx.com">{{
@@ -90,7 +100,7 @@ const apps: AppOption[] = [
               >
                 <q-icon :name="app.icon" color="secondary" size="4em"></q-icon>
                 <div class="text-h6 text-secondary text-weight-regular q-py-sm">
-                  {{ $t(`router.${app.name}`) }}
+                  {{ $t(`shared.${app.name}`) }}
                 </div>
               </q-card>
             </div>

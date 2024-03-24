@@ -15,14 +15,21 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 23 2024
+ * Modified At: Sun Mar 24 2024
  */
 
 export default {
-  help: "Help",
-  overview: "Overview",
-  dashboard: "Dashboard",
-  trends: "Trends",
+  account: 'Account',
+  settings: 'Settings',
+  core: 'Core',
+  portal: 'Portal',
+  support: 'Support',
+  track: 'Track',
+  dispatch: 'Dispatch',
+  help: 'Help',
+  overview: 'Overview',
+  dashboard: 'Dashboard',
+  trends: 'Trends',
   contacts: 'Contacts',
   calendar: 'Calendar',
   timeline: 'Timeline',
@@ -39,19 +46,18 @@ export default {
   map: 'Map',
   locations: 'Locations',
   routes: 'Routes',
-  notification: "Notification",
-  user: "User",
-  account: "Account",
-  settings: "Settings",
-  profileType: "Profile Type",
-  workflowType: "Workflow Type",
-  gettingStarted: "Getting Started",
-  welcomeAboard: "Welcome Aboard",
-  representative: "Representative Information",
-  organizationInformation: "Organization Information",
-  privacyPolicy: "Privacy policy",
-  copyright: "Copyright",
-  registration: "Registration",
-  verification: "Verification",
-  confirmation: "Confirmation"
-}
+  notification: 'Notification',
+  user: 'User',
+  contact: 'Contact',
+  profileType: 'Profile Type',
+  workflowType: 'Workflow Type',
+  gettingStarted: 'Getting Started',
+  welcomeAboard: 'Welcome Aboard',
+  representative: 'Representative Information',
+  organizationInformation: 'Organization Information',
+  privacyPolicy: 'Privacy policy',
+  copyright: 'Copyright',
+  registration: 'Registration',
+  verification: 'Verification',
+  confirmation: 'Confirmation',
+};

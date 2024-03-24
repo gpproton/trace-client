@@ -16,7 +16,7 @@ const links = [
   },
   {
     name: 'contact',
-    label: 'router.contact',
+    label: 'shared.contact',
   },
 ];
 </script>
