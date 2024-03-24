@@ -3,12 +3,21 @@ import PanelWindow from '../components/PanelWindow.vue';
 const mapReference = ref();
 const mapInstance = ref();
 const mapReady = ref(false);
+const url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const attribution =
+  '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors';
+const zoom = ref(10);
+const center = ref([6.5296993, 3.281127]);
+const markerLatLng = [6.5296993, 3.281127];
+
+onMounted(() => {
+  mapReady.value = true;
+});
 
 const onMapReady = async () => {
   await nextTick();
   if (mapReference.value !== null) {
     mapInstance.value = mapReference.value.leafletObject;
-    mapReady.value = true;
   }
 };
 </script>
@@ -16,17 +25,18 @@ const onMapReady = async () => {
 <template>
   <page-wrapper class="no-border">
     <l-map
-      v-show="mapReady"
+      v-if="mapReady"
       ref="mapReference"
       :zoom-animation="true"
       :marker-zoom-animation="true"
       :options="{
+        center: center,
         zoomControl: false,
-        zoom: 10,
-        minZoom: 7,
-        maxZoom: 19,
-        attributionControl: false,
-        preferCanvas: true,
+        zoom: zoom,
+        // minZoom: 7,
+        // maxZoom: 19,
+        // attributionControl: false,
+        // preferCanvas: true,
       }"
       style="z-index: 0"
       v-bind="$attrs"
@@ -34,6 +44,8 @@ const onMapReady = async () => {
     >
       <slot name="first"></slot>
       <l-control-zoom position="topright" />
+
+      <l-marker :lat-lng="markerLatLng"></l-marker>
       <!-- <fullscreen-control></fullscreen-control> -->
       <!-- <measure-control></measure-control> -->
       <!-- <button-map-default></button-map-default> -->
@@ -45,6 +57,7 @@ const onMapReady = async () => {
       </slot>
       <slot name="last"></slot>
       <!-- <tile-layers v-if="mapPluginReady"></tile-layers> -->
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
     </l-map>
   </page-wrapper>
 </template>

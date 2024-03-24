@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 23 2024
+ * Modified At: Sun Mar 24 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -35,7 +35,6 @@ export default (service: Workspace): Route => ({
     icon: 'bi-pin-map',
     hideChildren: true,
     removeChildren: true,
-    layout: 'LiveLayout',
   },
   children: [
     {
@@ -46,7 +45,6 @@ export default (service: Workspace): Route => ({
         menu: true,
         title: 'shared.liveView',
         icon: 'bi-pin-map',
-        layout: 'LiveLayout',
       },
     },
   ],

@@ -60,13 +60,6 @@ const quickCreateItems: IModuleCommands[] = [
     icon: 'bi-check-circle',
     command: '1',
   },
-  {
-    name: 'action-2',
-    title: 'Action 2',
-    icon: 'bi-file-earmark-text',
-    path: 'sample-2',
-    command: '2',
-  },
 ];
 </script>
 
