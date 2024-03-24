@@ -96,7 +96,7 @@ const apps: AppOption[] = [
                 v-for="app in apps"
                 :key="app.name"
                 class="app-box text-center cursor-pointer q-pa-md q-ma-md no-wrap border-radius-sm"
-                @click="() => router.push({ name: app.name })"
+                @click="() => router.replace({ name: app.name })"
               >
                 <q-icon :name="app.icon" color="secondary" size="4em"></q-icon>
                 <div class="text-h6 text-secondary text-weight-regular q-py-sm">

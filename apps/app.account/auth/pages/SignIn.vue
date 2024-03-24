@@ -41,7 +41,7 @@ const triggerAuth = () => {
       `Username: ${authState.Username} :: Password: ${authState.Password}`,
     );
     setAccessToken('xx-xx-xx-xx');
-    router.push({ name: 'home' });
+    router.replace({ name: 'work-spaces' });
   }
 };
 
