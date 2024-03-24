@@ -22,8 +22,8 @@ const { modelValue, workspace } = defineModels<{
       <app-logo class="sidebar-logo self-start col-3" />
       <div class="col-9 row">
         <div class="col-10 text-no-wrap q-pl-md">
-          <div class="text-h5 text-weight-medium text-primary">
-            {{ workspace.toString() }}
+          <div class="text-h5 text-weight-medium text-primary text-capitalize">
+            {{ workspace }}
           </div>
           <div class="text-accent-more">
             {{ 'Workspace' }}

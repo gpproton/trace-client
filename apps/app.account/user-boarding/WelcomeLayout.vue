@@ -60,8 +60,7 @@ const extraInfo =
             <div class="q-px-lg">
               <span>{{ 'Already have an account?' }}</span>
               <nuxt-link
-                style="text-decoration: none"
-                class="text-body1 text-primary q-ml-sm"
+                class="text-body1 text-primary q-ml-sm text-capitalize"
                 :to="{ name: 'auth.sign-in' }"
               >
                 {{ $t('auth.signIn') }}
