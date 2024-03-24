@@ -13,42 +13,33 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Wednesday, 20th Mar 2024
+ * Created At: Sunday, 24th Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Sun Mar 24 2024
  */
 
 import type { Route } from '@trace/base/typings';
+import { Workspace } from '@trace/shared';
 
-const base = 'account-admin';
+const base = `${Workspace.Account}-tags`;
 const routes: Route = {
-  path: `${base}`,
+  path: `tags`,
   name: `${base}`,
-  redirect: { name: `${base}.summary` },
+  redirect: { name: `${base}.general` },
   meta: {
+    title: 'Tags',
     menu: 'module',
-    hideChildren: true,
-    title: 'Administration',
     icon: 'bi-gear',
+    hideChildren: true,
   },
   children: [
     {
-      path: 'summary',
-      name: `${base}.summary`,
-      component: () => import('./pages/TenantSummary.vue'),
+      path: 'active',
+      name: `${base}.active`,
+      component: () => import('./pages/TagsView.vue'),
       meta: {
         menu: true,
-        title: 'Administration Summary',
-        icon: 'bi-gear',
-      },
-    },
-    {
-      path: 'domain',
-      name: `${base}.domain`,
-      component: () => import('./pages/TenantDomainSetting.vue'),
-      meta: {
-        menu: true,
-        title: 'Domain Setting',
+        title: 'Active Tags',
         icon: 'bi-gear',
       },
     },

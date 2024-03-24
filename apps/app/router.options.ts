@@ -15,12 +15,14 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 23 2024
+ * Modified At: Sun Mar 24 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
 import defaultRoutes, { addCatchAll, addUnAuthorized } from '@/routes.default';
-import { routes as identityRoutes } from '@/app.account/app-routes';
+import accountRoutes, {
+  routes as identityRoutes,
+} from '@/app.account/app-routes';
 import coreRoutes from '@/app.core/app-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
@@ -30,13 +32,14 @@ export const addAppRoutes = (
   component: any,
   children: Route[],
   overview: string[] = [],
+  root: string = 'overview',
 ): Route => ({
   name: app,
   path: `/${app}`,
   component: component,
   children: children,
   meta: { menu: 'app' },
-  redirect: { name: `${app}-overview` },
+  redirect: { name: `${app}-${root}` },
   props: { workspace: app, overviewFilter: overview },
 });
 
@@ -48,6 +51,13 @@ export const routes = [
     component: () => import('@/app/EmptyLayout.vue'),
     children: [addCatchAll(), addUnAuthorized(), ...defaultRoutes],
   },
+  addAppRoutes(
+    Workspace.Account,
+    () => import('@/app/DynamicLayout.vue'),
+    accountRoutes,
+    [],
+    'profile',
+  ),
   addAppRoutes(
     Workspace.Core,
     () => import('@/app/DynamicLayout.vue'),

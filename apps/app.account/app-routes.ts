@@ -15,14 +15,17 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Saturday, 23rd Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 23 2024
+ * Modified At: Sun Mar 24 2024
  */
 import AuthModuleRoutes from './auth/module-routes';
 import RecoveryModuleRoutes from './recovery/module-routes';
 import UserBoardingRoutes from './user-boarding/module-routes';
+import AccountAppRoutes from './account/app-routes';
 
 export const routes = [
   ...AuthModuleRoutes,
   ...RecoveryModuleRoutes,
   ...UserBoardingRoutes,
 ];
+
+export default AccountAppRoutes;
