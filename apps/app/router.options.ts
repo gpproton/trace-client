@@ -31,7 +31,8 @@ export const addAppRoutes = (
   app: Workspace,
   component: any,
   children: Route[],
-  overview: string[] = [],
+  filter: string[] = [],
+  mobileFilter: string[] = [],
   root: string = 'overview',
 ): Route => ({
   name: app,
@@ -40,7 +41,7 @@ export const addAppRoutes = (
   children: children,
   meta: { menu: 'app' },
   redirect: { name: `${app}-${root}` },
-  props: { workspace: app, overviewFilter: overview },
+  props: { workspace: app, overviewFilter: filter, mobileFilter: mobileFilter },
 });
 
 export const routes = [
@@ -56,6 +57,7 @@ export const routes = [
     () => import('@/app/DynamicLayout.vue'),
     accountRoutes,
     [],
+    [],
     'profile',
   ),
   addAppRoutes(
@@ -63,6 +65,7 @@ export const routes = [
     () => import('@/app/DynamicLayout.vue'),
     coreRoutes,
     ['core-overview', 'core-calendar'],
+    ['core-overview', 'core-calendar', 'core-tracking', 'core-engagements'],
   ),
   ...identityRoutes,
 ] as Route[];

@@ -12,7 +12,7 @@ const dashboardTypes: string[] = ['Status', 'Availability'];
   <page-wrapper>
     <div class="row justify-between align-center q-px-sm q-py-xs">
       <switcher-button
-        style="width: 280px"
+        style="width: 240px"
         :dense="true"
         :route="true"
         :items="navigations"
@@ -24,7 +24,7 @@ const dashboardTypes: string[] = ['Status', 'Availability'];
           dense
           :options="dashboardTypes"
           label=""
-          class="border-radius-sm"
+          class="border-radius-sm gt-sm"
         />
         <q-btn
           dense

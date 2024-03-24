@@ -44,9 +44,6 @@ const showSecondaryToggle = computed(() => moduleFeatures.value.length > 0);
 watchEffect(() => {
   showSecondarySidebar.value = moduleFeatures.value.length > 0;
 });
-
-const mobileMenu: RouteMenu[] = [];
-const mobileOverflowMenu: RouteMenu[] = [];
 const props = withDefaults(defineProps<IProps>(), {
   overviewFilter: () => [],
   mobileFilter: () => [],
@@ -77,10 +74,10 @@ const quickCreateItems: IModuleCommands[] = [
     <!-- TODO: re-evaluate mobile navigation -->
     <slot v-if="isMobile" name="mobile-bottom-menu">
       <mobile-bottom-menu
+        v-model:modules="modulesMenu"
         style="display: none"
         :style="isMobile ? { display: 'flex' } : {}"
-        :items="mobileMenu"
-        :overflow-items="mobileOverflowMenu"
+        :overflow-filters="mobileFilter"
       />
     </slot>
 

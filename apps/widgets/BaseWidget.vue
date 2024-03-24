@@ -16,7 +16,7 @@ const computedHeight = computed(() => `${props.height * 150}px`);
 </script>
 
 <template>
-  <div class="widget" :class="`col-${width * 3}`">
+  <div class="widget" :class="`col-md-${width * 3} col-xs-12`">
     <q-card class="widget-inner">
       <slot></slot>
     </q-card>

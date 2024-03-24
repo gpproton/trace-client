@@ -4,22 +4,34 @@ import type { RouteMenu } from '@trace/base/typings';
 defineOptions({ name: 'MobileBottomMenu' });
 
 interface IProps {
-  items: RouteMenu[];
-  overflowItems?: RouteMenu[];
+  overflowFilters?: string[];
 }
-
 const props = withDefaults(defineProps<IProps>(), {
-  overflowItems: () => [],
+  overflowFilters: () => [],
 });
 
 const state = ref('');
 const moreItems = ref(false);
+const { modules } = defineModels<{
+  modules: ModelOptions<RouteMenu[], { defaultValue: []; deep: true }>;
+}>();
+
+const displayedModules = computed<RouteMenu[]>(() => {
+  return modules.value.filter((e) =>
+    props.overflowFilters.includes(e.name as string),
+  );
+});
+const overflowModules = computed<RouteMenu[]>(() =>
+  modules.value.filter(
+    (e) => !props.overflowFilters.includes(e.name as string),
+  ),
+);
 </script>
 
 <template>
   <q-footer class="app-footer q-pa-xs q-mb-sm q-mx-sm">
     <q-menu
-      v-if="props.overflowItems.length > 0 && moreItems"
+      v-if="overflowModules.length > 0 && moreItems"
       v-model="moreItems"
       :offset="[0, 20]"
       fit
@@ -27,7 +39,7 @@ const moreItems = ref(false);
       class="border-radius-md"
     >
       <q-list padding>
-        <template v-for="(item, index) in props.overflowItems" :key="index">
+        <template v-for="(item, index) in overflowModules" :key="index">
           <q-item
             :to="{ name: item.name }"
             class="border-radius-sm text-accent-more"
@@ -42,7 +54,7 @@ const moreItems = ref(false);
             </q-item-section>
           </q-item>
           <q-separator
-            v-if="index < props.overflowItems.length - 1"
+            v-if="index < overflowModules.length - 1"
             color="app-background"
             class="q-mx-sm"
           />
@@ -61,7 +73,7 @@ const moreItems = ref(false);
       class="text-space"
     >
       <q-route-tab
-        v-for="(item, index) in props.items"
+        v-for="(item, index) in displayedModules"
         :key="index"
         :name="item.name as string"
         :to="{ name: item.name }"
@@ -69,7 +81,7 @@ const moreItems = ref(false);
         class="border-radius-md"
       >
         <q-badge
-          v-show="item.name === 'overview'"
+          v-show="item.name === 'core-overview'"
           floating
           color="red-7"
           rounded
