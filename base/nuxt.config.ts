@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 22 2024
+ * Modified At: Sun Mar 24 2024
  */
 
 import bootstrapIcons from 'quasar/icon-set/svg-bootstrap-icons';
@@ -46,6 +46,12 @@ export default defineNuxtConfig({
   },
   i18n: {
     vueI18n: './i18n.config.ts',
+  },
+  piniaPersistedstate: {
+    cookieOptions: {
+      sameSite: 'none',
+    },
+    storage: 'localStorage',
   },
   css: [
     join(currentDir, './assets/colors.scss'),
