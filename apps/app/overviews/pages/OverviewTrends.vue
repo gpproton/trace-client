@@ -3,5 +3,5 @@ defineOptions({ name: 'OverviewTrends' });
 </script>
 
 <template>
-  <div>{{ 'Overview.Trends' }}</div>
+  <page-wrapper></page-wrapper>
 </template>

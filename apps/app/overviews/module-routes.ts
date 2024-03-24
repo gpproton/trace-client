@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 14th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 23 2024
+ * Modified At: Sun Mar 24 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -37,7 +37,7 @@ export default (service: Workspace): Route => ({
     {
       name: `${service}-overview.dashboard`,
       path: 'dashboard',
-      component: () => import('./pages/Dashboard.vue'),
+      component: () => import('./pages/OverviewDashboard.vue'),
       meta: {
         menu: true,
         title: 'shared.dashboard',
@@ -47,7 +47,7 @@ export default (service: Workspace): Route => ({
     {
       name: `${service}-overview.trends`,
       path: 'trends',
-      component: () => import('./pages/Trends.vue'),
+      component: () => import('./pages/OverviewTrends.vue'),
       meta: {
         menu: true,
         title: 'shared.trends',
