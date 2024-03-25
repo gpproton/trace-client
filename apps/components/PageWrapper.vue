@@ -43,7 +43,7 @@ withDefaults(defineProps<IProps>(), {
   name: '',
   contentActiveStyle: '',
   scrollable: false,
-  padding: false,
+  padding: true,
 });
 
 const route = useRoute();
@@ -95,7 +95,7 @@ onDeactivated(() => {
 </script>
 
 <template>
-  <q-page class="fit page q-pa-sm" :padding="padding">
+  <q-page class="fit page" :class="padding ? 'q-pa-sm' : ''">
     <q-scroll-area
       v-if="scrollable"
       ref="scrollArea"

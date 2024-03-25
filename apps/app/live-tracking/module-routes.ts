@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 24 2024
+ * Modified At: Mon Mar 25 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -23,9 +23,8 @@ import type { Workspace } from '@trace/shared';
 
 export default (service: Workspace): Route => ({
   name: `${service}-tracking`,
-  path: 'tracking',
-  redirect: { name: `${service}-tracking.live-view` },
-  component: () => import('@/app/LiveLayout.vue'),
+  path: 'live-tracking',
+  component: () => import('./pages/LiveView.vue'),
   props: {
     workspce: service,
   },
@@ -36,16 +35,4 @@ export default (service: Workspace): Route => ({
     hideChildren: true,
     removeChildren: true,
   },
-  children: [
-    {
-      name: `${service}-tracking.live-view`,
-      path: 'live-view',
-      component: () => import('./pages/LiveView.vue'),
-      meta: {
-        menu: true,
-        title: 'shared.liveView',
-        icon: 'bi-pin-map',
-      },
-    },
-  ],
 });

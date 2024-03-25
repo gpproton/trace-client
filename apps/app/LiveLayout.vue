@@ -30,10 +30,3 @@ withDefaults(defineProps<IProps>(), {
     <router-inject></router-inject>
   </app-layout>
 </template>
-
-<style>
-.map-view {
-  min-width: calc(100vw - 65px);
-  height: calc(100vh - 155px);
-}
-</style>

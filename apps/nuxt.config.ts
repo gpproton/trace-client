@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 24 2024
+ * Modified At: Mon Mar 25 2024
  */
 
 import { appHeader } from '@trace/shared';
@@ -29,5 +29,5 @@ export default defineNuxtConfig({
     // '/docs/**': { ssr: true },
   },
   ssr: false,
-  content: {},
+  // content: {},
 });

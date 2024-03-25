@@ -23,6 +23,10 @@ const triggerSignOut = () => {
   const { signOut } = useUserAccountStore();
   signOut();
 };
+
+onMounted(() => {
+  console.log('Hi there');
+});
 </script>
 
 <template>
@@ -135,7 +139,7 @@ const triggerSignOut = () => {
             transition-hide="scale"
           >
             <q-list style="min-width: 200px">
-              <q-item>
+              <q-item class="cursor-pointer">
                 <q-item-section avatar>
                   <q-avatar size="3rem" color="accent">
                     <q-icon color="white" name="bi-person" />
