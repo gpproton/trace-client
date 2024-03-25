@@ -5,6 +5,7 @@ import CommandList from '@/components/extra/CommandList.vue';
 import NotificationDialog from '@/components/extra/NotificationDialog.vue';
 import Breadcrumbs from './Breadcrumbs.vue';
 import TagView from '@/components/header/TagView.vue';
+import { useUserAccountStore } from '@/stores/user-account';
 
 interface IProps {
   quickCommands: IModuleCommands[];
@@ -17,6 +18,11 @@ const { modelValue, search, showSecondarySidebarToogle } = defineModels<{
   modelValue: ModelOptions<boolean, { defaultValue: false; deep: true }>;
   search: ModelOptions<string, { defaultValue: ''; deep: true }>;
 }>();
+
+const triggerSignOut = () => {
+  const { signOut } = useUserAccountStore();
+  signOut();
+};
 </script>
 
 <template>
@@ -71,20 +77,6 @@ const { modelValue, search, showSecondarySidebarToogle } = defineModels<{
         </template>
       </q-input>
       <div class="header-icon-button q-gutter-xs vertical-middle">
-        <!-- Top level app switcher -->
-        <q-btn
-          flat
-          square
-          color="primary"
-          :to="{ name: 'work-spaces' }"
-          class="border-radius-sm q-px-sm"
-        >
-          <q-icon
-            color="primary"
-            class="button-icon"
-            name="bi-ui-checks-grid"
-          />
-        </q-btn>
         <!-- Notification actions -->
         <q-btn
           flat
@@ -114,7 +106,7 @@ const { modelValue, search, showSecondarySidebarToogle } = defineModels<{
         <!-- Quick new items triggers-->
         <q-btn
           square
-          size="1.1rem"
+          size="0.95rem"
           icon="bi-plus-lg"
           color="primary"
           text-color="primary-inverted"
@@ -129,6 +121,58 @@ const { modelValue, search, showSecondarySidebarToogle } = defineModels<{
             <command-list :items="quickCommands" />
           </q-menu>
         </q-btn>
+        <q-avatar
+          class="q-ml-sm cursor-pointer"
+          size="2.8rem"
+          color="secondary"
+          text-color="white"
+        >
+          <q-badge floating color="green" class="badge" rounded />
+          <span class="text-white text-weight-medium">{{ 'JD' }}</span>
+          <q-menu
+            :offset="[-5, 10]"
+            transition-show="scale"
+            transition-hide="scale"
+          >
+            <q-list style="min-width: 200px">
+              <q-item>
+                <q-item-section avatar>
+                  <q-avatar size="3rem" color="accent">
+                    <q-icon color="white" name="bi-person" />
+                  </q-avatar>
+                </q-item-section>
+                <q-item-section>
+                  <span class="text-h5 text-weight-medium text-primary">{{
+                    'John Doe'
+                  }}</span>
+                  <span class="text-caption text-weight-light text-secondary">{{
+                    'john.doe@trace.ng'
+                  }}</span>
+                </q-item-section>
+              </q-item>
+              <q-separator />
+              <q-item v-close-popup clickable>
+                <q-item-section avatar>
+                  <q-icon color="primary" name="bi-gear" />
+                </q-item-section>
+                <q-item-section>Settings</q-item-section>
+              </q-item>
+              <q-item v-close-popup clickable>
+                <q-item-section avatar>
+                  <q-icon color="primary" name="bi-question-circle" />
+                </q-item-section>
+                <q-item-section>Help &amp; Feedback</q-item-section>
+              </q-item>
+              <q-separator />
+              <q-item v-close-popup clickable @click="triggerSignOut">
+                <q-item-section avatar>
+                  <q-icon color="primary" name="bi-box-arrow-in-right" />
+                </q-item-section>
+                <q-item-section>Sign Out</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-avatar>
       </div>
     </q-toolbar>
     <q-separator />
