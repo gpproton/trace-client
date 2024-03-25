@@ -54,6 +54,7 @@ const handleKey = (index: number) => {
         no-error-icon
         class="border-radius-sm q-mx-sm verify-input"
         @keyup="handleKey(verifyIndex)"
+        @keyup.enter="verifyToken"
       />
     </div>
 

@@ -30,6 +30,7 @@ const updatePassword = () => {
       :type="passwordState.show ? 'text' : 'password'"
       label="New Password"
       class="border-radius-sm q-my-lg"
+      @keyup.enter="updatePassword"
     >
       <template #prepend>
         <q-icon name="bi-lock" color="accent" />
@@ -53,6 +54,7 @@ const updatePassword = () => {
       :type="passwordState.showConfirm ? 'text' : 'password'"
       label="Confirm New Password"
       class="border-radius-sm q-my-lg"
+      @keyup.enter="updatePassword"
     >
       <template #prepend>
         <q-icon name="bi-lock" color="accent" />

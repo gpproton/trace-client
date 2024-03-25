@@ -81,7 +81,7 @@ const triggerAuth = () => {
         type="text"
         :label="$t('auth.usernameOrEmail')"
         class="border-radius-sm"
-        @key.enter="triggerAuth"
+        @keyup.enter="triggerAuth"
       >
         <template #prepend>
           <q-icon name="bi-person" color="accent" />
@@ -97,7 +97,7 @@ const triggerAuth = () => {
         :type="authState.show ? 'text' : 'password'"
         :label="$t('auth.password')"
         class="border-radius-sm"
-        @key.enter="triggerAuth"
+        @keyup.enter="triggerAuth"
       >
         <template #prepend>
           <q-icon name="bi-lock" color="accent" />

@@ -33,6 +33,7 @@ const selectOtpOption = () => {
       type="text"
       :label="$t('auth.usernameOrEmail')"
       class="border-radius-sm q-my-xl"
+      @keyup.enter="selectOtpOption"
     >
       <template #append>
         <q-icon name="bi-person" color="accent" />
