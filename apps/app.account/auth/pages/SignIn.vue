@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
-import { storeToRefs } from 'pinia';
 import { useUserAccountStore } from '@/stores/user-account';
 import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
 import IconGoogle from '@trace/base/icons/brands/google.svg?url';
@@ -8,6 +7,7 @@ import IconMicrosoft from '@trace/base/icons/brands/microsoft.svg?url';
 import IconApple from '@trace/base/icons/brands/apple.svg?url';
 
 defineOptions({ name: 'SignIn' });
+const userAccount = useUserAccountStore();
 const socialLogins = [
   {
     icon: IconGoogle,
@@ -24,23 +24,15 @@ const socialLogins = [
 ];
 
 const authState = reactive({
-  Username: '',
-  Password: '',
+  username: '',
+  password: '',
   show: false,
 });
 
 const triggerAuth = () => {
-  const userAccount = useUserAccountStore();
   const { signIn } = userAccount;
-  const auth = { username: authState.Username, password: authState.Password };
-  signIn(auth);
+  signIn(authState);
 };
-
-onMounted(() => {
-  const userAccount = useUserAccountStore();
-  const { getAccessToken } = storeToRefs(userAccount);
-  console.log(`Debug Access Token: ${getAccessToken.value}`);
-});
 </script>
 
 <template>
@@ -83,13 +75,13 @@ onMounted(() => {
 
     <div class="q-gutter-y-md q-my-md">
       <q-input
-        v-model="authState.Username"
+        v-model="authState.username"
         outlined
         no-error-icon
         type="text"
         :label="$t('auth.usernameOrEmail')"
         class="border-radius-sm"
-        @enter="triggerAuth"
+        @key.enter="triggerAuth"
       >
         <template #prepend>
           <q-icon name="bi-person" color="accent" />
@@ -99,13 +91,13 @@ onMounted(() => {
         </template>
       </q-input>
       <q-input
-        v-model="authState.Password"
+        v-model="authState.password"
         outlined
         no-error-icon
         :type="authState.show ? 'text' : 'password'"
         :label="$t('auth.password')"
         class="border-radius-sm"
-        @enter="triggerAuth"
+        @key.enter="triggerAuth"
       >
         <template #prepend>
           <q-icon name="bi-lock" color="accent" />
