@@ -13,7 +13,18 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Wednesday, 20th Mar 2024
+ * Created At: Sunday, 24th Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Sun Mar 24 2024
  */
+
+import { addCatchAll, addUnAuthorized } from '@/routes.default';
+import addOverviewRoute from '@/app/overviews/module-routes';
+import { Workspace } from '@trace/shared';
+import type { Route } from '@trace/base/typings';
+
+export default [
+  addCatchAll(Workspace.Support),
+  addUnAuthorized(Workspace.Support),
+  addOverviewRoute(Workspace.Support),
+] as Route[];

@@ -24,10 +24,11 @@ import accountRoutes, {
   routes as identityRoutes,
 } from '@/app.account/app-routes';
 import coreRoutes from '@/app.core/app-routes';
+import supportRoutes from '@/app.support/app-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
-export const addAppRoutes = (
+export const addWorkspaceRoute = (
   app: Workspace,
   component: any,
   children: Route[],
@@ -52,7 +53,7 @@ export const routes = [
     component: () => import('@/app/EmptyLayout.vue'),
     children: [addCatchAll(), addUnAuthorized(), ...defaultRoutes],
   },
-  addAppRoutes(
+  addWorkspaceRoute(
     Workspace.Account,
     () => import('@/app/DynamicLayout.vue'),
     accountRoutes,
@@ -60,12 +61,19 @@ export const routes = [
     [],
     'profile',
   ),
-  addAppRoutes(
+  addWorkspaceRoute(
     Workspace.Core,
     () => import('@/app/DynamicLayout.vue'),
     coreRoutes,
     ['core-overview', 'core-calendar'],
     ['core-overview', 'core-calendar', 'core-tracking', 'core-engagements'],
+  ),
+  addWorkspaceRoute(
+    Workspace.Support,
+    () => import('@/app/DynamicLayout.vue'),
+    supportRoutes,
+    [],
+    [],
   ),
   ...identityRoutes,
 ] as Route[];
