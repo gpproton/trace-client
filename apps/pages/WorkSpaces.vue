@@ -2,6 +2,7 @@
 import AppLogo from '@trace/base/icons/logo.svg';
 import WorkspaceIcon from '@trace/base/icons/workspace.svg?url';
 import { Workspace } from '@trace/shared';
+import { useUserAccountStore } from '@/stores/user-account';
 
 defineOptions({ name: 'QuickStart' });
 
@@ -9,6 +10,7 @@ interface AppOption {
   name: string;
   icon: string;
 }
+const { signOut } = useUserAccountStore();
 const router = useRouter();
 const apps: AppOption[] = [
   {
@@ -88,6 +90,7 @@ const apps: AppOption[] = [
               no-caps
               color="primary"
               class="text-body1 border-radius-sm"
+              @click="signOut"
               >{{ $t('auth.signOut') }}</q-btn
             >
           </q-toolbar>

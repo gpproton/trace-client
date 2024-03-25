@@ -78,14 +78,14 @@ export const useUserAccountStore = defineStore(
       }
     };
 
-    const signout = () => {
+    const signOut = () => {
+      console.log('Start sign out');
+
       user.value = null;
       permissions.value = [];
       const tagViewStore = useTagViewStore();
       tagViewStore.removeAllTagView();
       accessToken.value = null;
-
-      const router = useRouter();
       router.replace({ name: 'auth.sign-in' });
     };
 
@@ -100,7 +100,7 @@ export const useUserAccountStore = defineStore(
       setUserInfo,
       setUserPermmisions,
       signIn,
-      signout,
+      signOut,
     };
   },
   {

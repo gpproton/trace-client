@@ -6,11 +6,8 @@ import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
 import IconGoogle from '@trace/base/icons/brands/google.svg?url';
 import IconMicrosoft from '@trace/base/icons/brands/microsoft.svg?url';
 import IconApple from '@trace/base/icons/brands/apple.svg?url';
-import type { Router } from '@/.nuxt/vue-router-stub';
 
 defineOptions({ name: 'SignIn' });
-
-const router: Router = useRouter();
 const socialLogins = [
   {
     icon: IconGoogle,
