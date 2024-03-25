@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 24 2024
+ * Modified At: Mon Mar 25 2024
  */
 
 export default {
@@ -47,6 +47,7 @@ export default {
   liveTracking: 'Live Tracking',
   liveView: 'Live View',
   tracking: 'Tracking',
+  partner: 'Partner',
   map: 'Map',
   alerts: 'Alerts',
   locations: 'Locations',
