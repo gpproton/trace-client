@@ -20,6 +20,10 @@ interface IProps {
   mobileFilter?: string[];
 }
 
+const props = withDefaults(defineProps<IProps>(), {
+  overviewFilter: () => [],
+  mobileFilter: () => [],
+});
 const breakpointStates = useAppBreakpoints();
 const layoutStores = useLayoutStore();
 const theme = useThemeStore();
@@ -45,11 +49,6 @@ const showSecondaryToggle = computed(() => moduleFeatures.value.length > 0);
 watchEffect(() => {
   showSecondarySidebar.value = moduleFeatures.value.length > 0;
 });
-const props = withDefaults(defineProps<IProps>(), {
-  overviewFilter: () => [],
-  mobileFilter: () => [],
-});
-
 const workspaceValue = computed(() => props.workspace);
 const quickCreateItems: IModuleCommands[] = [
   {
