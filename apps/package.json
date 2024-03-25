@@ -33,6 +33,7 @@
     "@geoman-io/leaflet-geoman-free": "^2.16.0",
     "@googlemaps/js-api-loader": "^1.16.6",
     "@mapbox/polyline": "^1.2.1",
+    "@nuxt/content": "^2.12.1",
     "@quasar/quasar-ui-qcalendar": "4.0.0-beta.16",
     "@trace/base": "workspace:*",
     "@trace/shared": "workspace:*",

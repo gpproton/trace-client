@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 22 2024
+ * Modified At: Sun Mar 24 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -42,6 +42,17 @@ const routes: Route[] = [
         type: 'read',
       },
     },
+  },
+  {
+    name: 'support-docs',
+    path: '/docs/:slug',
+    meta: {
+      menu: 'module',
+      title: 'Docs',
+      icon: 'bi-person',
+      permission: false,
+    },
+    component: () => import('./docs/ContentView.vue'),
   },
 ];
 

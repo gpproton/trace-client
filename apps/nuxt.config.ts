@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Sun Mar 24 2024
  */
 
 import { appHeader } from '@trace/shared';
@@ -23,5 +23,11 @@ import { appHeader } from '@trace/shared';
 export default defineNuxtConfig({
   app: appHeader('/', 'Trace'),
   extends: ['../base'],
-  modules: ['nuxt3-leaflet', './app.core/app-module'],
+  modules: ['nuxt3-leaflet', '@nuxt/content', './app.core/app-module'],
+  routeRules: {
+    // '/**': { ssr: false },
+    // '/docs/**': { ssr: true },
+  },
+  ssr: false,
+  content: {},
 });

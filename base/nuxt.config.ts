@@ -29,7 +29,6 @@ export default defineNuxtConfig({
   ssr: false,
   modules: [
     '@nuxtjs/i18n',
-    '@nuxt/content',
     'nuxt-quasar-ui',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
