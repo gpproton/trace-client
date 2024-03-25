@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Saturday, 16th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 24 2024
+ * Modified At: Mon Mar 25 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -41,20 +41,20 @@ const routes: Route[] = [
         },
       },
       {
-        path: 'password-update',
-        name: `${base}.password-update`,
-        component: () => import('./pages/PasswordUpdate.vue'),
-        meta: {
-          title: 'Password Update',
-          permission: false,
-        },
-      },
-      {
         path: 'otp-choice',
         name: `${base}.otp-choice`,
         component: () => import('./pages/OtpChoice.vue'),
         meta: {
           title: 'OTP Choice',
+          permission: false,
+        },
+      },
+      {
+        path: 'password-update',
+        name: `${base}.password-update`,
+        component: () => import('./pages/PasswordUpdate.vue'),
+        meta: {
+          title: 'Password Update',
           permission: false,
         },
       },

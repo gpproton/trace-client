@@ -9,21 +9,20 @@ const router = useRouter();
 const usernameState = ref(null);
 const selectOtpOption = () => {
   router.push({
-    name: 'auth.otp-choice',
+    name: 'account-recovery.otp-choice',
   });
 };
 </script>
 
 <template>
-  <identity-form>
+  <identity-form class="q-my-md">
     <template #title>{{ $t('auth.forgotPassword') }}</template>
     <template #sub-title>
-      <div>
-        <div>{{ "Don't worry it happens!. please enter the" }}</div>
-        <div>
-          <span class="text-body2">{{ $t('auth.usernameOrEmail') }}</span>
-          {{ 'associated with your account.' }}
-        </div>
+      <div class="text-body2 text-left q-mt-sm q-mr-md">
+        <span>{{ "Don't worry it happens!. please enter the" }}</span>
+        <span
+          >{{ $t('auth.email') }} {{ 'associated with your account.' }}</span
+        >
       </div>
     </template>
 
@@ -42,7 +41,7 @@ const selectOtpOption = () => {
 
     <div class="q-my-md">
       <q-btn
-        label="Next"
+        label="Proceed"
         color="action"
         size="lg"
         no-caps

@@ -15,14 +15,14 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 24 2024
+ * Modified At: Mon Mar 25 2024
  */
 
 export default {
   signInTitle: "Welcome Back!",
   signInSubTitle: "Sign in to continue",
   email: "Email",
-  enterOtp: "Enter OTP",
+  enterOtp: "Verify OTP",
   forgotPassword: "Forgot Password?",
   password: "Password",
   linkedAccount: 'Linked Account',
@@ -33,7 +33,7 @@ export default {
   signIn: "Sign In",
   signOut: "Sign Out",
   username: "Username",
-  usernameOrEmail: "Username Or Email",
+  usernameOrEmail: "Username or Email",
   verifyOtp: "Verify OTP",
   dintRecieveCode: "Didn't recieve a code?",
   otpHasBeenSent: "A 4 digit OTP has been sent to"

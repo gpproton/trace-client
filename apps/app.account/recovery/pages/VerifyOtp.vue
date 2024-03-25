@@ -12,7 +12,7 @@ const otpInputValue = ref(['', '', '', '']);
 
 const verifyToken = () => {
   router.push({
-    name: 'auth.password-update',
+    name: 'account-recovery.password-update',
   });
 };
 
@@ -30,12 +30,13 @@ const handleKey = (index: number) => {
 
 <template>
   <identity-form>
-    <template #title>{{ $t('auth.enterOtp') }}</template>
-    <template #sub-title
-      >{{ $t('auth.otpHasBeenSent') }}
-      <span class="text-overline">+234XXX123XXXX</span>
+    <template #title>{{ $t('auth.verifyOtp') }}</template>
+    <template #sub-title>
+      <div class="text-body2 text-left q-mt-sm q-mr-md">
+        {{ $t('auth.otpHasBeenSent') }}
+        <span class="text-overline">+234XXX123XXXX</span>
+      </div>
     </template>
-
     <div class="full-width q-my-lg row justify-center">
       <q-input
         v-for="(verifyItem, verifyIndex) in 4"

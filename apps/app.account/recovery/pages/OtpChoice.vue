@@ -29,7 +29,7 @@ const setOption = (index: number) => {
 };
 const verifyOtp = () => {
   router.push({
-    name: 'auth.verify-otp',
+    name: 'account-recovery.verify-otp',
   });
 };
 </script>
@@ -37,9 +37,11 @@ const verifyOtp = () => {
 <template>
   <identity-form>
     <template #title>{{ $t('auth.forgotPassword') }}</template>
-    <template #sub-title
-      >Please select option to send OTP for password reset</template
-    >
+    <template #sub-title>
+      <div class="text-body2 text-left q-mt-sm q-mr-md">
+        {{ 'Please select option to send OTP for password reset' }}
+      </div>
+    </template>
     <q-list
       v-for="(resetOption, resetIndex) in resetOptions"
       :key="resetIndex"
