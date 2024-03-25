@@ -1,3 +1,23 @@
+/*
+ * Copyright (c) 2023 - 2024 drolx Solutions
+ *
+ * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
+ * you may not use this file except in compliance with the License.
+ * Change License: Reciprocal Public License 1.5
+ *     https://mariadb.com/bsl11
+ *     https://opensource.org/license/rpl-1-5
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Author: Godwin peter .O (me@godwin.dev)
+ * Created At: Friday, 8th Mar 2024
+ * Modified By: Godwin peter .O
+ * Modified At: Mon Mar 25 2024
+ */
+
 import { defineStore } from 'pinia';
 import { colors, setCssVar, Dark } from 'quasar';
 import { ref, computed } from 'vue';
@@ -13,15 +33,14 @@ export const useThemeStore = defineStore(
     const darkPageColor = '#121212';
 
     const primary = ref(appArimaryColor);
-    const lightState = ref<boolean>(false);
-    const isDark = computed(() => lightState.value);
-    const isLight = computed(() => !lightState.value);
+    const isDark = ref<boolean>(false);
+    const isLight = computed(() => !isDark.value);
 
     // const setAppStatusBarStyle = async (lightState: boolean) => {
     //   if (!process.env.SERVER && Platform.is.capacitor) {
-    //     lightState ? await StatusBar.hide() : await StatusBar.show();
+    //     isDark.value ? await StatusBar.hide() : await StatusBar.show();
     //     await StatusBar.setStyle({
-    //       style: lightState ? Style.Dark : Style.Light,
+    //       style: isDark.value ? Style.Dark : Style.Light,
     //     });
     //     await StatusBar.setBackgroundColor({
     //       color: getCssVar('app-container'),
@@ -68,27 +87,22 @@ export const useThemeStore = defineStore(
     };
 
     const initializeTheme = async () => {
-      Dark.set(lightState.value);
-      // await setAppStatusBarStyle(lightState.value);
-    };
-
-    const toggleTheme = (): void => {
-      Dark.toggle();
-      lightState.value = Dark.isActive;
+      Dark.set(isDark.value);
+      // await setAppStatusBarStyle(isDark.value);
     };
 
     const setThemeState = (value: boolean): void => {
       Dark.set(value);
-      lightState.value = value;
+      isDark.value = value;
     };
 
-    watch(lightState, async () => {
-      // await setAppStatusBarStyle(lightState.value);
+    watch(isDark, async () => {
+      // await setAppStatusBarStyle(isDark.value);
+      Dark.set(isDark.value);
     });
 
     return {
       primary,
-      lightState,
       isDark,
       isLight,
       primaryColor,
@@ -101,7 +115,6 @@ export const useThemeStore = defineStore(
       activeTextColor,
       setThemeColor,
       initializeTheme,
-      toggleTheme,
       setThemeState,
     };
   },

@@ -13,7 +13,7 @@ const { modelValue, modules, darkMode } = defineModels<{
   darkMode: boolean;
   modules: RouteMenu[];
 }>();
-const genralModuleMenu = computed(() => []);
+const genralModuleMenu = computed(() => modules.value);
 </script>
 
 <template>
