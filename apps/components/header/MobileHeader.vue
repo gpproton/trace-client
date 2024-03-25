@@ -30,13 +30,6 @@ const { modelValue, title } = defineModels<{
           flat
           square
           color="primary"
-          icon="bi-search"
-          class="border-radius-sm q-px-sm"
-        />
-        <q-btn
-          flat
-          square
-          color="primary"
           icon="bi-bell"
           class="border-radius-sm q-px-sm"
         />

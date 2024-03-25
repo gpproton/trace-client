@@ -9,6 +9,7 @@ import DesktopHeader from '@/components/header/DesktopHeader.vue';
 import DesktopSidebar from '@/components/drawer/DesktopSidebar.vue';
 import DesktopSecondarySidebar from '@/components/drawer/DesktopSecondarySidebar.vue';
 import MobileHeader from '@/components/header/MobileHeader.vue';
+import MobileSidebar from '@/components/drawer/MobileSidebar.vue';
 import MobileBottomMenu from '@/components/footer/MobileBottomMenu.vue';
 import RouterInject from '@/components/RouterInject.vue';
 import type { RouteMenu } from '@trace/base/typings';
@@ -37,7 +38,7 @@ const { initializeTheme, setThemeState } = theme;
 
 // TODO: Move theme trigger to app-root
 initializeTheme();
-
+const mobileSidebarRef = ref(false);
 const modulesMenu = computed<RouteMenu[]>(() => modulesMenuFn());
 const moduleFeatures = computed<RouteMenu[]>(() => moduleFeaturesFn());
 const showSecondaryToggle = computed(() => moduleFeatures.value.length > 0);
@@ -63,8 +64,20 @@ const quickCreateItems: IModuleCommands[] = [
 <template>
   <q-layout view="lHr lpR fFf" class="no-scroll" @resize="setSize">
     <!-- Mobile layout contents -->
+    <slot v-if="isMobile" name="mobile-sidebar">
+      <mobile-sidebar
+        v-model="mobileSidebarRef"
+        v-model:workspace="workspaceValue"
+        v-model:modules="modulesMenu"
+        v-model:dark-mode="isDark"
+      />
+    </slot>
     <slot v-if="isMobile" name="mobile-header">
-      <mobile-header v-model:title="title" v-model:search="search" />
+      <mobile-header
+        v-model:title="title"
+        v-model:search="search"
+        v-model="mobileSidebarRef"
+      />
     </slot>
     <q-page-container v-if="isMobile" class="no-scroll">
       <slot>

@@ -7,11 +7,6 @@ import { computed } from 'vue';
 
 defineOptions({ name: 'MobileSidebar' });
 
-interface IProps {
-  overviewFilter: string[];
-}
-
-defineProps<IProps>();
 const { modelValue, modules, darkMode } = defineModels<{
   workspace: Workspace;
   modelValue: boolean;
