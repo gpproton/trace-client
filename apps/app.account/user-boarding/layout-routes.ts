@@ -15,13 +15,13 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Mon Mar 25 2024
  */
 
 const links = [
   {
     name: 'support',
-    label: 'router.support',
+    label: 'shared.support',
   },
 ];
 

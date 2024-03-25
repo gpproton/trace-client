@@ -15,5 +15,16 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 21st Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Mon Mar 25 2024
  */
+
+import { addCatchAll, addUnAuthorized } from '@/routes.default';
+import addOverviewRoute from '@/app/overviews/module-routes';
+import { Workspace } from '@trace/shared';
+import type { Route } from '@trace/base/typings';
+
+export default [
+  addCatchAll(Workspace.Dispatch),
+  addUnAuthorized(Workspace.Dispatch),
+  addOverviewRoute(Workspace.Dispatch),
+] as Route[];

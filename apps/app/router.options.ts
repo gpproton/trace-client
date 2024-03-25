@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 24 2024
+ * Modified At: Mon Mar 25 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
@@ -24,7 +24,11 @@ import accountRoutes, {
   routes as identityRoutes,
 } from '@/app.account/app-routes';
 import coreRoutes from '@/app.core/app-routes';
+import trackRoutes from '@/app.track/app-routes';
 import supportRoutes from '@/app.support/app-routes';
+import dispatchRoutes from '@/app.dispatch/app-routes';
+import portalRoutes from '@/app.portal/app-routes';
+import partnerRoutes from '@/app.partner/app-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
@@ -53,6 +57,7 @@ export const routes = [
     component: () => import('@/app/EmptyLayout.vue'),
     children: [addCatchAll(), addUnAuthorized(), ...defaultRoutes],
   },
+  ...identityRoutes,
   addWorkspaceRoute(
     Workspace.Account,
     () => import('@/app/DynamicLayout.vue'),
@@ -69,13 +74,40 @@ export const routes = [
     ['core-overview', 'core-calendar', 'core-tracking', 'core-engagements'],
   ),
   addWorkspaceRoute(
+    Workspace.Track,
+    () => import('@/app/LiveLayout.vue'),
+    trackRoutes,
+    [],
+    [],
+  ),
+  addWorkspaceRoute(
     Workspace.Support,
     () => import('@/app/DynamicLayout.vue'),
     supportRoutes,
     [],
     [],
   ),
-  ...identityRoutes,
+  addWorkspaceRoute(
+    Workspace.Dispatch,
+    () => import('@/app/DynamicLayout.vue'),
+    dispatchRoutes,
+    [],
+    [],
+  ),
+  addWorkspaceRoute(
+    Workspace.Portal,
+    () => import('@/app/DynamicLayout.vue'),
+    portalRoutes,
+    [],
+    [],
+  ),
+  addWorkspaceRoute(
+    Workspace.Partner,
+    () => import('@/app/DynamicLayout.vue'),
+    partnerRoutes,
+    [],
+    [],
+  ),
 ] as Route[];
 
 export default <RouterConfig>{

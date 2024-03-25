@@ -13,34 +13,18 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Monday, 26th Feb 2024
+ * Created At: Monday, 25th Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Mon Mar 25 2024
  */
 
-export enum Workspace {
-  Account = 'account',
-  Identity = 'identity',
-  Portal = 'portal',
-  Track = 'track',
-  Core = 'core',
-  Support = 'support',
-  Dispatch = 'dispatch',
-  Partner = 'partner',
-}
+import { addCatchAll, addUnAuthorized } from '@/routes.default';
+import addOverviewRoute from '@/app/overviews/module-routes';
+import { Workspace } from '@trace/shared';
+import type { Route } from '@trace/base/typings';
 
-export interface ITenantProfile {
-  id: number;
-  name: string;
-  domain: string;
-}
-
-export const workspaceApps: Workspace[] = [
-  Workspace.Account,
-  Workspace.Core,
-  Workspace.Portal,
-  Workspace.Support,
-  Workspace.Track,
-  Workspace.Dispatch,
-  Workspace.Partner,
-];
+export default [
+  addCatchAll(Workspace.Track),
+  addUnAuthorized(Workspace.Track),
+  addOverviewRoute(Workspace.Track),
+] as Route[];

@@ -32,6 +32,10 @@ const apps: AppOption[] = [
     icon: 'bi-truck',
   },
   {
+    name: Workspace.Partner,
+    icon: 'bi-coin',
+  },
+  {
     name: Workspace.Support,
     icon: 'bi-headset',
   },
