@@ -46,9 +46,7 @@ onUnmounted(() => {
 });
 
 const unSubscribe = tagViewStore.$subscribe((mutation, state) => {
-  // @ts-ignore
   setKeepAliveList(state.tagView);
-  // @ts-ignore
   tagViewStore.setStoredTagView(state.tagView);
 });
 </script>
@@ -74,7 +72,7 @@ const unSubscribe = tagViewStore.$subscribe((mutation, state) => {
       <q-route-tab :to="'/'" :class="tagViewClass('/')" flat dense no-caps>
         <q-icon size="1.1rem" name="home" />
         <div class="line-limit-length">
-          {{ $t('router.home') }}
+          {{ $t('router.work-spaces') }}
         </div>
       </q-route-tab>
       <template
