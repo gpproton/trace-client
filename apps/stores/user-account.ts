@@ -15,18 +15,19 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 22 2024
+ * Modified At: Mon Mar 25 2024
  */
 
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import { SessionStorage } from 'quasar';
 import type { Permission, User } from '@trace/model';
 import { useTagViewStore } from './tag-view';
+import type { Router } from '@/.nuxt/vue-router-stub';
 
 export const useUserAccountStore = defineStore(
   'userAccount',
   () => {
+    const router: Router = useRouter();
     const permissions = ref<Permission[]>([
       {
         module: 'default',
@@ -36,6 +37,7 @@ export const useUserAccountStore = defineStore(
     ]);
     // TODO: Fix pinia session storage issues
     // const accessToken = ref<string | null>();
+    const accessToken = ref<string | null>();
     const user = ref<User | null>({
       id: 'ac707e42-74c4-4107-beba-4897107bf9f7',
       tenantId: '60dccc53-d969-4bb5-a08b-dcf14feab87c',
@@ -53,37 +55,43 @@ export const useUserAccountStore = defineStore(
 
     const getUserName = computed(() => user.value);
     const getUserPermmisions = computed(() => permissions.value);
-    const getAccessToken = computed<string | null>(() =>
-      SessionStorage.getItem('access_token'),
-    );
+    const getAccessToken = computed(() => accessToken.value);
     const getFirstCharacterOfUserName = computed(() =>
       user.value!.username ? user.value!.username.charAt(0).toUpperCase() : 'X',
     );
 
     const setUserInfo = (value: User) => (user.value = value);
-    const setAccessToken = (value: string) =>
-      SessionStorage.set('access_token', value);
+    const setAccessToken = (value: string) => (accessToken.value = value);
     const setUserPermmisions = (values: Permission[]) => {
       const account = user.value;
       permissions.value = values;
       user.value = account;
     };
 
-    const signIn = () => {};
+    const signIn = (auth: { username: string; password: string }) => {
+      console.log('triggered auth here');
+      if (auth.username === 'dev' && auth.password === 'dev') {
+        setAccessToken('xx-xx-xx-xx');
+        router.replace({ name: 'work-spaces' });
+      } else {
+        console.log('Something went wrong');
+      }
+    };
 
     const signout = () => {
       user.value = null;
       permissions.value = [];
       const tagViewStore = useTagViewStore();
       tagViewStore.removeAllTagView();
-      SessionStorage.clear();
+      accessToken.value = null;
 
       const router = useRouter();
-      router.push({ name: 'auth.sign-in' });
+      router.replace({ name: 'auth.sign-in' });
     };
 
     return {
       user,
+      accessToken,
       getUserName,
       getUserPermmisions,
       getAccessToken,

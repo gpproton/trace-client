@@ -6,11 +6,11 @@ import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
 import IconGoogle from '@trace/base/icons/brands/google.svg?url';
 import IconMicrosoft from '@trace/base/icons/brands/microsoft.svg?url';
 import IconApple from '@trace/base/icons/brands/apple.svg?url';
+import type { Router } from '@/.nuxt/vue-router-stub';
 
 defineOptions({ name: 'SignIn' });
 
-const router = useRouter();
-
+const router: Router = useRouter();
 const socialLogins = [
   {
     icon: IconGoogle,
@@ -34,15 +34,9 @@ const authState = reactive({
 
 const triggerAuth = () => {
   const userAccount = useUserAccountStore();
-  const { setAccessToken } = userAccount;
-  console.log('triggered auth here');
-  if (authState.Username === 'dev' && authState.Password === 'dev') {
-    console.log(
-      `Username: ${authState.Username} :: Password: ${authState.Password}`,
-    );
-    setAccessToken('xx-xx-xx-xx');
-    router.replace({ name: 'work-spaces' });
-  }
+  const { signIn } = userAccount;
+  const auth = { username: authState.Username, password: authState.Password };
+  signIn(auth);
 };
 
 onMounted(() => {
