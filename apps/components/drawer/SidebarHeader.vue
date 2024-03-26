@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { inject } from 'vue';
 import AppLogo from '@trace/base/icons/logo.svg';
-import type { Workspace } from '@trace/shared';
 
 defineOptions({ name: 'SidebarHeader' });
-const { modelValue, workspace } = defineModels<{
+const { modelValue } = defineModels<{
   modelValue: boolean;
-  workspace: Workspace;
 }>();
+const workspace = inject<any>('app:workspace');
 </script>
 
 <template>

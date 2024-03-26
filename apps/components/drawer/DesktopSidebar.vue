@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { Workspace } from '@trace/shared';
 import SidebarList from '@/components/drawer/SidebarList.vue';
 import SidebarHeader from '@/components/drawer/SidebarHeader.vue';
 import ThemeSwitcher from '@/components/extra/ThemeSwitcher.vue';
@@ -10,16 +9,13 @@ defineOptions({ name: 'DesktopSidebar' });
 interface IProps {
   overviewFilter: string[];
 }
-
 const props = defineProps<IProps>();
-const { modelValue, workspace, drawerMiniState, modules, darkMode } =
-  defineModels<{
-    workspace: Workspace;
-    modelValue: boolean;
-    darkMode: boolean;
-    drawerMiniState: boolean;
-    modules: RouteMenu[];
-  }>();
+const { modelValue, drawerMiniState, modules, darkMode } = defineModels<{
+  modelValue: boolean;
+  darkMode: boolean;
+  drawerMiniState: boolean;
+  modules: RouteMenu[];
+}>();
 const overviewModuleMenu = computed(() =>
   modules.value.filter(
     (e) =>
@@ -48,11 +44,7 @@ const setMiniDrawer = (value: boolean) => (drawerMiniState.value = value);
     @mouseover="setMiniDrawer(false)"
     @mouseout="setMiniDrawer(true)"
   >
-    <sidebar-header
-      v-model="drawerMiniState"
-      v-model:workspace="workspace"
-      class="q-mt-none"
-    />
+    <sidebar-header v-model="drawerMiniState" class="q-mt-none" />
     <q-scroll-area
       class="fit fixed-bottom"
       style="padding-top: 96px; padding-bottom: 110px"

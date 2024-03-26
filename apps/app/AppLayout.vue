@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { provide } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 import { useLayoutStore } from '@/stores/layout';
@@ -50,6 +51,7 @@ watchEffect(() => {
   showSecondarySidebar.value = moduleFeatures.value.length > 0;
 });
 const workspaceValue = computed(() => props.workspace);
+provide('app:workspace', workspaceValue);
 const quickCreateItems: IModuleCommands[] = [
   {
     name: 'action-1',
@@ -66,7 +68,6 @@ const quickCreateItems: IModuleCommands[] = [
     <slot v-if="isMobile" name="mobile-sidebar">
       <mobile-sidebar
         v-model="mobileSidebarRef"
-        v-model:workspace="workspaceValue"
         v-model:modules="modulesMenu"
         v-model:dark-mode="isDark"
       />
@@ -97,7 +98,6 @@ const quickCreateItems: IModuleCommands[] = [
     <slot name="desktop-sidebar">
       <desktop-sidebar
         v-if="isDesktop"
-        v-model:workspace="workspaceValue"
         v-model="showPrimarySidebar"
         v-model:dark-mode="isDark"
         v-model:modules="modulesMenu"
