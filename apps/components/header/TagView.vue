@@ -70,7 +70,7 @@ const unSubscribe = tagViewStore.$subscribe((mutation, state) => {
       :breakpoint="0"
     >
       <q-route-tab :to="'/'" :class="tagViewClass('/')" flat dense no-caps>
-        <q-icon size="1.1rem" name="home" />
+        <q-icon size="1.1rem" name="bi-ui-checks-grid" />
         <div class="line-limit-length">
           {{ $t('router.work-spaces') }}
         </div>
