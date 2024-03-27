@@ -3,5 +3,5 @@ defineOptions({ name: 'Verify' });
 </script>
 
 <template>
-    <div>Verify</div>
+  <div>Verify</div>
 </template>

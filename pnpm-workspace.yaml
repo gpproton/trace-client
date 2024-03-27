@@ -1,6 +1,6 @@
-workspaces:
+packages:
   - 'packages/*'
-  - 'base-app'
+  - 'locales'
+  - 'base'
   - 'website'
-  - 'docs'
-  - 'apps/*'
+  - 'apps'

@@ -1,18 +1,17 @@
-FROM oven/bun:latest as builder
-WORKDIR /app
-COPY --chown=node:node . .
-RUN bun install
+FROM node:alpine AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+FROM base as builder
+WORKDIR /src
 ENV NODE_ENV=production
-RUN cd /app/support && bun generate
-RUN cd /app/core && bun generate
-RUN cd /app/finder && bun generate
-RUN cd /app/portal && bun generate
+COPY --chown=node:node . .
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN cd /src/apps && pnpm generate
 
 FROM nginx:stable-alpine as production
-COPY --from=builder /app/support/dist /usr/share/nginx/html
-COPY --from=builder /app/core/dist /usr/share/nginx/html/core
-COPY --from=builder /app/finder/dist /usr/share/nginx/html/finder
-COPY --from=builder /app/portal/dist /usr/share/nginx/html/portal
+COPY --from=builder /src/apps/dist /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

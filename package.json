@@ -1,6 +1,6 @@
 {
   "name": "@trace/client",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-preview.5",
   "private": true,
   "type": "module",
   "repository": {
@@ -20,37 +20,29 @@
   "scripts": {
     "clean": "pnpx rimraf node_modules **/node_modules bun.* **/bun.* **/dist/* pnpm-lock.* **/pnpm-lock.*",
     "dev": "pnpm -r --filter ./apps run dev",
-    "dev:app": "pnpm -r --filter ./base-app run dev",
-    "dev:support": "pnpm -r --filter ./apps/support run dev",
-    "dev:portal": "pnpm -r --filter ./apps/portal run dev",
-    "dev:finder": "pnpm -r --filter ./apps/finder run dev",
-    "dev:core": "pnpm -r --filter ./apps/core run dev",
-    "dev:manager": "pnpm -r --filter ./apps/manager run dev",
+    "dev:base": "pnpm -r --filter ./base run dev",
+    "dev:manager": "pnpm -r --filter ./manager run dev",
     "dev:website": "pnpm -r --filter ./website run dev",
     "dev:docs": "pnpm -r --filter ./docs run dev",
-    "build": "pnpm -r --filter ./apps run build",
-    "translate": "tsx ./translate.ts",
-    "translate:lint": "eslint --fix --ext .json --format node_modules/eslint-plugin-i18n-json/formatter.js locales/"
+    "build": "pnpm -r --filter ./apps run build"
   },
   "devDependencies": {
-    "@parvineyvazov/json-translator": "^1.8.0",
-    "eslint": "^8.0.0",
-    "eslint-plugin-i18n-json": "^4.0.0",
-    "pnpm": "^8.2.0",
-    "rimraf": "^3.0.2",
-    "tsx": "^3.13.0",
-    "typescript": "^5.0.0",
-    "bun-types": "latest"
+    "pnpm": "^8.15.4",
+    "rimraf": "^5.0.5",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2",
+    "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "workspaces": [
     "packages/*",
-    "base-app",
+    "locales",
+    "base",
     "website",
     "docs",
-    "apps/*"
+    "apps"
   ],
   "engines": {
     "npm": "please-use-pnpm",
