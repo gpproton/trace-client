@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Tuesday, 12th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 24 2024
+ * Modified At: Wed Mar 27 2024
  */
 
 import 'vue-router';
@@ -24,6 +24,7 @@ import '#app';
 import type { ActionState } from '@trace/model';
 
 declare module '@vue-js-cron/quasar';
+declare module 'vue-draggable-resizable';
 
 declare module '#app' {
   interface NuxtApp {

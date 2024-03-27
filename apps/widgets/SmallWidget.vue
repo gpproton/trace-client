@@ -10,5 +10,5 @@ defineProps<IProps>();
 </script>
 
 <template>
-  <base-widget :height="height" :width="width"></base-widget>
+  <base-widget :height-value="height" :width-value="width"></base-widget>
 </template>
