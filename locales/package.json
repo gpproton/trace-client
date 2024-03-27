@@ -1,0 +1,20 @@
+{
+  "name": "@trace/locales",
+  "module": "index.ts",
+  "scripts": {
+    "translate": "tsx ./translate.ts"
+  },
+  "dependencies": {
+    "@parvineyvazov/json-translator": "^2.2.2"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "pnpm": "^8.15.4",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.7.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

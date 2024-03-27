@@ -2,6 +2,6 @@
   // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "types": ["@trace/shared", "@trace/base-app"]
+    "types": ["@trace/shared", "@trace/base"]
   }
 }

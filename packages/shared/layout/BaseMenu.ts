@@ -1,6 +1,26 @@
+/*
+ * Copyright (c) 2023 - 2024 drolx Solutions
+ *
+ * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
+ * you may not use this file except in compliance with the License.
+ * Change License: Reciprocal Public License 1.5
+ *     https://mariadb.com/bsl11
+ *     https://opensource.org/license/rpl-1-5
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Author: Godwin peter .O (me@godwin.dev)
+ * Created At: Monday, 26th Feb 2024
+ * Modified By: Godwin peter .O
+ * Modified At: Sat Mar 23 2024
+ */
+
 import { IBaseMenu } from './IBaseMenu';
 import { IModule, IModuleCommands } from './IModule';
-import { ServiceVariant } from './Service';
+import { Workspace } from './Service';
 
 export default abstract class BaseMenu implements IBaseMenu {
   GetState() {
@@ -10,7 +30,7 @@ export default abstract class BaseMenu implements IBaseMenu {
     this.mobileStrings = this.mobileItems.map((e) => e.name);
     this.mobileOverviewItems = this.filterExtendedMenu(
       this.modules,
-      this.mobileItems
+      this.mobileItems,
     );
 
     return this;
@@ -22,13 +42,13 @@ export default abstract class BaseMenu implements IBaseMenu {
       name: 'core',
       title: 'Core',
       icon: 'bi-signpost-2',
-      path: ServiceVariant.CORE,
+      path: Workspace.Core,
     },
     {
       name: 'find',
       title: 'Finder',
       icon: 'bi-compass',
-      path: ServiceVariant.FINDER,
+      path: Workspace.Track,
     },
     {
       name: 'support',
@@ -40,19 +60,20 @@ export default abstract class BaseMenu implements IBaseMenu {
       name: 'portal',
       title: 'Portal',
       icon: 'bi-hurricane',
-      path: ServiceVariant.PORTAL,
-    }
+      path: Workspace.Portal,
+    },
   ];
 
   identityItems: IModule[] = [
-    { title: 'Account', icon: 'bi-person', name: 'account.profile' },
+    { title: 'shared.account', icon: 'bi-person', name: 'account.profile' },
     {
-      title: 'Settings',
+      title: 'shared.settings',
       icon: 'bi-gear-wide-connected',
       name: 'account.settings',
     },
-    { title: 'Help', icon: 'bi-question-circle', name: 'help' },
+    { title: 'shared.help', icon: 'bi-question-circle', name: 'help' },
   ];
+
   notificationTabs: IModule[] = [
     {
       name: '0',
@@ -87,7 +108,7 @@ export default abstract class BaseMenu implements IBaseMenu {
   protected filterModule = (
     items: IModule[],
     filter: Array<string>,
-    include = true
+    include = true,
   ): IModule[] => {
     return items.filter((e) => {
       const addOrRemove = filter.includes(e.name);
@@ -97,7 +118,7 @@ export default abstract class BaseMenu implements IBaseMenu {
 
   protected filterMobileMenu = (
     items: IModule[],
-    includedItems: Array<string> = []
+    includedItems: Array<string> = [],
   ): IModule[] => {
     const mobileMenu: IModule[] = items.filter((e) => {
       return includedItems.includes(e.name);
@@ -108,7 +129,7 @@ export default abstract class BaseMenu implements IBaseMenu {
 
   protected filterExtendedMenu = (
     items: IModule[],
-    excludedItems: IModule[] = []
+    excludedItems: IModule[] = [],
   ): IModule[] => {
     return items
       .filter((e) => {

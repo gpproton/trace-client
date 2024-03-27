@@ -1,0 +1,152 @@
+/*
+ * Copyright (c) 2023 - 2024 drolx Solutions
+ *
+ * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
+ * you may not use this file except in compliance with the License.
+ * Change License: Reciprocal Public License 1.5
+ *     https://mariadb.com/bsl11
+ *     https://opensource.org/license/rpl-1-5
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Author: Godwin peter .O (me@godwin.dev)
+ * Created At: Monday, 26th Feb 2024
+ * Modified By: Godwin peter .O
+ * Modified At: Fri Mar 22 2024
+ */
+
+@import './quasar.variables.scss';
+@import './mixins.scss';
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  font-weight: 300;
+  color: #333;
+  background-color: #fff;
+  --webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  .text-h1,
+  .text-h2,
+  .text-h3,
+  .text-h4,
+  .text-h5,
+  .text-h6,
+  .text-headline,
+  .text-title {
+    font-family: $heading-font-family !important;
+  }
+
+  .headline,
+  .title,
+  .subheading {
+    font-family: $heading-font-family !important;
+  }
+
+  .text-subtitle-1,
+  .text-subtitle-2,
+  .text-body-1,
+  .text-body-2,
+  .text-button,
+  .text-caption,
+  .text-overline {
+    font-family: $body-font-family !important;
+  }
+
+  .text-weight-thiner {
+    font-weight: 100 !important;
+  }
+
+  .text-weight-thin {
+    font-weight: 300 !important;
+  }
+
+  @include add-border-radius(xs, $border-radius-xs);
+  @include add-border-radius(sm, $border-radius-sm);
+  @include add-border-radius(md, $border-radius-md);
+  @include add-border-radius(lg, $border-radius-lg);
+  @include add-border-radius(xl, $border-radius-xl);
+  @include add-border-radius(xxl, $border-radius-xxl);
+
+  --q-header-height: #{$header-height};
+  --q-page-container-height: calc(100vh - var(--q-header-height));
+  --q-page-content-height: calc(var(--q-page-container-height) * 0.9);
+
+  .app-logo {
+    width: 48px;
+    height: 48px;
+
+    :deep(path) {
+      fill: var(--q-primary);
+    }
+
+    .cls-1 {
+      fill: var(--q-primary) !important;
+      fill-rule: evenodd;
+    }
+  }
+
+  .footer-link {
+    text-decoration: none;
+    color: var(--q-primary);
+  }
+
+  .page-container {
+    min-height: var(--q-page-container-height);
+    max-height: var(--q-page-container-height);
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    background-color: var(--q-app-background);
+
+    .page-content {
+      min-height: var(--q-page-content-height);
+      max-height: var(--q-page-content-height);
+      min-width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+  }
+
+  .bordered-section-1 {
+    border: 1px solid var(--q-app-background);
+    border-radius: $border-radius-sm;
+  }
+
+  .dot {
+    height: 12px;
+    width: 12px;
+    background-color: dodgerblue;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .social-icons {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .onboard-form {
+    min-height: 350px;
+    max-width: 55vw;
+    min-width: 33vw;
+
+    @media screen and (max-width: $breakpoint-md-min) {
+      max-width: 95vw;
+    }
+  }
+}
