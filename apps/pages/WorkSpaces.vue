@@ -76,7 +76,7 @@ const apps: AppOption[] = [
             }}</NuxtLink>
           </div>
         </q-card>
-        <q-card square fit class="col window-height">
+        <q-card square fit class="col window-height no-shadow">
           <q-toolbar class="q-px-md q-py-sm q-gutter-sm">
             <q-space />
             <q-btn
@@ -94,11 +94,11 @@ const apps: AppOption[] = [
               >{{ $t('auth.signOut') }}</q-btn
             >
           </q-toolbar>
-          <div class="q-mt-xl q-px-md q-py-lg">
+          <div class="q-mt-xl q-px-md q-py-lg row justify-start items-center">
             <div class="text-h3 text-weight-light text-primary q-px-sm q-my-xl">
               {{ $t('router.work-spaces') }}
             </div>
-            <div class="row justify-start align-center">
+            <div class="fit row justify-start items-center">
               <q-card
                 v-for="app in apps"
                 :key="app.name"
@@ -120,8 +120,8 @@ const apps: AppOption[] = [
 
 <style lang="scss" scoped>
 .app-box {
-  width: 125px;
-  height: 125px;
+  width: 120px;
+  height: 120px;
   text-transform: capitalize;
 }
 </style>

@@ -46,7 +46,7 @@ defineOptions({ name: 'AuthLayout' });
             no-spinner
             :src="LightHouse"
             alt="Trace Lighthouse"
-            width="calc(34vw)"
+            width="calc(32vw)"
             class="absolute-center"
           />
         </q-card>
