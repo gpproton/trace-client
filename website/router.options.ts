@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 24th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 24 2024
+ * Modified At: Fri Mar 29 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
@@ -52,7 +52,7 @@ export default <RouterConfig>{
       children: [
         {
           path: '',
-          component: () => import('@trace/base/pages/ErrorNotFound.vue'),
+          component: () => import('@trace/base/pages/NotFound.vue'),
           meta: {
             title: 'router.error',
             icon: 'sync',

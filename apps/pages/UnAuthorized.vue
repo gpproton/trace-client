@@ -1,9 +1,11 @@
 <script setup lang="ts">
-defineOptions({ name: 'UnAuthorized' });
+import UnAuthorized from '@trace/base/components/error/UnAuthorized.vue';
+
+defineOptions({ name: 'UnAuthorizedPage' });
 </script>
 
 <template>
   <page-wrapper>
-    <div>Un-authorized</div>
+    <un-authorized />
   </page-wrapper>
 </template>
