@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Fri Mar 29 2024
  */
 
 import * as LocaleAction from './lib/action.ts';
@@ -25,7 +25,11 @@ import * as LocaleRouter from './lib/router.ts';
 import * as LocaleOnboard from './lib/on-board.ts';
 import * as LocaleShared from './lib/shared.ts';
 
-export type CountryOption = { countryCode: string, name: string, value: string };
+export type CountryOption = {
+  countryCode: string;
+  name: string;
+  value: string;
+};
 
 export const defaultTranslation = {
   action: LocaleAction.default,
@@ -33,10 +37,10 @@ export const defaultTranslation = {
   layout: LocaleLayout.default,
   router: LocaleRouter.default,
   onboard: LocaleOnboard.default,
-  shared: LocaleShared.default
-}
+  shared: LocaleShared.default,
+};
 
-export const defaultLanguage = 'en'
+export const defaultLanguage = 'en';
 export default defaultTranslation;
 export const languageSelection: CountryOption[] = [
   { countryCode: 'AE', name: 'العربية', value: 'ar' },
