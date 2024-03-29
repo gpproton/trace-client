@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 24 2024
+ * Modified At: Fri Mar 29 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -45,14 +45,37 @@ const routes: Route[] = [
   },
   {
     name: 'support-docs',
-    path: '/docs/:slug',
+    path: '/docs',
+    redirect: { name: 'support-docs.index' },
     meta: {
-      menu: 'module',
-      title: 'Docs',
+      menu: 'app',
+      title: 'Documentation',
       icon: 'bi-person',
       permission: false,
     },
-    component: () => import('./docs/ContentView.vue'),
+    component: () => import('./app/DocumentLayout.vue'),
+    children: [
+      {
+        name: 'support-docs.index',
+        path: 'home',
+        meta: {
+          title: 'Documentation',
+          icon: 'bi-person',
+          permission: false,
+        },
+        component: () => import('./pages/ContentView.vue'),
+      },
+      {
+        name: 'support-docs.slug',
+        path: ':slug',
+        meta: {
+          title: 'Documentation',
+          icon: 'bi-person',
+          permission: false,
+        },
+        component: () => import('./pages/ContentView.vue'),
+      },
+    ],
   },
 ];
 

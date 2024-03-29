@@ -15,19 +15,47 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon Mar 25 2024
+ * Modified At: Fri Mar 29 2024
  */
 
 import { appHeader } from '@trace/shared';
+import { createResolver } from '@nuxt/kit';
+
+const resolver = createResolver(import.meta.url);
 
 export default defineNuxtConfig({
   app: appHeader('/', 'Trace'),
   extends: ['../base'],
   modules: ['nuxt3-leaflet', '@nuxt/content', './app.core/app-module'],
   routeRules: {
-    // '/**': { ssr: false },
-    // '/docs/**': { ssr: true },
+    '/**': { ssr: false },
+    '/docs/**': { ssr: true },
   },
   ssr: false,
-  // content: {},
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth',
+    },
+  },
+  hooks: {
+    'pages:routerOptions'({ files }) {
+      files.push({
+        path: resolver.resolve('./router.options'),
+        optional: true,
+      });
+    },
+  },
+  content: {
+    // documentDriven: true,
+    navigation: {
+      fields: ['author', 'publishedAt'],
+    },
+    sources: {
+      content: {
+        driver: 'fs',
+        prefix: '/docs',
+        base: resolver.resolve(__dirname, 'content'),
+      },
+    },
+  },
 });
