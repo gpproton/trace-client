@@ -82,7 +82,7 @@ const routes: Route[] = [
 export const addCatchAll = (key: string = ''): Route => ({
   path: `:catchAll(.*)*`,
   name: key === '' ? 'error' : `${key}-error`,
-  component: () => import('@trace/base/pages/ErrorNotFound.vue'),
+  component: () => import('@trace/base/pages/NotFound.vue'),
   meta: {
     permission: false,
     title: 'router.error',
