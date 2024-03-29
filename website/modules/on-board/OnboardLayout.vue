@@ -92,7 +92,7 @@ const getStatus = computed(() => {
               no-caps
               color="primary"
               class="text-body1 border-radius-sm"
-              >{{ $t('router.support') }}</q-btn
+              >{{ $t('shared.support') }}</q-btn
             >
           </q-toolbar>
           <div class="q-pa-sm">
