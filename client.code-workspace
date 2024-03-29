@@ -23,6 +23,9 @@
     {
       "name": "ui-apps",
       "path": "apps"
+    },
+    {
+      "path": "mobile"
     }
   ],
   "settings": {

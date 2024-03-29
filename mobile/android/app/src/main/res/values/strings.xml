@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Trace Mobile</string>
+    <string name="title_activity_main">Trace Mobile</string>
+    <string name="package_name">ng.trace.sharedclient</string>
+    <string name="custom_url_scheme">ng.trace.sharedclient</string>
+</resources>

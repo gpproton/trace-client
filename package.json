@@ -41,7 +41,8 @@
     "base",
     "website",
     "docs",
-    "apps"
+    "apps",
+    "mobile"
   ],
   "engines": {
     "npm": "please-use-pnpm",
