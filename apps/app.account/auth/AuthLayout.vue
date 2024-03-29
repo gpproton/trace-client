@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LightHouse from '@trace/base/icons/lighthouse.svg?url';
+import LightHouse from '@trace/base/icons/banner/lighthouse.svg?url';
 import AppLogo from '@trace/base/icons/logo.svg';
 import LangSelector from '@trace/base/components/LangSelector.vue';
 

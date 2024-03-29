@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import TwoFactor from '@trace/base/icons/two-factor-authentication.svg?url';
+import TwoFactor from '@trace/base/icons/banner/two-factor-authentication.svg?url';
 import AppLogo from '@trace/base/icons/logo.svg';
 </script>
 

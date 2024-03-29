@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppLogo from '@trace/base/icons/logo.svg';
-import WorkspaceIcon from '@trace/base/icons/workspace.svg?url';
+import WorkspaceIcon from '@trace/base/icons/banner/workspace.svg?url';
 import { Workspace } from '@trace/shared';
 import { useUserAccountStore } from '@/stores/user-account';
 
