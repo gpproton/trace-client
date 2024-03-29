@@ -19,12 +19,11 @@
   "homepage": "https://trace.ng",
   "scripts": {
     "clean": "pnpx rimraf node_modules **/node_modules bun.* **/bun.* **/dist/* pnpm-lock.* **/pnpm-lock.*",
-    "dev": "pnpm -r --filter ./apps run dev",
-    "dev:base": "pnpm -r --filter ./base run dev",
-    "dev:manager": "pnpm -r --filter ./manager run dev",
-    "dev:website": "pnpm -r --filter ./website run dev",
-    "dev:docs": "pnpm -r --filter ./docs run dev",
-    "build": "pnpm -r --filter ./apps run build"
+    "dev": "pnpm -r --filter ./apps dev",
+    "dev:base": "pnpm -r --filter ./base dev",
+    "dev:website": "pnpm -r --filter ./website dev",
+    "build": "pnpm -r --filter ./apps --filter ./website build",
+    "generate": "pnpm -r --filter ./apps --filter ./website generate"
   },
   "devDependencies": {
     "pnpm": "^8.15.4",

@@ -85,7 +85,13 @@
         "markdown",
         "json",
         "jsonc",
+        "yml",
+        "yaml",
         "shellscript",
+        "xml",
+        "dockerfile",
+        "dockercompose",
+        "ini",
         "vue"
       ],
       "excludeGlob": [
