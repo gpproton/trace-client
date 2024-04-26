@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat Mar 23 2024
+ * Modified At: Fri Apr 26 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -28,7 +28,7 @@ const routes: Route[] = [
     redirect: { name: 'auth.sign-in' },
     component: () => import('./AuthLayout.vue'),
     meta: {
-      permission: false,
+      permission: 'auth',
     },
     props: {
       workspace: Workspace.Identity,
@@ -40,7 +40,7 @@ const routes: Route[] = [
         component: () => import('./pages/SignIn.vue'),
         meta: {
           title: 'Sign In',
-          permission: false,
+          permission: 'auth',
         },
       },
       // {
@@ -49,7 +49,7 @@ const routes: Route[] = [
       //   component: () => import('./pages/VerifyOtp.vue'),
       //   meta: {
       //     title: 'Two Factor OTP',
-      //     permission: false,
+      //     permission: 'auth',
       //   },
       // },
     ],

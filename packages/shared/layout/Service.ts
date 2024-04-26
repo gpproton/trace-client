@@ -27,7 +27,6 @@ export enum Workspace {
   Support = 'support',
   Dispatch = 'dispatch',
   Partner = 'partner',
-  Docs = 'docs',
 }
 
 export interface ITenantProfile {

@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon Mar 25 2024
+ * Modified At: Fri Apr 26 2024
  */
 
 import type { Router } from 'vue-router';
@@ -30,18 +30,23 @@ export default defineNuxtPlugin(() => {
 
   router.beforeEach((to, from, next) => {
     const isWorkspaceApp =
-      workspaceApps.filter((e) => to.fullPath.startsWith(`/${e}/`)).length > 0;
+      workspaceApps.filter((e) => to.fullPath.startsWith(`/${e}/`)).length >
+        0 || to.fullPath.startsWith('/docs');
     const accessToken = getAccessToken.value;
 
     if (accessToken) {
-      if (to.meta.permission === false) next({ name: 'work-spaces' });
+      if (to.meta.permission === false) next();
+      if (to.meta.permission === 'auth') next({ name: 'work-spaces' });
       else {
         next();
       }
     } else {
       if (isWorkspaceApp) {
         next({ name: 'un-authorized', replace: true });
-      } else if (to.meta.permission === false) {
+      } else if (
+        to.meta.permission === false ||
+        to.meta.permission === 'auth'
+      ) {
         next();
       } else {
         next({ name: 'auth.sign-in' });

@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Fri Apr 26 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -26,7 +26,7 @@ export const onboardRoutes: Route[] = [
     name: 'user-boarding.create-account',
     component: () => import('./pages/CreateAccount.vue'),
     meta: {
-      permission: false,
+      permission: 'auth',
       title: 'Create Account',
       description: 'Provide personal information required to use our plaform',
     },
@@ -36,7 +36,7 @@ export const onboardRoutes: Route[] = [
     name: 'user-boarding.account-verification',
     component: () => import('./pages/AccountVerification.vue'),
     meta: {
-      permission: false,
+      permission: 'auth',
       title: 'Verification',
       description: 'Verify mobile number for account',
     },
@@ -46,7 +46,7 @@ export const onboardRoutes: Route[] = [
     name: 'user-boarding.account-options',
     component: () => import('./pages/AccountOptions.vue'),
     meta: {
-      permission: false,
+      permission: 'auth',
       title: 'Account Options',
       description: 'Select required and optional settings for you account',
     },
@@ -56,7 +56,7 @@ export const onboardRoutes: Route[] = [
     name: 'user-boarding.confirmation',
     component: () => import('./pages/AccountConfirmation.vue'),
     meta: {
-      permission: false,
+      permission: 'auth',
       title: 'Confirmation',
       description: 'Complete onboarding process for your account',
     },
@@ -71,7 +71,7 @@ const routes: Route[] = [
     component: () => import('./OnboardLayout.vue'),
     children: onboardRoutes,
     meta: {
-      permission: false,
+      permission: 'auth',
     },
   },
   {
@@ -80,7 +80,7 @@ const routes: Route[] = [
     redirect: { name: 'user-boarding.getting-started' },
     component: () => import('./WelcomeLayout.vue'),
     meta: {
-      permission: false,
+      permission: 'auth',
     },
     children: [
       {
@@ -88,7 +88,7 @@ const routes: Route[] = [
         name: 'user-boarding.getting-started',
         component: () => import('./pages/GetttingStarted.vue'),
         meta: {
-          permission: false,
+          permission: 'auth',
           title: 'Getting started',
         },
       },

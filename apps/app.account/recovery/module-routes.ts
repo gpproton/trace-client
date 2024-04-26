@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Saturday, 16th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon Mar 25 2024
+ * Modified At: Fri Apr 26 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -28,7 +28,7 @@ const routes: Route[] = [
     redirect: { name: `${base}.forgot-password` },
     component: () => import('./RecoveryLayout.vue'),
     meta: {
-      permission: false,
+      permission: 'auth',
     },
     children: [
       {
@@ -37,7 +37,7 @@ const routes: Route[] = [
         component: () => import('./pages/ForgotPassword.vue'),
         meta: {
           title: 'Forgot Password',
-          permission: false,
+          permission: 'auth',
         },
       },
       {
@@ -46,7 +46,7 @@ const routes: Route[] = [
         component: () => import('./pages/OtpChoice.vue'),
         meta: {
           title: 'OTP Choice',
-          permission: false,
+          permission: 'auth',
         },
       },
       {
@@ -55,7 +55,7 @@ const routes: Route[] = [
         component: () => import('./pages/PasswordUpdate.vue'),
         meta: {
           title: 'Password Update',
-          permission: false,
+          permission: 'auth',
         },
       },
       {
@@ -64,7 +64,7 @@ const routes: Route[] = [
         component: () => import('./pages/VerifyOtp.vue'),
         meta: {
           title: 'Verify OTP',
-          permission: false,
+          permission: 'auth',
         },
       },
     ],
