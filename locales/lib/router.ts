@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 24 2024
+ * Modified At: Fri Apr 26 2024
  */
 
 export default {
@@ -30,6 +30,7 @@ export default {
   getStarted: 'Get Started',
   startNow: 'Start Now',
   docs: 'Docs',
+  documentation: 'Documentation',
   testing: 'Testing',
   generalSettings: 'General Settings',
   accountAlerts: 'Account Alerts',

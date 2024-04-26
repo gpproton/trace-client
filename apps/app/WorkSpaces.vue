@@ -46,7 +46,7 @@ const apps = ref<AppOption[]>([
 const links = ref([
   {
     name: 'docs',
-    label: 'router.docs',
+    label: 'router.documentation',
   },
   {
     name: 'faqs',
