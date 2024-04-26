@@ -58,6 +58,7 @@ const triggerAuth = () => {
           color="secondary"
           no-caps
           no-wrap
+          disabled
           class="border-radius-xs q-py-sm"
         >
           <q-img

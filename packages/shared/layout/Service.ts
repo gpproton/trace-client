@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon Mar 25 2024
+ * Modified At: Fri Apr 26 2024
  */
 
 export enum Workspace {
@@ -27,6 +27,7 @@ export enum Workspace {
   Support = 'support',
   Dispatch = 'dispatch',
   Partner = 'partner',
+  Docs = 'docs',
 }
 
 export interface ITenantProfile {

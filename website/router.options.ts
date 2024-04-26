@@ -15,14 +15,15 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 24th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 29 2024
+ * Modified At: Wed Apr 24 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
 import OnboardRoutes from '@/modules/on-board/routes';
 
 export default <RouterConfig>{
-  routes: () => [
+  routes: (_routes) => [
+    ..._routes,
     {
       path: '/',
       name: 'root',
@@ -52,7 +53,7 @@ export default <RouterConfig>{
       children: [
         {
           path: '',
-          component: () => import('@trace/base/pages/NotFound.vue'),
+          component: () => import('@trace/base/components/NotFound.vue'),
           meta: {
             title: 'router.error',
             icon: 'sync',

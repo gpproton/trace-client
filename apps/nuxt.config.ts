@@ -15,13 +15,25 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 29 2024
+ * Modified At: Fri Apr 26 2024
  */
 
 import { appHeader } from '@trace/shared';
 import { createResolver } from '@nuxt/kit';
 
 const resolver = createResolver(import.meta.url);
+
+export type contentItem = {
+  driver: string;
+  prefix: string;
+  base: string;
+};
+
+export const addDocPath = (name: string): contentItem => ({
+  driver: 'fs',
+  prefix: `/docs/${name}`,
+  base: resolver.resolve(__dirname, `docs/${name}`),
+});
 
 export default defineNuxtConfig({
   app: appHeader('/', 'Trace'),
@@ -30,6 +42,10 @@ export default defineNuxtConfig({
   routeRules: {
     '/**': { ssr: false },
     '/docs/**': { ssr: true },
+    '/graphql': { proxy: import.meta.env.SERVER_API },
+    '/api/storage': { proxy: import.meta.env.SERVER_STORAGE },
+    '/api/routing': { proxy: import.meta.env.SERVER_ROUTING },
+    '/api/geocoding': { proxy: import.meta.env.SERVER_GEOCODING },
   },
   ssr: false,
   router: {
@@ -46,16 +62,16 @@ export default defineNuxtConfig({
     },
   },
   content: {
-    // documentDriven: true,
     navigation: {
       fields: ['author', 'publishedAt'],
     },
     sources: {
-      content: {
-        driver: 'fs',
-        prefix: '/docs',
-        base: resolver.resolve(__dirname, 'content'),
-      },
+      admin: addDocPath('admin'),
+      api: addDocPath('api'),
+      development: addDocPath('development'),
+      features: addDocPath('features'),
+      partners: addDocPath('partners'),
+      portal: addDocPath('portal'),
     },
   },
 });

@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import AppLogo from '@trace/base/icons/logo.svg';
 import LangSelector from '@trace/base/components/LangSelector.vue';
 
+defineOptions({ name: 'DocumentLayout' });
 const leftDrawerOpen = ref(false);
 const toggleLeftDrawer = () => {
   leftDrawerOpen.value = !leftDrawerOpen.value;
@@ -15,21 +16,28 @@ const toggleLeftDrawer = () => {
       <q-toolbar>
         <div class="row items-center">
           <app-logo class="app-logo" />
-        <q-toolbar-title class="text-h5 text-primary text-weight-bold">
-          {{ 'Trace' }}
-        </q-toolbar-title>
-        <q-btn color="primary" dense flat round icon="bi-list" @click="toggleLeftDrawer"/>
+          <q-toolbar-title class="text-h5 text-primary text-weight-bold">
+            {{ 'Trace' }}
+          </q-toolbar-title>
+          <q-btn
+            color="primary"
+            dense
+            flat
+            round
+            icon="bi-list"
+            @click="toggleLeftDrawer"
+          />
         </div>
         <q-space />
         <div class="row q-gutter-lg">
           <q-btn
-          no-caps
-          color="primary"
-          :to="{ name: 'work-spaces' }"
-          class="text-body1 border-radius-sm"
-          >{{ $t('router.work-spaces') }}</q-btn
-        >
-        <lang-selector />
+            no-caps
+            color="primary"
+            :to="{ name: 'work-spaces' }"
+            class="text-body1 border-radius-sm"
+            >{{ $t('router.work-spaces') }}</q-btn
+          >
+          <lang-selector />
         </div>
       </q-toolbar>
     </q-header>
@@ -39,7 +47,9 @@ const toggleLeftDrawer = () => {
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <slot>
+        <router-view />
+      </slot>
     </q-page-container>
   </q-layout>
 </template>

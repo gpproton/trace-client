@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon Mar 25 2024
+ * Modified At: Fri Apr 26 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
@@ -111,5 +111,5 @@ export const routes = [
 ] as Route[];
 
 export default <RouterConfig>{
-  routes: () => routes,
+  routes: (_routes) => [..._routes, ...routes],
 };

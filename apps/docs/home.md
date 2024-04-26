@@ -1,6 +1,6 @@
 ---
-title: 'Index'
-description: 'Index'
+title: 'Home'
+description: 'Home cech'
 author: 'Godwin peter .O'
 date: 2022-11-23
 img:

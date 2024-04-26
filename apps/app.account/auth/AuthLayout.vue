@@ -31,7 +31,7 @@ defineOptions({ name: 'AuthLayout' });
               }}</NuxtLink>
             </div>
             <div>|</div>
-            <NuxtLink class="footer-link" to="#">
+            <NuxtLink class="footer-link" to="/privacy-policy">
               {{ $t('shared.privacyPolicy') }}
             </NuxtLink>
           </div>

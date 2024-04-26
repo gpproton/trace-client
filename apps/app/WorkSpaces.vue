@@ -12,7 +12,7 @@ interface AppOption {
 }
 const { signOut } = useUserAccountStore();
 const router = useRouter();
-const apps: AppOption[] = [
+const apps = ref<AppOption[]>([
   {
     name: Workspace.Account,
     icon: 'bi-person-gear',
@@ -41,7 +41,18 @@ const apps: AppOption[] = [
     name: Workspace.Support,
     icon: 'bi-headset',
   },
-];
+]);
+
+const links = ref([
+  {
+    name: 'docs',
+    label: 'router.docs',
+  },
+  {
+    name: 'faqs',
+    label: 'router.faq',
+  },
+]);
 </script>
 
 <template>
@@ -79,13 +90,17 @@ const apps: AppOption[] = [
         <q-card square fit class="col window-height no-shadow">
           <q-toolbar class="q-px-md q-py-sm q-gutter-sm">
             <q-space />
-            <q-btn
-              flat
-              no-caps
-              color="primary"
-              class="text-body1 border-radius-sm"
-              >{{ $t('router.faq') }}</q-btn
-            >
+            <q-tabs no-caps shrink stretch content-class="text-primary q-mr-sm">
+              <q-route-tab
+                v-for="(link, index) in links"
+                :key="index"
+                exact
+                :to="`/${link.name}`"
+                :name="link.name"
+                class="text-body1 border-radius-sm"
+                >{{ $t(link.label) }}</q-route-tab
+              >
+            </q-tabs>
             <q-btn
               no-caps
               color="primary"

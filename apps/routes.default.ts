@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 29 2024
+ * Modified At: Fri Apr 26 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -24,7 +24,7 @@ const routes: Route[] = [
   {
     name: 'work-spaces',
     path: '/work-spaces',
-    component: () => import('@/pages/WorkSpaces.vue'),
+    component: () => import('@/app/WorkSpaces.vue'),
     meta: {
       title: 'router.work-spaces',
       icon: 'sync',
@@ -33,7 +33,7 @@ const routes: Route[] = [
   {
     name: 'app.testing',
     path: '/testing',
-    component: () => import('@trace/base/pages/Testing.vue'),
+    component: () => import('@trace/base/components/TestingPage.vue'),
     meta: {
       title: 'router.testing',
       icon: 'sync',
@@ -43,46 +43,46 @@ const routes: Route[] = [
       },
     },
   },
-  {
-    name: 'support-docs',
-    path: '/docs',
-    redirect: { name: 'support-docs.index' },
-    meta: {
-      menu: 'app',
-      title: 'Documentation',
-      icon: 'bi-person',
-      permission: false,
-    },
-    component: () => import('./app/DocumentLayout.vue'),
-    children: [
-      {
-        name: 'support-docs.index',
-        path: 'home',
-        meta: {
-          title: 'Documentation',
-          icon: 'bi-person',
-          permission: false,
-        },
-        component: () => import('./pages/ContentView.vue'),
-      },
-      {
-        name: 'support-docs.slug',
-        path: ':slug',
-        meta: {
-          title: 'Documentation',
-          icon: 'bi-person',
-          permission: false,
-        },
-        component: () => import('./pages/ContentView.vue'),
-      },
-    ],
-  },
+  // {
+  //   name: 'support-docs',
+  //   path: '/docs',
+  //   redirect: { name: 'support-docs.index' },
+  //   meta: {
+  //     menu: 'app',
+  //     title: 'Documentation',
+  //     icon: 'bi-person',
+  //     permission: false,
+  //   },
+  //   component: () => import('@/app/DocumentLayout.vue'),
+  //   children: [
+  //     {
+  //       name: 'support-docs.index',
+  //       path: 'home',
+  //       meta: {
+  //         title: 'Documentation',
+  //         icon: 'bi-person',
+  //         permission: false,
+  //       },
+  //       component: () => import('@/app/ContentView.vue'),
+  //     },
+  //     {
+  //       name: 'support-docs.slug',
+  //       path: ':slug',
+  //       meta: {
+  //         title: 'Documentation',
+  //         icon: 'bi-person',
+  //         permission: false,
+  //       },
+  //       component: () => import('@/app/ContentView.vue'),
+  //     },
+  //   ],
+  // },
 ];
 
 export const addCatchAll = (key: string = ''): Route => ({
   path: `:catchAll(.*)*`,
   name: key === '' ? 'error' : `${key}-error`,
-  component: () => import('@trace/base/pages/NotFound.vue'),
+  component: () => import('@trace/base/components/NotFound.vue'),
   meta: {
     permission: false,
     title: 'router.error',
@@ -95,7 +95,7 @@ export const addCatchAll = (key: string = ''): Route => ({
 export const addUnAuthorized = (key: string = ''): Route => ({
   path: 'un-authorized',
   name: key === '' ? 'un-authorized' : `${key}-un-authorized`,
-  component: () => import('@/pages/UnAuthorized.vue'),
+  component: () => import('@/app/UnAuthorized.vue'),
   meta: {
     permission: false,
     title: 'router.un-authorized',

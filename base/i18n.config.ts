@@ -15,12 +15,10 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 29 2024
+ * Modified At: Wed Apr 24 2024
  */
 
 import { defaultTranslation, defaultLanguage } from '@trace/locales';
-
-const mainLanguage: string = 'en-US';
 
 const loadLocaleMessages = () => {
   const locales = import.meta.glob('../locales/output/*.json', { eager: true });
@@ -33,7 +31,6 @@ const loadLocaleMessages = () => {
     }
   });
 
-  messages[mainLanguage] = defaultTranslation;
   messages[defaultLanguage] = defaultTranslation;
 
   return messages;
@@ -45,7 +42,7 @@ export default defineI18nConfig(() => {
   return {
     legacy: false,
     globalInjection: true,
-    locale: mainLanguage,
+    locale: defaultLanguage,
     messages,
   };
 });

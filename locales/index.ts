@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 29 2024
+ * Modified At: Wed Apr 24 2024
  */
 
 import * as LocaleAction from './lib/action.ts';
@@ -40,7 +40,7 @@ export const defaultTranslation = {
   shared: LocaleShared.default,
 };
 
-export const defaultLanguage = 'en';
+export const defaultLanguage = 'en-US';
 export default defaultTranslation;
 export const languageSelection: CountryOption[] = [
   { countryCode: 'AE', name: 'العربية', value: 'ar' },
