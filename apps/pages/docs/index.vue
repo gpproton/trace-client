@@ -1,7 +1,13 @@
 <script setup lang="ts">
-defineOptions({ name: 'Docs', meta: { permission: false } });
+definePageMeta({
+  layout: 'document',
+});
+
+defineOptions({ name: 'Docs' });
 </script>
 
 <template>
-  <div>Site Docs</div>
+  <page-wrapper>
+    <div>Site Docs</div>
+  </page-wrapper>
 </template>

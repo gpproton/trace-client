@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Tuesday, 12th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed Mar 27 2024
+ * Modified At: Fri Apr 26 2024
  */
 
 import 'vue-router';
@@ -37,7 +37,7 @@ declare type MenuType = boolean | 'app' | 'module' | 'x';
 declare module 'vue-router' {
   interface RouteMeta {
     requiresAuth?: boolean;
-    permission?: boolean | ActionState;
+    permission?: boolean | 'auth' | ActionState;
     menu?: MenuType;
     hideChildren?: boolean;
     removeChildren?: boolean;

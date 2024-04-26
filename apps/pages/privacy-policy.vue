@@ -1,5 +1,7 @@
 <script setup lang="ts">
-defineOptions({ name: 'PrivacyPolicy', meta: { permission: false } });
+definePageMeta({
+  permission: false,
+});
 </script>
 
 <template>

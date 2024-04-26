@@ -30,6 +30,7 @@ const toggleLeftDrawer = () => {
         </div>
         <q-space />
         <div class="row q-gutter-lg">
+          <lang-selector />
           <q-btn
             no-caps
             color="primary"
@@ -37,7 +38,6 @@ const toggleLeftDrawer = () => {
             class="text-body1 border-radius-sm"
             >{{ $t('router.work-spaces') }}</q-btn
           >
-          <lang-selector />
         </div>
       </q-toolbar>
     </q-header>
@@ -47,9 +47,7 @@ const toggleLeftDrawer = () => {
     </q-drawer>
 
     <q-page-container>
-      <slot>
-        <router-view />
-      </slot>
+      <slot></slot>
     </q-page-container>
   </q-layout>
 </template>
