@@ -96,12 +96,13 @@ onDeactivated(() => {
 
 <template>
   <q-page class="fit page" :class="padding ? 'q-pa-sm' : ''">
+    <slot name="header"></slot>
     <q-scroll-area
       v-if="scrollable"
       ref="scrollArea"
       :thumb-style="thumbStyle"
       :visible="false"
-      style="height: calc(100vh - 130px)"
+      style="height: calc(100dvh - 172px)"
       :content-active-style="contentActiveStyle"
       @scroll="onScroll"
     >
@@ -112,6 +113,7 @@ onDeactivated(() => {
     <slot v-else>
       <under-construction />
     </slot>
+    <slot name="footer"></slot>
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <transition
         appear

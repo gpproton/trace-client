@@ -58,6 +58,6 @@ const onMapReady = async () => {
 <style>
 .map-view {
   min-width: calc(100vw - 65px);
-  height: calc(100vh - 100px);
+  height: calc(100dvh - 100px);
 }
 </style>

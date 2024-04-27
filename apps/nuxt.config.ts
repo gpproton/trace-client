@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Apr 26 2024
+ * Modified At: Sat Apr 27 2024
  */
 
 import { appHeader } from '@trace/shared';
@@ -23,13 +23,13 @@ import { createResolver } from '@nuxt/kit';
 
 const resolver = createResolver(import.meta.url);
 
-export type contentItem = {
+export type ContentItem = {
   driver: string;
   prefix: string;
   base: string;
 };
 
-export const addDocPath = (name: string): contentItem => ({
+export const addDocPath = (name: string): ContentItem => ({
   driver: 'fs',
   prefix: `/docs/${name}`,
   base: resolver.resolve(__dirname, `docs/${name}`),
@@ -39,25 +39,20 @@ export default defineNuxtConfig({
   app: appHeader('/', 'Trace'),
   extends: ['../base'],
   modules: ['nuxt3-leaflet', '@nuxt/content', './app.core/app-module'],
-  routeRules: {
-    '/**': { ssr: false },
-    '/docs/**': { ssr: true },
-    '/graphql': { proxy: import.meta.env.SERVER_API },
-    '/api/storage': { proxy: import.meta.env.SERVER_STORAGE },
-    '/api/routing': { proxy: import.meta.env.SERVER_ROUTING },
-    '/api/geocoding': { proxy: import.meta.env.SERVER_GEOCODING },
-  },
+  // routeRules: {
+  //   '/**': { ssr: true },
+  //   '/docs**': { ssr: true },
+  //   '/graphql': { proxy: import.meta.env.SERVER_API },
+  //   '/api/files': { proxy: import.meta.env.SERVER_FILES },
+  //   '/api/routing': { proxy: import.meta.env.SERVER_ROUTING },
+  //   '/api/geocoding': { proxy: import.meta.env.SERVER_GEOCODING },
+  // },
   ssr: false,
-  router: {
-    options: {
-      scrollBehaviorType: 'smooth',
-    },
-  },
   hooks: {
     'pages:routerOptions'({ files }) {
       files.push({
-        path: resolver.resolve('./router.options'),
-        optional: true,
+        path: resolver.resolve('./app/router'),
+        optional: false,
       });
     },
   },

@@ -9,7 +9,7 @@ defineOptions({ name: 'AuthLayout' });
 <template>
   <q-layout view="hHh lpR fFf">
     <q-page-container>
-      <div class="row fit" style="max-height: 100vh">
+      <div class="row fit" style="max-height: 100dvh">
         <q-card square flat class="col window-height column justify-between">
           <q-toolbar class="text-primary q-pa-xs q-mx-sm">
             <app-logo class="app-logo" />

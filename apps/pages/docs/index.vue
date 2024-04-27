@@ -2,8 +2,6 @@
 definePageMeta({
   layout: 'document',
 });
-
-defineOptions({ name: 'Docs' });
 </script>
 
 <template>

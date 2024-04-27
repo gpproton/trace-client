@@ -40,7 +40,7 @@ onUnmounted(() => {
 .splash-screen {
   background: transparent;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   position: fixed;
   z-index: 50;
 }

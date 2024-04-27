@@ -86,6 +86,6 @@ const onClickInterval = (data: any) => console.log('onClickInterval', data);
   display: flex;
   max-width: calc(100vw - 72px);
   width: 100%;
-  height: calc(100vh - 164px);
+  height: calc(100dvh - 164px);
 }
 </style>

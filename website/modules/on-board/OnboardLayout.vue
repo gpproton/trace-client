@@ -22,7 +22,7 @@ const getStatus = computed(() => {
 <template>
   <q-layout view="hHh LpR fff">
     <q-page-container>
-      <div class="row fit" style="max-height: 100vh">
+      <div class="row fit" style="max-height: 100dvh">
         <q-card
           square
           fit

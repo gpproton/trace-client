@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Apr 26 2024
+ * Modified At: Sat Apr 27 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
@@ -31,6 +31,7 @@ import portalRoutes from '@/app.portal/app-routes';
 import partnerRoutes from '@/app.partner/app-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
+import type { RouteRecordRaw } from '@/.nuxt/vue-router-stub';
 
 export const addWorkspaceRoute = (
   app: Workspace,
@@ -111,5 +112,5 @@ export const routes = [
 ] as Route[];
 
 export default <RouterConfig>{
-  routes: (_routes) => [..._routes, ...routes],
+  routes: (_routes) => _routes.concat(routes as unknown as RouteRecordRaw),
 };

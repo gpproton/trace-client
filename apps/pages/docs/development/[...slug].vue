@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import ContentView from '@/app/ContentView.vue';
+
 definePageMeta({
   layout: 'document',
+  meta: {
+    permissions: false,
+  },
 });
 </script>
 
 <template>
-  <div>Docs</div>
+  <content-view name="development"></content-view>
 </template>

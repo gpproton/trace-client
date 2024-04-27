@@ -15,11 +15,11 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Sat Apr 27 2024
  */
 
 import { getAuthenticatedRoutes } from '@trace/base/types';
-import { routes } from '@/app/router.options';
+import { routes } from '@/app/router';
 import type { Route } from '@trace/base/typings';
 
 export const authtenticatedRoutes: Route[] = getAuthenticatedRoutes(

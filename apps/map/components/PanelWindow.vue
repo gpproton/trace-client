@@ -30,6 +30,6 @@ const windowVisibility = ref(true);
 
 .panel-content {
   width: 385px;
-  min-height: calc(100vh - 165px);
+  min-height: calc(100dvh - 165px);
 }
 </style>

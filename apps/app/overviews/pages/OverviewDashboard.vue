@@ -5,7 +5,7 @@ defineOptions({ name: 'OverviewDashboard' });
 </script>
 
 <template>
-  <div class="row">
+  <div class="row justify-start content-start items-start">
     <component
       :is="components[widget.component]"
       v-for="widget in Widgets"

@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 29 2024
+ * Modified At: Sat Apr 27 2024
  */
 
 import bootstrapIcons from 'quasar/icon-set/svg-bootstrap-icons';
@@ -67,9 +67,6 @@ export default defineNuxtConfig({
       'LoadingBar',
       'Notify',
       'Dark',
-      'Cookies',
-      'SessionStorage',
-      'Meta',
     ],
     sassVariables: join(currentDir, './assets/main.scss'),
     iconSet: {

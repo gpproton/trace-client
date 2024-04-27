@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri Mar 22 2024
+ * Modified At: Fri Apr 26 2024
  */
 
 @import './quasar.variables.scss';
@@ -77,7 +77,7 @@ body {
   @include add-border-radius(xxl, $border-radius-xxl);
 
   --q-header-height: #{$header-height};
-  --q-page-container-height: calc(100vh - var(--q-header-height));
+  --q-page-container-height: calc(100dvh - var(--q-header-height));
   --q-page-content-height: calc(var(--q-page-container-height) * 0.9);
 
   .app-logo {
