@@ -1,7 +1,7 @@
 {
   "name": "@trace/base",
   "type": "module",
-  "version": "0.0.1-preview.13",
+  "version": "0.0.1-preview.14",
   "main": "./nuxt.config.ts",
   "repository": {
     "type": "git",
