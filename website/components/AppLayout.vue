@@ -61,7 +61,7 @@ const links = [
       <div>
         {{ 'All right reserved.' }}
         <NuxtLink class="footer-link" to="https://drolx.com">{{
-          'drolx Solutions'
+          'drolx Labs'
         }}</NuxtLink>
       </div>
     </q-footer>

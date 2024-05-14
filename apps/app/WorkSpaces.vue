@@ -83,7 +83,7 @@ const links = ref([
           <div class="q-px-md q-py-sm text-grey">
             {{ 'All right reserved.' }}
             <NuxtLink class="footer-link" to="https://drolx.com">{{
-              'drolx Solutions'
+              'drolx Labs'
             }}</NuxtLink>
           </div>
         </q-card>

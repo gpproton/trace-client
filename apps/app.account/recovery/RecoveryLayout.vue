@@ -40,7 +40,7 @@ import AppLogo from '@trace/base/icons/logo.svg';
               <div>
                 {{ $t('shared.copyright') + ' @ ' }}
                 <NuxtLink class="footer-link" to="https://drolx.com">{{
-                  'drolx Solutions'
+                  'drolx Labs'
                 }}</NuxtLink>
               </div>
               <div>|</div>

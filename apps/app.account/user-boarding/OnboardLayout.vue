@@ -48,7 +48,7 @@ const { getColor, getIcon } = onboardStore;
           <div class="q-pa-md text-primary">
             {{ 'All right reserved.' }}
             <NuxtLink class="footer-link" to="https://drolx.com">{{
-              'drolx Solutions'
+              'drolx Labs'
             }}</NuxtLink>
           </div>
         </q-card>

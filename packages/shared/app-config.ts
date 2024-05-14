@@ -1,3 +1,4 @@
+
 export const appHeader = (baseURL: string = '/', title: string = 'Trace') => {
   return {
     baseURL,
