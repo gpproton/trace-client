@@ -30,7 +30,7 @@ const links = [
           {{ 'Trace' }}
         </q-toolbar-title>
         <q-space />
-        <q-tabs no-caps shrink stretch content-class="text-primary q-mr-lg">
+        <q-tabs no-caps shrink stretch content-class="gt-sm text-primary q-mr-lg">
           <q-route-tab
             v-for="(link, index) in links"
             :key="index"
@@ -59,7 +59,7 @@ const links = [
     </q-page-container>
     <q-footer class="bg-secondary text-white q-pa-md">
       <div>
-        {{ 'All right reserved.' }}
+        {{ 'All right reserved' + ' @' }}
         <NuxtLink class="footer-link" to="https://drolx.com">{{
           'drolx Labs'
         }}</NuxtLink>
