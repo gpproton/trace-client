@@ -15,11 +15,11 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Wed May 15 2024
  */
 
 import { useUserAccountStore } from '@/stores/user-account';
-import { useServerStore } from '@trace/base/stores/server';
+import { useServerStore } from '@/stores/app-server';
 import { type ActionState, Workflow } from '@trace/model';
 import { storeToRefs } from 'pinia';
 

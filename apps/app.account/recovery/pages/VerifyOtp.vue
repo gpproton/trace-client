@@ -33,7 +33,7 @@ const handleKey = (index: number) => {
     <template #title>{{ $t('auth.verifyOtp') }}</template>
     <template #sub-title>
       <div class="text-body2 text-left q-mt-sm q-mr-md">
-        {{ $t('auth.otpHasBeenSent') }}
+        {{ $t('auth.recoveryOtpSent') }}
         <span class="text-overline">+234XXX123XXXX</span>
       </div>
     </template>

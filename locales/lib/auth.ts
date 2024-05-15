@@ -15,26 +15,36 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Wed May 15 2024
  */
 
 export default {
-  signInTitle: "Welcome Back!",
-  signInSubTitle: "Sign in to continue",
-  email: "Email",
-  enterOtp: "Verify OTP",
-  forgotPassword: "Forgot Password?",
-  password: "Password",
+  signInTitle: 'Welcome Back!',
+  signInSubTitle: 'Sign in to continue',
+  email: 'Email',
+  enterOtp: 'Verify OTP',
+  forgotPassword: 'Forgot Password?',
+  password: 'Password',
+  updatePassword: 'Update Password',
   linkedAccount: 'Linked Account',
-  passwordResetEmail: "Reset via Email",
-  passwordResetSms: "Reset via SMS",
-  resendOtp: "Resend OTP",
-  sendOtp: "Send OTP",
-  signIn: "Sign In",
-  signOut: "Sign Out",
-  username: "Username",
-  usernameOrEmail: "Username or Email",
-  verifyOtp: "Verify OTP",
+  passwordResetEmail: 'Reset via Email',
+  passwordResetSms: 'Reset via SMS',
+  resendOtp: 'Resend OTP',
+  sendOtp: 'Send OTP',
+  signIn: 'Sign In',
+  signOut: 'Sign Out',
+  username: 'Username',
+  usernameOrEmail: 'Username or Email',
+  verifyOtp: 'Verify OTP',
   dintRecieveCode: "Didn't recieve a code?",
-  otpHasBeenSent: "A 4 digit OTP has been sent to"
-}
+  recoveryNewPassword: 'New Password',
+  recoveryConfirmPassword: 'Confirm Password',
+  recoveryOtpSent: 'A 4 digit OTP has been sent to',
+  recoveryNote:
+    "Don't worry it happens!. please enter the email associated with your account.",
+  recoveryActionNote: 'Please select option to send OTP for password reset',
+  recoveryOptionEmail:
+    'Password reset OTP will be sent to your registered email address.',
+  recoverySmsOption:
+    'Password reset OTP will be sent to your registered mobile number.',
+};

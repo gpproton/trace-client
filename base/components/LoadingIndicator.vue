@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useQuasar } from 'quasar';
-import { useServerStore } from '@/stores/server';
+import { useLoadingStore } from '@/stores/loading';
 import { storeToRefs } from 'pinia';
 
 const $q = useQuasar();
 const timeout = ref();
-const serverStore = useServerStore();
+const serverStore = useLoadingStore();
 const { setReloading } = serverStore;
 const { getReloading } = storeToRefs(serverStore);
 
@@ -15,7 +15,7 @@ onMounted(() => {
   else {
     timeout.value = setTimeout(() => {
       setReloading(false);
-    }, 3000);
+    }, 100);
   }
 });
 onUnmounted(() => {

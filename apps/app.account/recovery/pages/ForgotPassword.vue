@@ -19,10 +19,7 @@ const selectOtpOption = () => {
     <template #title>{{ $t('auth.forgotPassword') }}</template>
     <template #sub-title>
       <div class="text-body2 text-left q-mt-sm q-mr-md">
-        <span>{{ "Don't worry it happens!. please enter the" }}</span>
-        <span
-          >{{ $t('auth.email') }} {{ 'associated with your account.' }}</span
-        >
+        {{ $t('auth.recoveryNote') }}
       </div>
     </template>
 

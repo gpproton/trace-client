@@ -32,11 +32,10 @@ import AppLogo from '@trace/base/icons/logo.svg';
               class="absolute-center"
             />
           </q-card>
-          <q-card square flat class="col column justify-between items-center">
-            <q-card class="full-width q-pa-sm">
+          <q-card square flat class="full-height col column justify-between items-center">
+            <q-card class="full-width full-height q-pa-sm row justify-center items-center">
               <router-view />
-            </q-card>
-            <div class="row q-pa-sm q-gutter-x-md">
+              <div class="row q-pa-sm q-gutter-x-sm">
               <div>
                 {{ $t('shared.copyright') + ' @ ' }}
                 <NuxtLink class="footer-link" to="https://drolx.com">{{
@@ -48,6 +47,7 @@ import AppLogo from '@trace/base/icons/logo.svg';
                 {{ $t('shared.privacyPolicy') }}
               </NuxtLink>
             </div>
+            </q-card>
           </q-card>
         </q-card>
       </q-page>
