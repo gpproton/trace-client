@@ -43,7 +43,7 @@ const apps = ref<AppOption[]>([
   },
 ]);
 
-const links = ref([
+const links = ref<Array<{ name: string, label: string }>>([
   {
     name: 'docs',
     label: 'router.documentation',
