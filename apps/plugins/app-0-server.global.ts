@@ -20,6 +20,7 @@
 
 import { useServerStore } from '@/stores/app-server';
 import { useLoadingStore } from '@trace/base/stores/loading';
+import { Workflow } from '@trace/model';
 
 export default defineNuxtPlugin(() => {
   const { setLoadingState } = useLoadingStore();
@@ -27,6 +28,24 @@ export default defineNuxtPlugin(() => {
 
   setServerState({
     maintenance: false,
+    workflows: [Workflow.Telematics, Workflow.Logistics],
+    attribution: 'drolx Labs',
+    attributionUrl: 'https://drolx.com',
+    auth: {
+      email: true,
+      google: true,
+      microsoft: false,
+      apple: false,
+    },
+    profile: {
+      id: 'xx-xx-xx-xx-xx',
+      name: 'Trace',
+      logo: '',
+      active: true,
+      confirmed: true,
+      language: 'en-US',
+      domains: ['localhost'],
+    },
   });
 
   setTimeout(() => {

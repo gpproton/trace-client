@@ -101,7 +101,8 @@ const links = ref<Array<{ name: string, label: string }>>([
               >
             </q-tabs>
             <q-btn
-              no-caps
+            :no-caps="true"
+            :no-wrap="true"
               color="primary"
               class="text-body1 border-radius-sm"
               @click="signOut"

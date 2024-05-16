@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useServerStore } from '@/stores/app-server';
 import { useUserAccountStore } from '@/stores/user-account';
 import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
 import IconGoogle from '@trace/base/icons/brands/google.svg?url';
@@ -7,19 +9,28 @@ import IconMicrosoft from '@trace/base/icons/brands/microsoft.svg?url';
 import IconApple from '@trace/base/icons/brands/apple.svg?url';
 
 defineOptions({ name: 'SignIn' });
+
 const userAccount = useUserAccountStore();
-const socialLogins = [
+const serverStore = useServerStore();
+const { getServerState } = storeToRefs(serverStore);
+
+type authItem = 'email' | 'google' | 'microsoft' | 'apple';
+
+const socialLogins: Array<{
+  icon: string,
+  title: authItem
+}> = [
   {
     icon: IconGoogle,
-    title: 'Google',
+    title: 'google',
   },
   {
     icon: IconMicrosoft,
-    title: 'Microsoft',
+    title: 'microsoft',
   },
   {
     icon: IconApple,
-    title: 'Apple',
+    title: 'apple',
   },
 ];
 
@@ -53,13 +64,13 @@ const triggerAuth = () => {
         <q-btn
           v-for="(social, index) in socialLogins"
           :key="index"
-          outline
+          :outline="true"
           size="md"
           color="secondary"
-          no-caps
-          no-wrap
-          disabled
-          class="border-radius-xs q-py-sm"
+          :no-caps="true"
+          :no-wrap="true"
+          :disabled="!getServerState.auth[social.title]"
+          class="border-radius-xs q-py-sm text-capitalize"
         >
           <q-img
             no-native-menu
@@ -78,6 +89,7 @@ const triggerAuth = () => {
       <q-input
         v-model="authState.username"
         outlined
+        :disable="!getServerState.auth?.email"
         no-error-icon
         type="text"
         :label="$t('auth.usernameOrEmail')"
@@ -93,6 +105,7 @@ const triggerAuth = () => {
       </q-input>
       <q-input
         v-model="authState.password"
+        :disable="!getServerState.auth?.email"
         outlined
         no-error-icon
         :type="authState.show ? 'text' : 'password'"
@@ -119,6 +132,7 @@ const triggerAuth = () => {
         :label="$t('auth.signIn')"
         color="action"
         size="lg"
+        :disable="!getServerState.auth?.email"
         no-caps
         class="full-width border-radius-sm text-weight-medium"
         @click="triggerAuth"

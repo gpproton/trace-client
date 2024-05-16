@@ -25,13 +25,26 @@ import { ref } from 'vue';
 export type ServerState = {
   maintenance?: boolean;
   profile?: Tenant;
-  workflow?: Workflow;
+  workflows?: Workflow[];
   attribution?: string;
   attributionUrl?: string;
+  auth: {
+    email: boolean;
+    google?: boolean;
+    microsoft?: boolean;
+    apple?: boolean;
+  };
 };
 
 export const useServerStore = defineStore('app-server', () => {
-  const serverState = ref<ServerState>({});
+  const serverState = ref<ServerState>({
+    auth: {
+      email: true,
+      google: false,
+      microsoft: false,
+      apple: false,
+    },
+  });
   const getTenantProfile = computed<Tenant | undefined>(
     () => serverState.value.profile,
   );
@@ -44,8 +57,8 @@ export const useServerStore = defineStore('app-server', () => {
   const getAttributionUrl = computed<string | undefined>(
     () => serverState?.value.attributionUrl,
   );
-  const getWorkflow = computed<Workflow | undefined>(
-    () => serverState?.value.workflow,
+  const getWorkflow = computed<Workflow[] | undefined>(
+    () => serverState?.value.workflows,
   );
   const getServerState = computed(() => serverState.value);
   const setServerState = (value: ServerState) => (serverState.value = value);

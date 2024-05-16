@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed May 15 2024
+ * Modified At: Thu May 16 2024
  */
 
 export interface Tenant {
@@ -23,7 +23,7 @@ export interface Tenant {
   active: boolean;
   confirmed: boolean;
   name: string;
-  fullName: string;
+  logo?: string;
   language: string;
   domains: string[];
 }
