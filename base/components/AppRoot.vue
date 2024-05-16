@@ -18,9 +18,9 @@ onMounted(() => {
   <!-- <PwaMaskableImage /> -->
   <!-- <PwaTransparentImage /> -->
   <NuxtPwaAssets />
-  <NuxtLayout>
     <loading-indicator>
+      <NuxtLayout>
         <NuxtPage />
+      </NuxtLayout>
     </loading-indicator>
-  </NuxtLayout>
 </template>
