@@ -6,7 +6,7 @@ import { useLanguageStore } from '@/stores/language';
 defineOptions({ name: 'LangSelector' });
 
 const localeStore = useLanguageStore();
-const { languages, setLocale } = localeStore;
+const { languages, localeUpdate } = localeStore;
 const { locale, getActiveCountry } = storeToRefs(localeStore);
 </script>
 
@@ -23,7 +23,7 @@ const { locale, getActiveCountry } = storeToRefs(localeStore);
     emit-value
     map-options
     options-dense
-    @update:model-value="setLocale"
+    @update:model-value="localeUpdate"
   >
     <template #prepend>
       <span class="q-mr-sm">

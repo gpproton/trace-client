@@ -1,14 +1,21 @@
 <script setup lang="ts">
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
-import { onMounted } from 'vue';
+import { onBeforeMount, watch } from 'vue';
+import { storeToRefs } from 'pinia';
 import { useLanguageStore } from '@/stores/language';
 
 defineOptions({ name: 'AppRoot' });
 
-onMounted(() => {
-  const localeStore = useLanguageStore();
-  const { bootstrapLocale } = localeStore;
+const localeStore = useLanguageStore();
+const { bootstrapLocale, localeUpdate } = localeStore;
+const { language } = storeToRefs(localeStore);
+
+onBeforeMount(() => {
   bootstrapLocale();
+});
+
+watch(language, () => {
+  localeUpdate(language.value as string);
 });
 </script>
 

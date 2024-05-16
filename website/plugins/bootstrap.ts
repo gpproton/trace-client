@@ -13,46 +13,21 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Friday, 29th Mar 2024
+ * Created At: Thursday, 16th May 2024
  * Modified By: Godwin peter .O
  * Modified At: Thu May 16 2024
  */
 
-import { useServerStore } from '@/stores/app-server';
 import { useLoadingStore } from '@trace/base/stores/loading';
 // import { useLanguageStore } from '@trace/base/stores/language';
-import { Workflow } from '@trace/model';
 
 export default defineNuxtPlugin(() => {
   const { setLoadingState } = useLoadingStore();
-  const { setServerState } = useServerStore();
   // const { bootstrapLocale } = useLanguageStore();
 
   // bootstrapLocale();
-  setServerState({
-    maintenance: false,
-    registration: true,
-    workflows: [Workflow.Telematics, Workflow.Logistics],
-    attribution: 'drolx Labs',
-    attributionUrl: 'https://drolx.com',
-    auth: {
-      email: true,
-      google: true,
-      microsoft: false,
-      apple: false,
-    },
-    profile: {
-      id: 'xx-xx-xx-xx-xx',
-      name: 'Trace',
-      logo: '',
-      active: true,
-      confirmed: true,
-      language: 'en-US',
-      domains: ['localhost'],
-    },
-  });
 
   setTimeout(() => {
     setLoadingState(false);
-  }, 1500);
+  }, 100);
 });

@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Fri May 17 2024
  */
 
 import { defineStore } from 'pinia';
@@ -25,9 +25,14 @@ import { languageSelection } from '@trace/locales';
 export const useLanguageStore = defineStore(
   'language',
   () => {
-    const { locale } = useI18n({ useScope: 'global' });
+    const { locale, locales, setLocale } = useI18n();
+    const languages = computed(() => languageSelection);
+    const availableLocales = computed(() => {
+      return locales.value.filter((i) => i.code !== locale.value);
+    });
+
     const language = ref<string>();
-    const getLocale = computed(() => locale.value);
+    const getLocale = computed(() => language.value);
     const getActiveCountry = computed<string>(() => {
       const value = languageSelection.find(
         (item) => item.value === locale.value,
@@ -35,9 +40,9 @@ export const useLanguageStore = defineStore(
       return value?.countryCode ?? 'US';
     });
 
-    const setLocale = (value: string) => {
+    const localeUpdate = (value: string) => {
+      setLocale(value);
       language.value = value;
-      locale.value = value;
     };
 
     const bootstrapLocale = () => {
@@ -47,14 +52,17 @@ export const useLanguageStore = defineStore(
     return {
       locale,
       language,
-      languages: languageSelection,
+      languages,
+      availableLocales,
       getLocale,
       getActiveCountry,
-      setLocale,
+      localeUpdate,
       bootstrapLocale,
     };
   },
   {
-    persist: true,
+    persist: {
+      storage: persistedState.localStorage,
+    },
   },
 );

@@ -67,6 +67,7 @@
     "@nuxtjs/robots": "^3.0.0",
     "@quasar/extras": "^1.16.9",
     "@vue-js-cron/quasar": "^3.0.1",
+    "pinia-shared-state": "^0.5.1",
     "quasar": "^2.11.1",
     "vue-country-flag-next": "^2.3.2"
   }

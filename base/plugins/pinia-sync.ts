@@ -13,20 +13,18 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Wednesday, 27th Mar 2024
+ * Created At: Friday, 17th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu May 16 2024
+ * Modified At: Fri May 17 2024
  */
 
-export default {
-  continueWith: 'Continue with',
-  selectProfile: 'Choose preffered profile',
-  selectOptionProceed: 'Select appropriate option to proceed.',
-  ignoreIfUnaware:
-    'Please ignore, if you are unaware of this invite or think you have received it by mistake.',
-  selectWorkflow: 'How will you use trace?',
-  accountAlready: 'Already have an account?',
-  welcomeIntro: 'A few clicks away from clarity.',
-  welcomeDescription:
-    'Trace allows full transportation digitization allowing adaptation to workflow/processes',
-};
+import { PiniaSharedState } from 'pinia-shared-state';
+
+export default defineNuxtPlugin((nuxtApp) => {
+  // @ts-expect-error: Missing types?
+  nuxtApp.$pinia.use(
+    PiniaSharedState({
+      enable: true,
+    }),
+  );
+});
