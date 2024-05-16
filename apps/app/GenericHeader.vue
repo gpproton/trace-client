@@ -22,20 +22,23 @@ const { getTenantName } = storeToRefs(serverStore);
 <template>
   <q-toolbar class="q-py-sm q-px-md">
     <slot name="start"></slot>
-    <slot name="title">
-      <q-toolbar-title
-        class="text-h5 text-weight-bolder"
-        :class="white ? 'text-white' : 'text-primary'"
-      >
-        <nuxt-link class="row items-center q-gutter-x-sm" to="/">
-          <app-logo :class="white ? 'white-logo' : 'app-logo'" />
-          <span>{{ getTenantName }}</span>
-        </nuxt-link>
-      </q-toolbar-title>
-    </slot>
-
+    <div class="row justify-start q-gutter-x-sm items-center">
+      <slot name="title">
+        <q-toolbar-title
+          class="text-h5 text-weight-bolder"
+          :class="white ? 'text-white' : 'text-primary'"
+        >
+          <nuxt-link class="row items-center q-gutter-x-sm" to="/">
+            <app-logo :class="white ? 'white-logo' : 'app-logo'" />
+            <span>{{ getTenantName }}</span>
+          </nuxt-link>
+        </q-toolbar-title>
+      </slot>
+    </div>
+    <slot name="left"></slot>
     <q-space />
     <slot />
+    <slot name="right"></slot>
     <slot name="language">
       <lang-selector v-if="language" class="q-mr-md" />
     </slot>

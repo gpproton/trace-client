@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const links = [
   {
-    name: 'support',
+    name: 'support-center',
     label: 'shared.support',
   },
   {
@@ -20,7 +20,7 @@ const links = [
     <q-route-tab
       v-for="(link, index) in links"
       :key="index"
-      :to="{ name: link.name }"
+      :to="`/${link.name}`"
       :name="link.name"
       class="text-body1 border-radius-sm"
       >{{ $t(link.label) }}</q-route-tab

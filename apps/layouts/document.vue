@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import AppLogo from '@trace/base/icons/logo.svg';
-import LangSelector from '@trace/base/components/LangSelector.vue';
+import GenericHeader from '@/app/GenericHeader.vue';
+import GenericFooter from '@/app/GenericFooter.vue';
 
 defineOptions({ name: 'DocumentLayout' });
 const leftDrawerOpen = ref(false);
@@ -13,24 +13,19 @@ const toggleLeftDrawer = () => {
 <template>
   <q-layout view="hHh lpR lFf">
     <q-header class="bg-transparent text-prmary" bordered>
-      <q-toolbar>
-        <div class="row items-center">
-          <app-logo class="app-logo" />
-          <q-toolbar-title class="text-h5 text-primary text-weight-bold">
-            {{ 'Trace' }}
-          </q-toolbar-title>
+      <generic-header>
+        <template #left>
           <q-btn
             color="primary"
             dense
             flat
             round
             icon="bi-list"
+            class="q-ml-md"
             @click="toggleLeftDrawer"
           />
-        </div>
-        <q-space />
-        <div class="row q-gutter-lg">
-          <lang-selector />
+        </template>
+        <template #end>
           <q-btn
             no-caps
             color="primary"
@@ -38,8 +33,8 @@ const toggleLeftDrawer = () => {
             class="text-body1 border-radius-sm"
             >{{ $t('router.work-spaces') }}</q-btn
           >
-        </div>
-      </q-toolbar>
+        </template>
+      </generic-header>
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above side="left" bordered>
@@ -49,5 +44,8 @@ const toggleLeftDrawer = () => {
     <q-page-container>
       <slot></slot>
     </q-page-container>
+    <q-footer class="bg-secondary">
+      <generic-footer></generic-footer>
+    </q-footer>
   </q-layout>
 </template>

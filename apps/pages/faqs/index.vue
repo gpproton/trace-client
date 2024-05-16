@@ -1,3 +1,10 @@
+<script setup lang="ts">
+definePageMeta({
+  layout: 'empty',
+  permission: false,
+});
+</script>
+
 <template>
-  <div>Site FAQ's</div>
+  <page-wrapper padding> </page-wrapper>
 </template>

@@ -47,7 +47,11 @@ const apps = ref<AppOption[]>([
 const links = ref<Array<{ name: string; label: string }>>([
   {
     name: 'docs',
-    label: 'router.documentation',
+    label: 'router.docs',
+  },
+  {
+    name: 'contact',
+    label: 'shared.contact',
   },
   {
     name: 'faqs',
@@ -81,7 +85,13 @@ const links = ref<Array<{ name: string; label: string }>>([
         <q-card square fit class="col window-height no-shadow">
           <q-toolbar class="q-px-md q-py-sm q-gutter-sm">
             <q-space />
-            <q-tabs no-caps shrink stretch content-class="text-primary q-mr-sm">
+            <q-tabs
+              no-caps
+              dense
+              shrink
+              stretch
+              content-class="text-primary q-mr-sm"
+            >
               <q-route-tab
                 v-for="(link, index) in links"
                 :key="index"
