@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Thu May 16 2024
  */
 
 import { appHeader } from '@trace/shared';
@@ -40,7 +40,6 @@ export default defineNuxtConfig({
   extends: ['../base'],
   modules: ['nuxt3-leaflet', '@nuxt/content', './app.core/app-module'],
   routeRules: {
-    '/**': { ssr: true },
     '/docs**': { ssr: true },
     '/api/service': { proxy: import.meta.env.SERVER_API },
     '/api/files': { proxy: import.meta.env.SERVER_FILES },

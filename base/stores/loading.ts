@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2023 - 2024 drolx Labs
- * 
+ *
  * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
  * you may not use this file except in compliance with the License.
  * Change License: Reciprocal Public License 1.5
@@ -11,23 +11,23 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 27th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed May 15 2024
+ * Modified At: Thu May 16 2024
  */
 
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
 export const useLoadingStore = defineStore('loading', () => {
-  const reloading = ref<boolean>(true);
-  const getReloading = computed(() => reloading.value);
-  const setReloading = (value: boolean) => (reloading.value = value);
+  const loading = ref<boolean>(true);
+  const getLoadingState = computed(() => loading.value);
+  const setLoadingState = (value: boolean) => (loading.value = value);
 
   return {
-    getReloading,
-    setReloading,
+    getLoadingState,
+    setLoadingState,
   };
 });

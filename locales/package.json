@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "pnpm": "^8.15.4",
+    "pnpm": "^9.1.1",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
     "tsx": "^4.7.1"

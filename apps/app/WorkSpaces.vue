@@ -94,7 +94,6 @@ const links = ref<Array<{ name: string, label: string }>>([
               <q-route-tab
                 v-for="(link, index) in links"
                 :key="index"
-                exact
                 :to="`/${link.name}`"
                 :name="link.name"
                 class="text-body1 border-radius-sm"

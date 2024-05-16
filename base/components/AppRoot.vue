@@ -13,14 +13,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <loading-indicator>
-    <NuxtPwaAssets />
-    <!-- TODO: apply image to PWA components later -->
-    <!-- <PwaFaviconImage /> -->
-    <!-- <PwaMaskableImage /> -->
-    <!-- <PwaTransparentImage /> -->
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </loading-indicator>
+  <!-- TODO: apply image to PWA components later -->
+  <!-- <PwaFaviconImage /> -->
+  <!-- <PwaMaskableImage /> -->
+  <!-- <PwaTransparentImage /> -->
+  <NuxtPwaAssets />
+  <NuxtLayout>
+    <loading-indicator>
+        <NuxtPage />
+    </loading-indicator>
+  </NuxtLayout>
 </template>

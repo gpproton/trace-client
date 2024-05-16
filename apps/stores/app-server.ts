@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 15th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed May 15 2024
+ * Modified At: Thu May 16 2024
  */
 
 import type { Tenant, Workflow } from '@trace/model';
@@ -26,14 +26,23 @@ export type ServerState = {
   maintenance?: boolean;
   profile?: Tenant;
   workflow?: Workflow;
-  footerName?: string;
-  footerUrl?: string;
+  attribution?: string;
+  attributionUrl?: string;
 };
 
 export const useServerStore = defineStore('app-server', () => {
   const serverState = ref<ServerState>({});
   const getTenantProfile = computed<Tenant | undefined>(
     () => serverState.value.profile,
+  );
+  const getTenantName = computed<string | undefined>(
+    () => serverState?.value?.profile?.name,
+  );
+  const getAttribution = computed<string | undefined>(
+    () => serverState?.value.attribution,
+  );
+  const getAttributionUrl = computed<string | undefined>(
+    () => serverState?.value.attributionUrl,
   );
   const getWorkflow = computed<Workflow | undefined>(
     () => serverState?.value.workflow,
@@ -43,6 +52,9 @@ export const useServerStore = defineStore('app-server', () => {
 
   return {
     getTenantProfile,
+    getTenantName,
+    getAttribution,
+    getAttributionUrl,
     getWorkflow,
     getServerState,
     setServerState,

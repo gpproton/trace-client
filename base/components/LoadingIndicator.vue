@@ -1,39 +1,20 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import { useQuasar } from 'quasar';
 import { useLoadingStore } from '@/stores/loading';
 import { storeToRefs } from 'pinia';
 
-const $q = useQuasar();
-const timeout = ref();
 const serverStore = useLoadingStore();
-const { setReloading } = serverStore;
-const { getReloading } = storeToRefs(serverStore);
-
-onMounted(() => {
-  if ($q.platform.is.capacitor) setReloading(false);
-  else {
-    timeout.value = setTimeout(() => {
-      setReloading(false);
-    }, 100);
-  }
-});
-onUnmounted(() => {
-  if (!$q.platform.is.capacitor) clearTimeout(timeout.value);
-});
+const { getLoadingState } = storeToRefs(serverStore);
 </script>
 
 <template>
-  <div v-show="!getReloading">
+  <div v-show="!getLoadingState">
     <slot />
   </div>
-  <slot name="loading">
-    <div v-show="getReloading" class="splash-screen">
-      <div class="spinner-wrapper">
-        <div class="spinner"></div>
-      </div>
+  <div  v-show="getLoadingState" class="splash-screen">
+    <div class="spinner-wrapper">
+      <div class="spinner"></div>
     </div>
-  </slot>
+  </div>
 </template>
 
 <style lang="scss" scoped>

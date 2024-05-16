@@ -13,23 +13,23 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Wednesday, 27th Mar 2024
+ * Created At: Friday, 29th Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Thu May 16 2024
  */
 
-import { Notify, LoadingBar } from 'quasar';
+import { useServerStore } from '@/stores/app-server';
+import { useLoadingStore } from '@trace/base/stores/loading';
 
 export default defineNuxtPlugin(() => {
-  Notify.setDefaults({
-    progress: true,
-    position: 'top',
-    timeout: 3000,
+  const { setLoadingState } = useLoadingStore();
+  const { setServerState } = useServerStore();
+
+  setServerState({
+    maintenance: false,
   });
 
-  LoadingBar.setDefaults({
-    color: 'primary',
-    size: '2.5px',
-    position: 'top',
-  });
+  setTimeout(() => {
+    setLoadingState(false);
+  }, 1500);
 });
