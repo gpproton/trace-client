@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import AppLogo from '@trace/base/icons/logo.svg';
 import LangSelector from '@trace/base/components/LangSelector.vue';
 import { onboardRoutes } from './module-routes';
 import { useOnboardStore } from '@trace/base/composables/on-board';
+import BoardingFooter from '@/app.account/BoardingFooter.vue';
+import GenericHeader from '@/app/GenericHeader.vue';
+import SupportLinks from '@/app.account/SupportLinks.vue';
 
 defineOptions({ name: 'OnboardLayout' });
 
@@ -19,12 +21,7 @@ const { getColor, getIcon } = onboardStore;
           fit
           class="gt-sm col-5 bg-app-background window-height column justify-between"
         >
-          <q-toolbar class="q-py-sm q-px-md">
-            <app-logo class="app-logo" />
-            <q-toolbar-title class="text-h5 text-primary text-weight-bold">
-              {{ 'Trace' }}
-            </q-toolbar-title>
-          </q-toolbar>
+          <generic-header :language="false"></generic-header>
           <div class="q-px-xl">
             <q-timeline color="grey-5" layout="dense" class="q-px-none">
               <q-timeline-entry
@@ -45,24 +42,28 @@ const { getColor, getIcon } = onboardStore;
               </q-timeline-entry>
             </q-timeline>
           </div>
-          <div class="q-pa-md text-primary">
-            {{ 'All right reserved.' }}
-            <NuxtLink class="footer-link" to="https://drolx.com">{{
-              'drolx Labs'
-            }}</NuxtLink>
-          </div>
+          <div class="q-pa-md"></div>
         </q-card>
         <q-card square fit class="col window-height">
-          <q-toolbar class="q-px-md">
-            <q-space />
-            <lang-selector />
-          </q-toolbar>
-          <div class="q-pa-sm">
-            <router-view />
-          </div>
+          <q-layout>
+            <q-header class="bg-transparent">
+              <q-toolbar class="q-px-md gt-sm">
+                <lang-selector />
+                <q-space />
+                <support-links></support-links>
+              </q-toolbar>
+              <generic-header class="lt-md"></generic-header>
+            </q-header>
+
+            <q-page-container class="q-pa-sm">
+              <router-view />
+            </q-page-container>
+            <q-footer class="bg-transparent">
+              <boarding-footer></boarding-footer>
+            </q-footer>
+          </q-layout>
         </q-card>
       </div>
     </q-page-container>
   </q-layout>
 </template>
-./module-routes

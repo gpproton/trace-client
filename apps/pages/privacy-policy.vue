@@ -1,9 +1,12 @@
 <script setup lang="ts">
 definePageMeta({
+  layout: 'empty',
   permission: false,
 });
 </script>
 
 <template>
-  <div>Privacy policy</div>
+  <page-wrapper padding>
+    <div>Privacy policy</div>
+  </page-wrapper>
 </template>

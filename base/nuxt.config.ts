@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@vue-macros/nuxt',
     '@vite-pwa/nuxt',
+    '@nuxtjs/tailwindcss',
   ],
   pwa: {},
   vite: {

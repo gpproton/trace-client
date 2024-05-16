@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Thu May 16 2024
  */
 
 import { ref } from 'vue';
@@ -35,9 +35,12 @@ export const useUserAccountStore = defineStore(
         actions: { create: true, read: true, update: false, delete: true },
       },
     ]);
+
     // TODO: Fix pinia session storage issues
     // const accessToken = ref<string | null>();
     const accessToken = ref<string | null>();
+    const timeout = ref();
+    const loading = ref<boolean>(false);
     const user = ref<User | null>({
       id: 'ac707e42-74c4-4107-beba-4897107bf9f7',
       tenantId: '60dccc53-d969-4bb5-a08b-dcf14feab87c',
@@ -53,6 +56,7 @@ export const useUserAccountStore = defineStore(
       lastName: 'Doe',
     });
 
+    const getLoading = computed(() => loading.value);
     const getUserName = computed(() => user.value);
     const getUserPermmisions = computed(() => permissions.value);
     const getAccessToken = computed(() => accessToken.value);
@@ -69,13 +73,20 @@ export const useUserAccountStore = defineStore(
     };
 
     const signIn = (auth: { username: string; password: string }) => {
-      console.log('triggered auth here');
-      if (auth.username === 'dev' && auth.password === 'dev') {
-        setAccessToken('xx-xx-xx-xx');
-        router.replace({ name: 'work-spaces' });
-      } else {
-        console.log('Something went wrong');
-      }
+      loading.value = true;
+      timeout.value = setTimeout(() => {
+        if (auth.username === 'dev' && auth.password === 'dev') {
+          setAccessToken('xx-xx-xx-xx');
+          console.log('Completed dev login');
+          router.replace({ name: 'work-spaces' });
+        } else {
+          console.log('Something went wrong');
+        }
+        loading.value = false;
+      }, 2500);
+
+      // TODO: clear on component
+      // clearTimeout(timeout.value);
     };
 
     const signOut = () => {
@@ -90,6 +101,7 @@ export const useUserAccountStore = defineStore(
     };
 
     return {
+      getLoading,
       user,
       accessToken,
       getUserName,

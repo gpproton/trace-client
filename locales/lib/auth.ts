@@ -15,13 +15,14 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed May 15 2024
+ * Modified At: Thu May 16 2024
  */
 
 export default {
-  signInTitle: 'Welcome Back!',
-  signInSubTitle: 'Sign in to continue',
-  email: 'Email',
+  continueSignin: 'Sign in to continue',
+  welcomeBack: 'Welcome Back',
+  newHere: 'New Here?',
+  createAccount: 'Create an account',
   enterOtp: 'Verify OTP',
   forgotPassword: 'Forgot Password?',
   password: 'Password',

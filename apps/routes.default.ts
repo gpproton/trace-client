@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Thu May 16 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -43,63 +43,57 @@ const routes: Route[] = [
       },
     },
   },
-  // {
-  //   name: 'support-docs',
-  //   path: '/docs',
-  //   redirect: { name: 'support-docs.index' },
-  //   meta: {
-  //     menu: 'app',
-  //     title: 'Documentation',
-  //     icon: 'bi-person',
-  //     permission: false,
-  //   },
-  //   component: () => import('@/app/DocumentLayout.vue'),
-  //   children: [
-  //     {
-  //       name: 'support-docs.index',
-  //       path: 'home',
-  //       meta: {
-  //         title: 'Documentation',
-  //         icon: 'bi-person',
-  //         permission: false,
-  //       },
-  //       component: () => import('@/app/ContentView.vue'),
-  //     },
-  //     {
-  //       name: 'support-docs.slug',
-  //       path: ':slug',
-  //       meta: {
-  //         title: 'Documentation',
-  //         icon: 'bi-person',
-  //         permission: false,
-  //       },
-  //       component: () => import('@/app/ContentView.vue'),
-  //     },
-  //   ],
-  // },
 ];
 
-export const addCatchAll = (key: string = ''): Route => ({
-  path: `:catchAll(.*)*`,
-  name: key === '' ? 'error' : `${key}-error`,
-  component: () => import('@trace/base/components/NotFound.vue'),
-  meta: {
-    permission: false,
-    title: 'router.error',
-  },
-  props: {
-    home: key === '' ? 'home' : key,
-  },
-});
+export const addCatchAll = (key: string = ''): Route => {
+  const name = key === '' ? 'error' : `${key}-error`;
+  const stack = {
+    path: `:catchAll(.*)*`,
+    name,
+    component: undefined as any,
+    children: [
+      {
+        name: `${name}-content`,
+        path: '',
+        component: () => import('@trace/base/components/NotFound.vue'),
+        meta: {
+          permission: false,
+          title: 'router.error',
+        },
+        props: {
+          home: key === '' ? 'home' : key,
+        },
+      },
+    ],
+  };
 
-export const addUnAuthorized = (key: string = ''): Route => ({
-  path: 'un-authorized',
-  name: key === '' ? 'un-authorized' : `${key}-un-authorized`,
-  component: () => import('@/app/UnAuthorized.vue'),
-  meta: {
-    permission: false,
-    title: 'router.un-authorized',
-  },
-});
+  if (key === '') stack.component = () => import('@/layouts/empty.vue');
+
+  return stack;
+};
+
+export const addUnAuthorized = (key: string = ''): Route => {
+  const name = key === '' ? 'un-authorized' : `${key}-un-authorized`;
+  const stack = {
+    path: 'un-authorized',
+    name,
+    component: undefined as any,
+    children: [
+      {
+        name: `${name}-content`,
+        path: '',
+        component: () => import('@/app/UnAuthorized.vue'),
+        meta: {
+          permission: false,
+          title: 'router.un-authorized',
+        },
+      },
+    ],
+  };
+
+  if (key === '') stack.component = () => import('@/layouts/empty.vue');
+
+  return stack;
+};
 
 export default routes;

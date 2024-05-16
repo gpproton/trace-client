@@ -15,10 +15,11 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Thu May 16 2024
  */
 
 export default {
+  email: 'Email',
   active: 'Active',
   account: 'Account',
   settings: 'Settings',
@@ -68,9 +69,13 @@ export default {
   representative: 'Representative Information',
   organizationInformation: 'Organization Information',
   privacyPolicy: 'Privacy policy',
+  welcome: 'Welcome',
+  back: 'Back',
+  continue: 'Continue',
   copyright: 'Copyright',
   registration: 'Registration',
   verification: 'Verification',
   confirmation: 'Confirmation',
   integration: 'Integration',
+  or: 'Or',
 };

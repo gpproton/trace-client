@@ -28,6 +28,7 @@ export default defineNuxtPlugin(() => {
 
   setServerState({
     maintenance: false,
+    registration: true,
     workflows: [Workflow.Telematics, Workflow.Logistics],
     attribution: 'drolx Labs',
     attributionUrl: 'https://drolx.com',

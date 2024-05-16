@@ -1,19 +1,13 @@
 <script lang="ts" setup>
 import TwoFactor from '@trace/base/icons/banner/two-factor-authentication.svg?url';
-import AppLogo from '@trace/base/icons/logo.svg';
+import GenericHeader from '@/app/GenericHeader.vue';
+import GenericFooter from '@/app/GenericFooter.vue';
 </script>
 
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header :elevated="false" class="bg-transparent" height-hint="64">
-      <q-toolbar class="text-primary q-pa-xs q-mx-sm">
-        <app-logo class="app-logo" />
-        <q-toolbar-title class="text-h5 text-weight-bold">
-          {{ 'Trace' }}
-        </q-toolbar-title>
-        <q-space />
-        <lang-selector class="q-mr-md" />
-      </q-toolbar>
+      <generic-header></generic-header>
     </q-header>
     <q-page-container>
       <q-page class="fit page q-pa-xs column justify-center items-center">
@@ -32,24 +26,13 @@ import AppLogo from '@trace/base/icons/logo.svg';
               class="absolute-center"
             />
           </q-card>
-          <q-card square flat class="full-height col column justify-between items-center">
-            <q-card class="full-width full-height q-pa-sm row justify-center items-center">
+          <q-card square flat class="full-height col">
+            <q-card class="full-height q-pa-sm row justify-center items-center">
               <router-view />
-              <div class="row q-pa-sm q-gutter-x-sm">
-              <div>
-                {{ $t('shared.copyright') + ' @ ' }}
-                <NuxtLink class="footer-link" to="https://drolx.com">{{
-                  'drolx Labs'
-                }}</NuxtLink>
-              </div>
-              <div>|</div>
-              <NuxtLink class="footer-link" to="#">
-                {{ $t('shared.privacyPolicy') }}
-              </NuxtLink>
-            </div>
             </q-card>
           </q-card>
         </q-card>
+        <generic-footer></generic-footer>
       </q-page>
     </q-page-container>
   </q-layout>

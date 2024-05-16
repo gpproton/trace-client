@@ -26,13 +26,13 @@ const { isDesktop } = storeToRefs(breakpointStates);
   <div class="column items-center justify-center q-mt-lg">
     <slot name="media">
       <q-img
-      no-native-menu
-      no-spinner
-      :src="imageUrl"
-      class="q-mt-xs q-mb-md"
-      width="calc(32vw)"
-      alt="Under Construction"
-    />
+        no-native-menu
+        no-spinner
+        :src="imageUrl"
+        class="q-mt-xs q-mb-md"
+        width="calc(32vw)"
+        alt="Under Construction"
+      />
     </slot>
     <div class="text-center q-mt-lg">
       <div class="text-h4 text-primary text-weight-bold q-mb-lg">

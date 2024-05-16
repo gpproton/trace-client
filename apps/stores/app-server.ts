@@ -18,12 +18,17 @@
  * Modified At: Thu May 16 2024
  */
 
+import IconGoogle from '@trace/base/icons/brands/google.svg?url';
+import IconMicrosoft from '@trace/base/icons/brands/microsoft.svg?url';
+import IconApple from '@trace/base/icons/brands/apple.svg?url';
 import type { Tenant, Workflow } from '@trace/model';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
+export type ServerAuthItem = 'email' | 'google' | 'microsoft' | 'apple';
 export type ServerState = {
   maintenance?: boolean;
+  registration?: boolean;
   profile?: Tenant;
   workflows?: Workflow[];
   attribution?: string;
@@ -38,6 +43,7 @@ export type ServerState = {
 
 export const useServerStore = defineStore('app-server', () => {
   const serverState = ref<ServerState>({
+    registration: false,
     auth: {
       email: true,
       google: false,
@@ -45,9 +51,11 @@ export const useServerStore = defineStore('app-server', () => {
       apple: false,
     },
   });
+
   const getTenantProfile = computed<Tenant | undefined>(
     () => serverState.value.profile,
   );
+  const getRegistrationChoice = computed(() => serverState.value.registration);
   const getTenantName = computed<string | undefined>(
     () => serverState?.value?.profile?.name,
   );
@@ -65,6 +73,7 @@ export const useServerStore = defineStore('app-server', () => {
 
   return {
     getTenantProfile,
+    getRegistrationChoice,
     getTenantName,
     getAttribution,
     getAttributionUrl,
@@ -73,3 +82,21 @@ export const useServerStore = defineStore('app-server', () => {
     setServerState,
   };
 });
+
+export const socialLogins: Array<{
+  icon: string;
+  title: ServerAuthItem;
+}> = [
+  {
+    icon: IconGoogle,
+    title: 'google',
+  },
+  {
+    icon: IconMicrosoft,
+    title: 'microsoft',
+  },
+  {
+    icon: IconApple,
+    title: 'apple',
+  },
+];

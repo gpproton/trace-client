@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import AppLogo from '@trace/base/icons/logo.svg';
 import OnboardAsset from '@trace/base/icons/banner/man-3.svg?url';
 import LangSelector from '@trace/base/components/LangSelector.vue';
-import links from './layout-routes';
+import GenericHeader from '@/app/GenericHeader.vue';
+import BoardingFooter from '@/app.account/BoardingFooter.vue';
+import SupportLinks from '@/app.account/SupportLinks.vue';
 
 defineOptions({ name: 'WelcomeLayout' });
-
-const intro = `A few clicks away from maximum cohesiveness.`;
-const extraInfo =
-  'Trace allows full transportation digitization allowing adaptation to workflow/process';
 </script>
 
 <template>
@@ -20,15 +17,14 @@ const extraInfo =
           fit
           class="gt-sm col-4 bg-primary window-height column justify-between"
         >
-          <q-toolbar class="q-px-md">
-            <app-logo class="welcome-logo" />
-            <q-toolbar-title class="text-h5 text-white text-weight-bold">
-              {{ 'Trace' }}
-            </q-toolbar-title>
-          </q-toolbar>
+          <generic-header white :language="false"></generic-header>
           <div class="column justify-between q-px-lg q-py-sm">
-            <div class="text-white text-h3 text-weight-medium">{{ intro }}</div>
-            <div class="text-white q-mr-lg">{{ extraInfo }}</div>
+            <div class="text-white text-h3 text-weight-medium">
+              {{ $t('onboard.welcomeIntro') }}
+            </div>
+            <div class="text-white q-mr-lg">
+              {{ $t('onboard.welcomeDescription') }}
+            </div>
           </div>
           <q-img
             no-native-menu
@@ -39,46 +35,18 @@ const extraInfo =
           />
         </q-card>
         <q-card square fit class="col window-height column justify-between">
-          <q-toolbar class="q-py-sm q-px-md">
+          <q-toolbar class="q-py-sm q-px-md gt-sm">
             <lang-selector />
             <q-space />
-            <q-tabs no-caps shrink stretch content-class="text-primary">
-              <q-route-tab
-                v-for="(link, index) in links"
-                :key="index"
-                :to="{ name: link.name }"
-                :name="link.name"
-                class="text-body1 border-radius-sm"
-                >{{ $t(link.label) }}</q-route-tab
-              >
-            </q-tabs>
+            <support-links></support-links>
           </q-toolbar>
+          <generic-header class="lt-md"></generic-header>
           <div class="q-pa-sm col-10">
             <router-view />
           </div>
-          <div class="row q-py-md">
-            <div class="q-px-lg">
-              <span>{{ 'Already have an account?' }}</span>
-              <nuxt-link
-                class="text-body1 text-primary q-ml-sm text-capitalize"
-                :to="{ name: 'auth.sign-in' }"
-              >
-                {{ $t('auth.signIn') }}
-              </nuxt-link>
-            </div>
-          </div>
+          <boarding-footer></boarding-footer>
         </q-card>
       </div>
     </q-page-container>
   </q-layout>
 </template>
-
-<style lang="scss" scoped>
-.welcome-logo {
-  height: 38px;
-  width: 38px;
-  :deep(path) {
-    fill: #fff !important;
-  }
-}
-</style>

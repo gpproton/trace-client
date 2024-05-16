@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import AppLogo from '@trace/base/icons/logo.svg';
 import WorkspaceIcon from '@trace/base/icons/banner/workspace.svg?url';
 import { Workspace } from '@trace/shared';
 import { useUserAccountStore } from '@/stores/user-account';
+import GenericHeader from '@/app/GenericHeader.vue';
+import GenericFooter from '@/app/GenericFooter.vue';
 
-defineOptions({ name: 'QuickStart' });
+defineOptions({ name: 'WorkSpaces' });
 
 interface AppOption {
   name: string;
@@ -43,7 +44,7 @@ const apps = ref<AppOption[]>([
   },
 ]);
 
-const links = ref<Array<{ name: string, label: string }>>([
+const links = ref<Array<{ name: string; label: string }>>([
   {
     name: 'docs',
     label: 'router.documentation',
@@ -64,12 +65,7 @@ const links = ref<Array<{ name: string, label: string }>>([
           fit
           class="gt-sm col-5 bg-app-background window-height column justify-between"
         >
-          <q-toolbar class="q-py-sm q-px-md">
-            <app-logo class="app-logo" />
-            <q-toolbar-title class="text-h5 text-primary text-weight-bold">
-              {{ 'Trace' }}
-            </q-toolbar-title>
-          </q-toolbar>
+          <generic-header></generic-header>
           <div class="q-pa-lg">
             <q-img
               no-native-menu
@@ -80,12 +76,7 @@ const links = ref<Array<{ name: string, label: string }>>([
               class="absolute-center"
             />
           </div>
-          <div class="q-px-md q-py-sm text-grey">
-            {{ 'All right reserved.' }}
-            <NuxtLink class="footer-link" to="https://drolx.com">{{
-              'drolx Labs'
-            }}</NuxtLink>
-          </div>
+          <generic-footer></generic-footer>
         </q-card>
         <q-card square fit class="col window-height no-shadow">
           <q-toolbar class="q-px-md q-py-sm q-gutter-sm">
@@ -101,8 +92,8 @@ const links = ref<Array<{ name: string, label: string }>>([
               >
             </q-tabs>
             <q-btn
-            :no-caps="true"
-            :no-wrap="true"
+              no-caps
+              no-wrap
               color="primary"
               class="text-body1 border-radius-sm"
               @click="signOut"

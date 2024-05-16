@@ -1,0 +1,54 @@
+<script setup lang="ts">
+import AppLogo from '@trace/base/icons/logo.svg';
+import LangSelector from '@trace/base/components/LangSelector.vue';
+import { storeToRefs } from 'pinia';
+import { useServerStore } from '@/stores/app-server';
+
+withDefaults(
+  defineProps<{
+    language?: boolean;
+    white?: boolean;
+  }>(),
+  {
+    language: true,
+    white: false,
+  },
+);
+
+const serverStore = useServerStore();
+const { getTenantName } = storeToRefs(serverStore);
+</script>
+
+<template>
+  <q-toolbar class="q-py-sm q-px-md">
+    <slot name="start"></slot>
+    <slot name="title">
+      <q-toolbar-title
+        class="text-h5 text-weight-bolder"
+        :class="white ? 'text-white' : 'text-primary'"
+      >
+        <nuxt-link class="row items-center q-gutter-x-sm" to="/">
+          <app-logo :class="white ? 'white-logo' : 'app-logo'" />
+          <span>{{ getTenantName }}</span>
+        </nuxt-link>
+      </q-toolbar-title>
+    </slot>
+
+    <q-space />
+    <slot />
+    <slot name="language">
+      <lang-selector v-if="language" class="q-mr-md" />
+    </slot>
+    <slot name="end"></slot>
+  </q-toolbar>
+</template>
+
+<style lang="scss" scoped>
+.white-logo {
+  width: 48px;
+  height: 48px;
+  :deep(path) {
+    fill: #fff !important;
+  }
+}
+</style>

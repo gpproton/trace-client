@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Thu May 16 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
@@ -55,7 +55,7 @@ export const routes = [
     name: 'home',
     path: '/',
     redirect: { name: 'work-spaces' },
-    component: () => import('@/app/EmptyLayout.vue'),
+    component: () => import('@trace/base/layouts/empty.vue'),
     children: [addCatchAll(), addUnAuthorized(), ...defaultRoutes],
   },
   ...identityRoutes,

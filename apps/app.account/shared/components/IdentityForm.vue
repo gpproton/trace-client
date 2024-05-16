@@ -12,7 +12,7 @@ defineOptions({ name: 'IdentityForm' });
       class="q-pa-md"
     >
       <div class="q-mb-lg">
-        <div class="text-primary text-h4">
+        <div class="text-primary text-h4 text-weight-bold">
           <slot name="title" />
         </div>
         <div class="text-accent text-center text-subtitle1 q-px-sm">
