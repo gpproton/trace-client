@@ -15,16 +15,19 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 25th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Fri May 17 2024
  */
 
 import { addCatchAll, addUnAuthorized } from '@/routes.default';
 import addOverviewRoute from '@/app/overviews/module-routes';
+import LiveModule from './live/module-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
 export default [
   addCatchAll(Workspace.Track),
   addUnAuthorized(Workspace.Track),
+  // Modules
+  LiveModule(),
   addOverviewRoute(Workspace.Track),
 ] as Route[];

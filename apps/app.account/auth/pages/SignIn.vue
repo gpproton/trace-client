@@ -2,15 +2,15 @@
 import { reactive } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useServerStore, socialLogins } from '@/stores/app-server';
-import { useUserAccountStore } from '@/stores/user-account';
+import { useUserAuthStore } from '@/stores/user-auth';
 import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
 
 defineOptions({ name: 'SignIn' });
 
-const userAccount = useUserAccountStore();
+const userAccount = useUserAuthStore();
 const serverStore = useServerStore();
 const { getServerState, getRegistrationChoice } = storeToRefs(serverStore);
-const { getLoading } = storeToRefs(userAccount);
+const { getLoading, timeout } = storeToRefs(userAccount);
 const loginForminactive = computed(
   () => !getServerState.value.auth?.email || getLoading.value,
 );
@@ -31,6 +31,10 @@ const resetForm = () => {
   authState.username = '';
   authState.password = '';
 };
+
+onUnmounted(() => {
+  clearTimeout(timeout.value);
+});
 </script>
 
 <template>

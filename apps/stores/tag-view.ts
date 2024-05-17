@@ -15,14 +15,14 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Fri May 17 2024
  */
 
 import type { RouteLocationNormalized, Router } from 'vue-router';
 import type { RouteData } from '@trace/base/typings';
 import { getFirst } from '@trace/base/utils';
 import { defineStore, storeToRefs } from 'pinia';
-import { useUserAccountStore } from './user-account';
+import { useUserAuthStore } from './user-auth';
 
 enum removeType {
   Right,
@@ -34,9 +34,8 @@ export const useTagViewStore = defineStore(
   'tagView',
   () => {
     const router: Router = useRouter();
-    const userAccountStore = useUserAccountStore();
-    const { getAccessToken } = storeToRefs(userAccountStore);
-    const accessToken = getAccessToken.value;
+    const userAuthStore = useUserAuthStore();
+    const { getAccessToken } = storeToRefs(userAuthStore);
 
     const tagView = ref<RouteData[]>([]);
     const storedTagView = ref<RouteData[] | null>(null);
@@ -186,7 +185,7 @@ export const useTagViewStore = defineStore(
       const router: Router = useRouter();
       setTagView([]);
       setStoredTagView([]);
-      if (accessToken) {
+      if (getAccessToken.value) {
         router.push({ name: 'home' });
       }
     };
@@ -208,6 +207,9 @@ export const useTagViewStore = defineStore(
     };
   },
   {
-    persist: true,
+    persist: {
+      paths: ['storedTagView'],
+      storage: persistedState.sessionStorage,
+    },
   },
 );

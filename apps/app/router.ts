@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu May 16 2024
+ * Modified At: Fri May 17 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
@@ -47,7 +47,11 @@ export const addWorkspaceRoute = (
   children: children,
   meta: { menu: 'app' },
   redirect: { name: `${app}-${root}` },
-  props: { workspace: app, overviewFilter: filter, mobileFilter: mobileFilter },
+  props: {
+    workspace: app,
+    overviewFilter: filter,
+    mobileFilter: mobileFilter,
+  },
 });
 
 export const routes = [
@@ -80,6 +84,7 @@ export const routes = [
     trackRoutes,
     [],
     [],
+    'live',
   ),
   addWorkspaceRoute(
     Workspace.Support,

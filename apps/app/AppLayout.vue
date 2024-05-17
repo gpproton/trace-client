@@ -16,12 +16,14 @@ import RouterInject from '@/components/RouterInject.vue';
 import type { RouteMenu } from '@trace/base/typings';
 
 interface IProps {
+  mouseOver?: boolean;
   workspace: Workspace;
   overviewFilter?: string[];
   mobileFilter?: string[];
 }
 
 const props = withDefaults(defineProps<IProps>(), {
+  mouseOver: true,
   overviewFilter: () => [],
   mobileFilter: () => [],
 });
@@ -51,7 +53,11 @@ watchEffect(() => {
   showSecondarySidebar.value = moduleFeatures.value.length > 0;
 });
 const workspaceValue = computed(() => props.workspace);
+const mouseTriggerValue = shallowRef(props.mouseOver);
+
 provide('app:workspace', workspaceValue);
+provide('app:sidebar-mouse', mouseTriggerValue);
+
 const quickCreateItems: IModuleCommands[] = [
   {
     name: 'action-1',
@@ -102,9 +108,11 @@ const quickCreateItems: IModuleCommands[] = [
         v-model:dark-mode="isDark"
         v-model:modules="modulesMenu"
         :drawer-mini-state="primaryMiniState"
+        :mouse-over="mouseOver"
         :overview-filter="overviewFilter"
         @update:dark-mode="setThemeState"
-      />
+      >
+      </desktop-sidebar>
     </slot>
     <!-- Desktop and page content -->
     <q-page-container v-if="isDesktop" class="no-scroll">

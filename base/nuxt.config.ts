@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu May 16 2024
+ * Modified At: Fri May 17 2024
  */
 
 import bootstrapIcons from 'quasar/icon-set/svg-bootstrap-icons';
@@ -56,7 +56,7 @@ export default defineNuxtConfig({
     cookieOptions: {
       sameSite: 'none',
     },
-    storage: 'localStorage',
+    // storage: 'localStorage',
   },
   css: [
     join(currentDir, './assets/colors.scss'),

@@ -15,17 +15,17 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Fri May 17 2024
  */
 
 import type { Router } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useUserAccountStore } from '@/stores/user-account';
+import { useUserAuthStore } from '@/stores/user-auth';
 import { workspaceApps } from '@trace/shared';
 
 export default defineNuxtPlugin(() => {
   const router: Router = useRouter();
-  const userAccount = useUserAccountStore();
+  const userAccount = useUserAuthStore();
   const { getAccessToken } = storeToRefs(userAccount);
 
   router.beforeEach((to, from, next) => {

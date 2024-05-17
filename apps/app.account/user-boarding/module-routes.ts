@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Fri May 17 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -29,6 +29,16 @@ export const onboardRoutes: Route[] = [
       permission: 'auth',
       title: 'Create Account',
       description: 'Provide personal information required to use our plaform',
+    },
+  },
+  {
+    path: 'create-password',
+    name: 'user-boarding.create-password',
+    component: () => import('./pages/CreatePassword.vue'),
+    meta: {
+      permission: 'auth',
+      title: 'Create Password',
+      description: 'Let user create preffered password',
     },
   },
   {

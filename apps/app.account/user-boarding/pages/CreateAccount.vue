@@ -6,7 +6,7 @@ const information = reactive({
   lastName: '',
   phone: '',
   extra: '',
-  acceptterms: false,
+  acceptTerms: false,
 });
 </script>
 
@@ -14,7 +14,7 @@ const information = reactive({
   <div class="row justify-center">
     <q-card square flat class="q-mt-sm q-pa-md onboard-form">
       <div class="q-mb-xl q-py-sm">
-        <div class="text-h4">{{ 'Complete onboarding' }}</div>
+        <div class="text-h4">{{ 'Complete Onboarding' }}</div>
         <div class="text-grey">{{ 'Process message information...' }}</div>
       </div>
       <q-form class="q-gutter-y-md">
@@ -35,7 +35,7 @@ const information = reactive({
         <q-input v-model="information.phone" filled label="Phone" />
         <q-input v-model="information.extra" filled label="Extra" />
         <q-toggle
-          v-model="information.acceptterms"
+          v-model="information.acceptTerms"
           label="I accept the license and terms"
         />
         <div class="q-mt-xl full-width row justify-between">

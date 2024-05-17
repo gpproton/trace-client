@@ -61,6 +61,10 @@ export const useLanguageStore = defineStore(
     };
   },
   {
+    share: {
+      enable: true,
+      initialize: true,
+    },
     persist: {
       storage: persistedState.localStorage,
     },

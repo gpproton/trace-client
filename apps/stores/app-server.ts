@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 15th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu May 16 2024
+ * Modified At: Fri May 17 2024
  */
 
 import IconGoogle from '@trace/base/icons/brands/google.svg?url';
@@ -31,7 +31,7 @@ export type ServerState = {
   registration?: boolean;
   profile?: Tenant;
   workflows?: Workflow[];
-  attribution?: string;
+  attributionText?: string;
   attributionUrl?: string;
   auth: {
     email: boolean;
@@ -60,7 +60,7 @@ export const useServerStore = defineStore('app-server', () => {
     () => serverState?.value?.profile?.name,
   );
   const getAttribution = computed<string | undefined>(
-    () => serverState?.value.attribution,
+    () => serverState?.value.attributionText,
   );
   const getAttributionUrl = computed<string | undefined>(
     () => serverState?.value.attributionUrl,

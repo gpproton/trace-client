@@ -15,25 +15,22 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 29th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu May 16 2024
+ * Modified At: Fri May 17 2024
  */
 
 import { useServerStore } from '@/stores/app-server';
 import { useLoadingStore } from '@trace/base/stores/loading';
-// import { useLanguageStore } from '@trace/base/stores/language';
 import { Workflow } from '@trace/model';
 
 export default defineNuxtPlugin(() => {
   const { setLoadingState } = useLoadingStore();
   const { setServerState } = useServerStore();
-  // const { bootstrapLocale } = useLanguageStore();
 
-  // bootstrapLocale();
   setServerState({
     maintenance: false,
     registration: true,
     workflows: [Workflow.Telematics, Workflow.Logistics],
-    attribution: 'drolx Labs',
+    attributionText: 'drolx Labs',
     attributionUrl: 'https://drolx.com',
     auth: {
       email: true,
@@ -54,5 +51,5 @@ export default defineNuxtPlugin(() => {
 
   setTimeout(() => {
     setLoadingState(false);
-  }, 1500);
+  }, 250);
 });

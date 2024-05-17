@@ -15,17 +15,13 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 16th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu May 16 2024
+ * Modified At: Fri May 17 2024
  */
 
 import { useLoadingStore } from '@trace/base/stores/loading';
-// import { useLanguageStore } from '@trace/base/stores/language';
 
 export default defineNuxtPlugin(() => {
   const { setLoadingState } = useLoadingStore();
-  // const { bootstrapLocale } = useLanguageStore();
-
-  // bootstrapLocale();
 
   setTimeout(() => {
     setLoadingState(false);

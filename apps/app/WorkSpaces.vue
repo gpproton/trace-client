@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import WorkspaceIcon from '@trace/base/icons/banner/workspace.svg?url';
 import { Workspace } from '@trace/shared';
-import { useUserAccountStore } from '@/stores/user-account';
+import { useUserAuthStore } from '@/stores/user-auth';
 import GenericHeader from '@/app/GenericHeader.vue';
 import GenericFooter from '@/app/GenericFooter.vue';
 
@@ -11,7 +11,7 @@ interface AppOption {
   name: string;
   icon: string;
 }
-const { signOut } = useUserAccountStore();
+const { signOut } = useUserAuthStore();
 const router = useRouter();
 const apps = ref<AppOption[]>([
   {

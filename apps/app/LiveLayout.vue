@@ -17,12 +17,13 @@ withDefaults(defineProps<IProps>(), {
 
 <template>
   <app-layout
+    :mouse-over="false"
     :workspace="workspace"
     :overview-filter="overviewFilter"
     :mobile-filter="mobileFilter"
   >
     <template #desktop-header>
-      <div></div>
+      <!-- <div>xx-xx-xx</div> -->
     </template>
     <template #desktop-secondary-sidebar>
       <div></div>

@@ -8,6 +8,8 @@ import UnderConstruction from '@trace/base/components/error/UnderConstruction.vu
 
 defineOptions({ name: 'PageWrapper' });
 
+const route = useRoute();
+
 interface scrollInfo {
   horizontalContainerSize: number;
   horizontalPercentage: number;
@@ -46,7 +48,6 @@ withDefaults(defineProps<IProps>(), {
   padding: true,
 });
 
-const route = useRoute();
 const scrollArea = ref<QScrollArea | null>(null);
 const basePath = ref<string>('');
 const showToTopBtn = ref<boolean>(false);

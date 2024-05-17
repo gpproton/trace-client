@@ -6,9 +6,17 @@ import { useLanguageStore } from '@/stores/language';
 
 defineOptions({ name: 'AppRoot' });
 
+const route = useRoute();
+const { t } = useI18n();
 const localeStore = useLanguageStore();
 const { bootstrapLocale, localeUpdate } = localeStore;
 const { language } = storeToRefs(localeStore);
+
+watchEffect(() => {
+  useHead({
+    title: t(route.meta.title ?? '#'),
+  });
+});
 
 onBeforeMount(() => {
   bootstrapLocale();

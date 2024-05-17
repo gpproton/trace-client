@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu May 16 2024
+ * Modified At: Fri May 17 2024
  */
 
 import { appHeader } from '@trace/shared';
@@ -36,7 +36,7 @@ export const addDocPath = (name: string): ContentItem => ({
 });
 
 export default defineNuxtConfig({
-  app: appHeader('/', 'Trace'),
+  app: appHeader('/'),
   extends: ['../base'],
   modules: ['nuxt3-leaflet', '@nuxt/content', './app.core/app-module'],
   routeRules: {
