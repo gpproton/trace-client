@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 17th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Sat May 18 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -30,7 +30,7 @@ export default (): Route => {
     redirect: { name: `${module}.live-view` },
     meta: {
       menu: 'module',
-      title: 'shared.map',
+      title: 'shared.liveView',
       icon: 'bi-crosshair',
       hideChildren: true,
       removeChildren: true,
@@ -42,7 +42,7 @@ export default (): Route => {
         component: () => import('./pages/LiveView.vue'),
         meta: {
           menu: true,
-          title: 'shared.liveView',
+          title: 'shared.map',
           icon: 'bi-crosshair',
         },
       },
