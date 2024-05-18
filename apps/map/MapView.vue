@@ -1,15 +1,12 @@
 <script lang="ts" setup>
 import { ref, onMounted, nextTick } from 'vue';
+import TileLayers from './TileLayers.vue';
 
 const mapReference = ref();
 const mapInstance = ref();
 const mapReady = ref(false);
-const url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-const attribution =
-  '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors';
 const zoom = ref(10);
 const center = ref([6.5296993, 3.281127]);
-const markerLatLng = [6.5296993, 3.281127];
 
 onMounted(() => {
   mapReady.value = true;
@@ -42,16 +39,13 @@ const onMapReady = async () => {
     @ready="onMapReady"
   >
     <slot name="first"></slot>
-    <l-control-zoom position="topright" />
-    <l-marker :lat-lng="markerLatLng"></l-marker>
     <!-- <fullscreen-control></fullscreen-control> -->
     <!-- <measure-control></measure-control> -->
-    <!-- <button-map-default></button-map-default> -->
     <!-- <geocoder-control></geocoder-control> -->
     <slot></slot>
     <slot name="last"></slot>
-    <!-- <tile-layers v-if="mapPluginReady"></tile-layers> -->
-    <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+    <tile-layers></tile-layers>
+    <l-control-zoom position="bottomright" />
   </l-map>
 </template>
 
