@@ -55,12 +55,29 @@ watchEffect(() => {
 const workspaceValue = computed(() => props.workspace);
 const mouseTriggerValue = shallowRef(props.mouseOver);
 
+const overviewModuleMenu = computed(() =>
+  modulesMenu.value.filter(
+    (e) =>
+      e.name !== undefined && props.overviewFilter.includes(e.name as string),
+  ),
+);
+const generalModuleMenu = computed(() =>
+  modulesMenu.value.filter(
+    (e) =>
+      e.name !== undefined && !props.overviewFilter.includes(e.name as string),
+  ),
+);
+
 provide('app:workspace', workspaceValue);
 provide('app:modules', modulesMenu);
+provide('app:overview-modules', overviewModuleMenu);
+provide('app:general-modules', generalModuleMenu);
 provide('app:sidebar-mouse', mouseTriggerValue);
 
 defineExpose({
   modulesMenu,
+  overviewModuleMenu,
+  generalModuleMenu,
 });
 
 const quickCreateItems: IModuleCommands[] = [

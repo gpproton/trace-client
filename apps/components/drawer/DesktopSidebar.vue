@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import { inject } from 'vue';
 import SidebarList from '@/components/drawer/SidebarList.vue';
 import SidebarHeader from '@/components/drawer/SidebarHeader.vue';
 import ThemeSwitcher from '@/components/extra/ThemeSwitcher.vue';
 import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: 'DesktopSidebar' });
+
+const overviewMenuActive = inject('app:overview-active', true);
+const overviewModuleMenu = inject<RouteMenu[]>('app:overview-modules', []);
+const generalModuleMenu = inject<RouteMenu[]>('app:general-modules', []);
 
 const props = withDefaults(
   defineProps<{
@@ -16,24 +21,12 @@ const props = withDefaults(
   },
 );
 
-const { modelValue, drawerMiniState, modules, darkMode } = defineModels<{
+const { modelValue, drawerMiniState, darkMode } = defineModels<{
   modelValue: boolean;
   darkMode: boolean;
   drawerMiniState: boolean;
-  modules: RouteMenu[];
 }>();
-const overviewModuleMenu = computed(() =>
-  modules.value.filter(
-    (e) =>
-      e.name !== undefined && props.overviewFilter.includes(e.name as string),
-  ),
-);
-const generalModuleMenu = computed(() =>
-  modules.value.filter(
-    (e) =>
-      e.name !== undefined && !props.overviewFilter.includes(e.name as string),
-  ),
-);
+
 const setMiniDrawer = (value: boolean) => {
   if (props.mouseOver) {
     drawerMiniState.value = value;
@@ -59,8 +52,8 @@ const setMiniDrawer = (value: boolean) => {
     </slot>
     <slot name="start"></slot>
     <slot>
-      <q-scroll-area style="height: 70dvh">
-        <sidebar-list :items="overviewModuleMenu" />
+      <q-scroll-area class="q-py-xl" style="height: 70dvh">
+        <sidebar-list v-if="overviewMenuActive" :items="overviewModuleMenu" />
         <q-separator class="q-mx-sm" />
         <sidebar-list :items="generalModuleMenu" />
       </q-scroll-area>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, provide } from 'vue';
 import type { Workspace } from '@trace/shared';
 import RouterInject from '@/components/RouterInject.vue';
 import AppLayout from './AppLayout.vue';
@@ -7,7 +7,6 @@ import type { RouteMenu } from '@trace/base/typings';
 import SidebarList from '@/components/drawer/SidebarList.vue';
 import ProfileWidget from '@/components/extra/ProfileWidget.vue';
 
-const appLayoutRef = ref();
 withDefaults(
   defineProps<{
     workspace: Workspace;
@@ -20,23 +19,29 @@ withDefaults(
   },
 );
 
-// const modules = t('app:modules');
+const appLayoutRef = ref();
+const overviewActiveState = ref(false);
 
-// const { modules } = defineModels<{
-//   modules: RouteMenu[];
-// }>();
+// const modules = computed<RouteMenu[]>(
+//   () => appLayoutRef.value?.modulesMenu ?? [],
+// );
 
-// const modules = inject('app:modules');
-
-const modules = computed<RouteMenu[]>(
-  () => appLayoutRef.value?.modulesMenu ?? [],
+const overviewModuleMenu = computed<RouteMenu[]>(
+  () => appLayoutRef.value?.overviewModuleMenu ?? [],
 );
-const filters = ['track-live'];
-const genralModuleMenu = computed<RouteMenu[]>(() =>
-  modules.value.filter(
-    (e) => e.name !== undefined && filters.includes(e.name as string),
-  ),
+const generalModuleMenu = computed<RouteMenu[]>(
+  () => appLayoutRef.value?.generalModuleMenu ?? [],
 );
+// const generalModuleMenu = computed<RouteMenu[]>(() =>
+//   modules.value.filter(
+//     (e) =>
+//       e.name !== undefined && props.overviewFilter.includes(e.name as string),
+//   ),
+// );
+
+provide('app:overview-active', overviewActiveState);
+provide('app:overview-modules', overviewModuleMenu);
+provide('app:general-modules', generalModuleMenu);
 </script>
 
 <template>
@@ -55,7 +60,7 @@ const genralModuleMenu = computed<RouteMenu[]>(() =>
       <div></div>
     </template>
     <template #sidebar-bottom>
-      <sidebar-list :items="genralModuleMenu" />
+      <sidebar-list :items="overviewModuleMenu" />
     </template>
     <router-inject></router-inject>
   </app-layout>

@@ -13,7 +13,7 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Friday, 17th May 2024
+ * Created At: Saturday, 18th May 2024
  * Modified By: Godwin peter .O
  * Modified At: Sat May 18 2024
  */
@@ -22,9 +22,9 @@ import type { Route } from '@trace/base/typings';
 import { Workspace } from '@trace/shared';
 
 export default (): Route => {
-  const name = 'reports';
+  const name = 'alerts';
   const module = `${Workspace.Track}-${name}`;
-  const mainView = `${module}.history`;
+  const mainView = `${module}.recent-events`;
 
   return {
     name: module,
@@ -32,30 +32,20 @@ export default (): Route => {
     redirect: { name: mainView },
     meta: {
       menu: 'module',
-      title: `shared.${name}`,
-      icon: 'bi-file-earmark-text',
-      hideChildren: false,
+      title: 'shared.alerts',
+      icon: 'bi-bell',
+      hideChildren: true,
       removeChildren: true,
     },
     children: [
       {
         name: mainView,
         path: '',
-        component: () => import('./pages/ReportView.vue'),
-        meta: {
-          menu: false,
-          title: 'shared.history',
-          icon: 'bi-file-earmark-text',
-        },
-      },
-      {
-        name: mainView,
-        path: 'schedule',
-        component: () => import('./pages/ScheduledReports.vue'),
+        component: () => import('./pages/AlertView.vue'),
         meta: {
           menu: true,
-          title: 'shared.schedule',
-          icon: 'bi-clock-history',
+          title: 'shared.recentEvents',
+          icon: 'bi-bell',
         },
       },
     ],

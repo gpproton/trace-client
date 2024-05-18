@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Sat May 18 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
@@ -82,7 +82,7 @@ export const routes = [
     Workspace.Track,
     () => import('@/app/LiveLayout.vue'),
     trackRoutes,
-    [],
+    ['track-alerts', 'track-objects', 'track-help'],
     [],
     'live',
   ),

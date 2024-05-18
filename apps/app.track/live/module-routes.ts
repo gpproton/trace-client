@@ -22,12 +22,14 @@ import type { Route } from '@trace/base/typings';
 import { Workspace } from '@trace/shared';
 
 export default (): Route => {
-  const module = `${Workspace.Track}-live`;
+  const name = 'live';
+  const module = `${Workspace.Track}-${name}`;
+  const mainView = `${module}.live-view`;
 
   return {
     name: module,
-    path: 'live',
-    redirect: { name: `${module}.live-view` },
+    path: name,
+    redirect: { name: mainView },
     meta: {
       menu: 'module',
       title: 'shared.liveView',
@@ -37,7 +39,7 @@ export default (): Route => {
     },
     children: [
       {
-        name: `${module}.live-view`,
+        name: mainView,
         path: '',
         component: () => import('./pages/LiveView.vue'),
         meta: {

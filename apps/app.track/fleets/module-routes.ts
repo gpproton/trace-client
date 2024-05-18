@@ -13,7 +13,7 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Friday, 17th May 2024
+ * Created At: Saturday, 18th May 2024
  * Modified By: Godwin peter .O
  * Modified At: Sat May 18 2024
  */
@@ -22,9 +22,9 @@ import type { Route } from '@trace/base/typings';
 import { Workspace } from '@trace/shared';
 
 export default (): Route => {
-  const name = 'reports';
+  const name = 'fleet';
   const module = `${Workspace.Track}-${name}`;
-  const mainView = `${module}.history`;
+  const mainView = `${module}.summary`;
 
   return {
     name: module,
@@ -33,29 +33,49 @@ export default (): Route => {
     meta: {
       menu: 'module',
       title: `shared.${name}`,
-      icon: 'bi-file-earmark-text',
+      icon: 'bi-car-front',
       hideChildren: false,
       removeChildren: true,
     },
     children: [
       {
         name: mainView,
-        path: '',
-        component: () => import('./pages/ReportView.vue'),
+        path: 'summary',
+        component: () => import('./pages/FleetSummaryView.vue'),
         meta: {
-          menu: false,
-          title: 'shared.history',
-          icon: 'bi-file-earmark-text',
+          menu: true,
+          title: 'shared.summary',
+          icon: 'bi-radar',
         },
       },
       {
-        name: mainView,
-        path: 'schedule',
-        component: () => import('./pages/ScheduledReports.vue'),
+        name: `${module}.vehicles`,
+        path: 'vehicles',
+        component: () => import('./pages/VehicleView.vue'),
         meta: {
           menu: true,
-          title: 'shared.schedule',
-          icon: 'bi-clock-history',
+          title: 'shared.vehicles',
+          icon: 'bi-car-front',
+        },
+      },
+      {
+        name: `${module}.dispatchers`,
+        path: 'dispatchers',
+        component: () => import('./pages/DispatchView.vue'),
+        meta: {
+          menu: true,
+          title: 'shared.dispatchers',
+          icon: 'bi-arrow-repeat',
+        },
+      },
+      {
+        name: `${module}.maintenance`,
+        path: 'maintenance',
+        component: () => import('./pages/MaintenanceView.vue'),
+        meta: {
+          menu: true,
+          title: 'shared.maintenance',
+          icon: 'bi-tools',
         },
       },
     ],

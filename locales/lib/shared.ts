@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Sat May 18 2024
  */
 
 export default {
@@ -52,7 +52,10 @@ export default {
   partner: 'Partner',
   map: 'Map',
   alerts: 'Alerts',
+  recentEvents: 'Recent Events',
   locations: 'Locations',
+  'eco-driving': 'Eco Driving',
+  fleet: 'Fleet',
   routes: 'Routes',
   notification: 'Notification',
   user: 'User',
@@ -79,4 +82,12 @@ export default {
   confirmation: 'Confirmation',
   integration: 'Integration',
   or: 'Or',
+  reports: 'Reports',
+  history: 'History',
+  schedule: 'Schedule',
+  vehicles: 'Vehicles',
+  dispatchers: 'Dispatchers',
+  maintenance: 'Maintenance',
+  objects: 'Objects',
+  objectsSetup: 'Objects Setup',
 };

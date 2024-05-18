@@ -15,12 +15,18 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 25th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Sat May 18 2024
  */
 
 import { addCatchAll, addUnAuthorized } from '@/routes.default';
 import addOverviewRoute from '@/app/overviews/module-routes';
 import LiveModule from './live/module-routes';
+import FleetModule from './fleets/module-routes';
+import ReportModule from './reports/module-routes';
+import EcoDriving from './eco-driving/module-routes';
+import AlertModule from './alerts/module-routes';
+import ObjectSetupModule from './objects/module-routes';
+import HelpModule from './help/module-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
@@ -30,4 +36,10 @@ export default [
   // Modules
   LiveModule(),
   addOverviewRoute(Workspace.Track),
+  FleetModule(),
+  ReportModule(),
+  EcoDriving(),
+  AlertModule(),
+  ObjectSetupModule(),
+  HelpModule(),
 ] as Route[];
