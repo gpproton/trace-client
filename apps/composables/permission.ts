@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed May 15 2024
+ * Modified At: Sat May 18 2024
  */
 
 import { useUserAccountStore } from '@/stores/user-account';
@@ -47,12 +47,12 @@ export const useAppPermission = () => {
 
   const hasWorkflow = (workflows: Workflow[]) => {
     const { getWorkflow } = storeToRefs(serverStore);
-    const workflow = getWorkflow.value;
-    if (workflow) {
-      return (
-        getWorkflow.value === Workflow.System ||
-        Object.values(workflows).includes(workflow)
-      );
+    const activeWorkflows = getWorkflow.value;
+
+    if (activeWorkflows) {
+      activeWorkflows?.forEach((x) => {
+        return x === Workflow.System || workflows.includes(x);
+      });
     }
     return false;
   };

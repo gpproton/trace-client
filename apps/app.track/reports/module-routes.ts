@@ -13,21 +13,7 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Wednesday, 27th Mar 2024
+ * Created At: Friday, 17th May 2024
  * Modified By: Godwin peter .O
  * Modified At: Fri May 17 2024
  */
-
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
-
-export const useLoadingStore = defineStore('state-busy', () => {
-  const loading = ref<boolean>(true);
-  const getLoadingState = computed(() => loading.value);
-  const setLoadingState = (value: boolean) => (loading.value = value);
-
-  return {
-    getLoadingState,
-    setLoadingState,
-  };
-});

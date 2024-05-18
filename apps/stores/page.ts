@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Fri May 17 2024
  */
 
 import { defineStore } from 'pinia';
@@ -33,7 +33,7 @@ export interface IContext {
   animateLeave?: string;
 }
 
-export const usePageStore = defineStore('page-state', () => {
+export const usePageStore = defineStore('state-page', () => {
   const title = ref('');
   const description = ref('');
   const script = ref({});

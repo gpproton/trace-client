@@ -13,21 +13,39 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Wednesday, 27th Mar 2024
+ * Created At: Friday, 17th May 2024
  * Modified By: Godwin peter .O
  * Modified At: Fri May 17 2024
  */
 
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import type { Route } from '@trace/base/typings';
+import { Workspace } from '@trace/shared';
 
-export const useLoadingStore = defineStore('state-busy', () => {
-  const loading = ref<boolean>(true);
-  const getLoadingState = computed(() => loading.value);
-  const setLoadingState = (value: boolean) => (loading.value = value);
+export default (): Route => {
+  const module = `${Workspace.Track}-live`;
 
   return {
-    getLoadingState,
-    setLoadingState,
+    name: module,
+    path: 'live',
+    redirect: { name: `${module}.live-view` },
+    meta: {
+      menu: 'module',
+      title: 'shared.map',
+      icon: 'bi-crosshair',
+      hideChildren: true,
+      removeChildren: true,
+    },
+    children: [
+      {
+        name: `${module}.live-view`,
+        path: '',
+        component: () => import('./pages/LiveView.vue'),
+        meta: {
+          menu: true,
+          title: 'shared.liveView',
+          icon: 'bi-crosshair',
+        },
+      },
+    ],
   };
-});
+};

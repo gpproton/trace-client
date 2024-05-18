@@ -15,29 +15,40 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Sat May 18 2024
  */
 
 import type { RouteData } from '@trace/base/typings';
 import { defineStore } from 'pinia';
 
-export const useKeepAliveStore = defineStore('keepAlive', () => {
-  const keepAliveList = ref<string[]>([]);
-  const getKeepAliveList = computed(() => keepAliveList.value);
+export const useKeepAliveStore = defineStore(
+  'state-keep-alive',
+  () => {
+    const keepAliveList = ref<string[]>([]);
+    const getKeepAliveList = computed(() => keepAliveList.value);
 
-  const setKeepAliveList = (payload: RouteData[]) => {
-    keepAliveList.value = [];
-    for (let i = 0; i < payload.length; i++) {
-      if (payload[i].keepAlive) {
-        keepAliveList.value.push(payload[i].name as string);
+    const setKeepAliveList = (payload: RouteData[]) => {
+      keepAliveList.value = [];
+      for (let i = 0; i < payload.length; i++) {
+        if (payload[i].keepAlive) {
+          keepAliveList.value.push(payload[i].name as string);
+        }
       }
-    }
-    return keepAliveList.value;
-  };
+      return keepAliveList.value;
+    };
 
-  return {
-    keepAliveList,
-    getKeepAliveList,
-    setKeepAliveList,
-  };
-});
+    return {
+      keepAliveList,
+      getKeepAliveList,
+      setKeepAliveList,
+    };
+  },
+  {
+    share: {
+      enable: true,
+    },
+    persist: {
+      paths: ['keepAliveList'],
+    },
+  },
+);

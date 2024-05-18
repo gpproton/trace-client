@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 22nd Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Sat May 18 2024
  */
 
 import { useTagViewStore } from '@/stores/tag-view';
@@ -33,7 +33,8 @@ export default defineNuxtPlugin(() => {
   const breadCrumbsStore = useBreadcrumbsStore();
   const keepAliveStore = useKeepAliveStore();
   const { setTagView, addTagView } = tagViewStore;
-  const { getTagView, getStoredTagView } = storeToRefs(tagViewStore);
+  const { getTagView, getStoredTagView, tagViewEnabled } =
+    storeToRefs(tagViewStore);
   const { setKeepAliveList } = keepAliveStore;
   const { setBreadcrumbs } = breadCrumbsStore;
 
@@ -44,13 +45,20 @@ export default defineNuxtPlugin(() => {
     // Filter for only wrkspaces
     if (
       workspaceApps.filter((e) => to.fullPath.startsWith(`/${e}/`)).length < 1
-    )
+    ) {
       return;
+    }
+
+    if (!tagViewEnabled) {
+      return;
+    }
+
     if (to.name != null) {
       // is a public route
       if (to.meta.permission === false) return;
       const storedTagView = (getStoredTagView.value ??
         []) as unknown as RouteData[];
+
       if (getTagView.value.length === 0 && storedTagView.length !== 0) {
         setTagView(storedTagView);
         setKeepAliveList(storedTagView);

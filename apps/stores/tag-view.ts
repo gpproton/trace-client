@@ -15,13 +15,15 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Sat May 18 2024
  */
 
 import type { RouteLocationNormalized, Router } from 'vue-router';
 import type { RouteData } from '@trace/base/typings';
+import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 import { getFirst } from '@trace/base/utils';
 import { defineStore, storeToRefs } from 'pinia';
+import { Workspace } from '@trace/shared';
 import { useUserAuthStore } from './user-auth';
 
 enum removeType {
@@ -31,17 +33,22 @@ enum removeType {
 }
 
 export const useTagViewStore = defineStore(
-  'tagView',
+  'state-tag-view',
   () => {
     const router: Router = useRouter();
+    const breakpointStates = useAppBreakpoints();
     const userAuthStore = useUserAuthStore();
+    const { isMobile } = storeToRefs(breakpointStates);
     const { getAccessToken } = storeToRefs(userAuthStore);
 
+    const tagViewEnabled = ref(true);
     const tagView = ref<RouteData[]>([]);
     const storedTagView = ref<RouteData[] | null>(null);
 
     const getTagView = computed(() => tagView.value);
     const setTagView = (value: RouteData[]) => (tagView.value = value);
+    const setTagViewEnabled = (value: boolean) =>
+      (tagViewEnabled.value = value);
     const getStoredTagView = computed(() => storedTagView.value);
     const setStoredTagView = (value: RouteData[]) =>
       (storedTagView.value = value);
@@ -190,12 +197,28 @@ export const useTagViewStore = defineStore(
       }
     };
 
+    watchEffect(() => {
+      const isTrackWorkflow = router.currentRoute.value.fullPath.startsWith(
+        `/${Workspace.Track}/`,
+      );
+      if (isMobile.value) {
+        setTagViewEnabled(false);
+      } else {
+        if (isTrackWorkflow) {
+          // placeholder on condition
+        }
+        setTagViewEnabled(true);
+      }
+    });
+
     return {
       tagView,
+      tagViewEnabled,
       storedTagView,
       getTagView,
       getStoredTagView,
       setTagView,
+      setTagViewEnabled,
       setStoredTagView,
       addTagView,
       removeTagViewByFullPath,

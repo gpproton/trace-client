@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Sat May 18 2024
  */
 
 import { computed } from 'vue';
@@ -28,7 +28,7 @@ type ISize = {
   height: number;
 };
 
-export const useAppBreakpoints = defineStore('app-breakpoints', () => {
+export const useAppBreakpoints = defineStore('state-app-breakpoints', () => {
   /** States */
   const $q = useQuasar();
   const { width, height } = useWindowSize();

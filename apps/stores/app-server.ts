@@ -41,7 +41,7 @@ export type ServerState = {
   };
 };
 
-export const useServerStore = defineStore('app-server', () => {
+export const useServerStore = defineStore('state-server', () => {
   const serverState = ref<ServerState>({
     registration: false,
     auth: {

@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Fri May 17 2024
  */
 
 import { defineStore } from 'pinia';
@@ -24,7 +24,7 @@ import { ref, computed } from 'vue';
 // import { StatusBar, Style } from '@capacitor/status-bar';
 
 export const useThemeStore = defineStore(
-  'theme',
+  'state-theme',
   () => {
     const isClient = typeof window !== 'undefined';
     const { getPaletteColor, lighten, luminosity } = colors;

@@ -25,7 +25,7 @@ import { useUserAccountStore } from './user-account';
 import { useTagViewStore } from './tag-view';
 
 export const useUserAuthStore = defineStore(
-  'userAuth',
+  'state-authentication',
   () => {
     const userAuthStore = useUserAccountStore();
     const { removeAllTagView } = useTagViewStore();

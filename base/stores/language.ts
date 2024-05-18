@@ -23,7 +23,7 @@ import { useI18n } from 'vue-i18n';
 import { languageSelection } from '@trace/locales';
 
 export const useLanguageStore = defineStore(
-  'language',
+  'state-language',
   () => {
     const { locale, locales, setLocale } = useI18n();
     const languages = computed(() => languageSelection);
@@ -66,7 +66,8 @@ export const useLanguageStore = defineStore(
       initialize: true,
     },
     persist: {
-      storage: persistedState.localStorage,
+      paths: ['language'],
+      storage: persistedState.cookies,
     },
   },
 );

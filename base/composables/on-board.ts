@@ -15,13 +15,13 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Sat May 18 2024
  */
 
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 
-export const useOnboardStore = defineStore('on-board', () => {
+export const useOnboardStore = defineStore('state-on-board', () => {
   const route = useRoute();
   const progress = ref<string[]>([]);
 

@@ -15,13 +15,13 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 22nd Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Sat May 18 2024
  */
 
 import { getRouteMenuByType } from '@trace/base/types';
 import type { RouteMenu } from '@trace/base/typings';
 
-export const useLayoutRouteStore = defineStore('layout-routes', () => {
+export const useLayoutRouteStore = defineStore('app-layout-routes', () => {
   const modulesMenuFn = (): RouteMenu[] => {
     const router = useRouter();
     const route = router.currentRoute.value;

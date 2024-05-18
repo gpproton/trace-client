@@ -12,10 +12,14 @@ const localeStore = useLanguageStore();
 const { bootstrapLocale, localeUpdate } = localeStore;
 const { language } = storeToRefs(localeStore);
 
-watchEffect(() => {
+const triggerLocaleUpdate = (title: string) => {
   useHead({
-    title: t(route.meta.title ?? '#'),
+    title: t(title ?? '#'),
   });
+};
+
+watchEffect(() => {
+  if (language.value !== null) triggerLocaleUpdate(route.meta.title);
 });
 
 onBeforeMount(() => {
@@ -24,6 +28,7 @@ onBeforeMount(() => {
 
 watch(language, () => {
   localeUpdate(language.value as string);
+  triggerLocaleUpdate(route.meta.title);
 });
 </script>
 

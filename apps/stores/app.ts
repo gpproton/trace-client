@@ -15,13 +15,13 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 27th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed May 15 2024
+ * Modified At: Sat May 18 2024
  */
 
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-export const useAppStore = defineStore('app', () => {
+export const useAppStore = defineStore('state-app', () => {
   const reloadFlag = ref(true);
   const isDrawerMini = ref(false);
 

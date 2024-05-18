@@ -15,33 +15,53 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Sat May 18 2024
  */
 
-import type { IModule } from '@trace/shared';
 import { defineStore, storeToRefs } from 'pinia';
 import { usePageStore } from './page';
+import { Workspace } from '@trace/shared';
+import type { Router } from '@/.nuxt/vue-router-stub';
 
-export const useLayoutStore = defineStore('app-layout', () => {
+export const useLayoutStore = defineStore('state-app-layout', () => {
+  const router: Router = useRouter();
   const { title } = storeToRefs(usePageStore());
+
   /** States */
   const name = ref<string>('Trace');
   const search = ref<string>('');
-  const sencondaryNavigation = ref<IModule[]>([]);
+  const showHeaderToolbar = ref(true);
   const showPrimarySidebar = ref<boolean>(false);
   const primaryMiniState = ref<boolean>(true);
   const showSecondarySidebar = ref<boolean>(false);
+  const getShowHeaderToolbar = computed(() => showHeaderToolbar.value);
 
   const setLayoutOptions = () => {};
+  const setShowHeaderToolbar = (value: boolean) => {
+    showHeaderToolbar.value = value;
+  };
+
+  watchEffect(() => {
+    const isTrackWorkflow = router.currentRoute.value.fullPath.startsWith(
+      `/${Workspace.Track}`,
+    );
+    if (isTrackWorkflow) {
+      setShowHeaderToolbar(false);
+    } else {
+      setShowHeaderToolbar(true);
+    }
+  });
 
   return {
     name,
     title,
     search,
-    sencondaryNavigation,
+    showHeaderToolbar,
     showPrimarySidebar,
     primaryMiniState,
     showSecondarySidebar,
+    getShowHeaderToolbar,
     setLayoutOptions,
+    setShowHeaderToolbar,
   };
 });

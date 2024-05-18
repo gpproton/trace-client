@@ -56,7 +56,12 @@ const workspaceValue = computed(() => props.workspace);
 const mouseTriggerValue = shallowRef(props.mouseOver);
 
 provide('app:workspace', workspaceValue);
+provide('app:modules', modulesMenu);
 provide('app:sidebar-mouse', mouseTriggerValue);
+
+defineExpose({
+  modulesMenu,
+});
 
 const quickCreateItems: IModuleCommands[] = [
   {
@@ -112,6 +117,12 @@ const quickCreateItems: IModuleCommands[] = [
         :overview-filter="overviewFilter"
         @update:dark-mode="setThemeState"
       >
+        <template #start>
+          <slot name="sidebar-start"></slot>
+        </template>
+        <template #bottom>
+          <slot name="sidebar-bottom"></slot>
+        </template>
       </desktop-sidebar>
     </slot>
     <!-- Desktop and page content -->

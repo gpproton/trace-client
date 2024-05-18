@@ -6,10 +6,16 @@ import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: 'DesktopSidebar' });
 
-interface IProps {
-  overviewFilter: string[];
-}
-const props = defineProps<IProps>();
+const props = withDefaults(
+  defineProps<{
+    mouseOver: boolean;
+    overviewFilter: string[];
+  }>(),
+  {
+    mouseOver: true,
+  },
+);
+
 const { modelValue, drawerMiniState, modules, darkMode } = defineModels<{
   modelValue: boolean;
   darkMode: boolean;
@@ -22,13 +28,17 @@ const overviewModuleMenu = computed(() =>
       e.name !== undefined && props.overviewFilter.includes(e.name as string),
   ),
 );
-const genralModuleMenu = computed(() =>
+const generalModuleMenu = computed(() =>
   modules.value.filter(
     (e) =>
       e.name !== undefined && !props.overviewFilter.includes(e.name as string),
   ),
 );
-const setMiniDrawer = (value: boolean) => (drawerMiniState.value = value);
+const setMiniDrawer = (value: boolean) => {
+  if (props.mouseOver) {
+    drawerMiniState.value = value;
+  }
+};
 </script>
 
 <template>
@@ -44,20 +54,24 @@ const setMiniDrawer = (value: boolean) => (drawerMiniState.value = value);
     @mouseover="setMiniDrawer(false)"
     @mouseout="setMiniDrawer(true)"
   >
-    <sidebar-header v-model="drawerMiniState" class="q-mt-none" />
-    <q-scroll-area
-      class="fit fixed-bottom"
-      style="padding-top: 96px; padding-bottom: 110px"
-    >
-      <sidebar-list :items="overviewModuleMenu" />
-      <q-separator class="q-mx-sm" />
-      <sidebar-list :items="genralModuleMenu" />
-    </q-scroll-area>
-    <div
-      v-show="!drawerMiniState"
-      class="fixed-bottom full-width column items-center q-mb-sm"
-    >
-      <theme-switcher v-model="darkMode" />
-    </div>
+    <slot name="header">
+      <sidebar-header v-model="drawerMiniState" class="q-mt-none" />
+    </slot>
+    <slot name="start"></slot>
+    <slot>
+      <q-scroll-area style="height: 70dvh">
+        <sidebar-list :items="overviewModuleMenu" />
+        <q-separator class="q-mx-sm" />
+        <sidebar-list :items="generalModuleMenu" />
+      </q-scroll-area>
+    </slot>
+    <slot name="end">
+      <div class="fixed-bottom full-width q-mb-sm">
+        <slot name="bottom"></slot>
+        <div class="row justify-center">
+          <theme-switcher v-show="!drawerMiniState" v-model="darkMode" />
+        </div>
+      </div>
+    </slot>
   </q-drawer>
 </template>

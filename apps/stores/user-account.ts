@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Sat May 18 2024
  */
 
 import { ref, computed } from 'vue';
@@ -23,7 +23,7 @@ import { defineStore } from 'pinia';
 import type { Permission, User } from '@trace/model';
 
 export const useUserAccountStore = defineStore(
-  'userAccount',
+  'state-user-account',
   () => {
     const permissions = ref<Permission[]>([
       {
@@ -41,7 +41,7 @@ export const useUserAccountStore = defineStore(
     );
     const getEmail = computed<string>(() => `${user.value?.email}`);
     const getUserPermmisions = computed(() => permissions.value);
-    const getFirstCharacterOfUserName = computed(() => {
+    const getProfileInitials = computed(() => {
       const char0 = user.value?.firstName.charAt(0) ?? 'x';
       const char1 = user.value?.lastName.charAt(0) ?? 'x';
 
@@ -67,17 +67,16 @@ export const useUserAccountStore = defineStore(
       getFullname,
       getEmail,
       getUserPermmisions,
-      getFirstCharacterOfUserName,
+      getProfileInitials,
       setUserInfo,
       setUserPermmisions,
       clearAllUserState,
     };
   },
   {
-    // share: {
-    //   enable: true,
-    //   omit: ['user'],
-    // },
+    share: {
+      enable: true,
+    },
     persist: {
       paths: ['user'],
       storage: persistedState.sessionStorage,
