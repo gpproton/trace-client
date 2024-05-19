@@ -15,11 +15,12 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 21st Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Sun May 19 2024
  */
 
 import { addCatchAll, addUnAuthorized } from '@/routes.default';
 import addOverviewRoute from '@/app/overviews/module-routes';
+import addContactRoute from '@/app/contacts/module-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
@@ -27,4 +28,5 @@ export default [
   addCatchAll(Workspace.Dispatch),
   addUnAuthorized(Workspace.Dispatch),
   addOverviewRoute(Workspace.Dispatch),
+  addContactRoute(Workspace.Dispatch),
 ] as Route[];
