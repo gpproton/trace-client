@@ -11,7 +11,7 @@ export const propTypes = {
 };
 
 defineComponent({
-  name: 'MeasureControl',
+  name: 'RoutingControl',
   props: propTypes,
   setup(props, context) {
     // here
