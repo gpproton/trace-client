@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import PanelWindow from '@/map/components/PanelWindow.vue';
 import MapView from '@/map/MapView.vue';
 
 defineOptions({ name: 'LocationView' });
@@ -7,12 +6,22 @@ defineOptions({ name: 'LocationView' });
 
 <template>
   <page-wrapper class="no-border" :padding="false">
-    <div class="map-view">
-      <map-view>
-        <l-control :disable-scroll-propagation="true" position="topleft">
-          <panel-window></panel-window>
-        </l-control>
-      </map-view>
+    <div class="map-view row">
+      <div class="col-4">
+        <q-card
+          square
+          flat
+          class="fit panel-content no-padding border-radius-sm column justify-between no-scroll"
+        >
+          <!-- Panel content-->
+          <div class="text-center text-h6 q-pa-md">
+            {{ 'Location Content' }}
+          </div>
+        </q-card>
+      </div>
+      <div class="col-8">
+        <map-view></map-view>
+      </div>
     </div>
   </page-wrapper>
 </template>
