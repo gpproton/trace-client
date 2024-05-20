@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Saturday, 18th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat May 18 2024
+ * Modified At: Sun May 19 2024
  */
 import type { ITileLayer } from './MapTypes';
 
@@ -32,7 +32,7 @@ export const TileLayers: Array<ITileLayer> = [
   },
   {
     id: 'mapbox.streets',
-    name: 'MapBox Street',
+    name: 'MapBox',
     google: false,
     visible: false,
     url: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${mapboxAccessToken}`,
@@ -41,7 +41,7 @@ export const TileLayers: Array<ITileLayer> = [
   // Traffic: navigation-day-v1
   {
     id: 'mapbox.satellite',
-    name: 'MapBox Satellite',
+    name: 'MapBox ST',
     google: false,
     visible: false,
     url: `https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/tiles/{z}/{x}/{y}?access_token=${mapboxAccessToken}`,
@@ -50,7 +50,7 @@ export const TileLayers: Array<ITileLayer> = [
   // Traffic: include with addGoogleLayer
   // {
   //   id: 'google.street',
-  //   name: 'Google Street',
+  //   name: 'Google',
   //   google: true,
   //   layerType: 'TrafficLayer',
   //   visible: false,
@@ -61,7 +61,7 @@ export const TileLayers: Array<ITileLayer> = [
   // },
   // {
   //   id: 'google.satellite',
-  //   name: 'Google Satellite',
+  //   name: 'Google ST',
   //   google: true,
   //   layerType: 'TrafficLayer',
   //   visible: false,
