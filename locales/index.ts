@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Mon May 20 2024
  */
 
 import * as LocaleAction from './lib/action.ts';
@@ -24,6 +24,7 @@ import * as LocaleLayout from './lib/layout.ts';
 import * as LocaleRouter from './lib/router.ts';
 import * as LocaleOnboard from './lib/on-board.ts';
 import * as LocaleShared from './lib/shared.ts';
+import * as LocaleSettings from './lib/settings.ts';
 
 export type CountryOption = {
   countryCode: string;
@@ -38,6 +39,7 @@ export const defaultTranslation = {
   router: LocaleRouter.default,
   onboard: LocaleOnboard.default,
   shared: LocaleShared.default,
+  settings: LocaleSettings.default,
 };
 
 export const defaultLanguage = 'en-US';

@@ -55,7 +55,7 @@ const links = ref<Array<{ name: string; label: string }>>([
   },
   {
     name: 'faqs',
-    label: 'router.faq',
+    label: 'shared.faqs',
   },
 ]);
 </script>

@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Mon May 20 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -121,7 +121,7 @@ const routes: Route = {
       component: () => import('./pages/TenantMapSettings.vue'),
       meta: {
         menu: true,
-        title: 'router.mapSettings',
+        title: 'settings.mapSettings',
         icon: 'bi-compass',
       },
     },
@@ -136,13 +136,93 @@ const routes: Route = {
       },
     },
     {
-      path: 'domain',
-      name: `${base}.domain`,
-      component: () => import('./pages/TenantDomainSetting.vue'),
+      path: 'billing-settings',
+      name: `${base}.billing-settings`,
+      component: () => import('./pages/TenantBillingSettings.vue'),
       meta: {
         menu: true,
-        title: 'router.domainSetting',
+        title: 'settings.billingSettings',
+        icon: 'bi-cash-coin',
+      },
+    },
+    {
+      path: 'task-options',
+      name: `${base}.task-options`,
+      component: () => import('./pages/TenantTaskOptions.vue'),
+      meta: {
+        menu: true,
+        title: 'settings.taskOptions',
+        icon: 'bi-list-task',
+      },
+    },
+    {
+      path: 'task-templates',
+      name: `${base}.task-templates`,
+      component: () => import('./pages/TenantTaskTemplates.vue'),
+      meta: {
+        menu: true,
+        title: 'shared.taskTemplates',
+        icon: 'bi-sliders2',
+      },
+    },
+    {
+      path: 'branches',
+      name: `${base}.branches`,
+      component: () => import('./pages/TenantBranches.vue'),
+      meta: {
+        menu: true,
+        title: 'shared.branches',
+        icon: 'bi-pin-map',
+      },
+    },
+    {
+      path: 'event-options',
+      name: `${base}.event-options`,
+      component: () => import('./pages/TenantEventOptions.vue'),
+      meta: {
+        menu: true,
+        title: 'settings.eventOptions',
+        icon: 'bi-bell',
+      },
+    },
+    {
+      path: 'violation-options',
+      name: `${base}.violation-options`,
+      component: () => import('./pages/TenantViolationOptions.vue'),
+      meta: {
+        menu: true,
+        title: 'settings.violationOptions',
+        icon: 'bi-x-diamond',
+      },
+    },
+    {
+      path: 'shortage-options',
+      name: `${base}.shortage-options`,
+      component: () => import('./pages/TennantShortageOptions.vue'),
+      meta: {
+        menu: true,
+        title: 'settings.shortageOptions',
+        icon: 'bi-exclamation-octagon',
+      },
+    },
+    {
+      path: 'domain',
+      name: `${base}.domain`,
+      component: () => import('./pages/TenantDomainOptions.vue'),
+      meta: {
+        menu: true,
+        title: 'settings.domainOptions',
         icon: 'bi-globe',
+      },
+    },
+    {
+      path: 'faqs',
+      name: `${base}.faqs`,
+      component: () => import('./pages/TenantFaqItems.vue'),
+      meta: {
+        menu: true,
+        title: 'shared.faqs',
+        icon: 'bi-info-circle',
       },
     },
   ],

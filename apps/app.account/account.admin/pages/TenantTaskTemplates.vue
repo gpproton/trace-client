@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-defineOptions({ name: 'TenantDomainSettings' });
+defineOptions({ name: 'TenantTaskTemplates' });
 </script>
 
 <template>

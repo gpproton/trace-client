@@ -43,7 +43,7 @@
     "accountAlerts": "Account Alerts",
     "appearanceSettings": "Appearance Settings",
     "mapSettings": "Map Settings",
-    "domainSetting": "Domain Setting"
+    "domainSettings": "Domain Setting"
   },
   "onboard": {
     "selectProfile": "Choose preffered profile",

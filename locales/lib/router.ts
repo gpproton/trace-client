@@ -15,12 +15,11 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Mon May 20 2024
  */
 
 export default {
   home: 'Home',
-  faq: "FAQ's",
   pricing: 'Pricing',
   solutions: 'Solutions',
   back: 'Go Back',
@@ -32,9 +31,4 @@ export default {
   docs: 'Docs',
   documentation: 'Documentation',
   testing: 'Testing',
-  generalSettings: 'General Settings',
-  accountAlerts: 'Account Alerts',
-  appearanceSettings: 'Appearance Settings',
-  mapSettings: 'Map Settings',
-  domainSetting: 'Domain Setting',
 };

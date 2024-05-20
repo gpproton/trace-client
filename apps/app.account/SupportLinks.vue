@@ -6,7 +6,7 @@ const links = [
   },
   {
     name: 'faqs',
-    label: 'router.faq',
+    label: 'shared.faqs',
   },
   {
     name: 'contact',

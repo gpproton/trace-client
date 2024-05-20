@@ -21,6 +21,8 @@
 import { addCatchAll, addUnAuthorized } from '@/routes.default';
 import addOverviewRoute from '@/app/overviews/module-routes';
 import addTrackingRoute from '@/app/live-tracking/module-routes';
+import addCalendarRoute from '@/app/calendar/module-routes';
+import addContactRoute from '@/app/contacts/module-routes';
 import addLocationsRoute from '@/app/locations/module-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
@@ -29,6 +31,8 @@ export default [
   addCatchAll(Workspace.Portal),
   addUnAuthorized(Workspace.Portal),
   addOverviewRoute(Workspace.Portal),
+  addCalendarRoute(Workspace.Portal),
+  addContactRoute(Workspace.Portal),
   addTrackingRoute(Workspace.Portal),
   addLocationsRoute(Workspace.Portal),
 ] as Route[];

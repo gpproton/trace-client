@@ -13,20 +13,21 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Monday, 25th Mar 2024
+ * Created At: Monday, 20th May 2024
  * Modified By: Godwin peter .O
  * Modified At: Mon May 20 2024
  */
 
-import { addCatchAll, addUnAuthorized } from '@/routes.default';
-import addOverviewRoute from '@/app/overviews/module-routes';
-import addLocationsRoute from '@/app/locations/module-routes';
-import { Workspace } from '@trace/shared';
-import type { Route } from '@trace/base/typings';
-
-export default [
-  addCatchAll(Workspace.Partner),
-  addUnAuthorized(Workspace.Partner),
-  addOverviewRoute(Workspace.Partner),
-  addLocationsRoute(Workspace.Partner),
-] as Route[];
+export default {
+  mapSettings: 'Map Settings',
+  generalSettings: 'General Settings',
+  accountAlerts: 'Account Alerts',
+  appearanceSettings: 'Appearance Settings',
+  billingSettings: 'Billing Settings',
+  taskOptions: 'Task Options',
+  eventOptions: 'Event Options',
+  violationOptions: 'Violation Options',
+  shortageOptions: 'Shortage Options',
+  domainSettings: 'Domain Settings',
+  domainOptions: 'Domain Options',
+};
