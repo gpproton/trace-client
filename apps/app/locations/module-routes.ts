@@ -15,19 +15,49 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Mon May 20 2024
  */
 
 import type { Route } from '@trace/base/typings';
 import type { Workspace } from '@trace/shared';
 
-export default (service: Workspace): Route => ({
-  name: `${service}-locations`,
-  path: 'locations',
-  component: () => import('./pages/LocationView.vue'),
-  meta: {
-    menu: 'module',
-    title: 'shared.locations',
-    icon: 'bi-compass',
-  },
-});
+export default (service: Workspace): Route => {
+  const name = 'locations';
+  const module = `${service}-${name}`;
+  const mainView = `${module}.root`;
+
+  return {
+    name: module,
+    path: name,
+    redirect: { name: mainView },
+    meta: {
+      menu: 'module',
+      title: `shared.${name}`,
+      icon: 'bi-compass',
+      hideChildren: true,
+      removeChildren: false,
+    },
+    children: [
+      {
+        name: mainView,
+        path: 'all',
+        component: () => import('./pages/LocationView.vue'),
+        meta: {
+          menu: true,
+          title: `shared.${name}`,
+          icon: 'bi-compass',
+        },
+      },
+      {
+        name: `${module}.routes`,
+        path: 'routes',
+        component: () => import('./pages/RouteView.vue'),
+        meta: {
+          menu: true,
+          title: 'shared.routes',
+          icon: 'bi-sign-turn-right',
+        },
+      },
+    ],
+  };
+};

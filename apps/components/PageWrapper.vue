@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted, onActivated, onDeactivated } from 'vue';
 import { QScrollArea, SessionStorage } from 'quasar';
 import { useRoute } from 'vue-router';
 import {} from '@/stores/theme';
+import RouterInject from './RouterInject.vue';
 import { type IPageContext } from '@/stores/page';
 import UnderConstruction from '@trace/base/components/error/UnderConstruction.vue';
 
@@ -131,6 +132,7 @@ onDeactivated(() => {
         />
       </transition>
     </q-page-sticky>
+    <router-inject></router-inject>
   </q-page>
 </template>
 

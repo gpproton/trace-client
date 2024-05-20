@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 14th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Mon May 20 2024
  */
 
 import { addCatchAll, addUnAuthorized } from '@/routes.default';
@@ -23,7 +23,6 @@ import addOverviewRoute from '@/app/overviews/module-routes';
 import addCalendarRoute from '@/app/calendar/module-routes';
 import addContactRoute from '@/app/contacts/module-routes';
 import addEngagementRoute from '@/app/engagements/module-routes';
-import addRoutesRoute from '@/app/routes/module-routes';
 import addLocationsRoute from '@/app/locations/module-routes';
 import addTrackingRoute from '@/app/live-tracking/module-routes';
 import { Workspace } from '@trace/shared';
@@ -37,6 +36,5 @@ export default [
   addCalendarRoute(Workspace.Core),
   addTrackingRoute(Workspace.Core),
   addContactRoute(Workspace.Core),
-  addRoutesRoute(Workspace.Core),
   addLocationsRoute(Workspace.Core),
 ] as Route[];
