@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat May 18 2024
+ * Modified At: Mon May 20 2024
  */
 
 export default {
@@ -57,6 +57,9 @@ export default {
   'eco-driving': 'Eco Driving',
   fleet: 'Fleet',
   routes: 'Routes',
+  warehouses: 'Warehouses',
+  'route-templates': 'Route Templates',
+  'route-charges': 'Route Charges',
   notification: 'Notification',
   user: 'User',
   tags: 'Tags',

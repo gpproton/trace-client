@@ -58,6 +58,36 @@ export default (service: Workspace): Route => {
           icon: 'bi-sign-turn-right',
         },
       },
+      {
+        name: `${module}.warehouses`,
+        path: 'warehouses',
+        component: () => import('./pages/WarehouseView.vue'),
+        meta: {
+          menu: true,
+          title: 'shared.warehouses',
+          icon: 'bi-building-check',
+        },
+      },
+      {
+        name: `${module}.route-templates`,
+        path: 'route-templates',
+        component: () => import('./pages/RouteTemplates.vue'),
+        meta: {
+          menu: true,
+          title: 'shared.route-templates',
+          icon: 'bi-backpack',
+        },
+      },
+      {
+        name: `${module}.route-charges`,
+        path: 'route-charges',
+        component: () => import('./pages/RouteCharges.vue'),
+        meta: {
+          menu: true,
+          title: 'shared.route-charges',
+          icon: 'bi-coin',
+        },
+      },
     ],
   };
 };

@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 import MapView from '@/map/MapView.vue';
-
-defineOptions({ name: 'LocationView' });
 </script>
 
 <template>
@@ -15,7 +13,7 @@ defineOptions({ name: 'LocationView' });
         >
           <!-- Panel content-->
           <div class="text-center text-h6 q-pa-md">
-            {{ 'Location Content' }}
+            {{ 'Warehouse Content' }}
           </div>
         </q-card>
       </div>

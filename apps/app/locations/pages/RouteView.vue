@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import MapView from '@/map/MapView.vue';
 
-// defineOptions({ name: 'RouteView' });
+defineOptions({ name: 'RouteView' });
 </script>
 
 <template>
