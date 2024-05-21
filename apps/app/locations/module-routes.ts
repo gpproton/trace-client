@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon May 20 2024
+ * Modified At: Tue May 21 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -79,12 +79,12 @@ export default (service: Workspace): Route => {
         },
       },
       {
-        name: `${module}.route-charges`,
-        path: 'route-charges',
-        component: () => import('./pages/RouteCharges.vue'),
+        name: `${module}.route-prices`,
+        path: 'route-prices',
+        component: () => import('./pages/RoutePrices.vue'),
         meta: {
           menu: true,
-          title: 'shared.route-charges',
+          title: 'shared.routePrices',
           icon: 'bi-coin',
         },
       },

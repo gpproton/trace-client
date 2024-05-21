@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-defineOptions({ name: 'RouteCharges' });
+defineOptions({ name: 'RoutePrices' });
 </script>
 
 <template>
