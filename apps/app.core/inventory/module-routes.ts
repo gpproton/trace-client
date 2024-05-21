@@ -56,11 +56,11 @@ export default (): Route => {
       },
       ...catalogueRoutes,
       {
-        name: `${module}.stock-items`,
-        path: 'stock-items',
+        name: `${module}.stocks`,
+        path: 'stocks',
         component: () => import('./pages/StockItemsView.vue'),
         meta: {
-          title: 'shared.stockItems',
+          title: 'shared.stocks',
           icon: 'bi-box',
           menu: true,
         },
