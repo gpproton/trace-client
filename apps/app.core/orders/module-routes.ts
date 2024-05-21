@@ -23,7 +23,7 @@ import { Workspace } from '@trace/shared';
 
 export default (): Route => {
   const name = 'orders';
-  const module = `${Workspace.Partner}-${name}`;
+  const module = `${Workspace.Core}-${name}`;
   const mainView = `${module}.index`;
 
   return {
