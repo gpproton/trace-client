@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon May 20 2024
+ * Modified At: Tue May 21 2024
  */
 
 export default {
@@ -25,6 +25,7 @@ export default {
   settings: 'Settings',
   administration: 'Administration',
   summary: 'Summary',
+  logs: 'Logs',
   core: 'Core',
   portal: 'Portal',
   support: 'Support',
@@ -96,4 +97,27 @@ export default {
   maintenance: 'Maintenance',
   objects: 'Objects',
   objectsSetup: 'Objects Setup',
+  customers: 'Customers',
+  tasks: 'Tasks',
+  orders: 'Orders',
+  expenses: 'Expenses',
+  payments: 'Payments',
+  incentives: 'Incentives',
+  reviews: 'Reviews',
+  helpDesk: 'Help Desk',
+  issues: 'Issues',
+  disputes: 'Disputes',
+  tickets: 'Tickets',
+  plans: 'Plans',
+  subscriptions: 'Subscriptions',
+  shortages: 'Shortages',
+  settlements: 'Settlements',
+  documents: 'Documents',
+  requests: 'Requests',
+  contracts: 'Contracts',
+  billing: 'Billing',
+  qoutes: 'Qoutes',
+  invoices: 'Invoices',
+  transactions: 'Transactions',
+  announcements: 'Announcements',
 };

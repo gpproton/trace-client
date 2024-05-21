@@ -19,43 +19,32 @@
  */
 
 import type { Route } from '@trace/base/typings';
-import type { Workspace } from '@trace/shared';
+import { Workspace } from '@trace/shared';
 
-export default (service: Workspace): Route => {
-  const name = 'calendar';
-  const module = `${service}-${name}`;
-  const mainView = `${module}.personal`;
+export default (): Route => {
+  const name = 'payments';
+  const module = `${Workspace.Dispatch}-${name}`;
+  const mainView = `${module}.all`;
 
   return {
     name: module,
     path: name,
     redirect: { name: mainView },
-    component: () => import('./CalendarLayout.vue'),
     meta: {
       menu: 'module',
-      title: 'shared.calendar',
-      icon: 'bi-calendar4-week',
+      title: 'shared.payments',
+      icon: 'bi-cash-coin',
       hideChildren: true,
       removeChildren: true,
     },
     children: [
       {
         name: mainView,
-        path: 'personal',
-        component: () => import('./pages/CalendarView.vue'),
+        path: '',
+        component: () => import('./pages/PaymentsView.vue'),
         meta: {
-          title: 'shared.calendar',
-          icon: 'bi-calendar4-week',
-          menu: true,
-        },
-      },
-      {
-        name: `${module}.timeline`,
-        path: 'timeline',
-        component: () => import('./pages/CalendarTaskTimline.vue'),
-        meta: {
-          title: 'shared.timeline',
-          icon: 'bi-calendar4-week',
+          title: 'shared.payments',
+          icon: 'bi-cash-coin',
           menu: true,
         },
       },

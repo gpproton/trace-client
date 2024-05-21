@@ -22,41 +22,50 @@ import type { Route } from '@trace/base/typings';
 import type { Workspace } from '@trace/shared';
 
 export default (service: Workspace): Route => {
-  const name = 'calendar';
+  const name = 'shortages';
   const module = `${service}-${name}`;
-  const mainView = `${module}.personal`;
+  const mainView = `${module}.summary`;
 
   return {
     name: module,
     path: name,
     redirect: { name: mainView },
-    component: () => import('./CalendarLayout.vue'),
     meta: {
       menu: 'module',
-      title: 'shared.calendar',
-      icon: 'bi-calendar4-week',
+      title: `shared.${name}`,
+      icon: 'bi-exclamation-diamond',
       hideChildren: true,
-      removeChildren: true,
+      removeChildren: false,
     },
     children: [
       {
         name: mainView,
-        path: 'personal',
-        component: () => import('./pages/CalendarView.vue'),
+        path: '',
+        component: () => import('./pages/ShortageSummaryView.vue'),
         meta: {
-          title: 'shared.calendar',
-          icon: 'bi-calendar4-week',
           menu: true,
+          title: 'shared.summary',
+          icon: 'bi-exclude',
         },
       },
       {
-        name: `${module}.timeline`,
-        path: 'timeline',
-        component: () => import('./pages/CalendarTaskTimline.vue'),
+        name: `${module}.all`,
+        path: 'all',
+        component: () => import('./pages/ShortageView.vue'),
         meta: {
-          title: 'shared.timeline',
-          icon: 'bi-calendar4-week',
           menu: true,
+          title: `shared.${name}`,
+          icon: 'bi-exclamation-diamond',
+        },
+      },
+      {
+        name: `${module}.settlements`,
+        path: 'settlements',
+        component: () => import('./pages/ShortageSettlementView.vue'),
+        meta: {
+          menu: true,
+          title: 'shared.settlements',
+          icon: 'bi-cash-stack',
         },
       },
     ],

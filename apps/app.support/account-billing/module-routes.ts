@@ -15,47 +15,56 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon May 20 2024
+ * Modified At: Tue May 21 2024
  */
 
 import type { Route } from '@trace/base/typings';
-import type { Workspace } from '@trace/shared';
+import { Workspace } from '@trace/shared';
 
-export default (service: Workspace): Route => {
-  const name = 'calendar';
-  const module = `${service}-${name}`;
-  const mainView = `${module}.personal`;
+export default (): Route => {
+  const name = 'help-desk';
+  const module = `${Workspace.Support}-${name}`;
+  const mainView = `${module}.invoices`;
 
   return {
     name: module,
     path: name,
     redirect: { name: mainView },
-    component: () => import('./CalendarLayout.vue'),
     meta: {
       menu: 'module',
-      title: 'shared.calendar',
-      icon: 'bi-calendar4-week',
+      title: 'shared.billing',
+      icon: 'bi-cash-coin',
       hideChildren: true,
-      removeChildren: true,
+      removeChildren: false,
     },
     children: [
       {
         name: mainView,
-        path: 'personal',
-        component: () => import('./pages/CalendarView.vue'),
+        path: '',
+        component: () => import('./pages/ActBillInvoicesView.vue'),
         meta: {
-          title: 'shared.calendar',
-          icon: 'bi-calendar4-week',
+          title: 'shared.invoices',
+          icon: 'bi-receipt',
           menu: true,
         },
       },
       {
-        name: `${module}.timeline`,
-        path: 'timeline',
-        component: () => import('./pages/CalendarTaskTimline.vue'),
+        name: `${module}.subscriptions`,
+        path: 'subscriptions',
+        component: () => import('./pages/ActBillSubscriptionView.vue'),
         meta: {
-          title: 'shared.timeline',
-          icon: 'bi-calendar4-week',
+          title: 'shared.subscriptions',
+          icon: 'bi-credit-card',
+          menu: true,
+        },
+      },
+      {
+        name: `${module}.transactions`,
+        path: 'transactions',
+        component: () => import('./pages/ActBillTransactionsView.vue'),
+        meta: {
+          title: 'shared.transactions',
+          icon: 'bi-cash-stack',
           menu: true,
         },
       },

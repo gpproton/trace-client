@@ -22,40 +22,59 @@ import type { Route } from '@trace/base/typings';
 import type { Workspace } from '@trace/shared';
 
 export default (service: Workspace): Route => {
-  const name = 'calendar';
+  const name = 'help-desk';
   const module = `${service}-${name}`;
-  const mainView = `${module}.personal`;
+  const mainView = `${module}.overview`;
 
   return {
     name: module,
     path: name,
     redirect: { name: mainView },
-    component: () => import('./CalendarLayout.vue'),
     meta: {
       menu: 'module',
-      title: 'shared.calendar',
-      icon: 'bi-calendar4-week',
+      title: 'shared.helpDesk',
+      icon: 'bi-headset',
       hideChildren: true,
-      removeChildren: true,
+      removeChildren: false,
     },
     children: [
       {
         name: mainView,
-        path: 'personal',
-        component: () => import('./pages/CalendarView.vue'),
+        path: 'overview',
+        component: () => import('./pages/HelpDeskOverview.vue'),
         meta: {
-          title: 'shared.calendar',
-          icon: 'bi-calendar4-week',
+          title: 'shared.overview',
+          icon: 'bi-arrow-repeat',
           menu: true,
         },
       },
       {
-        name: `${module}.timeline`,
-        path: 'timeline',
-        component: () => import('./pages/CalendarTaskTimline.vue'),
+        name: `${module}.tickets`,
+        path: 'tickets',
+        component: () => import('./pages/HelpDeskTickets.vue'),
         meta: {
-          title: 'shared.timeline',
-          icon: 'bi-calendar4-week',
+          title: 'shared.tickets',
+          icon: 'bi-ticket-detailed-fill',
+          menu: true,
+        },
+      },
+      {
+        name: `${module}.issues`,
+        path: 'issues',
+        component: () => import('./pages/HelpDeskIssues.vue'),
+        meta: {
+          title: 'shared.issues',
+          icon: 'bi-bullseye',
+          menu: true,
+        },
+      },
+      {
+        name: `${module}.disputes`,
+        path: 'disputes',
+        component: () => import('./pages/HelpDeskDisputes.vue'),
+        meta: {
+          title: 'shared.disputes',
+          icon: 'bi-box-seam-fill',
           menu: true,
         },
       },

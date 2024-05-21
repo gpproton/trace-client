@@ -19,43 +19,52 @@
  */
 
 import type { Route } from '@trace/base/typings';
-import type { Workspace } from '@trace/shared';
+import { Workspace } from '@trace/shared';
 
-export default (service: Workspace): Route => {
-  const name = 'calendar';
-  const module = `${service}-${name}`;
-  const mainView = `${module}.personal`;
+export default (): Route => {
+  const name = 'tasks';
+  const module = `${Workspace.Dispatch}-${name}`;
+  const mainView = `${module}.overview`;
 
   return {
     name: module,
     path: name,
     redirect: { name: mainView },
-    component: () => import('./CalendarLayout.vue'),
     meta: {
       menu: 'module',
-      title: 'shared.calendar',
-      icon: 'bi-calendar4-week',
+      title: 'shared.tasks',
+      icon: 'bi-list-task',
       hideChildren: true,
-      removeChildren: true,
+      removeChildren: false,
     },
     children: [
       {
         name: mainView,
-        path: 'personal',
-        component: () => import('./pages/CalendarView.vue'),
+        path: 'overview',
+        component: () => import('./pages/TaskOverviewView.vue'),
         meta: {
-          title: 'shared.calendar',
-          icon: 'bi-calendar4-week',
+          title: 'shared.overview',
+          icon: 'bi-arrow-repeat',
           menu: true,
         },
       },
       {
-        name: `${module}.timeline`,
-        path: 'timeline',
-        component: () => import('./pages/CalendarTaskTimline.vue'),
+        name: `${module}.logs`,
+        path: 'logs',
+        component: () => import('./pages/TaskLogView.vue'),
         meta: {
-          title: 'shared.timeline',
-          icon: 'bi-calendar4-week',
+          title: 'shared.logs',
+          icon: 'bi-stack',
+          menu: true,
+        },
+      },
+      {
+        name: `${module}.history`,
+        path: 'history',
+        component: () => import('./pages/TaskHistoryView.vue'),
+        meta: {
+          title: 'shared.history',
+          icon: 'bi-clock-history',
           menu: true,
         },
       },

@@ -21,6 +21,8 @@
 import { addCatchAll, addUnAuthorized } from '@/routes.default';
 import addOverviewRoute from '@/app/overviews/module-routes';
 import addLocationsRoute from '@/app/locations/module-routes';
+import helpDeskRoute from '@/app/help-desk/module-routes';
+import customerRoute from './partner-customers/module-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
@@ -29,4 +31,6 @@ export default [
   addUnAuthorized(Workspace.Partner),
   addOverviewRoute(Workspace.Partner),
   addLocationsRoute(Workspace.Partner),
+  helpDeskRoute(Workspace.Partner),
+  customerRoute(),
 ] as Route[];

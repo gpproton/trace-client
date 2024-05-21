@@ -15,12 +15,18 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 21st Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun May 19 2024
+ * Modified At: Mon May 20 2024
  */
 
 import { addCatchAll, addUnAuthorized } from '@/routes.default';
 import addOverviewRoute from '@/app/overviews/module-routes';
 import addContactRoute from '@/app/contacts/module-routes';
+import addTaskRoute from './tasks/module-routes';
+import addOrderRoute from './orders/module-routes';
+import addExpensesRoute from './expenses/module-routes';
+import addPaymentRoute from './payments/module-routes';
+import addIncentivesRoute from './incentives/module-routes';
+import addReviewsRoute from './reviews/module-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
@@ -29,4 +35,10 @@ export default [
   addUnAuthorized(Workspace.Dispatch),
   addOverviewRoute(Workspace.Dispatch),
   addContactRoute(Workspace.Dispatch),
+  addTaskRoute(),
+  addOrderRoute(),
+  addExpensesRoute(),
+  addPaymentRoute(),
+  addIncentivesRoute(),
+  addReviewsRoute(),
 ] as Route[];

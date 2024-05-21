@@ -25,6 +25,8 @@ import addContactRoute from '@/app/contacts/module-routes';
 import addEngagementRoute from '@/app/engagements/module-routes';
 import addLocationsRoute from '@/app/locations/module-routes';
 import addTrackingRoute from '@/app/live-tracking/module-routes';
+import helpDeskRoute from '@/app/help-desk/module-routes';
+import addShortageRoute from '@/app/shortages/module-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
@@ -36,5 +38,7 @@ export default [
   addCalendarRoute(Workspace.Core),
   addTrackingRoute(Workspace.Core),
   addContactRoute(Workspace.Core),
+  helpDeskRoute(Workspace.Core),
   addLocationsRoute(Workspace.Core),
+  addShortageRoute(Workspace.Core),
 ] as Route[];

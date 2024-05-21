@@ -19,43 +19,62 @@
  */
 
 import type { Route } from '@trace/base/typings';
-import type { Workspace } from '@trace/shared';
+import { Workspace } from '@trace/shared';
 
-export default (service: Workspace): Route => {
-  const name = 'calendar';
-  const module = `${service}-${name}`;
-  const mainView = `${module}.personal`;
+export default (): Route => {
+  const name = 'customers';
+  const module = `${Workspace.Partner}-${name}`;
+  const mainView = `${module}.all`;
 
   return {
     name: module,
     path: name,
     redirect: { name: mainView },
-    component: () => import('./CalendarLayout.vue'),
     meta: {
       menu: 'module',
-      title: 'shared.calendar',
-      icon: 'bi-calendar4-week',
+      title: 'shared.customers',
+      icon: 'bi-building-fill-add',
       hideChildren: true,
-      removeChildren: true,
+      removeChildren: false,
     },
     children: [
       {
         name: mainView,
-        path: 'personal',
-        component: () => import('./pages/CalendarView.vue'),
+        path: 'all',
+        component: () => import('./pages/CustomersView.vue'),
         meta: {
-          title: 'shared.calendar',
-          icon: 'bi-calendar4-week',
+          title: 'shared.customers',
+          icon: 'bi-building-fill-add',
           menu: true,
         },
       },
       {
-        name: `${module}.timeline`,
-        path: 'timeline',
-        component: () => import('./pages/CalendarTaskTimline.vue'),
+        name: `${module}.subscriptions`,
+        path: 'subscriptions',
+        component: () => import('./pages/CustomerSubscriptionsView.vue'),
         meta: {
-          title: 'shared.timeline',
-          icon: 'bi-calendar4-week',
+          title: 'shared.subscriptions',
+          icon: 'bi-credit-card',
+          menu: true,
+        },
+      },
+      {
+        name: `${module}.plans`,
+        path: 'plans',
+        component: () => import('./pages/CustomerPlansView.vue'),
+        meta: {
+          title: 'shared.plans',
+          icon: 'bi-arrow-repeat',
+          menu: true,
+        },
+      },
+      {
+        name: `${module}.payments`,
+        path: 'payments',
+        component: () => import('./pages/CustomerPaymentsView.vue'),
+        meta: {
+          title: 'shared.payments',
+          icon: 'bi-cash-coin',
           menu: true,
         },
       },

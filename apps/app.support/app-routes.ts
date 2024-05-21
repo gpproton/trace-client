@@ -15,11 +15,16 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 24th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Tue May 21 2024
  */
 
 import { addCatchAll, addUnAuthorized } from '@/routes.default';
 import addOverviewRoute from '@/app/overviews/module-routes';
+import addTicketRoute from './tickets/module-routes';
+import addDisputesRoute from './disputes/module-routes';
+import addBillingRoute from './account-billing/module-routes';
+import addAnnoncementRoute from './announcements/module-routes';
+import addFaqsRoute from './faqs/module-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
@@ -27,4 +32,9 @@ export default [
   addCatchAll(Workspace.Support),
   addUnAuthorized(Workspace.Support),
   addOverviewRoute(Workspace.Support),
+  addTicketRoute(),
+  addDisputesRoute(),
+  addBillingRoute(),
+  addAnnoncementRoute(),
+  addFaqsRoute(),
 ] as Route[];

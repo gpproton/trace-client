@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 14th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Tue May 21 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -40,7 +40,7 @@ export default (service: Workspace): Route => ({
       component: () => import('./pages/OverviewDashboard.vue'),
       meta: {
         menu: true,
-        title: 'shared.dashboard',
+        title: 'shared.overview',
         icon: 'bi-columns-gap',
       },
     },
