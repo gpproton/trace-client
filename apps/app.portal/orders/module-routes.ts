@@ -55,7 +55,7 @@ export default (): Route => {
         component: () => import('./pages/OrderRequestsView.vue'),
         meta: {
           title: 'shared.requests',
-          icon: 'bi-arrow-left-right',
+          icon: 'bi-box-arrow-in-up-right',
           menu: true,
         },
       },

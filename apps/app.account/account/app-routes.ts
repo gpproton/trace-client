@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Tue May 21 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -45,6 +45,16 @@ const routes: Route[] = [
       menu: 'module',
       title: 'shared.sessions',
       icon: 'bi-clock-history',
+    },
+  },
+  {
+    path: 'wallet',
+    name: `${base}-wallet`,
+    component: () => import('./pages/AccountWallet.vue'),
+    meta: {
+      menu: 'module',
+      title: 'shared.wallet',
+      icon: 'bi-wallet2',
     },
   },
   {

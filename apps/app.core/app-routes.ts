@@ -25,9 +25,14 @@ import addContactRoute from '@/app/contacts/module-routes';
 import addEngagementRoute from '@/app/engagements/module-routes';
 import addLocationsRoute from '@/app/locations/module-routes';
 import addTrackingRoute from '@/app/live-tracking/module-routes';
+import addTaskRoute from './tasks/module-routes';
 import addHelpDeskRoute from '@/app/help-desk/module-routes';
 import addOrderRoute from './orders/module-routes';
 import addCustomerRoute from './customers/module-routes';
+import addDispatchersRoute from './dispatchers/module-routes';
+import addFleetRoute from './fleet/module-routes';
+import addFuelingRoute from './fueling/module-routes';
+import addInventoryRoute from './inventory/module-routes';
 import addShortageRoute from '@/app/shortages/module-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
@@ -36,13 +41,18 @@ export default [
   addCatchAll(Workspace.Core),
   addUnAuthorized(Workspace.Core),
   addOverviewRoute(Workspace.Core),
+  addContactRoute(Workspace.Core),
   addEngagementRoute(Workspace.Core),
   addCalendarRoute(Workspace.Core),
   addTrackingRoute(Workspace.Core),
-  addContactRoute(Workspace.Core),
+  addTaskRoute(),
+  addDispatchersRoute(),
   addHelpDeskRoute(Workspace.Core),
   addOrderRoute(),
   addCustomerRoute(),
   addLocationsRoute(Workspace.Core),
+  addFleetRoute(),
+  addFuelingRoute(),
+  addInventoryRoute(),
   addShortageRoute(Workspace.Core),
 ] as Route[];

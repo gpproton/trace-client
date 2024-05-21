@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Saturday, 18th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat May 18 2024
+ * Modified At: Tue May 21 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -65,7 +65,7 @@ export default (): Route => {
         meta: {
           menu: true,
           title: 'shared.dispatchers',
-          icon: 'bi-arrow-repeat',
+          icon: 'bi-file-earmark-person',
         },
       },
       {

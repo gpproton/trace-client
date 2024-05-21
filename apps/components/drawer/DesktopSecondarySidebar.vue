@@ -14,7 +14,7 @@ const { modelValue, menuItems } = defineModels<{
   <q-drawer
     v-if="modelValue"
     v-model="modelValue"
-    :width="250"
+    :width="220"
     show-if-above
     persistent
     behavior="desktop"

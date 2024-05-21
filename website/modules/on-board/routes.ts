@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Tue May 21 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -62,7 +62,7 @@ export const onboardRoutes: Route[] = [
     name: 'on-board.representative',
     component: () => import('./pages/Reprensentative.vue'),
     meta: {
-      title: 'shared.representative',
+      title: 'shared.representativeInfo',
       description: 'Required representative details for account',
     },
   },
