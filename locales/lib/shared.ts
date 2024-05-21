@@ -138,4 +138,6 @@ export default {
   transfers: 'Transfers',
   stockTransfers: 'Stock Transfers',
   stockPurchases: 'Stock Purchases',
+  catalogueBrands: 'Catalogue Brands',
+  catalogueCategories: 'Catalogue Categories',
 };

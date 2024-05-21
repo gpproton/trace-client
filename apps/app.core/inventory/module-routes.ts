@@ -20,11 +20,17 @@
 
 import type { Route } from '@trace/base/typings';
 import { Workspace } from '@trace/shared';
+import addCatalogueRoute from '@/app/catalogue/module-routes';
 
 export default (): Route => {
   const name = 'inventory';
   const module = `${Workspace.Core}-${name}`;
   const mainView = `${module}.summary`;
+  const catalogueRoutes = addCatalogueRoute(
+    Workspace.Core,
+    false,
+    module,
+  ) as Route[];
 
   return {
     name: module,
@@ -48,50 +54,7 @@ export default (): Route => {
           menu: true,
         },
       },
-      {
-        name: `${module}.catalogue`,
-        path: 'catalogue',
-        redirect: { name: `${module}.catalogue-items` },
-        meta: {
-          title: 'shared.catalogue',
-          icon: 'bi-boxes',
-          menu: true,
-        },
-        children: [
-          {
-            name: `${module}.catalogue-items`,
-            path: 'items',
-            component: () => import('./pages/catalogue/CatalogueItemsView.vue'),
-            meta: {
-              title: 'shared.catalogueItems',
-              icon: 'bi-boxes',
-              menu: true,
-            },
-          },
-          {
-            name: `${module}.catalogue-brands`,
-            path: 'brands',
-            component: () =>
-              import('./pages/catalogue/CatalogueBrandsView.vue'),
-            meta: {
-              title: 'shared.brands',
-              icon: 'bi-textarea',
-              menu: true,
-            },
-          },
-          {
-            name: `${module}.catalogue-categories`,
-            path: 'categories',
-            component: () =>
-              import('./pages/catalogue/CatalogueCategoriesView.vue'),
-            meta: {
-              title: 'shared.categories',
-              icon: 'bi-box2',
-              menu: true,
-            },
-          },
-        ],
-      },
+      ...catalogueRoutes,
       {
         name: `${module}.stock-items`,
         path: 'stock-items',

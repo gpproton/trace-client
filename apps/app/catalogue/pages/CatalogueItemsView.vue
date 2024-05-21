@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-defineOptions({ name: 'CatalogueView' });
+defineOptions({ name: 'CatalogueItemsView' });
 </script>
 
 <template>

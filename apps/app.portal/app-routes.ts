@@ -28,6 +28,7 @@ import addBillingRoute from './billing/module-routes';
 import addLocationsRoute from '@/app/locations/module-routes';
 import addShortageRoute from '@/app/shortages/module-routes';
 import addContractsRoute from './contracts/module-routes';
+import addCatalogueRoute from '@/app/catalogue/module-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
 
@@ -43,4 +44,5 @@ export default [
   addLocationsRoute(Workspace.Portal),
   addShortageRoute(Workspace.Portal),
   addContractsRoute(),
+  addCatalogueRoute(Workspace.Portal, true),
 ] as Route[];
