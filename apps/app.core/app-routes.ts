@@ -28,6 +28,7 @@ import addTrackingRoute from '@/app/live-tracking/module-routes';
 import addTaskRoute from './tasks/module-routes';
 import addHelpDeskRoute from '@/app/help-desk/module-routes';
 import addOrderRoute from './orders/module-routes';
+import addFinanceRoute from './finances/module-routes';
 import addCustomerRoute from './customers/module-routes';
 import addDispatchersRoute from './dispatchers/module-routes';
 import addFleetRoute from './fleet/module-routes';
@@ -49,6 +50,7 @@ export default [
   addDispatchersRoute(),
   addHelpDeskRoute(Workspace.Core),
   addOrderRoute(),
+  addFinanceRoute(),
   addCustomerRoute(),
   addLocationsRoute(Workspace.Core),
   addFleetRoute(),
