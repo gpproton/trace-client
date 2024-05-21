@@ -13,28 +13,41 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Monday, 25th Mar 2024
+ * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
  * Modified At: Tue May 21 2024
  */
 
-import { addCatchAll, addUnAuthorized } from '@/routes.default';
-import addOverviewRoute from '@/app/overviews/module-routes';
-import addHelpDeskRoute from '@/app/help-desk/module-routes';
-import addCustomerRoute from './partner-customers/module-routes';
-import addVehicleRoute from './vehicles/module-routes';
-import addDeviceRoute from './devices/module-routes';
-import addLocationsRoute from '@/app/locations/module-routes';
-import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
+import { Workspace } from '@trace/shared';
 
-export default [
-  addCatchAll(Workspace.Partner),
-  addUnAuthorized(Workspace.Partner),
-  addOverviewRoute(Workspace.Partner),
-  addHelpDeskRoute(Workspace.Partner),
-  addVehicleRoute(),
-  addDeviceRoute(),
-  addCustomerRoute(),
-  addLocationsRoute(Workspace.Partner),
-] as Route[];
+export default (): Route => {
+  const name = 'vehicles';
+  const module = `${Workspace.Partner}-${name}`;
+  const mainView = `${module}.index`;
+
+  return {
+    name: module,
+    path: name,
+    redirect: { name: mainView },
+    meta: {
+      menu: 'module',
+      title: 'shared.vehicles',
+      icon: 'bi-car-front',
+      hideChildren: true,
+      removeChildren: false,
+    },
+    children: [
+      {
+        name: mainView,
+        path: '',
+        component: () => import('./pages/PartnerVehiclesView.vue'),
+        meta: {
+          title: 'shared.vehicles',
+          icon: 'bi-car-front',
+          menu: true,
+        },
+      },
+    ],
+  };
+};
