@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 14th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon May 20 2024
+ * Modified At: Tue May 21 2024
  */
 
 import { addCatchAll, addUnAuthorized } from '@/routes.default';
@@ -25,7 +25,9 @@ import addContactRoute from '@/app/contacts/module-routes';
 import addEngagementRoute from '@/app/engagements/module-routes';
 import addLocationsRoute from '@/app/locations/module-routes';
 import addTrackingRoute from '@/app/live-tracking/module-routes';
-import helpDeskRoute from '@/app/help-desk/module-routes';
+import addHelpDeskRoute from '@/app/help-desk/module-routes';
+import addOrderRoute from './orders/module-routes';
+import addCustomerRoute from './customers/module-routes';
 import addShortageRoute from '@/app/shortages/module-routes';
 import { Workspace } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
@@ -38,7 +40,9 @@ export default [
   addCalendarRoute(Workspace.Core),
   addTrackingRoute(Workspace.Core),
   addContactRoute(Workspace.Core),
-  helpDeskRoute(Workspace.Core),
+  addHelpDeskRoute(Workspace.Core),
+  addOrderRoute(),
+  addCustomerRoute(),
   addLocationsRoute(Workspace.Core),
   addShortageRoute(Workspace.Core),
 ] as Route[];

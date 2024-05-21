@@ -33,7 +33,7 @@ export default (): Route => {
     meta: {
       menu: 'module',
       title: 'shared.disputes',
-      icon: 'bi-flag',
+      icon: 'bi-box-seam-fill',
       hideChildren: true,
       removeChildren: true,
     },
@@ -44,7 +44,7 @@ export default (): Route => {
         component: () => import('./pages/DisputesView.vue'),
         meta: {
           title: 'shared.disputes',
-          icon: 'bi-flag',
+          icon: 'bi-box-seam-fill',
           menu: true,
         },
       },

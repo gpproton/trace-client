@@ -22,9 +22,9 @@ import type { Route } from '@trace/base/typings';
 import { Workspace } from '@trace/shared';
 
 export default (): Route => {
-  const name = 'tickets';
-  const module = `${Workspace.Support}-${name}`;
-  const mainView = `${module}.all`;
+  const name = 'orders';
+  const module = `${Workspace.Partner}-${name}`;
+  const mainView = `${module}.index`;
 
   return {
     name: module,
@@ -32,19 +32,29 @@ export default (): Route => {
     redirect: { name: mainView },
     meta: {
       menu: 'module',
-      title: 'shared.tickets',
-      icon: 'bi-ticket-detailed-fill',
+      title: 'shared.orders',
+      icon: 'bi-arrow-down-right-square',
       hideChildren: true,
-      removeChildren: true,
+      removeChildren: false,
     },
     children: [
       {
         name: mainView,
         path: '',
-        component: () => import('./pages/TicketsView.vue'),
+        component: () => import('./pages/OrdersView.vue'),
         meta: {
-          title: 'shared.tickets',
-          icon: 'bi-ticket-detailed-fill',
+          title: 'shared.orders',
+          icon: 'bi-arrow-down-right-square',
+          menu: true,
+        },
+      },
+      {
+        name: `${module}.history`,
+        path: 'history',
+        component: () => import('./pages/OrderHistory.vue'),
+        meta: {
+          title: 'shared.history',
+          icon: 'bi-clock-history',
           menu: true,
         },
       },

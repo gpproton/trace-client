@@ -22,9 +22,9 @@ import type { Route } from '@trace/base/typings';
 import { Workspace } from '@trace/shared';
 
 export default (): Route => {
-  const name = 'tickets';
-  const module = `${Workspace.Support}-${name}`;
-  const mainView = `${module}.all`;
+  const name = 'customers';
+  const module = `${Workspace.Core}-${name}`;
+  const mainView = `${module}.index`;
 
   return {
     name: module,
@@ -32,19 +32,51 @@ export default (): Route => {
     redirect: { name: mainView },
     meta: {
       menu: 'module',
-      title: 'shared.tickets',
-      icon: 'bi-ticket-detailed-fill',
+      title: 'shared.customers',
+      icon: 'bi-building-fill-add',
       hideChildren: true,
-      removeChildren: true,
+      removeChildren: false,
     },
     children: [
       {
         name: mainView,
         path: '',
-        component: () => import('./pages/TicketsView.vue'),
+        component: () => import('./pages/CustomersView.vue'),
         meta: {
-          title: 'shared.tickets',
-          icon: 'bi-ticket-detailed-fill',
+          title: 'shared.customers',
+          icon: 'bi-building-fill-add',
+          menu: true,
+        },
+      },
+      {
+        name: `${module}.contracts`,
+        path: 'contracts',
+        component: () => import('./pages/CustomerContractsView.vue'),
+        meta: {
+          title: 'shared.contracts',
+          icon: 'bi-file-lock',
+          menu: true,
+        },
+      },
+
+      {
+        name: `${module}.locations`,
+        path: 'locations',
+        component: () => import('./pages/CustomerLocationsView.vue'),
+        meta: {
+          title: 'shared.locations',
+          icon: 'bi-compass',
+          menu: true,
+        },
+      },
+
+      {
+        name: `${module}.prices`,
+        path: 'prices',
+        component: () => import('./pages/CustomerPriceTemplatesView.vue'),
+        meta: {
+          title: 'shared.priceTemplates',
+          icon: 'bi-file-lock',
           menu: true,
         },
       },
