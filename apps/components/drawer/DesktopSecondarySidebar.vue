@@ -23,13 +23,14 @@ const { modelValue, menuItems } = defineModels<{
     class="q-px-xs q-py-sm"
   >
     <q-list padding class="text-primary q-px-xs">
-      <template v-for="(item, index) in menuItems" :key="index">
-        <link-item :item="item" :dense="false" class="q-my-xs" />
-        <!-- <q-separator
-          v-if="index !== menuItems.length - 1"
-          :key="'sep' + index"
-        /> -->
-      </template>
+      <link-item
+        v-for="(item, index) in menuItems"
+        :key="index"
+        :show-icon="false"
+        :item="item"
+        :dense="false"
+        class="q-my-xs"
+      />
     </q-list>
   </q-drawer>
 </template>

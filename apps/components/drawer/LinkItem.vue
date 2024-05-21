@@ -3,22 +3,26 @@ import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: 'LinkSecondaryItem' });
 type RouteSecondary = RouteMenu & { separator?: boolean };
-interface IProps {
-  item: RouteSecondary;
-  dense?: boolean;
-  iconSize?: string;
-}
 
-const props = withDefaults(defineProps<IProps>(), {
-  dense: false,
-  iconSize: '',
-});
+const props = withDefaults(
+  defineProps<{
+    item: RouteSecondary;
+    dense?: boolean;
+    showIcon?: boolean;
+    iconSize?: string;
+  }>(),
+  {
+    dense: false,
+    showIcon: true,
+    iconSize: '',
+  },
+);
 </script>
 
 <template>
   <q-expansion-item
     :expand-separator="item.separator"
-    :icon="props.item.icon"
+    :icon="showIcon ? props.item.icon : ''"
     :label="$t(props.item.title as string)"
     :hide-expand-icon="item.children == undefined || item.hideChildren"
     :class="iconSize.length > 0 ? 'seperator-icon' : ''"
@@ -33,22 +37,20 @@ const props = withDefaults(defineProps<IProps>(), {
       bordered
       padding
     >
-      <template v-for="(menuItem, index) in item.children" :key="index">
-        <q-item
-          v-ripple
-          clickable
-          :to="
-            menuItem.name !== undefined
-              ? { name: menuItem.name }
-              : { name: '#' }
-          "
-        >
-          <q-item-section v-if="item.icon != undefined" avatar>
-            <q-icon :name="menuItem.icon" />
-          </q-item-section>
-          <q-item-section>{{ $t(menuItem?.title as string) }}</q-item-section>
-        </q-item>
-      </template>
+      <q-item
+        v-for="(menuItem, index) in item.children"
+        :key="index"
+        v-ripple
+        clickable
+        :to="
+          menuItem.name !== undefined ? { name: menuItem.name } : { name: '#' }
+        "
+      >
+        <q-item-section v-if="item.icon != undefined && showIcon" avatar>
+          <q-icon :name="menuItem.icon" />
+        </q-item-section>
+        <q-item-section>{{ $t(menuItem?.title as string) }}</q-item-section>
+      </q-item>
     </q-list>
   </q-expansion-item>
 </template>

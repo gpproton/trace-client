@@ -74,7 +74,7 @@ export default (service: Workspace): Route => {
         component: () => import('./pages/RouteTemplates.vue'),
         meta: {
           menu: true,
-          title: 'shared.route-templates',
+          title: 'shared.routeTemplates',
           icon: 'bi-backpack',
         },
       },
