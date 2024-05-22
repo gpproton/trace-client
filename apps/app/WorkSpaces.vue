@@ -90,7 +90,7 @@ const links = ref<Array<{ name: string; label: string }>>([
               dense
               shrink
               stretch
-              content-class="text-primary q-mr-sm"
+              content-class="text-primary q-mr-sm gt-sm"
             >
               <q-route-tab
                 v-for="(link, index) in links"

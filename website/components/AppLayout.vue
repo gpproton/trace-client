@@ -42,7 +42,7 @@ const links = [
             exact
             :to="{ name: link.name }"
             :name="link.name"
-            class="text-body1 border-radius-sm"
+            class="text-body1 border-radius-sm gt-sm"
             >{{ $t(link.label) }}</q-route-tab
           >
         </q-tabs>

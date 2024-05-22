@@ -24,13 +24,18 @@ const { getTenantName } = storeToRefs(serverStore);
     <slot name="start"></slot>
     <div class="row justify-start q-gutter-x-sm items-center">
       <slot name="title">
-        <q-toolbar-title
-          class="text-h5 text-weight-bolder"
-          :class="white ? 'text-white' : 'text-primary'"
-        >
-          <nuxt-link class="row items-center q-gutter-x-sm" to="/">
+        <q-toolbar-title>
+          <nuxt-link
+            class="row items-center q-gutter-x-sm"
+            style="text-decoration: none"
+            to="/"
+          >
             <app-logo :class="white ? 'white-logo' : 'app-logo'" />
-            <span>{{ getTenantName }}</span>
+            <span
+              class="text-h5 text-weight-bolder"
+              :class="white ? 'text-white' : 'text-primary'"
+              >{{ getTenantName }}</span
+            >
           </nuxt-link>
         </q-toolbar-title>
       </slot>

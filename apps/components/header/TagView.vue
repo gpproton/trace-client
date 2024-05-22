@@ -59,7 +59,7 @@ const unSubscribe = tagViewStore.$subscribe((mutation, state) => {
     }"
   >
     <q-tabs
-      class="tagViewBase col-12"
+      class="tagViewBase col-12 gt-sm"
       align="left"
       active-color="white"
       active-class="tagActive"
@@ -69,7 +69,7 @@ const unSubscribe = tagViewStore.$subscribe((mutation, state) => {
       indicator-color="transparent"
       :breakpoint="0"
     >
-      <q-route-tab :to="'/'" :class="tagViewClass('/')" flat dense no-caps>
+      <q-route-tab to="/" :class="tagViewClass('/')" flat dense no-caps>
         <q-icon size="1.1rem" name="bi-ui-checks-grid" />
         <div class="line-limit-length">
           {{ $t('router.work-spaces') }}

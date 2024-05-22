@@ -52,6 +52,7 @@ onUnmounted(() => {
           <span>{{ $t('auth.newHere') }}</span>
           <nuxt-link
             class="text-primary"
+            style="text-decoration: none"
             :to="{ name: 'user-boarding.getting-started' }"
             >{{ $t('auth.createAccount') }}</nuxt-link
           >
