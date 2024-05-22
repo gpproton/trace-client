@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Tuesday, 12th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Wed May 22 2024
  */
 
 import 'vue-router';
@@ -79,4 +79,12 @@ declare interface RouteMenu {
   hideChildren?: boolean;
   removeChildren?: boolean;
   layout?: string;
+}
+
+export interface IWrapperProps {
+  options?: IPageContext | any;
+  name?: string;
+  contentActiveStyle?: string;
+  scrollable?: boolean;
+  padding?: boolean;
 }

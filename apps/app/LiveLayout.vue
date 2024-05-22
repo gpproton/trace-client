@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import { ref, provide } from 'vue';
 import type { Workspace } from '@trace/shared';
-import RouterInject from '@/components/RouterInject.vue';
 import AppLayout from './AppLayout.vue';
 import type { RouteMenu } from '@trace/base/typings';
 import SidebarList from '@/components/drawer/SidebarList.vue';
 import ProfileWidget from '@/components/extra/ProfileWidget.vue';
+import { useLayoutRouteStore } from '@/composables/layout-routes';
 
-withDefaults(
+const { modulesMenuFn, moduleFeaturesFn } = useLayoutRouteStore();
+const props = withDefaults(
   defineProps<{
     workspace: Workspace;
     overviewFilter?: string[];
@@ -21,24 +22,19 @@ withDefaults(
 
 const appLayoutRef = ref();
 const overviewActiveState = ref(false);
-
-// const modules = computed<RouteMenu[]>(
-//   () => appLayoutRef.value?.modulesMenu ?? [],
-// );
-
+const workspaceValue = computed(() => props.workspace);
+const modulesMenu = computed<RouteMenu[]>(() => modulesMenuFn());
+const moduleFeatures = computed<RouteMenu[]>(() => moduleFeaturesFn());
 const overviewModuleMenu = computed<RouteMenu[]>(
   () => appLayoutRef.value?.overviewModuleMenu ?? [],
 );
 const generalModuleMenu = computed<RouteMenu[]>(
   () => appLayoutRef.value?.generalModuleMenu ?? [],
 );
-// const generalModuleMenu = computed<RouteMenu[]>(() =>
-//   modules.value.filter(
-//     (e) =>
-//       e.name !== undefined && props.overviewFilter.includes(e.name as string),
-//   ),
-// );
 
+provide('app:workspace', workspaceValue);
+provide('app:modules', modulesMenu);
+provide('app:modules-features', moduleFeatures);
 provide('app:overview-active', overviewActiveState);
 provide('app:overview-modules', overviewModuleMenu);
 provide('app:general-modules', generalModuleMenu);
@@ -62,6 +58,6 @@ provide('app:general-modules', generalModuleMenu);
     <template #sidebar-bottom>
       <sidebar-list :items="overviewModuleMenu" />
     </template>
-    <router-inject></router-inject>
+    <router-view />
   </app-layout>
 </template>

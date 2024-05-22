@@ -11,8 +11,8 @@ import DesktopSidebar from '@/components/drawer/DesktopSidebar.vue';
 import DesktopSecondarySidebar from '@/components/drawer/DesktopSecondarySidebar.vue';
 import MobileHeader from '@/components/header/MobileHeader.vue';
 import MobileSidebar from '@/components/drawer/MobileSidebar.vue';
-import MobileBottomMenu from '@/components/footer/MobileBottomMenu.vue';
-import RouterInject from '@/components/RouterInject.vue';
+// import MobileBottomMenu from '@/components/footer/MobileBottomMenu.vue';
+// import RouterInject from '@/components/RouterInject.vue';
 import type { RouteMenu } from '@trace/base/typings';
 
 interface IProps {
@@ -54,7 +54,6 @@ watchEffect(() => {
 });
 const workspaceValue = computed(() => props.workspace);
 const mouseTriggerValue = shallowRef(props.mouseOver);
-
 const overviewModuleMenu = computed(() =>
   modulesMenu.value.filter(
     (e) =>
@@ -70,6 +69,7 @@ const generalModuleMenu = computed(() =>
 
 provide('app:workspace', workspaceValue);
 provide('app:modules', modulesMenu);
+provide('app:modules-features', moduleFeatures);
 provide('app:overview-modules', overviewModuleMenu);
 provide('app:general-modules', generalModuleMenu);
 provide('app:sidebar-mouse', mouseTriggerValue);
@@ -94,11 +94,7 @@ const quickCreateItems: IModuleCommands[] = [
   <q-layout view="lHr lpR fFf" class="no-scroll" @resize="setSize">
     <!-- Mobile layout contents -->
     <slot v-if="isMobile" name="mobile-sidebar">
-      <mobile-sidebar
-        v-model="mobileSidebarRef"
-        v-model:modules="modulesMenu"
-        v-model:dark-mode="isDark"
-      />
+      <mobile-sidebar v-model="mobileSidebarRef" v-model:dark-mode="isDark" />
     </slot>
     <slot v-if="isMobile" name="mobile-header">
       <mobile-header
@@ -109,11 +105,12 @@ const quickCreateItems: IModuleCommands[] = [
     </slot>
     <q-page-container v-if="isMobile" class="no-scroll">
       <slot>
-        <router-inject />
+        <router-view />
       </slot>
     </q-page-container>
     <!-- TODO: re-evaluate mobile navigation -->
-    <slot v-if="isMobile" name="mobile-bottom-menu">
+    <!--
+      <slot v-if="isMobile" name="mobile-bottom-menu">
       <mobile-bottom-menu
         v-model:modules="modulesMenu"
         style="display: none"
@@ -121,6 +118,7 @@ const quickCreateItems: IModuleCommands[] = [
         :overflow-filters="mobileFilter"
       />
     </slot>
+    -->
 
     <!-- Desktop layout contents -->
     <slot name="desktop-sidebar">
@@ -161,7 +159,7 @@ const quickCreateItems: IModuleCommands[] = [
         </slot>
         <q-page-container class="bg-app-container no-scroll">
           <slot>
-            <router-inject />
+            <router-view />
           </slot>
         </q-page-container>
       </q-layout>

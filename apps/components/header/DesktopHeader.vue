@@ -2,19 +2,24 @@
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import type { IModuleCommands } from '@trace/shared';
+import { useQuasar } from 'quasar';
 import CommandList from '@/components/extra/CommandList.vue';
 import NotificationDialog from '@/components/extra/NotificationDialog.vue';
 import Breadcrumbs from './Breadcrumbs.vue';
 import TagView from '@/components/header/TagView.vue';
 import ProfileWidgetMenu from '@/components/extra/ProfileWidgetMenu.vue';
 import ProfileAvatar from '@/components/extra/ProfileAvatar.vue';
+import DialogSearch from '@/components/extra/DialogSearch.vue';
 import { useTagViewStore } from '@/stores/tag-view';
 import { useLayoutStore } from '@/stores/layout';
 
 defineProps<{
   quickCommands: IModuleCommands[];
 }>();
+
+const $q = useQuasar();
 const bellIconFill = ref(false);
+const dialog = ref();
 const { modelValue, search, showSecondarySidebarToogle } = defineModels<{
   showSecondarySidebarToogle: boolean;
   modelValue: ModelOptions<boolean, { defaultValue: false; deep: true }>;
@@ -25,6 +30,19 @@ const layoutStore = useLayoutStore();
 const tagViewStore = useTagViewStore();
 const { getShowHeaderToolbar } = storeToRefs(layoutStore);
 const { tagViewEnabled } = storeToRefs(tagViewStore);
+
+const triggerSearchDialog = () => {
+  dialog.value = $q
+    .dialog({
+      component: DialogSearch,
+      componentProps: {
+        persistent: false,
+      },
+    })
+    .onDismiss(() => {
+      console.log('dismissed dialog');
+    });
+};
 </script>
 
 <template>
@@ -60,17 +78,29 @@ const { tagViewEnabled } = storeToRefs(tagViewStore);
           :show-icon="false"
         />
         <q-space />
-        <q-input
+        <q-field
           v-model="search"
           dense
-          filled
-          label="Search items"
-          class="q-mx-sm border-radius-sm"
+          outlined
+          stack-label
+          style="min-width: 250px"
+          class="cursor-pointer"
+          @focus="triggerSearchDialog"
         >
           <template #prepend>
             <q-avatar>
-              <q-icon size="sm" name="bi-search" />
+              <q-icon color="grey" size="md" name="search" />
             </q-avatar>
+          </template>
+          <template #label>
+            <div class="text-grey text-body2">
+              {{ $t('shared.search') }}
+            </div>
+          </template>
+          <template #control>
+            <div class="self-center full-width no-outline" tabindex="0">
+              {{ search }}
+            </div>
           </template>
           <template #append>
             <div class="row items-center q-gutter-xs">
@@ -78,7 +108,7 @@ const { tagViewEnabled } = storeToRefs(tagViewStore);
               <span class="text-weight-regular text-subtitle1">K</span>
             </div>
           </template>
-        </q-input>
+        </q-field>
         <div class="header-icon-button q-gutter-xs vertical-middle">
           <!-- Notification actions -->
           <q-btn

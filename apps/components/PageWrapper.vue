@@ -4,8 +4,8 @@ import { QScrollArea, SessionStorage } from 'quasar';
 import { useRoute } from 'vue-router';
 import {} from '@/stores/theme';
 import RouterInject from './RouterInject.vue';
-import { type IPageContext } from '@/stores/page';
 import UnderConstruction from '@trace/base/components/error/UnderConstruction.vue';
+import type { IWrapperProps } from '@trace/base/typings';
 
 defineOptions({ name: 'PageWrapper' });
 
@@ -33,15 +33,7 @@ const thumbStyle = {
   width: '7px',
 };
 
-export interface IProps {
-  options?: IPageContext | any;
-  name?: string;
-  contentActiveStyle?: string;
-  scrollable?: boolean;
-  padding?: boolean;
-}
-
-withDefaults(defineProps<IProps>(), {
+withDefaults(defineProps<IWrapperProps>(), {
   options: {},
   name: '',
   contentActiveStyle: '',

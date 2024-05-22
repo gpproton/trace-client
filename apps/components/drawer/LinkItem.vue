@@ -47,7 +47,7 @@ const props = withDefaults(
         "
       >
         <q-item-section v-if="item.icon != undefined && showIcon" avatar>
-          <q-icon :name="menuItem.icon" />
+          <q-icon size="sm" :name="menuItem.icon" />
         </q-item-section>
         <q-item-section>{{ $t(menuItem?.title as string) }}</q-item-section>
       </q-item>

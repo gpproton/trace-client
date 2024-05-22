@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Wed May 22 2024
  */
 
 import bootstrapIcons from 'quasar/icon-set/svg-bootstrap-icons';
@@ -35,7 +35,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@vue-macros/nuxt',
     '@vite-pwa/nuxt',
-    '@nuxtjs/tailwindcss',
+    // '@nuxtjs/tailwindcss',
   ],
   pwa: {},
   vite: {
@@ -56,13 +56,13 @@ export default defineNuxtConfig({
     cookieOptions: {
       sameSite: 'none',
     },
-    // storage: 'localStorage',
   },
   css: [
     join(currentDir, './assets/colors.scss'),
     join(currentDir, './assets/qusar-mod.scss'),
   ],
   quasar: {
+    cssAddon: true,
     plugins: [
       'AddressbarColor',
       'AppVisibility',

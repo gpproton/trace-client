@@ -34,17 +34,23 @@ defineOptions({ name: 'WelcomeLayout' });
             width="calc(28vw)"
           />
         </q-card>
-        <q-card square fit class="col window-height column justify-between">
-          <q-toolbar class="q-py-sm q-px-md gt-sm">
-            <lang-selector />
-            <q-space />
-            <support-links></support-links>
-          </q-toolbar>
-          <generic-header class="lt-md"></generic-header>
-          <div class="q-pa-sm col-10">
-            <router-view />
-          </div>
-          <boarding-footer></boarding-footer>
+        <q-card square fit class="col window-height">
+          <q-layout>
+            <q-header class="bg-transparent">
+              <q-toolbar class="q-py-sm q-px-md gt-sm">
+                <lang-selector />
+                <q-space />
+                <support-links></support-links>
+              </q-toolbar>
+              <generic-header class="lt-md"></generic-header>
+            </q-header>
+            <q-page-container class="q-pa-sm">
+              <router-view />
+            </q-page-container>
+            <q-footer class="bg-transparent">
+              <boarding-footer></boarding-footer>
+            </q-footer>
+          </q-layout>
         </q-card>
       </div>
     </q-page-container>

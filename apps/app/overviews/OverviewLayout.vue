@@ -36,6 +36,6 @@ const dashboardTypes: string[] = ['Status', 'Availability'];
         </div>
       </q-toolbar>
     </template>
-    <router-view></router-view>
+    <router-view />
   </page-wrapper>
 </template>

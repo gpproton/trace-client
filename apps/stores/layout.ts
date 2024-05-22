@@ -15,9 +15,10 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat May 18 2024
+ * Modified At: Wed May 22 2024
  */
 
+import { Dialog } from 'quasar';
 import { defineStore, storeToRefs } from 'pinia';
 import { usePageStore } from './page';
 import { Workspace } from '@trace/shared';
@@ -65,3 +66,17 @@ export const useLayoutStore = defineStore('state-app-layout', () => {
     setShowHeaderToolbar,
   };
 });
+
+// export const useLayoutDialog = (
+//   component: undefined | string | globalThis.Component,
+//   props: any,
+// ) => {
+//   const $q = Dialog.create({
+//     component: component,
+//     componentProps: props,
+//   });
+
+//   return {
+//     show: () => $q.show(),
+//   };
+// };

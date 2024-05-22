@@ -10,7 +10,7 @@ const { getLoadingState } = storeToRefs(serverStore);
   <div v-show="!getLoadingState">
     <slot />
   </div>
-  <div  v-show="getLoadingState" class="splash-screen">
+  <div v-show="getLoadingState" class="splash-screen">
     <div class="spinner-wrapper">
       <div class="spinner"></div>
     </div>

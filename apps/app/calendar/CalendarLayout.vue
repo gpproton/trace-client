@@ -25,6 +25,6 @@ const navigations = computed(() => moduleChildrenFn());
         ></q-btn>
       </div>
     </div>
-    <router-view></router-view>
+    <router-view />
   </page-wrapper>
 </template>

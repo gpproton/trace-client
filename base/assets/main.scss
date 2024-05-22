@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu May 16 2024
+ * Modified At: Tue May 21 2024
  */
 
 @import './quasar.variables.scss';
@@ -142,11 +142,14 @@ body {
 
   .onboard-form {
     min-height: 350px;
-    max-width: 55vw;
     min-width: 33vw;
 
     @media screen and (max-width: $breakpoint-md-min) {
       max-width: 95vw;
+    }
+
+    @media screen and (min-width: $breakpoint-sm-min) {
+      max-width: 450px;
     }
   }
 }

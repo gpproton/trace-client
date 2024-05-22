@@ -9,7 +9,7 @@ defineOptions({ name: 'IdentityForm' });
       autocapitalize="off"
       autocomplete="off"
       spellcheck="false"
-      class="q-pa-md"
+      class="q-pa-md q-pa-xs-sm"
     >
       <div class="q-mb-lg">
         <div class="text-primary text-h4 text-weight-bold">

@@ -160,7 +160,7 @@ onUnmounted(() => {
         :loading="getLoading"
         :disable="loginForminactive"
         no-caps
-        class="full-width border-radius-sm text-weight-medium hover:shadow-2xl hover:bg-indigo-10 hover:scale-10"
+        class="full-width border-radius-sm text-weight-medium"
         @click="triggerAuth"
       />
     </template>

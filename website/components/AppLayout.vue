@@ -30,7 +30,12 @@ const links = [
           {{ 'Trace' }}
         </q-toolbar-title>
         <q-space />
-        <q-tabs no-caps shrink stretch content-class="gt-sm text-primary q-mr-lg">
+        <q-tabs
+          no-caps
+          shrink
+          stretch
+          content-class="gt-sm text-primary q-mr-lg"
+        >
           <q-route-tab
             v-for="(link, index) in links"
             :key="index"

@@ -37,7 +37,7 @@ const handleKey = (index: number) => {
         <span class="text-overline">+234XXX123XXXX</span>
       </div>
     </template>
-    <div class="full-width q-my-lg row justify-center">
+    <div class="full-width q-my-lg row justify-center no-wrap">
       <q-input
         v-for="(verifyItem, verifyIndex) in 4"
         :ref="
@@ -47,6 +47,7 @@ const handleKey = (index: number) => {
         "
         :key="verifyIndex"
         v-model="otpInputValue[verifyIndex]"
+        dense
         maxlength="1"
         :rules="[(val) => val.length <= 1]"
         type="text"
@@ -93,5 +94,12 @@ const handleKey = (index: number) => {
   width: 64px;
   height: 64px;
   text-align: center !important;
+}
+
+@media screen and (max-width: $breakpoint-sm-min) {
+  .verify-input {
+    width: 52px;
+    height: 52px;
+  }
 }
 </style>

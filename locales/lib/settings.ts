@@ -15,19 +15,19 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 20th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon May 20 2024
+ * Modified At: Tue May 21 2024
  */
 
 export default {
-  mapSettings: 'Map Settings',
-  generalSettings: 'General Settings',
-  accountAlerts: 'Account Alerts',
-  appearanceSettings: 'Appearance Settings',
-  billingSettings: 'Billing Settings',
-  taskOptions: 'Task Options',
-  eventOptions: 'Event Options',
-  violationOptions: 'Violation Options',
-  shortageOptions: 'Shortage Options',
-  domainSettings: 'Domain Settings',
-  domainOptions: 'Domain Options',
+  mapSettings: '@:shared.map @:shared.settings',
+  generalSettings: '@:shared.general @:shared.settings',
+  accountAlerts: '@:shared.account Alerts',
+  appearanceSettings: '@:shared.appearance @:shared.settings',
+  billingSettings: '@:shared.billing @:shared.settings',
+  taskOptions: '@:shared.task @:shared.options',
+  eventOptions: '@:shared.event @:shared.options',
+  violationOptions: '@:shared.violation @:shared.options',
+  shortageOptions: '@:shared.shortage @:shared.options',
+  domainSettings: '@:shared.domain @:shared.settings',
+  domainOptions: '@:shared.domain @:shared.options',
 };

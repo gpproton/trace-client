@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 22nd Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Wed May 22 2024
  */
 
 import { type Workspace } from '@trace/shared';
@@ -79,27 +79,6 @@ export default [
   {
     id: 'small-widget-3',
     title: 'Small Widget 3',
-    width: 1,
-    height: 1,
-    component: 'SmallWidget',
-  },
-  {
-    id: 'small-widget-4',
-    title: 'Small Widget 4',
-    width: 1,
-    height: 1,
-    component: 'SmallWidget',
-  },
-  {
-    id: 'small-widget-5',
-    title: 'Small Widget 5',
-    width: 1,
-    height: 1,
-    component: 'SmallWidget',
-  },
-  {
-    id: 'small-widget-6',
-    title: 'Small Widget 6',
     width: 1,
     height: 1,
     component: 'SmallWidget',

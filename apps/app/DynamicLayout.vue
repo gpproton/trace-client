@@ -32,6 +32,6 @@ provide('app:layout', layout);
 
 <template>
   <component :is="layout" :workspace="workspace">
-    <router-view></router-view>
+    <router-view />
   </component>
 </template>

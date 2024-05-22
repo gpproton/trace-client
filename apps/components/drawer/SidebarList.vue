@@ -4,17 +4,18 @@ import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: 'SidebarList' });
 
-interface IProps {
-  mini?: boolean;
-}
-
 const { items } = defineModels<{
   items: RouteMenu[];
 }>();
 
-withDefaults(defineProps<IProps>(), {
-  mini: true,
-});
+withDefaults(
+  defineProps<{
+    mini?: boolean;
+  }>(),
+  {
+    mini: true,
+  },
+);
 </script>
 
 <template>
