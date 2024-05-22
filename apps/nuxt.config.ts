@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Wed May 22 2024
  */
 
 import { appHeader } from '@trace/shared';
@@ -46,7 +46,6 @@ export default defineNuxtConfig({
     '/api/routing': { proxy: import.meta.env.SERVER_ROUTING },
     '/api/geocoding': { proxy: import.meta.env.SERVER_GEOCODING },
   },
-  ssr: false,
   hooks: {
     'pages:routerOptions'({ files }) {
       files.push({
