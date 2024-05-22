@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Saturday, 18th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat May 18 2024
+ * Modified At: Wed May 22 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -40,7 +40,7 @@ export default (): Route => {
     children: [
       {
         name: mainView,
-        path: '',
+        path: 'recents',
         component: () => import('./pages/AlertView.vue'),
         meta: {
           menu: true,

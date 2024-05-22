@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Wed May 22 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -94,7 +94,7 @@ const routes: Route[] = [
     },
     children: [
       {
-        path: '',
+        path: 'getting-started',
         name: 'user-boarding.getting-started',
         component: () => import('./pages/GetttingStarted.vue'),
         meta: {

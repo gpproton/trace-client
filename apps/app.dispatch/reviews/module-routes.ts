@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon May 20 2024
+ * Modified At: Wed May 22 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -40,7 +40,7 @@ export default (): Route => {
     children: [
       {
         name: mainView,
-        path: '',
+        path: 'all',
         component: () => import('./pages/ReviewsView.vue'),
         meta: {
           title: 'shared.reviews',

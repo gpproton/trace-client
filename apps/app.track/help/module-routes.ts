@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Saturday, 18th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat May 18 2024
+ * Modified At: Wed May 22 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -24,7 +24,7 @@ import { Workspace } from '@trace/shared';
 export default (): Route => {
   const name = 'help';
   const module = `${Workspace.Track}-${name}`;
-  const mainView = `${module}.overview`;
+  const mainView = `${module}.all`;
 
   return {
     name: module,
@@ -40,7 +40,7 @@ export default (): Route => {
     children: [
       {
         name: mainView,
-        path: '',
+        path: 'all',
         component: () => import('./pages/HelpOverview.vue'),
         meta: {
           menu: true,

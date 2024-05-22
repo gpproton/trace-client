@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 21 2024
+ * Modified At: Wed May 22 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -24,7 +24,7 @@ import { Workspace } from '@trace/shared';
 export default (): Route => {
   const name = 'customers';
   const module = `${Workspace.Core}-${name}`;
-  const mainView = `${module}.index`;
+  const mainView = `${module}.summary`;
 
   return {
     name: module,
@@ -40,7 +40,7 @@ export default (): Route => {
     children: [
       {
         name: mainView,
-        path: '',
+        path: 'summary',
         component: () => import('./pages/CustomersView.vue'),
         meta: {
           title: 'shared.customers',

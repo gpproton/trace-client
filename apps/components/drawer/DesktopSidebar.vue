@@ -52,7 +52,7 @@ const setMiniDrawer = (value: boolean) => {
     </slot>
     <slot name="start"></slot>
     <slot>
-      <q-scroll-area class="q-py-xl" style="height: 80dvh">
+      <q-scroll-area class="q-py-md hide-scrollbar" style="height: 80dvh">
         <sidebar-list v-if="overviewMenuActive" :items="overviewModuleMenu" />
         <q-separator class="q-mx-sm" />
         <sidebar-list :items="generalModuleMenu" />
