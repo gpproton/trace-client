@@ -156,7 +156,8 @@ export default defineNuxtPlugin(() => {
             router.hasRoute(route.name) &&
             previousWorkspace !== currentWorkspaceName
           ) {
-            router.removeRoute(route.name);
+            // TODO: Review removing route from router
+            // router.removeRoute(route.name);
             clearAllTagView();
           }
         });
