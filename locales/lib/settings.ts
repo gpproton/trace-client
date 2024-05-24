@@ -15,13 +15,13 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 20th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 21 2024
+ * Modified At: Fri May 24 2024
  */
 
 export default {
   mapSettings: '@:shared.map @:shared.settings',
   generalSettings: '@:shared.general @:shared.settings',
-  accountAlerts: '@:shared.account Alerts',
+  accountAlerts: '@:shared.account @:shared.alerts',
   appearanceSettings: '@:shared.appearance @:shared.settings',
   billingSettings: '@:shared.billing @:shared.settings',
   taskOptions: '@:shared.task @:shared.options',

@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed May 22 2024
+ * Modified At: Fri May 24 2024
  */
 
 export default {
@@ -33,6 +33,7 @@ export default {
   track: 'Track',
   dispatch: 'Dispatch',
   help: 'Help',
+  feedback: 'Feedback',
   type: 'Type',
   types: 'Types',
   setup: 'Setup',
@@ -158,6 +159,7 @@ export default {
   optimizations: 'Optimizations',
   fueling: 'Fueling',
   refuel: 'Refuel',
+  eco: 'Eco',
   inventory: 'Inventory',
   brands: 'Brands',
   categories: 'Categories',
@@ -169,7 +171,7 @@ export default {
   liveTracking: '@:shared.live @:shared.tracking',
   liveView: '@:shared.live @:shared.view',
   recentEvents: '@:shared.recent @:shared.events',
-  ecoDriving: 'Eco @:shared.driving',
+  ecoDriving: '@:shared.eco @:shared.driving',
   routeTemplates: '@:shared.route @:shared.templates',
   routePrices: '@:shared.route @:shared.prices',
   taskTemplates: '@:shared.task @:shared.templates',
