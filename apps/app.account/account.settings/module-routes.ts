@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Fri May 24 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -39,7 +39,7 @@ const routes: Route = {
       component: () => import('./pages/GeneralSettings.vue'),
       meta: {
         menu: true,
-        title: 'router.generalSettings',
+        title: 'settings.generalSettings',
         icon: 'bi-gear',
       },
     },
@@ -49,7 +49,7 @@ const routes: Route = {
       component: () => import('./pages/AlertSettings.vue'),
       meta: {
         menu: true,
-        title: 'router.accountAlerts',
+        title: 'settings.accountAlerts',
         icon: 'bi-bell',
       },
     },
@@ -59,7 +59,7 @@ const routes: Route = {
       component: () => import('./pages/AppearanceSettings.vue'),
       meta: {
         menu: true,
-        title: 'router.appearanceSettings',
+        title: 'settings.appearanceSettings',
         icon: 'bi-palette',
       },
     },
@@ -69,7 +69,7 @@ const routes: Route = {
       component: () => import('./pages/MapSettings.vue'),
       meta: {
         menu: true,
-        title: 'router.mapSettings',
+        title: 'settings.mapSettings',
         icon: 'bi-compass',
       },
     },

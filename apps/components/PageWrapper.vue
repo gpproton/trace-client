@@ -5,7 +5,6 @@ import { useRoute } from 'vue-router';
 import {} from '@/stores/theme';
 import RouterInject from './RouterInject.vue';
 import UnderConstruction from '@trace/base/components/error/UnderConstruction.vue';
-import type { IWrapperProps } from '@trace/base/typings';
 
 defineOptions({ name: 'PageWrapper' });
 
@@ -25,6 +24,14 @@ interface scrollInfo {
 interface scrollPosition {
   top: number;
   left: number;
+}
+
+export interface IWrapperProps {
+  options?: IPageContext | any;
+  name?: string;
+  contentActiveStyle?: string;
+  scrollable?: boolean;
+  padding?: boolean;
 }
 
 const thumbStyle = {

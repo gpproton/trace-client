@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Fri May 24 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -39,7 +39,7 @@ const routes: Route[] = [
         name: 'auth.sign-in',
         component: () => import('./pages/SignIn.vue'),
         meta: {
-          title: 'Sign In',
+          title: 'auth.signIn',
           permission: 'auth',
         },
       },

@@ -32,13 +32,15 @@ const { getFullname, getEmail } = storeToRefs(userAccoutStore);
         <q-item-section avatar>
           <q-icon color="primary" name="bi-gear" />
         </q-item-section>
-        <q-item-section>Settings</q-item-section>
+        <q-item-section>{{ $t('shared.settings') }}</q-item-section>
       </q-item>
       <q-item v-close-popup to="/help" clickable>
         <q-item-section avatar>
           <q-icon color="primary" name="bi-question-circle" />
         </q-item-section>
-        <q-item-section>Help & Feedback</q-item-section>
+        <q-item-section>{{
+          $t('shared.help') + ' & ' + $t('shared.feedback')
+        }}</q-item-section>
       </q-item>
       <q-separator />
       <q-item v-close-popup clickable @click="signOut">
