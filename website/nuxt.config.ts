@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 27th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Thu May 23 2024
  */
 
 import { createResolver } from '@nuxt/kit';
@@ -25,7 +25,6 @@ const resolver = createResolver(import.meta.url);
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   extends: ['../base'],
-  ssr: false,
   pwa: {},
   hooks: {
     'pages:routerOptions'({ files }) {

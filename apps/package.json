@@ -57,6 +57,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@quasar/extras": "^1.16.11",
     "@trace/model": "workspace:*",
     "@trace/shared": "workspace:*",
     "@types/leaflet": "^1.9.8",
@@ -66,7 +67,7 @@
     "@types/leaflet.pm": "^0.13.8",
     "@types/leaflet.polylinemeasure": "^1.0.4",
     "@vite-pwa/assets-generator": "^0.2.4",
-    "nuxt": "^3.11.1",
+    "nuxt": "^3.11.2",
     "nuxt3-leaflet": "^1.0.12"
   }
 }

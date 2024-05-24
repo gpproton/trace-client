@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed May 22 2024
+ * Modified At: Fri May 24 2024
  */
 
 import bootstrapIcons from 'quasar/icon-set/svg-bootstrap-icons';
@@ -27,7 +27,11 @@ import { dirname, join } from 'path';
 const currentDir = dirname(fileURLToPath(import.meta.url));
 export default defineNuxtConfig({
   ssr: false,
+  devtools: {
+    enabled: true,
+  },
   modules: [
+    '@nuxt/devtools',
     '@nuxtjs/i18n',
     'nuxt-quasar-ui',
     '@pinia/nuxt',
@@ -38,11 +42,11 @@ export default defineNuxtConfig({
     // '@nuxtjs/tailwindcss',
   ],
   pwa: {},
-  vite: {
-    plugins: [svgLoader()],
-  },
   macros: {
     setupSFC: true,
+  },
+  vite: {
+    plugins: [svgLoader()],
   },
   i18n: {
     vueI18n: './i18n.config.ts',
@@ -63,17 +67,7 @@ export default defineNuxtConfig({
   ],
   quasar: {
     cssAddon: true,
-    plugins: [
-      'AddressbarColor',
-      'AppVisibility',
-      'AppFullscreen',
-      'BottomSheet',
-      'Dialog',
-      'Loading',
-      'LoadingBar',
-      'Notify',
-      'Dark',
-    ],
+    plugins: ['AppVisibility', 'Dialog', 'Notify', 'Dark'],
     sassVariables: join(currentDir, './assets/main.scss'),
     iconSet: {
       ...bootstrapIcons,
