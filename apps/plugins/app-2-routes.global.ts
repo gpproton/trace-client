@@ -28,7 +28,7 @@ import dispatchRoutes from '@/app.dispatch/app-routes';
 import portalRoutes from '@/app.portal/app-routes';
 import partnerRoutes from '@/app.partner/app-routes';
 import accountRoutes from '@/app.account/app-routes';
-// import type { RouteRecordRaw } from '@/.nuxt/vue-router-stub';
+import type { RouteRecordRaw } from '@/.nuxt/vue-router-stub';
 
 export const addWorkspaceRoute = (
   app: Workspace,
@@ -120,21 +120,19 @@ export default defineNuxtPlugin(() => {
         .trim()
         .split('/')
         .filter((x) => x !== '')[0];
-
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const currentWorkspaceRoutes = workRoutes.filter(
         (x) => x.name === currentWorkspaceName && x.meta.menu === 'app',
       )[0];
       const hasWorkspaceRoute = router.hasRoute(currentWorkspaceName);
+      // TODO: Re-evaluate implementation
       if (!hasWorkspaceRoute) {
-        // router.addRoute(currentWorkspaceRoutes as RouteRecordRaw);
-        // router.replace(to.fullPath);
+        router.addRoute(currentWorkspaceRoutes as RouteRecordRaw);
+        router.replace(to.fullPath);
       } else {
-        // next();
+        next();
       }
     } else {
-      // next();
+      next();
     }
-    next();
   });
 });
