@@ -115,6 +115,7 @@ export default defineNuxtPlugin(() => {
   const tagViewStore = useTagViewStore();
   const { clearAllTagView } = tagViewStore;
 
+  let previousWorkspace: string | null = null;
   router.beforeEach(async (to, from, next) => {
     const matchedRoutes = workspaceApps.filter((e) => {
       return (
@@ -151,12 +152,16 @@ export default defineNuxtPlugin(() => {
 
         // REMOVE ROUTE FROM ROUTER
         routesToRemove.map((route) => {
-          if (router.hasRoute(route.name)) {
-            // TODO: review later
-            // router.removeRoute(route.name);
+          if (
+            router.hasRoute(route.name) &&
+            previousWorkspace !== currentWorkspaceName
+          ) {
+            router.removeRoute(route.name);
             clearAllTagView();
           }
         });
+
+        previousWorkspace = currentWorkspaceName;
         return;
       }
     }
