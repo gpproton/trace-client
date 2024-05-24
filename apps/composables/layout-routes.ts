@@ -15,9 +15,10 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 22nd Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun May 19 2024
+ * Modified At: Fri May 24 2024
  */
 
+import { defineStore } from 'pinia';
 import { getRouteMenuByType } from '@trace/base/types';
 import type { RouteMenu } from '@trace/base/typings';
 

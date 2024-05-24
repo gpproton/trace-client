@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import WorkspaceIcon from '@trace/base/icons/banner/workspace.svg?url';
 import { Workspace } from '@trace/shared';
-import { useUserAuthStore } from '@/stores/user-auth';
 import GenericHeader from '@/app/GenericHeader.vue';
 import GenericFooter from '@/app/GenericFooter.vue';
+import ProfileWidgetMenu from '@/components/extra/ProfileWidgetMenu.vue';
+import ProfileAvatar from '@/components/extra/ProfileAvatar.vue';
 
 defineOptions({ name: 'WorkSpaces' });
 
@@ -11,7 +12,6 @@ interface AppOption {
   name: string;
   icon: string;
 }
-const { signOut } = useUserAuthStore();
 const router = useRouter();
 const apps = ref<AppOption[]>([
   {
@@ -101,14 +101,11 @@ const links = ref<Array<{ name: string; label: string }>>([
                 >{{ $t(link.label) }}</q-route-tab
               >
             </q-tabs>
-            <q-btn
-              no-caps
-              no-wrap
-              color="primary"
-              class="text-body1 border-radius-sm"
-              @click="signOut"
-              >{{ $t('auth.signOut') }}</q-btn
-            >
+            <profile-avatar class="q-ml-sm">
+              <profile-widget-menu
+                style="min-width: 200px"
+              ></profile-widget-menu>
+            </profile-avatar>
           </q-toolbar>
           <div class="q-mt-xl q-px-md q-py-lg row justify-start items-center">
             <div class="text-h3 text-weight-light text-primary q-px-sm q-my-xl">
@@ -119,7 +116,7 @@ const links = ref<Array<{ name: string; label: string }>>([
                 v-for="app in apps"
                 :key="app.name"
                 class="app-box text-center cursor-pointer q-pa-md q-ma-md no-wrap border-radius-sm"
-                @click="() => router.replace({ name: app.name })"
+                @click="() => router.replace(`/${app.name}`)"
               >
                 <q-icon :name="app.icon" color="secondary" size="4em"></q-icon>
                 <div class="text-h6 text-secondary text-weight-regular q-py-sm">
