@@ -3,5 +3,5 @@ defineOptions({ name: 'OverviewTrends' });
 </script>
 
 <template>
-  <page-wrapper></page-wrapper>
+  <div class="fit row justify-center items-center">{{ 'Overview Trends' }}</div>
 </template>
