@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 29th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Fri May 24 2024
  */
 
 import { useServerStore } from '@/stores/app-server';
@@ -30,7 +30,7 @@ export default defineNuxtPlugin(() => {
     maintenance: false,
     registration: true,
     workflows: [Workflow.Telematics, Workflow.Logistics],
-    attributionText: 'drolx Labs',
+    attributionText: 'drolx labs',
     attributionUrl: 'https://drolx.com',
     auth: {
       email: true,
@@ -44,7 +44,7 @@ export default defineNuxtPlugin(() => {
       logo: '',
       active: true,
       confirmed: true,
-      language: 'en-US',
+      language: 'en',
       domains: ['localhost'],
     },
   });
