@@ -152,7 +152,8 @@ export default defineNuxtPlugin(() => {
         // REMOVE ROUTE FROM ROUTER
         routesToRemove.map((route) => {
           if (router.hasRoute(route.name)) {
-            router.removeRoute(route.name);
+            // TODO: review later
+            // router.removeRoute(route.name);
             clearAllTagView();
           }
         });
