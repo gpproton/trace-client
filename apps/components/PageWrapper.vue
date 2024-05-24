@@ -3,7 +3,6 @@ import { ref, onMounted, onUnmounted, onActivated, onDeactivated } from 'vue';
 import { QScrollArea, SessionStorage } from 'quasar';
 import { useRoute } from 'vue-router';
 import {} from '@/stores/theme';
-import RouterInject from './RouterInject.vue';
 import UnderConstruction from '@trace/base/components/error/UnderConstruction.vue';
 
 defineOptions({ name: 'PageWrapper' });
@@ -108,15 +107,11 @@ onDeactivated(() => {
       @scroll="onScroll"
     >
       <slot>
-        <router-inject>
-          <under-construction />
-        </router-inject>
+        <under-construction />
       </slot>
     </q-scroll-area>
     <slot v-else>
-      <router-inject>
-        <under-construction />
-      </router-inject>
+      <under-construction />
     </slot>
     <slot name="footer"></slot>
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
