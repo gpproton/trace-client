@@ -18,53 +18,58 @@
  * Modified At: Fri May 24 2024
  */
 
-import axios from 'axios';
-import { safeValueTransition } from '@parvineyvazov/json-translator/src/modules/helpers.ts';
-import { fileTranslator } from './node_modules/@parvineyvazov/json-translator/src/core/json_file.ts';
+import axios from "axios";
+import { safeValueTransition } from "@parvineyvazov/json-translator/src/modules/helpers.ts";
+import { fileTranslator } from "./node_modules/@parvineyvazov/json-translator/src/core/json_file.ts";
 import {
-  type TranslationConfig,
-  TranslationModules,
-} from './node_modules/@parvineyvazov/json-translator/src/modules/modules.ts';
+    type TranslationConfig,
+    TranslationModules
+} from "./node_modules/@parvineyvazov/json-translator/src/modules/modules.ts";
 
 export const translateWithLibre = async (
-  str: string,
-  from: string,
-  to: string,
+    str: string,
+    from: string,
+    to: string
 ): Promise<string> => {
-  // consu url = 'https://libretranslate.com';
-  const url = 'http://localhost:8585';
-  let body = {
-    q: safeValueTransition(str),
-    source: from,
-    target: to,
-    format: 'text',
-    api_key: '',
-    secret: 'YK4VRVW',
-  };
+    const url = process.env.CUSTOM_URL ?? "https://libretranslate.com";
+    const safeText: string = safeValueTransition(str);
 
-  const { data } = await axios.post(`${url}/translate`, body, {
-    headers: {
-      Origin: url,
-    },
-  });
+    if (safeText.includes("@:")) {
+        return safeText;
+    }
 
-  return from.startsWith('@:') ? from : data.translatedText;
+    let body = {
+        q: safeText,
+        source: from,
+        target: to,
+        format: "text",
+        api_key: "",
+        secret: "YK4VRVW"
+    };
+
+    const { data } = await axios.post(`${url}/translate`, body, {
+        headers: {
+            Origin: url
+        }
+    });
+
+    return data.translatedText;
 };
 
 export async function translateFile(
-  objectPath: string,
-  from: string,
-  to: string[],
-  newFileName: string,
+    objectPath: string,
+    from: string,
+    to: string[],
+    newFileName: string
 ) {
-  const module = TranslationModules['libre'];
-  module.translate = translateWithLibre;
-  let config: TranslationConfig = {
-    moduleKey: 'libre',
-    TranslationModule: module,
-    concurrencyLimit: 50,
-    fallback: true,
-  };
+    const module = TranslationModules["libre"];
+    module.translate = translateWithLibre;
+    let config: TranslationConfig = {
+        moduleKey: "libre",
+        TranslationModule: module,
+        concurrencyLimit: (process.env.CONCURRENCY ?? 5) as number,
+        fallback: true
+    };
 
-  return fileTranslator(config, objectPath, from, to, newFileName);
+    return fileTranslator(config, objectPath, from, to, newFileName);
 }

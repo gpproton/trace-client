@@ -1,11 +1,16 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
 import OnboardAsset from '@trace/base/icons/banner/man-3.svg?url';
 import LangSelector from '@trace/base/components/LangSelector.vue';
 import GenericHeader from '@/app/GenericHeader.vue';
 import BoardingFooter from '@/app.account/BoardingFooter.vue';
 import SupportLinks from '@/app.account/SupportLinks.vue';
+import { useServerStore } from '@/stores/app-server';
 
 defineOptions({ name: 'WelcomeLayout' });
+
+const serverStore = useServerStore();
+const { getTenantName } = storeToRefs(serverStore);
 </script>
 
 <template>
@@ -23,7 +28,7 @@ defineOptions({ name: 'WelcomeLayout' });
               {{ $t('onboard.welcomeIntro') }}
             </div>
             <div class="text-white q-mr-lg">
-              {{ $t('onboard.welcomeDescription') }}
+              {{ `${getTenantName} ` + $t('onboard.welcomeDescription') }}
             </div>
           </div>
           <q-img

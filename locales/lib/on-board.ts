@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 27th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu May 16 2024
+ * Modified At: Fri May 24 2024
  */
 
 export default {
@@ -28,5 +28,5 @@ export default {
   accountAlready: 'Already have an account?',
   welcomeIntro: 'A few clicks away from clarity.',
   welcomeDescription:
-    'Trace allows full transportation digitization allowing adaptation to workflow/processes',
+    'allows full transportation digitization allowing adaptation to workflow/processes',
 };
