@@ -15,10 +15,9 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed May 22 2024
+ * Modified At: Fri May 24 2024
  */
 
-import { Dialog } from 'quasar';
 import { defineStore, storeToRefs } from 'pinia';
 import { usePageStore } from './page';
 import { Workspace } from '@trace/shared';

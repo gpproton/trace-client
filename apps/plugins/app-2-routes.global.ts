@@ -105,34 +105,56 @@ export const workRoutes: Route[] = [
   ),
 ] as Route[];
 
+const routes: Array<{ path: string; name?: any; type?: string }> = [];
+
 export default defineNuxtPlugin(() => {
   const router: Router = useRouter();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  router.beforeEach((to, from, next) => {
+
+  router.beforeEach(async (to, from, next) => {
     const matchedRoutes = workspaceApps.filter((e) => {
       return (
-        to.fullPath.startsWith(`/${e}/`) || to.fullPath.startsWith(`/${e}`)
+        e !== Workspace.Account &&
+        (to.fullPath.startsWith(`/${e}/`) || to.fullPath.startsWith(`/${e}`))
       );
     });
     const isWorkspace = matchedRoutes.length > 0;
+
     if (isWorkspace) {
       const currentWorkspaceName = to.fullPath
         .trim()
         .split('/')
         .filter((x) => x !== '')[0];
+
       const currentWorkspaceRoutes = workRoutes.filter(
         (x) => x.name === currentWorkspaceName && x.meta.menu === 'app',
       )[0];
-      const hasWorkspaceRoute = router.hasRoute(currentWorkspaceName);
-      // TODO: Re-evaluate implementation
-      if (!hasWorkspaceRoute) {
+
+      const routesToRemove = workRoutes.filter(
+        (x) =>
+          x.name !== currentWorkspaceName &&
+          x.name !== Workspace.Account &&
+          x.meta.menu === 'app',
+      );
+
+      if (!routes.some((route) => route.path === to.fullPath)) {
         router.addRoute(currentWorkspaceRoutes as RouteRecordRaw);
-        router.replace(to.fullPath);
-      } else {
-        next();
+        routes.push({
+          path: to.path,
+          name: to.name,
+          type: currentWorkspaceName,
+        });
+        next({ path: to.fullPath, replace: true });
+
+        // REMOVE ROUTE FROM ROUTER
+        routesToRemove.map((route) => {
+          if (router.hasRoute(route.name)) {
+            router.removeRoute(route.name);
+          }
+        });
+        return;
       }
-    } else {
-      next();
     }
+
+    next();
   });
 });

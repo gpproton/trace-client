@@ -20,41 +20,14 @@
 
 import type { RouterConfig } from '@nuxt/schema';
 import defaultRoutes, { addCatchAll, addUnAuthorized } from '@/routes.default';
-import {
-  //  accountRoutes,
-  routes as identityRoutes,
-} from '@/app.account/app-routes';
-// import coreRoutes from '@/app.core/app-routes';
-// import trackRoutes from '@/app.track/app-routes';
-// import supportRoutes from '@/app.support/app-routes';
-// import dispatchRoutes from '@/app.dispatch/app-routes';
-// import portalRoutes from '@/app.portal/app-routes';
-// import partnerRoutes from '@/app.partner/app-routes';
-import { Workspace } from '@trace/shared';
+import { routes as identityRoutes } from '@/app.account/app-routes';
 import type { Route } from '@trace/base/typings';
 import type { RouteRecordRaw } from '@/.nuxt/vue-router-stub';
 import { workRoutes } from '@/plugins/app-2-routes.global';
+import { Workspace } from '@trace/shared';
 
-export const addWorkspaceRoute = (
-  app: Workspace,
-  component: any,
-  children: Route[],
-  filter: string[] = [],
-  mobileFilter: string[] = [],
-  root: string = 'overview',
-): Route => ({
-  name: app,
-  path: `/${app}`,
-  component: component,
-  children: children,
-  meta: { menu: 'app' },
-  redirect: { name: `${app}-${root}` },
-  props: {
-    workspace: app,
-    overviewFilter: filter,
-    mobileFilter: mobileFilter,
-  },
-});
+const accountRoutes = workRoutes.filter((x) => x.name === Workspace.Account);
+export const extendedRoutes: Route[] = [];
 
 export const routes = [
   {
@@ -65,7 +38,8 @@ export const routes = [
     children: [addCatchAll(), addUnAuthorized(), ...defaultRoutes],
   },
   ...identityRoutes,
-  ...workRoutes,
+  accountRoutes,
+  extendedRoutes,
 ] as Route[];
 
 export default <RouterConfig>{

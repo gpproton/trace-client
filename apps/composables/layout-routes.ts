@@ -20,17 +20,14 @@
 
 import { defineStore } from 'pinia';
 import { getRouteMenuByType } from '@trace/base/types';
-import type { RouteMenu } from '@trace/base/typings';
+import type { Route, RouteMenu } from '@trace/base/typings';
+import { workRoutes } from '@/plugins/app-2-routes.global';
 
 export const useLayoutRouteStore = defineStore('app-layout-routes', () => {
   const modulesMenuFn = (): RouteMenu[] => {
-    const router = useRouter();
-    const route = router.currentRoute.value;
+    const route: Route = useRoute();
 
-    return getRouteMenuByType(router.options.routes, route.name, [
-      'module',
-      true,
-    ]);
+    return getRouteMenuByType(workRoutes, route.name, ['module', true]);
   };
 
   const moduleChildrenFn = (): RouteMenu[] => {

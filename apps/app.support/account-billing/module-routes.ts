@@ -15,14 +15,14 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed May 22 2024
+ * Modified At: Fri May 24 2024
  */
 
 import type { Route } from '@trace/base/typings';
 import { Workspace } from '@trace/shared';
 
 export default (): Route => {
-  const name = 'help-desk';
+  const name = 'billing';
   const module = `${Workspace.Support}-${name}`;
   const mainView = `${module}.invoices`;
 

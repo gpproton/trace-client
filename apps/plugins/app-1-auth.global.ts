@@ -35,21 +35,20 @@ export default defineNuxtPlugin(() => {
     const accessToken = getAccessToken.value;
 
     if (accessToken) {
-      if (to.meta.permission === false) next();
-      if (to.meta.permission === 'auth') next({ name: 'work-spaces' });
-      else {
+      if (to.meta.permission === false) {
         next();
+      } else if (to.meta.permission === 'auth') {
+        next({ name: 'work-spaces' });
+      } else {
+        next();
+        // TODO: page permission
+        // next({ name: 'un-authorized', replace: true });
       }
     } else {
-      if (isWorkspaceApp) {
-        next({ name: 'un-authorized', replace: true });
-      } else if (
-        to.meta.permission === false ||
-        to.meta.permission === 'auth'
-      ) {
+      if (to.meta.permission === false || to.meta.permission === 'auth') {
         next();
       } else {
-        next({ name: 'auth.sign-in' });
+        next({ name: 'auth.sign-in', replace: true });
       }
     }
   });
