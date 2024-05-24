@@ -15,44 +15,50 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 14th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 21 2024
+ * Modified At: Fri May 24 2024
  */
 
 import type { Route } from '@trace/base/typings';
 import type { Workspace } from '@trace/shared';
 
-export default (service: Workspace): Route => ({
-  name: `${service}-overview`,
-  path: 'overview',
-  component: () => import('./OverviewLayout.vue'),
-  meta: {
-    menu: 'module',
-    title: 'shared.overview',
-    icon: 'bi-grid',
-    hideChildren: true,
-    removeChildren: true,
-  },
-  redirect: { name: `${service}-overview.dashboard` },
-  children: [
-    {
-      name: `${service}-overview.dashboard`,
-      path: 'dashboard',
-      component: () => import('./pages/OverviewDashboard.vue'),
-      meta: {
-        menu: true,
-        title: 'shared.overview',
-        icon: 'bi-columns-gap',
-      },
+export default (service: Workspace): Route => {
+  const name: string = 'overview';
+  const module: string = `${service}-${name}`;
+  const mainView: string = `${module}.dashboard`;
+
+  return {
+    name: module,
+    path: name,
+    component: () => import('./OverviewLayout.vue'),
+    meta: {
+      menu: 'module',
+      title: 'shared.overview',
+      icon: 'bi-grid',
+      hideChildren: true,
+      removeChildren: true,
     },
-    {
-      name: `${service}-overview.trends`,
-      path: 'trends',
-      component: () => import('./pages/OverviewTrends.vue'),
-      meta: {
-        menu: true,
-        title: 'shared.trends',
-        icon: 'bi-clipboard-data',
+    redirect: { name: mainView },
+    children: [
+      {
+        name: mainView,
+        path: 'dashboard',
+        component: () => import('./pages/OverviewDashboard.vue'),
+        meta: {
+          menu: true,
+          title: 'shared.overview',
+          icon: 'bi-columns-gap',
+        },
       },
-    },
-  ],
-});
+      {
+        name: `${module}.trends`,
+        path: 'trends',
+        component: () => import('./pages/OverviewTrends.vue'),
+        meta: {
+          menu: true,
+          title: 'shared.trends',
+          icon: 'bi-clipboard-data',
+        },
+      },
+    ],
+  };
+};

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import Widgets, { components } from '@/widgets/widget-records';
 
-defineOptions({ name: 'OverviewDashboard' });
+// defineOptions({ name: 'OverviewDashboard' });
 </script>
 
 <template>

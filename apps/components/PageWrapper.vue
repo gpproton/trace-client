@@ -108,11 +108,15 @@ onDeactivated(() => {
       @scroll="onScroll"
     >
       <slot>
-        <under-construction />
+        <router-inject>
+          <under-construction />
+        </router-inject>
       </slot>
     </q-scroll-area>
     <slot v-else>
-      <under-construction />
+      <router-inject>
+        <under-construction />
+      </router-inject>
     </slot>
     <slot name="footer"></slot>
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
@@ -131,7 +135,6 @@ onDeactivated(() => {
         />
       </transition>
     </q-page-sticky>
-    <router-inject></router-inject>
   </q-page>
 </template>
 

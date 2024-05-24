@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'OverviewTrends' });
+// defineOptions({ name: 'OverviewTrends' });
 </script>
 
 <template>
