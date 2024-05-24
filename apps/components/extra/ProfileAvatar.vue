@@ -9,6 +9,7 @@ const { getProfileInitials } = storeToRefs(userAccountStore);
   <q-avatar
     class="cursor-pointer"
     size="2.8rem"
+    style="border: 1px solid var(--q-accent)"
     color="secondary"
     text-color="white"
   >

@@ -8,7 +8,7 @@ import MapView from '@/map/MapView.vue';
     <div class="map-view">
       <map-view>
         <l-control :disable-scroll-propagation="true" position="topleft">
-          <panel-window></panel-window>
+          <panel-window height="85px" width="390px"></panel-window>
         </l-control>
       </map-view>
     </div>

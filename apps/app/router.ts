@@ -23,11 +23,7 @@ import defaultRoutes, { addCatchAll, addUnAuthorized } from '@/routes.default';
 import { routes as identityRoutes } from '@/app.account/app-routes';
 import type { Route } from '@trace/base/typings';
 import type { RouteRecordRaw } from '@/.nuxt/vue-router-stub';
-import { workRoutes } from '@/plugins/app-2-routes.global';
-import { Workspace } from '@trace/shared';
-
-const accountRoutes = workRoutes.filter((x) => x.name === Workspace.Account);
-export const extendedRoutes: Route[] = [];
+import { accountRouteObject } from '@/plugins/app-2-routes.global';
 
 export const routes = [
   {
@@ -38,8 +34,7 @@ export const routes = [
     children: [addCatchAll(), addUnAuthorized(), ...defaultRoutes],
   },
   ...identityRoutes,
-  accountRoutes,
-  extendedRoutes,
+  accountRouteObject,
 ] as Route[];
 
 export default <RouterConfig>{

@@ -51,15 +51,17 @@ export const addWorkspaceRoute = (
   },
 });
 
+export const accountRouteObject = addWorkspaceRoute(
+  Workspace.Account,
+  () => import('@/app/AppLayout.vue'),
+  accountRoutes,
+  [],
+  [],
+  'profile',
+);
+
 export const workRoutes: Route[] = [
-  addWorkspaceRoute(
-    Workspace.Account,
-    () => import('@/app/AppLayout.vue'),
-    accountRoutes,
-    [],
-    [],
-    'profile',
-  ),
+  accountRouteObject,
   addWorkspaceRoute(
     Workspace.Core,
     () => import('@/app/AppLayout.vue'),
@@ -113,28 +115,20 @@ export default defineNuxtPlugin(() => {
   router.beforeEach(async (to, from, next) => {
     const matchedRoutes = workspaceApps.filter((e) => {
       return (
-        e !== Workspace.Account &&
+        e !== accountRouteObject.name &&
         (to.fullPath.startsWith(`/${e}/`) || to.fullPath.startsWith(`/${e}`))
       );
     });
-    const isWorkspace = matchedRoutes.length > 0;
 
-    if (isWorkspace) {
+    if (matchedRoutes.length > 0) {
       const currentWorkspaceName = to.fullPath
         .trim()
         .split('/')
         .filter((x) => x !== '')[0];
 
       const currentWorkspaceRoutes = workRoutes.filter(
-        (x) => x.name === currentWorkspaceName && x.meta.menu === 'app',
+        (x) => x.name === currentWorkspaceName,
       )[0];
-
-      const routesToRemove = workRoutes.filter(
-        (x) =>
-          x.name !== currentWorkspaceName &&
-          x.name !== Workspace.Account &&
-          x.meta.menu === 'app',
-      );
 
       if (!routes.some((route) => route.path === to.fullPath)) {
         router.addRoute(currentWorkspaceRoutes as RouteRecordRaw);
@@ -144,6 +138,13 @@ export default defineNuxtPlugin(() => {
           type: currentWorkspaceName,
         });
         next({ path: to.fullPath, replace: true });
+
+        // Filter routes for removal from router
+        const routesToRemove = workRoutes.filter(
+          (x) =>
+            x.name !== currentWorkspaceName &&
+            x.name !== accountRouteObject.name,
+        );
 
         // REMOVE ROUTE FROM ROUTER
         routesToRemove.map((route) => {

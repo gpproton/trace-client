@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, withDefaults, defineProps } from 'vue';
 import PanelToggle from './PanelToggle.vue';
 
 const windowVisibility = ref(true);
 
 // TODO: prop for minimum width
+withDefaults(defineProps<{ height?: string; width?: string }>(), {
+  height: '165px',
+  width: '385px',
+});
 </script>
 
 <template>
@@ -13,7 +17,7 @@ const windowVisibility = ref(true);
     <q-card
       class="panel-content no-padding border-radius-sm column justify-between no-scroll"
     >
-      <!-- Panel content-->
+      <!-- Panel contents -->
     </q-card>
     <panel-toggle v-model="windowVisibility" type="opened" />
   </div>
@@ -24,12 +28,11 @@ const windowVisibility = ref(true);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 10px;
 }
 
 .panel-content {
-  width: 385px;
-  min-height: calc(100dvh - 165px);
+  width: v-bind(width);
+  min-height: calc(100dvh - v-bind(height));
 }
 </style>
