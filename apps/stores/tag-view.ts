@@ -209,6 +209,12 @@ export const useTagViewStore = defineStore(
         }
         setTagViewEnabled(true);
       }
+
+      if (
+        router.currentRoute.value.fullPath.startsWith(`/${Workspace.Account}/`)
+      ) {
+        setTagViewEnabled(false);
+      }
     });
 
     return {

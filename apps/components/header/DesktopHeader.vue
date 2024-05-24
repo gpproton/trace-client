@@ -159,9 +159,9 @@ const triggerSearchDialog = () => {
           </profile-avatar>
         </div>
       </q-toolbar>
-      <q-separator />
+      <q-separator v-show="tagViewEnabled" />
     </template>
-    <tag-view v-if="tagViewEnabled" />
+    <tag-view v-show="tagViewEnabled" />
   </q-header>
 </template>
 

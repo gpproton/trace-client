@@ -160,6 +160,8 @@ export default {
   fueling: 'Fueling',
   refuel: 'Refuel',
   eco: 'Eco',
+  general: 'General',
+  appearance: 'Appearance',
   inventory: 'Inventory',
   brands: 'Brands',
   categories: 'Categories',

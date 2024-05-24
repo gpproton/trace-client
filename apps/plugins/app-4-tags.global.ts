@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 22nd Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat May 18 2024
+ * Modified At: Fri May 24 2024
  */
 
 import { useTagViewStore } from '@/stores/tag-view';
@@ -25,7 +25,7 @@ import { LoadingBar } from 'quasar';
 import { storeToRefs } from 'pinia';
 import type { RouteLocationNormalized, Router } from 'vue-router';
 import type { RouteData } from '@trace/base/typings';
-import { workspaceApps } from '@trace/shared';
+import { Workspace, workspaceApps } from '@trace/shared';
 
 export default defineNuxtPlugin(() => {
   const router: Router = useRouter();
@@ -42,18 +42,16 @@ export default defineNuxtPlugin(() => {
     LoadingBar.stop();
     LoadingBar.start();
 
-    // Filter for only wrkspaces
+    // Filter for only workspaces
     if (
-      workspaceApps.filter((e) => to.fullPath.startsWith(`/${e}/`)).length < 1
+      workspaceApps.filter(
+        (e) => to.fullPath.startsWith(`/${e}/`) && e !== Workspace.Account,
+      ).length < 1
     ) {
       return;
     }
 
-    if (!tagViewEnabled) {
-      return;
-    }
-
-    if (to.name != null) {
+    if (to.name != null && tagViewEnabled.value) {
       // is a public route
       if (to.meta.permission === false) return;
       const storedTagView = (getStoredTagView.value ??

@@ -14,6 +14,7 @@ const keepAliveStore = useKeepAliveStore();
 const { setKeepAliveList } = keepAliveStore;
 const themeStore = useThemeStore();
 const { activeTextColor, activeBgColor } = storeToRefs(themeStore);
+const { tagViewEnabled } = storeToRefs(tagViewStore);
 
 const removeAllTagView = () => {
   tagViewStore.removeAllTagView();
@@ -42,7 +43,9 @@ const tagViewClass = computed(() => {
 });
 
 onUnmounted(() => {
-  unSubscribe();
+  if (tagViewEnabled.value) {
+    unSubscribe();
+  }
 });
 
 const unSubscribe = tagViewStore.$subscribe((mutation, state) => {
