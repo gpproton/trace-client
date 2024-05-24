@@ -13,11 +13,12 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Monday, 26th Feb 2024
+ * Created At: Friday, 24th May 2024
  * Modified By: Godwin peter .O
  * Modified At: Fri May 24 2024
  */
-
-export * from './app-config';
-export * from './layout';
-export * from './constants';
+export const appConstants = {
+  appName: 'Trace',
+  company: 'drolx labs',
+  website: 'https://drolx.com',
+};

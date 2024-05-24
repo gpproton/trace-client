@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppLogo from '@trace/base/icons/logo.svg';
+import { appConstants } from '@trace/shared';
 
 const links = [
   {
@@ -65,8 +66,8 @@ const links = [
     <q-footer class="bg-secondary text-white q-pa-md">
       <div>
         {{ 'All right reserved' + ' @' }}
-        <NuxtLink class="footer-link" to="https://drolx.com">{{
-          'drolx Labs'
+        <NuxtLink class="footer-link" :to="appConstants.website">{{
+          appConstants.company
         }}</NuxtLink>
       </div>
     </q-footer>

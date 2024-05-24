@@ -15,10 +15,6 @@ interface AppOption {
 const router = useRouter();
 const apps = ref<AppOption[]>([
   {
-    name: Workspace.Account,
-    icon: 'bi-person-gear',
-  },
-  {
     name: Workspace.Core,
     icon: 'bi-compass',
   },

@@ -4,6 +4,7 @@ import AppLogo from '@trace/base/icons/logo.svg';
 import LangSelector from '@trace/base/components/LangSelector.vue';
 import { onboardRoutes } from './routes';
 import { useOnboardStore } from '@trace/base/composables/on-board';
+import { appConstants } from '@trace/shared';
 
 defineOptions({ name: 'OnboardLayout' });
 
@@ -78,8 +79,8 @@ const getStatus = computed(() => {
           </div>
           <div class="q-px-md q-py-sm text-primary">
             {{ 'All right reserved.' }}
-            <NuxtLink class="footer-link" to="https://drolx.com">{{
-              'drolx Labs'
+            <NuxtLink class="footer-link" :to="appConstants.website">{{
+              appConstants.company
             }}</NuxtLink>
           </div>
         </q-card>
