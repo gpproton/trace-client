@@ -21,7 +21,6 @@
 import type { Router } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useUserAuthStore } from '@/stores/user-auth';
-import { workspaceApps } from '@trace/shared';
 
 export default defineNuxtPlugin(() => {
   const router: Router = useRouter();
@@ -29,12 +28,7 @@ export default defineNuxtPlugin(() => {
   const { getAccessToken } = storeToRefs(userAccount);
 
   router.beforeEach((to, from, next) => {
-    const isWorkspaceApp =
-      workspaceApps.filter((e) => to.fullPath.startsWith(`/${e}/`)).length >
-        0 || to.fullPath.startsWith('/docs');
-    const accessToken = getAccessToken.value;
-
-    if (accessToken) {
+    if (getAccessToken.value) {
       if (to.meta.permission === false) {
         next();
       } else if (to.meta.permission === 'auth') {

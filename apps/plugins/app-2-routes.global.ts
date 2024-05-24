@@ -21,6 +21,7 @@
 import type { Router } from 'vue-router';
 import { Workspace, workspaceApps } from '@trace/shared';
 import type { Route } from '@trace/base/typings';
+import { useTagViewStore } from '@/stores/tag-view';
 import coreRoutes from '@/app.core/app-routes';
 import trackRoutes from '@/app.track/app-routes';
 import supportRoutes from '@/app.support/app-routes';
@@ -111,6 +112,8 @@ const routes: Array<{ path: string; name?: any; type?: string }> = [];
 
 export default defineNuxtPlugin(() => {
   const router: Router = useRouter();
+  const tagViewStore = useTagViewStore();
+  const { clearAllTagView } = tagViewStore;
 
   router.beforeEach(async (to, from, next) => {
     const matchedRoutes = workspaceApps.filter((e) => {
@@ -150,6 +153,7 @@ export default defineNuxtPlugin(() => {
         routesToRemove.map((route) => {
           if (router.hasRoute(route.name)) {
             router.removeRoute(route.name);
+            clearAllTagView();
           }
         });
         return;

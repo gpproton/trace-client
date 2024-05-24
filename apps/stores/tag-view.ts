@@ -188,12 +188,16 @@ export const useTagViewStore = defineStore(
       removeOnSide(removeType.Other, index);
     };
 
-    const removeAllTagView = () => {
-      const router: Router = useRouter();
+    const clearAllTagView = () => {
       setTagView([]);
       setStoredTagView([]);
+    };
+
+    const removeAllTagView = () => {
+      const router: Router = useRouter();
+      clearAllTagView();
       if (getAccessToken.value) {
-        router.push({ name: 'home' });
+        router.push('/');
       }
     };
 
@@ -223,6 +227,7 @@ export const useTagViewStore = defineStore(
       storedTagView,
       getTagView,
       getStoredTagView,
+      clearAllTagView,
       setTagView,
       setTagViewEnabled,
       setStoredTagView,
