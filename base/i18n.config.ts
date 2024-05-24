@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Fri May 24 2024
  */
 
 import { defaultTranslation, defaultLanguage } from '@trace/locales';
@@ -31,6 +31,7 @@ const loadLocaleMessages = () => {
     }
   });
 
+  messages['en-US'] = defaultTranslation;
   messages[defaultLanguage] = defaultTranslation;
 
   return messages;
