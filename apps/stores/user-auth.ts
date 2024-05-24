@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 17th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Fri May 24 2024
  */
 
 import { ref, watch } from 'vue';
@@ -110,7 +110,7 @@ export const useUserAuthStore = defineStore(
     },
     persist: {
       paths: ['accessToken'],
-      storage: persistedState.sessionStorage,
+      storage: persistedState.cookies,
     },
   },
 );
