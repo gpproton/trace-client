@@ -13,17 +13,17 @@
  * limitations under the License.
  *
  * Author: Godwin peter .O (me@godwin.dev)
- * Created At: Wednesday, 27th Mar 2024
+ * Created At: Saturday, 25th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Sat May 25 2024
  */
 
-import {
-  defineConfig,
-  minimalPreset as preset,
-} from '@vite-pwa/assets-generator/config';
-
-export default defineConfig({
-  preset,
-  images: ['public/icon.svg'],
+// app.config.ts
+export default defineAppConfig({
+  // Configure Quasar's Vue plugin (with HMR support)
+  nuxtQuasar: {
+    brand: {
+      primary: '#3949ab',
+    },
+  },
 });

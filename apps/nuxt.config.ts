@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu May 23 2024
+ * Modified At: Sat May 25 2024
  */
 
 import { appHeader } from '@trace/shared';
@@ -36,10 +36,11 @@ export const addDocPath = (name: string): ContentItem => ({
 });
 
 export default defineNuxtConfig({
-  // ssr: false,
+  ssr: true,
   app: appHeader('/'),
   extends: ['../base'],
-  modules: ['nuxt3-leaflet', '@nuxt/content', './app.core/app-module'],
+  modules: [// checks
+  'nuxt3-leaflet', '@nuxt/content', './app.core/app-module', "nuxt-quasar-ui"],
   routeRules: {
     '/api/service': { proxy: import.meta.env.SERVER_API },
     '/api/files': { proxy: import.meta.env.SERVER_FILES },

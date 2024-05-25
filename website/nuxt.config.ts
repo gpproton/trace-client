@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 27th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu May 23 2024
+ * Modified At: Sat May 25 2024
  */
 
 import { createResolver } from '@nuxt/kit';
@@ -24,8 +24,19 @@ const resolver = createResolver(import.meta.url);
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
   extends: ['../base'],
-  pwa: {},
+
+  // modules: [
+  //   '@nuxt/devtools',
+  //   '@nuxtjs/i18n',
+  //   'nuxt-quasar-ui',
+  //   '@pinia/nuxt',
+  //   '@pinia-plugin-persistedstate/nuxt',
+  //   '@vueuse/nuxt',
+  //   '@vue-macros/nuxt',
+  //   '@vite-pwa/nuxt',
+  // ],
   hooks: {
     'pages:routerOptions'({ files }) {
       files.push({
@@ -34,4 +45,6 @@ export default defineNuxtConfig({
       });
     },
   },
+
+  modules: ["nuxt-quasar-ui"]
 });

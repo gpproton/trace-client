@@ -15,12 +15,12 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 15th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Fri May 24 2024
  */
 
-import IconGoogle from '@trace/base/icons/brands/google.svg?url';
-import IconMicrosoft from '@trace/base/icons/brands/microsoft.svg?url';
-import IconApple from '@trace/base/icons/brands/apple.svg?url';
+import IconGoogle from '@trace/base/assets/icons/brands/google.svg?url';
+import IconMicrosoft from '@trace/base/assets/icons/brands/microsoft.svg?url';
+import IconApple from '@trace/base/assets/icons/brands/apple.svg?url';
 import type { Tenant, Workflow } from '@trace/model';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';

@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 24 2024
+ * Modified At: Sat May 25 2024
  */
 
 import bootstrapIcons from 'quasar/icon-set/svg-bootstrap-icons';
@@ -26,7 +26,7 @@ import { dirname, join } from 'path';
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
   devtools: {
     enabled: true,
   },
@@ -41,7 +41,21 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     // '@nuxtjs/tailwindcss',
   ],
-  pwa: {},
+  pwa: {
+    registerWebManifestInRouteRules: true,
+    // includeAssets: [],
+    srcDir: 'public',
+    minify: true,
+    registerType: 'autoUpdate',
+    client: {
+      installPrompt: true,
+      registerPlugin: true,
+    },
+    pwaAssets: {
+      image: 'public/icon.svg',
+      preset: 'minimal',
+    },
+  },
   macros: {
     setupSFC: true,
   },
@@ -77,7 +91,7 @@ export default defineNuxtConfig({
     extras: {
       font: 'roboto-font',
       fontIcons: ['bootstrap-icons', 'material-icons'],
-      animations: 'all',
+      animations: [],
     },
   },
 });

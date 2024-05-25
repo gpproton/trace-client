@@ -15,15 +15,11 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 27th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Fri May 24 2024
  */
 
-import {
-  defineConfig,
-  minimalPreset as preset,
-} from '@vite-pwa/assets-generator/config';
+import { defineConfig } from '@vite-pwa/assets-generator/config';
 
 export default defineConfig({
-  preset,
   images: ['public/icon.svg'],
 });

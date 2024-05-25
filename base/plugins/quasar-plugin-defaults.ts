@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 27th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu May 16 2024
+ * Modified At: Sat May 25 2024
  */
 
 import { Notify, LoadingBar } from 'quasar';
@@ -26,7 +26,6 @@ export default defineNuxtPlugin(() => {
     position: 'top',
     timeout: 3000,
   });
-
   LoadingBar.setDefaults({
     color: 'primary',
     size: '2.5px',
