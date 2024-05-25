@@ -1,28 +1,29 @@
 <script setup lang="ts">
-import { provide } from 'vue';
+import { useQuasar } from 'quasar';
+import { defineAsyncComponent, provide } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 import { useLayoutStore } from '@/stores/layout';
 import { useLayoutRouteStore } from '@/composables/layout-routes';
 import { useThemeStore } from '@/stores/theme';
 import type { IModuleCommands, Workspace } from '@trace/shared';
-import DesktopHeader from '@/components/header/DesktopHeader.vue';
-import DesktopSidebar from '@/components/drawer/DesktopSidebar.vue';
-import DesktopSecondarySidebar from '@/components/drawer/DesktopSecondarySidebar.vue';
-import MobileHeader from '@/components/header/MobileHeader.vue';
-import MobileSidebar from '@/components/drawer/MobileSidebar.vue';
-// import MobileBottomMenu from '@/components/footer/MobileBottomMenu.vue';
-// import RouterInject from '@/components/RouterInject.vue';
 import type { RouteMenu } from '@trace/base/typings';
 
-interface IProps {
+const DialogSearch = defineAsyncComponent(() => import('@/components/extra/DialogSearch.vue'));
+
+const DesktopHeader = defineAsyncComponent(() => import('@/components/header/DesktopHeader.vue'));
+const MobileHeader = defineAsyncComponent(() => import('@/components/header/MobileHeader.vue'));
+const DesktopSidebar = defineAsyncComponent(() => import('@/components/drawer/DesktopSidebar.vue'));
+const MobileSidebar = defineAsyncComponent(() => import('@/components/drawer/MobileSidebar.vue'));
+const DesktopSecondarySidebar = defineAsyncComponent(() => import('@/components/drawer/DesktopSecondarySidebar.vue'));
+
+const $q = useQuasar();
+const props = withDefaults(defineProps<{
   mouseOver?: boolean;
   workspace: Workspace;
   overviewFilter?: string[];
   mobileFilter?: string[];
-}
-
-const props = withDefaults(defineProps<IProps>(), {
+}>(), {
   mouseOver: true,
   overviewFilter: () => [],
   mobileFilter: () => [],
@@ -45,13 +46,11 @@ const { initializeTheme, setThemeState } = theme;
 
 // TODO: Move theme trigger to app-root
 initializeTheme();
+
 const mobileSidebarRef = ref(false);
 const modulesMenu = computed<RouteMenu[]>(() => modulesMenuFn());
 const moduleFeatures = computed<RouteMenu[]>(() => moduleFeaturesFn());
 const showSecondaryToggle = computed(() => moduleFeatures.value.length > 0);
-watchEffect(() => {
-  showSecondarySidebar.value = moduleFeatures.value.length > 0;
-});
 const workspaceValue = computed(() => props.workspace);
 const mouseTriggerValue = shallowRef(props.mouseOver);
 const overviewModuleMenu = computed(() =>
@@ -74,6 +73,10 @@ provide('app:overview-modules', overviewModuleMenu);
 provide('app:general-modules', generalModuleMenu);
 provide('app:sidebar-mouse', mouseTriggerValue);
 
+watchEffect(() => {
+  showSecondarySidebar.value = moduleFeatures.value.length > 0;
+});
+
 defineExpose({
   modulesMenu,
   overviewModuleMenu,
@@ -88,6 +91,15 @@ const quickCreateItems: IModuleCommands[] = [
     command: '1',
   },
 ];
+
+function alert() {
+  $q.dialog({
+    component: DialogSearch,
+    componentProps: {
+      persistent: false,
+    },
+  });
+}
 </script>
 
 <template>
@@ -97,41 +109,18 @@ const quickCreateItems: IModuleCommands[] = [
       <mobile-sidebar v-model="mobileSidebarRef" v-model:dark-mode="isDark" />
     </slot>
     <slot v-if="isMobile" name="mobile-header">
-      <mobile-header
-        v-model:title="title"
-        v-model:search="search"
-        v-model="mobileSidebarRef"
-      />
+      <mobile-header v-model:title="title" v-model:search="search" v-model="mobileSidebarRef" />
     </slot>
     <q-page-container v-if="isMobile" class="no-scroll">
       <slot>
         <router-view />
       </slot>
     </q-page-container>
-    <!-- TODO: re-evaluate mobile navigation -->
-    <!--
-      <slot v-if="isMobile" name="mobile-bottom-menu">
-      <mobile-bottom-menu
-        v-model:modules="modulesMenu"
-        style="display: none"
-        :style="isMobile ? { display: 'flex' } : {}"
-        :overflow-filters="mobileFilter"
-      />
-    </slot>
-    -->
-
     <!-- Desktop layout contents -->
     <slot name="desktop-sidebar">
-      <desktop-sidebar
-        v-if="isDesktop"
-        v-model="showPrimarySidebar"
-        v-model:dark-mode="isDark"
-        v-model:modules="modulesMenu"
-        :drawer-mini-state="primaryMiniState"
-        :mouse-over="mouseOver"
-        :overview-filter="overviewFilter"
-        @update:dark-mode="setThemeState"
-      >
+      <desktop-sidebar v-if="isDesktop" v-model="showPrimarySidebar" v-model:dark-mode="isDark"
+        v-model:modules="modulesMenu" :drawer-mini-state="primaryMiniState" :mouse-over="mouseOver"
+        :overview-filter="overviewFilter" @update:dark-mode="setThemeState">
         <template #start>
           <slot name="sidebar-start"></slot>
         </template>
@@ -144,18 +133,14 @@ const quickCreateItems: IModuleCommands[] = [
     <q-page-container v-if="isDesktop" class="no-scroll">
       <q-layout view="hHh lpR fFf">
         <slot name="desktop-header">
-          <desktop-header
-            v-model="showSecondarySidebar"
-            v-model:show-secondary-sidebar-toogle="showSecondaryToggle"
-            v-model:search="search"
-            :quick-commands="quickCreateItems"
-          />
+          <desktop-header v-model="showSecondarySidebar" v-model:show-secondary-sidebar-toogle="showSecondaryToggle"
+            v-model:search="search" :quick-commands="quickCreateItems">
+            <!-- hey there -->
+            <q-btn no-caps label="Dialog Check" color="primary" @click="alert" />
+          </desktop-header>
         </slot>
         <slot v-if="moduleFeatures.length > 0" name="desktop-secondary-sidebar">
-          <desktop-secondary-sidebar
-            v-model="showSecondarySidebar"
-            :menu-items="moduleFeatures"
-          />
+          <desktop-secondary-sidebar v-model="showSecondarySidebar" :menu-items="moduleFeatures" />
         </slot>
         <q-page-container class="bg-app-container no-scroll">
           <slot>

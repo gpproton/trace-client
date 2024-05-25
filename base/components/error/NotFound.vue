@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import PageError from './PageError.vue';
+import { defineAsyncComponent } from 'vue';
 
+const PageError = defineAsyncComponent(() => import('./PageError.vue'));
 defineOptions({ name: 'NotFound' });
 </script>
 

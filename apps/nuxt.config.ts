@@ -38,12 +38,7 @@ export const addDocPath = (name: string): ContentItem => ({
 export default defineNuxtConfig({
   app: appHeader('/'),
   extends: ['../base'],
-  modules: [
-    'nuxt3-leaflet',
-    '@nuxt/content',
-    './app.core/app-module',
-    'nuxt-quasar-ui',
-  ],
+  modules: ['nuxt3-leaflet', '@nuxt/content', './app.core/app-module'],
   routeRules: {
     '/api/service': { proxy: import.meta.env.SERVER_API },
     '/api/files': { proxy: import.meta.env.SERVER_FILES },

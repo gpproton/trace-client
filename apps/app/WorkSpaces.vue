@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import WorkspaceIcon from '@trace/base/assets/banner/workspace.svg?url';
 import { Workspace } from '@trace/shared';
-import GenericHeader from '@/app/GenericHeader.vue';
-import GenericFooter from '@/app/GenericFooter.vue';
-import ProfileWidgetMenu from '@/components/extra/ProfileWidgetMenu.vue';
-import ProfileAvatar from '@/components/extra/ProfileAvatar.vue';
+
+const GenericHeader = defineAsyncComponent(() => import('@/app/GenericHeader.vue'));
+const GenericFooter = defineAsyncComponent(() => import('@/app/GenericFooter.vue'));
+const ProfileWidgetMenu = defineAsyncComponent(() => import('@/components/extra/ProfileWidgetMenu.vue'));
+const ProfileAvatar = defineAsyncComponent(() => import('@/components/extra/ProfileAvatar.vue'));
 
 defineOptions({ name: 'WorkSpaces' });
 

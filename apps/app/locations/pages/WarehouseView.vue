@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-import MapView from '@/map/MapView.vue';
+import { defineAsyncComponent } from 'vue';
+
+const MapView = defineAsyncComponent(() => import('@/map/MapView.vue'));
 </script>
 
 <template>
   <page-wrapper class="no-border" :padding="false">
     <div class="map-view row">
-      <div class="col-4">
+      <div class="col-4 gt-sm">
         <q-card
           square
           flat

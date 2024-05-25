@@ -3,15 +3,13 @@ import type { RouteMenu } from '@trace/base/typings';
 
 defineOptions({ name: 'SwitcherButton' });
 
-interface IProps {
+const props = withDefaults(defineProps<{
   items: RouteMenu[];
   dense?: boolean;
   route?: boolean;
   flat?: boolean;
   outsideArrows?: boolean;
-}
-
-const props = withDefaults(defineProps<IProps>(), {
+}>(), {
   dense: false,
   route: false,
   flat: false,

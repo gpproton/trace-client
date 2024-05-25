@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Saturday, 16th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Tue May 14 2024
+ * Modified At: Sat May 25 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -36,7 +36,7 @@ const routes: Route[] = [
         name: `${base}.forgot-password`,
         component: () => import('./pages/ForgotPassword.vue'),
         meta: {
-          title: 'Forgot Password',
+          title: 'auth.forgotPassword',
           permission: 'auth',
         },
       },
@@ -45,7 +45,7 @@ const routes: Route[] = [
         name: `${base}.otp-choice`,
         component: () => import('./pages/OtpChoice.vue'),
         meta: {
-          title: 'OTP Choice',
+          title: 'auth.otpChoice',
           permission: 'auth',
         },
       },
@@ -54,7 +54,7 @@ const routes: Route[] = [
         name: `${base}.password-update`,
         component: () => import('./pages/PasswordUpdate.vue'),
         meta: {
-          title: 'Password Update',
+          title: 'auth.updatePassword',
           permission: 'auth',
         },
       },
@@ -63,7 +63,7 @@ const routes: Route[] = [
         name: `${base}.verify-otp`,
         component: () => import('./pages/VerifyOtp.vue'),
         meta: {
-          title: 'Verify OTP',
+          title: 'auth.verifyOtp',
           permission: 'auth',
         },
       },

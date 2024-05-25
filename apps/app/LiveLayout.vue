@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { ref, provide } from 'vue';
+import { ref, provide, defineAsyncComponent } from 'vue';
 import type { Workspace } from '@trace/shared';
-import AppLayout from './AppLayout.vue';
 import type { RouteMenu } from '@trace/base/typings';
-import SidebarList from '@/components/drawer/SidebarList.vue';
-import ProfileWidget from '@/components/extra/ProfileWidget.vue';
 import { useLayoutRouteStore } from '@/composables/layout-routes';
 
-const { modulesMenuFn, moduleFeaturesFn } = useLayoutRouteStore();
+const AppLayout = defineAsyncComponent(() => import('./AppLayout.vue'));
+const SidebarList = defineAsyncComponent(() => import('@/components/drawer/SidebarList.vue'));
+const ProfileWidget = defineAsyncComponent(() => import('@/components/extra/ProfileWidget.vue'));
+
 const props = withDefaults(
   defineProps<{
     workspace: Workspace;
@@ -19,6 +19,8 @@ const props = withDefaults(
     mobileFilter: () => [],
   },
 );
+
+const { modulesMenuFn, moduleFeaturesFn } = useLayoutRouteStore();
 
 const appLayoutRef = ref();
 const overviewActiveState = ref(false);

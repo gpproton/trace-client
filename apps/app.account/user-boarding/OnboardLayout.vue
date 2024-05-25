@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import LangSelector from '@trace/base/components/LangSelector.vue';
+import { defineAsyncComponent } from 'vue';
 import { onboardRoutes } from './module-routes';
 import { useOnboardStore } from '@trace/base/composables/on-board';
-import BoardingFooter from '@/app.account/BoardingFooter.vue';
-import GenericHeader from '@/app/GenericHeader.vue';
-import SupportLinks from '@/app.account/SupportLinks.vue';
+
+const LangSelector = defineAsyncComponent(() => import('@trace/base/components/LangSelector.vue'));
+const BoardingFooter = defineAsyncComponent(() => import('@/app.account/BoardingFooter.vue'));
+const GenericHeader = defineAsyncComponent(() => import('@/app/GenericHeader.vue'));
+const SupportLinks = defineAsyncComponent(() => import('@/app.account/SupportLinks.vue'));
 
 defineOptions({ name: 'OnboardLayout' });
 

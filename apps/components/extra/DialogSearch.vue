@@ -1,6 +1,5 @@
 <!-- eslint-disable vue/require-default-prop -->
 <script setup lang="ts">
-import { defineProps, withDefaults, defineEmits } from 'vue';
 import { useDialogPluginComponent } from 'quasar';
 
 const { dialogRef, onDialogHide } = useDialogPluginComponent();
@@ -22,13 +21,7 @@ withDefaults(
     <q-card class="q-dialog-plugin fit border-radius-sm">
       <!-- list buttons -->
       <q-toolbar class="q-pa-sm">
-        <q-input
-          v-model="search"
-          filled
-          bottom-slots
-          label="Search"
-          class="full-width"
-        >
+        <q-input v-model="search" filled bottom-slots label="Search" class="full-width">
           <template #append>
             <q-icon name="search" />
           </template>

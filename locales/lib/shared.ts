@@ -15,11 +15,12 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 24 2024
+ * Modified At: Sat May 25 2024
  */
 
 export default {
   email: 'Email',
+  sms: 'SMS',
   active: 'Active',
   account: 'Account',
   settings: 'Settings',
@@ -27,6 +28,16 @@ export default {
   administration: 'Administration',
   summary: 'Summary',
   logs: 'Logs',
+  send: 'Send',
+  verify: 'Verify',
+  resend: 'Resend',
+  enter: 'Enter',
+  new: 'New',
+  create: 'Create',
+  update: 'Update',
+  confirm: 'Confirm',
+  forgot: 'Forgot?',
+  linked: 'Linked',
   core: 'Core',
   portal: 'Portal',
   support: 'Support',
@@ -41,6 +52,7 @@ export default {
   items: 'Items',
   view: 'View',
   Live: 'Live',
+  hereQuestion: 'Here?',
   overview: 'Overview',
   dashboard: 'Dashboard',
   trends: 'Trends',
@@ -94,6 +106,8 @@ export default {
   representative: 'Representative',
   privacyPolicy: 'Privacy policy',
   welcome: 'Welcome',
+  an: 'an',
+  or: 'Or',
   back: 'Back',
   continue: 'Continue',
   copyright: 'Copyright',
@@ -101,7 +115,8 @@ export default {
   verification: 'Verification',
   confirmation: 'Confirmation',
   integration: 'Integration',
-  or: 'Or',
+  reset: 'Reset',
+  via: 'via',
   reports: 'Reports',
   history: 'History',
   schedule: 'Schedule',
@@ -117,6 +132,7 @@ export default {
   task: 'Task',
   event: 'Event',
   tasks: 'Tasks',
+  choice: 'Choice',
   orders: 'Orders',
   proofs: 'Proofs',
   expense: 'Expense',

@@ -15,12 +15,13 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 24 2024
+ * Modified At: Sat May 25 2024
  */
 
 import { defaultTranslation, defaultLanguage } from '@trace/locales';
 
 const loadLocaleMessages = () => {
+  // @ts-ignore
   const locales = import.meta.glob('../locales/output/*.json', { eager: true });
   const messages: Record<string, any> = {};
   Object.keys(locales).forEach((key) => {
@@ -37,13 +38,9 @@ const loadLocaleMessages = () => {
   return messages;
 };
 
-export default defineI18nConfig(() => {
-  const messages = loadLocaleMessages();
-
-  return {
-    legacy: false,
-    globalInjection: true,
-    locale: defaultLanguage,
-    messages,
-  };
-});
+export default {
+  legacy: false,
+  globalInjection: true,
+  locale: defaultLanguage,
+  messages: loadLocaleMessages(),
+};

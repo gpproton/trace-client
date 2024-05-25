@@ -1,6 +1,5 @@
 <!-- eslint-disable vue/require-default-prop -->
 <script setup lang="ts">
-import { defineExpose, defineProps, withDefaults, defineEmits } from 'vue';
 import { useDialogPluginComponent } from 'quasar';
 import type { RouteMenu } from '@trace/base/typings';
 import SidebarList from '@/components/drawer/SidebarList.vue';

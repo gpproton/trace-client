@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import GenericHeader from '@/app/GenericHeader.vue';
-import GenericFooter from '@/app/GenericFooter.vue';
-import SupportLinks from '@/app.account/SupportLinks.vue';
+import { defineAsyncComponent } from 'vue';
+
+const GenericHeader = defineAsyncComponent(() => import('@/app/GenericHeader.vue'));
+const GenericFooter = defineAsyncComponent(() => import('@/app/GenericFooter.vue'));
+const SupportLinks = defineAsyncComponent(() => import('@/app.account/SupportLinks.vue'));
 </script>
 
 <template>

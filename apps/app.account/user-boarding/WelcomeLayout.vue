@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue';
 import { storeToRefs } from 'pinia';
 import OnboardAsset from '@trace/base/assets/banner/man-3.svg?url';
-import LangSelector from '@trace/base/components/LangSelector.vue';
-import GenericHeader from '@/app/GenericHeader.vue';
-import BoardingFooter from '@/app.account/BoardingFooter.vue';
-import SupportLinks from '@/app.account/SupportLinks.vue';
 import { useServerStore } from '@/stores/app-server';
+
+const LangSelector = defineAsyncComponent(() => import('@trace/base/components/LangSelector.vue'));
+const GenericHeader = defineAsyncComponent(() => import('@/app/GenericHeader.vue'));
+const BoardingFooter = defineAsyncComponent(() => import('@/app.account/BoardingFooter.vue'));
+const SupportLinks = defineAsyncComponent(() => import('@/app.account/SupportLinks.vue'));
 
 defineOptions({ name: 'WelcomeLayout' });
 

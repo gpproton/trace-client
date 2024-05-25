@@ -2,6 +2,7 @@
 import { ref, onMounted, nextTick, defineAsyncComponent } from 'vue';
 
 const TileLayers = defineAsyncComponent(() => import('./TileLayers.vue'));
+
 const mapReference = ref();
 const mapInstance = ref();
 const mapReady = ref(false);
@@ -44,9 +45,10 @@ const onMapReady = async () => {
       <!-- <measure-control></measure-control> -->
       <!-- <geocoder-control></geocoder-control> -->
       <slot></slot>
-      <slot name="last"></slot>
+      <slot name="last">
+        <lazy-l-control-zoom position="bottomright" />
+      </slot>
       <tile-layers></tile-layers>
-      <l-control-zoom position="bottomright" />
     </l-map>
   </client-only>
 </template>

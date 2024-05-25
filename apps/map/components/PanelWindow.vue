@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, withDefaults, defineProps } from 'vue';
+import { ref } from 'vue';
 import PanelToggle from './PanelToggle.vue';
 
 const windowVisibility = ref(true);

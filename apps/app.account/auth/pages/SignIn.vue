@@ -57,7 +57,7 @@ registerLifecyces();
             class="text-primary"
             style="text-decoration: none"
             :to="{ name: 'user-boarding.getting-started' }"
-            >{{ $t('auth.createAccount') }}</nuxt-link
+            >{{ $t('auth.createAnAccount') }}</nuxt-link
           >
         </div>
         <div v-else>{{ $t('auth.continueSignin') }}</div>

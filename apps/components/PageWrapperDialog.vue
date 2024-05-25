@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps, withDefaults, defineEmits } from 'vue';
 import { useDialogPluginComponent } from 'quasar';
 import type { Router } from '@/.nuxt/vue-router-stub';
 

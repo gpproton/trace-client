@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import UnAuthorized from '@/assets/banner/un-authorized.svg?url';
-import PageError from './PageError.vue';
+import { defineAsyncComponent } from 'vue';
+
+const PageError = defineAsyncComponent(() => import('./PageError.vue'));
 
 defineOptions({ name: 'UnAuthorized' });
 </script>

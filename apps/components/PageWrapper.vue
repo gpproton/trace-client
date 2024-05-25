@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, onActivated, onDeactivated } from 'vue';
+import { ref, onMounted, onUnmounted, onActivated, onDeactivated, defineAsyncComponent } from 'vue';
 import { QScrollArea, SessionStorage } from 'quasar';
 import { useRoute } from 'vue-router';
-import {} from '@/stores/theme';
-import UnderConstruction from '@trace/base/components/error/UnderConstruction.vue';
+
+const UnderConstruction = defineAsyncComponent(() => import('@trace/base/components/error/UnderConstruction.vue'))
 
 defineOptions({ name: 'PageWrapper' });
 
@@ -25,21 +25,19 @@ interface scrollPosition {
   left: number;
 }
 
-export interface IWrapperProps {
-  options?: IPageContext | any;
-  name?: string;
-  contentActiveStyle?: string;
-  scrollable?: boolean;
-  padding?: boolean;
-}
-
 const thumbStyle = {
   right: '2px',
   borderRadius: '3px',
   width: '7px',
 };
 
-withDefaults(defineProps<IWrapperProps>(), {
+withDefaults(defineProps<{
+  options?: IPageContext | any;
+  name?: string;
+  contentActiveStyle?: string;
+  scrollable?: boolean;
+  padding?: boolean;
+}>(), {
   options: {},
   name: '',
   contentActiveStyle: '',

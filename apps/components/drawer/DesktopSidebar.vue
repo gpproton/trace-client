@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { inject } from 'vue';
-import SidebarList from '@/components/drawer/SidebarList.vue';
-import SidebarHeader from '@/components/drawer/SidebarHeader.vue';
-import ThemeSwitcher from '@/components/extra/ThemeSwitcher.vue';
+import { inject, defineAsyncComponent } from 'vue';
 import type { RouteMenu } from '@trace/base/typings';
+
+const SidebarList = defineAsyncComponent(() => import('@/components/drawer/SidebarList.vue'));
+const SidebarHeader = defineAsyncComponent(() => import('@/components/drawer/SidebarHeader.vue'));
+const ThemeSwitcher = defineAsyncComponent(() => import('@/components/extra/ThemeSwitcher.vue'));
 
 defineOptions({ name: 'DesktopSidebar' });
 

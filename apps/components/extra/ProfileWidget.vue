@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import ProfileWidgetMenu from './ProfileWidgetMenu.vue';
-import ProfileAvatar from './ProfileAvatar.vue';
+import { defineAsyncComponent } from 'vue';
 import { useUserAccountStore } from '@/stores/user-account';
+
+const ProfileWidgetMenu = defineAsyncComponent(() => import('./ProfileWidgetMenu.vue'));
+const ProfileAvatar = defineAsyncComponent(() => import('./ProfileAvatar.vue'));
 
 const userAccountStore = useUserAccountStore();
 const { getFullname, getEmail } = storeToRefs(userAccountStore);

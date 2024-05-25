@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-// import SwitcherButton from './SwitcherButton.vue';
 import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 
 defineOptions({ name: 'NotificationDialog' });
 const breakpointStates = useAppBreakpoints();
 const { isDesktop } = storeToRefs(breakpointStates);
-// const notifyValue = ref('0');
 </script>
 
 <template>

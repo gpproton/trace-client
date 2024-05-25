@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'CreateAccount' });
+defineOptions({ name: 'createAccount' });
 
 const information = reactive({
   firstName: '',

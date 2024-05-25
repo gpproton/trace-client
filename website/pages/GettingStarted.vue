@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import UnderConstruction from '@trace/base/components/error/UnderConstruction.vue';
+import { defineAsyncComponent } from 'vue';
+
+const UnderConstruction = defineAsyncComponent(() => import('@trace/base/components/error/UnderConstruction.vue'));
 
 defineOptions({ name: 'GettingStarted' });
 </script>

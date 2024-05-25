@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import SidebarList from '@/components/drawer/SidebarList.vue';
-import ThemeSwitcher from '@/components/extra/ThemeSwitcher.vue';
-import SidebarHeader from '@/components/drawer/SidebarHeader.vue';
-import ProfileWidget from '@/components/extra/ProfileWidget.vue';
 import type { RouteMenu } from '@trace/base/typings';
-import { inject } from 'vue';
+import { inject, defineAsyncComponent } from 'vue';
+
+const SidebarList = defineAsyncComponent(() => import('@/components/drawer/SidebarList.vue'));
+const ThemeSwitcher = defineAsyncComponent(() => import('@/components/extra/ThemeSwitcher.vue'));
+const SidebarHeader = defineAsyncComponent(() => import('@/components/drawer/SidebarHeader.vue'));
+const ProfileWidget = defineAsyncComponent(() => import('@/components/extra/ProfileWidget.vue'));
 
 defineOptions({ name: 'MobileSidebar' });
 

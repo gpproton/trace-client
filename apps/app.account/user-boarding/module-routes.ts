@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Wed May 22 2024
+ * Modified At: Sat May 25 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -27,7 +27,7 @@ export const onboardRoutes: Route[] = [
     component: () => import('./pages/CreateAccount.vue'),
     meta: {
       permission: 'auth',
-      title: 'Create Account',
+      title: 'auth.createAccount',
       description: 'Provide personal information required to use our plaform',
     },
   },
@@ -99,7 +99,7 @@ const routes: Route[] = [
         component: () => import('./pages/GetttingStarted.vue'),
         meta: {
           permission: 'auth',
-          title: 'Getting started',
+          title: 'shared.gettingStarted',
         },
       },
     ],

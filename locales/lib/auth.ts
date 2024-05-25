@@ -15,31 +15,34 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 15th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Sat May 25 2024
  */
 
 export default {
-  continueSignin: 'Sign in to continue',
-  welcomeBack: 'Welcome Back',
-  newHere: 'New Here?',
-  createAccount: 'Create an account',
-  enterOtp: 'Verify OTP',
-  forgotPassword: 'Forgot Password?',
+  opt: 'OTP',
+  username: 'Username',
   password: 'Password',
-  updatePassword: 'Update Password',
-  linkedAccount: 'Linked Account',
-  passwordResetEmail: 'Reset via Email',
-  passwordResetSms: 'Reset via SMS',
-  resendOtp: 'Resend OTP',
-  sendOtp: 'Send OTP',
   signIn: 'Sign In',
   signOut: 'Sign Out',
-  username: 'Username',
+  sendOtp: '@:shared.send @:auth.otp',
+  enterOtp: '@:shared.enter @:auth.otp',
+  resendOtp: '@:shared.resend @:auth.otp',
+  otpChoice: '@:auth.otp @:shared.choice',
   usernameOrEmail: 'Username or Email',
-  verifyOtp: 'Verify OTP',
+  verifyOtp: '@:shared.verify @:auth.otp',
+  recoveryNewPassword: '@:shared.new @:auth.password',
+  recoveryConfirmPassword: '@:shared.confirm @:auth.password',
+  forgotPassword: '@:shared.forgot @:auth.password',
+  updatePassword: '@:shared.update @:auth.password',
+  linkedAccount: '@:shared.linked @:shared.account',
+  newHere: '@:shared.new @:shared.hereQuestion',
+  welcomeBack: '@:shared.welcome @:shared.back',
+  continueSignin: 'Sign in to continue',
+  createAccount: '@:shared.create @:shared.account',
+  createAnAccount: '@:shared.create @:shared.an @:shared.account',
+  passwordResetEmail: '@:shared.reset @:shared.via @:shared.email',
+  passwordResetSms: '@:shared.reset @:shared.via @:shared.sms',
   dintRecieveCode: "Didn't recieve a code?",
-  recoveryNewPassword: 'New Password',
-  recoveryConfirmPassword: 'Confirm Password',
   recoveryOtpSent: 'A 4 digit OTP has been sent to',
   recoveryNote:
     "Don't worry it happens!. please enter the email associated with your account.",

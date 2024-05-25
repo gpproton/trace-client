@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import LinkItem from './LinkItem.vue';
+import { defineAsyncComponent } from 'vue';
 import type { RouteMenu } from '@trace/base/typings';
+
+const LinkItem = defineAsyncComponent(() => import('./LinkItem.vue'));
 
 defineOptions({ name: 'SidebarList' });
 

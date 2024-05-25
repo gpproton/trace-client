@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, defineAsyncComponent } from 'vue';
 import AppLogo from '@trace/base/assets/icons/logo.svg';
-import LangSelector from '@trace/base/components/LangSelector.vue';
 import { onboardRoutes } from './routes';
 import { useOnboardStore } from '@trace/base/composables/on-board';
 import { appConstants } from '@trace/shared';
+
+const LangSelector = defineAsyncComponent(() => import('@trace/base/components/LangSelector.vue'));
 
 defineOptions({ name: 'OnboardLayout' });
 

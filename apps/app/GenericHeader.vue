@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue';
 import AppLogo from '@trace/base/assets/icons/logo.svg';
-import LangSelector from '@trace/base/components/LangSelector.vue';
 import { storeToRefs } from 'pinia';
 import { useServerStore } from '@/stores/app-server';
+
+const LangSelector = defineAsyncComponent(() => import('@trace/base/components/LangSelector.vue'));
 
 withDefaults(
   defineProps<{

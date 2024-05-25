@@ -1,8 +1,10 @@
 <script lang="ts" setup>
+import { defineAsyncComponent } from 'vue';
 import TwoFactor from '@trace/base/assets/banner/two-factor-authentication.svg?url';
 import { useUserAuthStore } from '@/stores/user-auth';
-import GenericHeader from '@/app/GenericHeader.vue';
-import GenericFooter from '@/app/GenericFooter.vue';
+
+const GenericHeader = defineAsyncComponent(() => import('@/app/GenericHeader.vue'));
+const GenericFooter = defineAsyncComponent(() => import('@/app/GenericFooter.vue'));
 
 const userAuth = useUserAuthStore();
 const { registerLifecyces } = userAuth;
