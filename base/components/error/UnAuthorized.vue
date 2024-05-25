@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import UnAuthorized from '@/icons/banner/un-authorized.svg?url';
+import UnAuthorized from '@/assets/icons/banner/un-authorized.svg?url';
 import PageError from './PageError.vue';
 
 defineOptions({ name: 'UnAuthorized' });

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import UnderConstruction from '@/icons/banner/under-construction-2.svg?url';
+import UnderConstruction from '@/assets/icons/banner/under-construction-2.svg?url';
 import { useAppBreakpoints } from '@/composables/breakpoints';
 import { storeToRefs } from 'pinia';
 

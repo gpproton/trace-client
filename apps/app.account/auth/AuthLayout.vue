@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LightHouse from '@trace/base/icons/banner/lighthouse.svg?url';
+import LightHouse from '@trace/base/assets/icons/banner/lighthouse.svg?url';
 import GenericHeader from '@/app/GenericHeader.vue';
 import GenericFooter from '@/app/GenericFooter.vue';
 

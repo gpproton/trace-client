@@ -1,6 +1,6 @@
 <script setup lang="tsx">
 import { inject } from 'vue';
-import AppLogo from '@trace/base/icons/logo.svg';
+import AppLogo from '@trace/base/assets/icons/logo.svg';
 import { QBtn } from 'quasar';
 
 defineOptions({ name: 'SidebarHeader' });

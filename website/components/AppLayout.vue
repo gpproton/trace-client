@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppLogo from '@trace/base/icons/logo.svg';
+import AppLogo from '@trace/base/assets/icons/logo.svg';
 import { appConstants } from '@trace/shared';
 
 const links = [

@@ -34,10 +34,11 @@ watch(language, () => {
 </script>
 
 <template>
-  <!-- TODO: apply image to PWA components later -->
-  <!-- <pwa-favicon-image /> -->
-  <!-- <pwa-maskable-image /> -->
-  <!-- <pwa-transparent-image /> -->
+  <pwa-favicon-image image="public/icon.svg" />
+  <pwa-maskable-image image="public/icon.svg" />
+  <pwa-transparent-image image="public/icon.svg" />
+  <pwa-apple-splash-screen-image image="public/icon.svg" />
+  <pwa-apple-image image="public/icon.svg" />
   <nuxt-pwa-assets />
   <loading-indicator>
     <nuxt-layout>
