@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NotFound from '@/assets/icons/banner/not-found.svg?url';
+import NotFound from '@/assets/banner/not-found.svg?url';
 import { useAppBreakpoints } from '@/composables/breakpoints';
 import { storeToRefs } from 'pinia';
 

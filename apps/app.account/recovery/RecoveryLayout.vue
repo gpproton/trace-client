@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import TwoFactor from '@trace/base/assets/icons/banner/two-factor-authentication.svg?url';
+import TwoFactor from '@trace/base/assets/banner/two-factor-authentication.svg?url';
 import GenericHeader from '@/app/GenericHeader.vue';
 import GenericFooter from '@/app/GenericFooter.vue';
 </script>

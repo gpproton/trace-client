@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import OnboardAsset from '@trace/base/assets/icons/banner/man-3.svg?url';
+import OnboardAsset from '@trace/base/assets/banner/man-3.svg?url';
 import LangSelector from '@trace/base/components/LangSelector.vue';
 import GenericHeader from '@/app/GenericHeader.vue';
 import BoardingFooter from '@/app.account/BoardingFooter.vue';

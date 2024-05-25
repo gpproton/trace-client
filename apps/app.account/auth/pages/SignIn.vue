@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive, defineAsyncComponent } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useServerStore, socialLogins } from '@/stores/app-server';
 import { useUserAuthStore } from '@/stores/user-auth';
-import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
+
+const IdentityForm = defineAsyncComponent(
+  () => import('@/app.account/shared/components/IdentityForm.vue'),
+);
 
 defineOptions({ name: 'SignIn' });
 
@@ -77,7 +80,6 @@ onUnmounted(() => {
           <q-img
             no-native-menu
             no-spinner
-            lazy
             :src="social.icon"
             :alt="social.title"
             class="social-icons"

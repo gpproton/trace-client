@@ -1,20 +1,18 @@
-<script setup lang="ts">
-import { useLoadingStore } from '@/stores/loading';
-import { storeToRefs } from 'pinia';
-
-const serverStore = useLoadingStore();
-const { getLoadingState } = storeToRefs(serverStore);
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div v-show="!getLoadingState">
-    <slot />
-  </div>
-  <div v-show="getLoadingState" class="splash-screen">
-    <div class="spinner-wrapper">
-      <div class="spinner"></div>
-    </div>
-  </div>
+  <Suspense>
+    <template #default>
+      <slot />
+    </template>
+    <template #fallback>
+      <div class="splash-screen">
+        <div class="spinner-wrapper">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </template>
+  </Suspense>
 </template>
 
 <style lang="scss" scoped>

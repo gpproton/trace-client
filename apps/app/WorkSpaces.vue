@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import WorkspaceIcon from '@trace/base/assets/icons/banner/workspace.svg?url';
+import WorkspaceIcon from '@trace/base/assets/banner/workspace.svg?url';
 import { Workspace } from '@trace/shared';
 import GenericHeader from '@/app/GenericHeader.vue';
 import GenericFooter from '@/app/GenericFooter.vue';
