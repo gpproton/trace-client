@@ -15,26 +15,29 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 17th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 24 2024
+ * Modified At: Sat May 25 2024
  */
 
-import { ref, watch } from 'vue';
+import { ref, watchEffect, onMounted, onUnmounted } from 'vue';
+import { useInterval } from 'quasar';
 import { defineStore } from 'pinia';
 import type { Router } from '@/.nuxt/vue-router-stub';
 import { useUserAccountStore } from './user-account';
 import { useTagViewStore } from './tag-view';
+import type { ActionState } from '@trace/model';
 
 export const useUserAuthStore = defineStore(
   'state-authentication',
   () => {
-    const userAuthStore = useUserAccountStore();
+    const userAccountStore = useUserAccountStore();
     const { removeAllTagView } = useTagViewStore();
-    const { clearAllUserState, setUserInfo } = userAuthStore;
+    const { clearAllUserState, setUserInfo } = userAccountStore;
 
     const router: Router = useRouter();
-    const accessToken = ref<string | null>();
     const timeout = ref();
+    const authTimeout = ref();
     const loading = ref<boolean>(false);
+    const accessToken = ref<string | null>();
     const getAccessToken = computed(() => accessToken.value);
     const getLoading = computed(() => loading.value);
 
@@ -42,8 +45,8 @@ export const useUserAuthStore = defineStore(
       (accessToken.value = value);
 
     const signIn = (auth: { username: string; password: string }) => {
-      loading.value = true;
-      timeout.value = setTimeout(() => {
+      authTimeout.value = setTimeout(() => {
+        loading.value = true;
         if (auth.username === 'dev' && auth.password === 'dev') {
           setUserInfo({
             id: 'ac707e42-74c4-4107-beba-4897107bf9f7',
@@ -74,39 +77,71 @@ export const useUserAuthStore = defineStore(
       setAccessToken(null);
       router.replace({ name: 'auth.sign-in' });
 
-      // clear additional stores
-      clearAllUserState();
-      removeAllTagView();
+      timeout.value = setTimeout(() => {
+        clearAllUserState();
+        removeAllTagView();
+      }, 2500);
     };
 
-    watch(getAccessToken, () => {
-      const permission = router.currentRoute.value.meta.permission;
+    const checkAuthState = (
+      permission: boolean | 'auth' | ActionState | undefined,
+    ) => {
+      if (router !== undefined) {
+        // forced sign-out
+        if (
+          getAccessToken.value === null &&
+          permission !== false &&
+          permission !== 'auth'
+        ) {
+          router.replace({ name: 'auth.sign-in' });
+        }
 
-      // force sign-out
-      if (getAccessToken.value === null && permission !== false) {
-        router.replace({ name: 'auth.sign-in' });
+        // ensure signed-in
+        if (getAccessToken.value !== null && permission === 'auth') {
+          router.replace({ name: 'work-spaces' });
+        }
       }
+    };
 
-      // ensure signed-in
-      if (getAccessToken.value !== null && permission === 'auth') {
-        router.replace({ name: 'work-spaces' });
+    watchEffect(() => {
+      const permission = router.currentRoute.value.meta.permission;
+      if (
+        getAccessToken.value === null ||
+        typeof getAccessToken.value === 'string'
+      ) {
+        checkAuthState(permission);
       }
     });
 
+    const registerLifecyces = () => {
+      const { registerInterval, removeInterval } = useInterval();
+      onMounted(() => {
+        registerInterval(() => {
+          const permission = router.currentRoute.value.meta.permission;
+          checkAuthState(permission);
+        }, 10000);
+      });
+      onUnmounted(() => {
+        removeInterval();
+        clearTimeout(authTimeout.value);
+        clearTimeout(timeout.value);
+      });
+    };
+
     return {
-      timeout,
       getLoading,
       accessToken,
       getAccessToken,
+      checkAuthState,
       setAccessToken,
       signIn,
       signOut,
+      registerLifecyces,
     };
   },
   {
     share: {
       enable: true,
-      omit: ['timeout'],
     },
     persist: {
       paths: ['accessToken'],

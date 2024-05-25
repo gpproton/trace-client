@@ -65,17 +65,3 @@ export const useLayoutStore = defineStore('state-app-layout', () => {
     setShowHeaderToolbar,
   };
 });
-
-// export const useLayoutDialog = (
-//   component: undefined | string | globalThis.Component,
-//   props: any,
-// ) => {
-//   const $q = Dialog.create({
-//     component: component,
-//     componentProps: props,
-//   });
-
-//   return {
-//     show: () => $q.show(),
-//   };
-// };

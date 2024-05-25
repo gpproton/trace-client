@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 24 2024
+ * Modified At: Sat May 25 2024
  */
 
 import { ref, computed } from 'vue';
@@ -34,7 +34,6 @@ export const useUserAccountStore = defineStore(
     ]);
 
     const user = ref<User | null>(null);
-
     const getUser = computed(() => user.value);
     const getFullname = computed<string>(
       () => `${user.value?.firstName} ${user.value?.lastName}`,

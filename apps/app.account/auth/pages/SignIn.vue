@@ -12,8 +12,9 @@ defineOptions({ name: 'SignIn' });
 
 const userAccount = useUserAuthStore();
 const serverStore = useServerStore();
+const { signIn, registerLifecyces } = userAccount;
 const { getServerState, getRegistrationChoice } = storeToRefs(serverStore);
-const { getLoading, timeout } = storeToRefs(userAccount);
+const { getLoading } = storeToRefs(userAccount);
 const loginForminactive = computed(
   () => !getServerState.value.auth?.email || getLoading.value,
 );
@@ -22,11 +23,12 @@ const authState = reactive({
   username: '',
   password: '',
   remember: false,
+  valid: true,
+  error: '',
   show: false,
 });
 
 const triggerAuth = () => {
-  const { signIn } = userAccount;
   signIn(authState);
 };
 
@@ -35,9 +37,7 @@ const resetForm = () => {
   authState.password = '';
 };
 
-onUnmounted(() => {
-  clearTimeout(timeout.value);
-});
+registerLifecyces();
 </script>
 
 <template>

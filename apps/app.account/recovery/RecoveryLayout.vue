@@ -1,7 +1,13 @@
 <script lang="ts" setup>
 import TwoFactor from '@trace/base/assets/banner/two-factor-authentication.svg?url';
+import { useUserAuthStore } from '@/stores/user-auth';
 import GenericHeader from '@/app/GenericHeader.vue';
 import GenericFooter from '@/app/GenericFooter.vue';
+
+const userAuth = useUserAuthStore();
+const { registerLifecyces } = userAuth;
+
+registerLifecyces();
 </script>
 
 <template>

@@ -2,8 +2,6 @@
 import LightHouse from '@trace/base/assets/banner/lighthouse.svg?url';
 import GenericHeader from '@/app/GenericHeader.vue';
 import GenericFooter from '@/app/GenericFooter.vue';
-
-// defineOptions({ name: 'AuthLayout' });
 </script>
 
 <template>
@@ -24,21 +22,14 @@ import GenericFooter from '@/app/GenericFooter.vue';
             flat
             class="full-height bg-background-shift hide-scrollbar border-radius-lg"
           >
-            <transition
-              appear
-              enter-active-class="animated fadeIn faster delay-1s repeat-2"
-              leave-active-class="animated fadeOut"
-            >
-              <q-img
-                lazy
-                no-native-menu
-                no-spinner
-                :src="LightHouse"
-                alt="Trace Lighthouse"
-                width="calc(32vw)"
-                class="absolute-center"
-              />
-            </transition>
+            <q-img
+              no-native-menu
+              no-spinner
+              :src="LightHouse"
+              alt="Trace Lighthouse"
+              width="calc(32vw)"
+              class="absolute-center"
+            />
           </q-card>
         </div>
       </div>

@@ -91,7 +91,7 @@ export default defineNuxtConfig({
   },
   piniaPersistedstate: {
     cookieOptions: {
-      sameSite: 'none',
+      sameSite: 'strict',
     },
   },
   css: [
@@ -100,7 +100,7 @@ export default defineNuxtConfig({
   ],
   quasar: {
     cssAddon: true,
-    plugins: ['AppVisibility', 'Dialog', 'Notify', 'Dark'],
+    plugins: ['AppVisibility', 'Dialog', 'Notify', 'Dark', 'Cookies'],
     sassVariables: join(currentDir, './assets/main.scss'),
     iconSet: {
       ...bootstrapIcons,
