@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 24th May 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 24 2024
+ * Modified At: Sat May 25 2024
  */
 
 import type { Router } from 'vue-router';
@@ -29,7 +29,7 @@ import dispatchRoutes from '@/app.dispatch/app-routes';
 import portalRoutes from '@/app.portal/app-routes';
 import partnerRoutes from '@/app.partner/app-routes';
 import accountRoutes from '@/app.account/app-routes';
-import type { RouteRecordRaw } from '@/.nuxt/vue-router-stub';
+// import type { RouteRecordRaw } from '@/.nuxt/vue-router-stub';
 
 export const addWorkspaceRoute = (
   app: Workspace,
@@ -118,10 +118,7 @@ export default defineNuxtPlugin(() => {
   let previousWorkspace: string | null = null;
   router.beforeEach(async (to, from, next) => {
     const matchedRoutes = workspaceApps.filter((e) => {
-      return (
-        e !== accountRouteObject.name &&
-        (to.fullPath.startsWith(`/${e}/`) || to.fullPath.startsWith(`/${e}`))
-      );
+      return e !== accountRouteObject.name && to.fullPath.startsWith(`/${e}/`);
     });
 
     if (matchedRoutes.length > 0) {
@@ -130,12 +127,12 @@ export default defineNuxtPlugin(() => {
         .split('/')
         .filter((x) => x !== '')[0];
 
-      const currentWorkspaceRoutes = workRoutes.filter(
-        (x) => x.name === currentWorkspaceName,
-      )[0];
+      // const currentWorkspaceRoutes = workRoutes.filter(
+      //   (x) => x.name === currentWorkspaceName,
+      // )[0];
 
       if (!routes.some((route) => route.path === to.fullPath)) {
-        router.addRoute(currentWorkspaceRoutes as RouteRecordRaw);
+        // router.addRoute(currentWorkspaceRoutes as RouteRecordRaw);
         routes.push({
           path: to.path,
           name: to.name,

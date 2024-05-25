@@ -77,6 +77,7 @@ onUnmounted(() => {
           <q-img
             no-native-menu
             no-spinner
+            lazy
             :src="social.icon"
             :alt="social.title"
             class="social-icons"

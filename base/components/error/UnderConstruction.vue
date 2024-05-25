@@ -14,6 +14,7 @@ const { isDesktop } = storeToRefs(breakpointStates);
     <q-img
       no-native-menu
       no-spinner
+      lazy
       :src="UnderConstruction"
       class="q-mt-xs q-mb-md page-visual"
       alt="Under Construction"

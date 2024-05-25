@@ -17,10 +17,10 @@
   },
   "homepage": "https://trace.ng",
   "scripts": {
-    "build": "nuxt generate",
-    "dev": "nuxt dev --port=3010",
+    "build": "NODE_OPTIONS=--max_old_space_size=8192 nuxt generate",
+    "dev": "NODE_OPTIONS=--max_old_space_size=8192 nuxt dev --port=3010",
     "clean": "pnpx rimraf node_modules **/node_modules **/dist/* pnpm-lock.*",
-    "generate": "nuxt generate",
+    "generate": "NODE_OPTIONS=--max_old_space_size=8192 nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",

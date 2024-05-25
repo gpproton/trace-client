@@ -28,6 +28,7 @@ const { isDesktop } = storeToRefs(breakpointStates);
       <q-img
         no-native-menu
         no-spinner
+        lazy
         :src="imageUrl"
         class="q-mt-xs q-mb-md"
         width="calc(32vw)"

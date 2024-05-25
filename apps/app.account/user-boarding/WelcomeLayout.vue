@@ -34,6 +34,7 @@ const { getTenantName } = storeToRefs(serverStore);
           <q-img
             no-native-menu
             no-spinner
+            lazy
             :src="OnboardAsset"
             alt="Trace Asset"
             width="calc(28vw)"

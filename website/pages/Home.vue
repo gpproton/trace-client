@@ -8,7 +8,6 @@ const email = ref('');
 const tag = 'The new transport app';
 const details = 'A new way of looking at transportation and logistics';
 const registerNote = 'Enter your email to start using trace';
-
 </script>
 
 <template>
@@ -49,6 +48,7 @@ const registerNote = 'Enter your email to start using trace';
           alt="Website image"
           no-native-menu
           no-spinner
+          lazy
         />
       </q-card>
     </div>

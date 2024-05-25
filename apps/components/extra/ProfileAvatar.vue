@@ -14,7 +14,11 @@ const { getProfileInitials } = storeToRefs(userAccountStore);
     text-color="white"
   >
     <q-badge floating color="green" class="badge" rounded />
-    <span class="text-white text-weight-medium">{{ getProfileInitials }}</span>
+    <client-only
+      ><span class="text-white text-weight-medium">{{
+        getProfileInitials
+      }}</span></client-only
+    >
     <slot></slot>
   </q-avatar>
 </template>

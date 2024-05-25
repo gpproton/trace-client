@@ -70,6 +70,7 @@ const links = ref<Array<{ name: string; label: string }>>([
             <q-img
               no-native-menu
               no-spinner
+              lazy
               :src="WorkspaceIcon"
               alt="Trace Workspace"
               width="calc(33vw)"

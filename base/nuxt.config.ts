@@ -21,14 +21,24 @@
 import bootstrapIcons from 'quasar/icon-set/svg-bootstrap-icons';
 import materialIcons from 'quasar/icon-set/svg-material-icons';
 import svgLoader from 'vite-svg-loader';
+import { splitVendorChunkPlugin } from 'vite';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: false,
   devtools: {
     enabled: true,
+  },
+  experimental: {
+    watcher: 'chokidar',
+  },
+  nitro: {
+    prerender: {
+      concurrency: 250,
+      interval: 100,
+    },
   },
   modules: [
     '@nuxt/devtools',
@@ -39,11 +49,10 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@vue-macros/nuxt',
     '@vite-pwa/nuxt',
-    // '@nuxtjs/tailwindcss',
+    '@nuxt/image',
   ],
   pwa: {
     registerWebManifestInRouteRules: true,
-    // includeAssets: [],
     srcDir: 'public',
     minify: true,
     registerType: 'autoUpdate',
@@ -55,12 +64,21 @@ export default defineNuxtConfig({
       image: 'public/icon.svg',
       preset: 'minimal',
     },
+    manifestFilename: 'manifest.webmanifest',
+    manifest: {
+      name: 'Trace Demo',
+      short_name: 'Trace',
+      lang: 'en',
+      theme_color: '#3949ab',
+      background_color: '#ffffff',
+      description: 'Trace demo instance',
+    },
   },
   macros: {
     setupSFC: true,
   },
   vite: {
-    plugins: [svgLoader()],
+    plugins: [svgLoader(), splitVendorChunkPlugin()],
   },
   i18n: {
     vueI18n: './i18n.config.ts',

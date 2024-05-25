@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 24 2024
+ * Modified At: Sat May 25 2024
  */
 
 import type { RouterConfig } from '@nuxt/schema';
@@ -23,7 +23,7 @@ import defaultRoutes, { addCatchAll, addUnAuthorized } from '@/routes.default';
 import { routes as identityRoutes } from '@/app.account/app-routes';
 import type { Route } from '@trace/base/typings';
 import type { RouteRecordRaw } from '@/.nuxt/vue-router-stub';
-import { accountRouteObject } from '@/plugins/app-2-routes.global';
+import { workRoutes } from '@/plugins/app-2-routes.global';
 
 export const routes = [
   {
@@ -34,7 +34,7 @@ export const routes = [
     children: [addCatchAll(), addUnAuthorized(), ...defaultRoutes],
   },
   ...identityRoutes,
-  accountRouteObject,
+  ...workRoutes,
 ] as Route[];
 
 export default <RouterConfig>{

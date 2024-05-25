@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 29th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 24 2024
+ * Modified At: Sat May 25 2024
  */
 
 import { useServerStore } from '@/stores/app-server';
@@ -52,5 +52,5 @@ export default defineNuxtPlugin(() => {
 
   setTimeout(() => {
     setLoadingState(false);
-  }, 150);
+  }, 85);
 });

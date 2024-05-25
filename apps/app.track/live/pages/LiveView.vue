@@ -1,6 +1,10 @@
 <script lang="ts" setup>
-import PanelWindow from '@/map/components/PanelWindow.vue';
+import { defineAsyncComponent } from 'vue';
 import MapView from '@/map/MapView.vue';
+
+const PanelWindow = defineAsyncComponent(
+  () => import('@/map/components/PanelWindow.vue'),
+);
 </script>
 
 <template>

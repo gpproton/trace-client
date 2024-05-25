@@ -24,19 +24,7 @@ const resolver = createResolver(import.meta.url);
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: true,
   extends: ['../base'],
-
-  // modules: [
-  //   '@nuxt/devtools',
-  //   '@nuxtjs/i18n',
-  //   'nuxt-quasar-ui',
-  //   '@pinia/nuxt',
-  //   '@pinia-plugin-persistedstate/nuxt',
-  //   '@vueuse/nuxt',
-  //   '@vue-macros/nuxt',
-  //   '@vite-pwa/nuxt',
-  // ],
   hooks: {
     'pages:routerOptions'({ files }) {
       files.push({
@@ -46,5 +34,5 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["nuxt-quasar-ui"]
+  modules: ['nuxt-quasar-ui'],
 });

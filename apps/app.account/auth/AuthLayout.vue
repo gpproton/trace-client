@@ -27,6 +27,7 @@ import GenericFooter from '@/app/GenericFooter.vue';
             <q-img
               no-native-menu
               no-spinner
+              lazy
               :src="LightHouse"
               alt="Trace Lighthouse"
               width="calc(32vw)"
