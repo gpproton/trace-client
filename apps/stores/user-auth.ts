@@ -19,7 +19,6 @@
  */
 
 import { ref, watchEffect, onMounted, onUnmounted } from 'vue';
-import { useInterval } from 'quasar';
 import { defineStore } from 'pinia';
 import type { Router } from '@/.nuxt/vue-router-stub';
 import { useUserAccountStore } from './user-account';
@@ -36,6 +35,7 @@ export const useUserAuthStore = defineStore(
     const router: Router = useRouter();
     const timeout = ref();
     const authTimeout = ref();
+    const allInterval = ref();
     const loading = ref<boolean>(false);
     const accessToken = ref<string | null>();
     const getAccessToken = computed(() => accessToken.value);
@@ -45,8 +45,8 @@ export const useUserAuthStore = defineStore(
       (accessToken.value = value);
 
     const signIn = (auth: { username: string; password: string }) => {
+      loading.value = true;
       authTimeout.value = setTimeout(() => {
-        loading.value = true;
         if (auth.username === 'dev' && auth.password === 'dev') {
           setUserInfo({
             id: 'ac707e42-74c4-4107-beba-4897107bf9f7',
@@ -114,15 +114,14 @@ export const useUserAuthStore = defineStore(
     });
 
     const registerLifecyces = () => {
-      const { registerInterval, removeInterval } = useInterval();
       onMounted(() => {
-        registerInterval(() => {
+        allInterval.value = setInterval(() => {
           const permission = router.currentRoute.value.meta.permission;
           checkAuthState(permission);
         }, 10000);
       });
       onUnmounted(() => {
-        removeInterval();
+        clearInterval(allInterval.value);
         clearTimeout(authTimeout.value);
         clearTimeout(timeout.value);
       });
