@@ -9,8 +9,6 @@ import { useThemeStore } from '@/stores/theme';
 import type { IModuleCommands, Workspace } from '@trace/shared';
 import type { RouteMenu } from '@trace/base/typings';
 
-const DialogSearch = defineAsyncComponent(() => import('@/components/extra/DialogSearch.vue'));
-
 const DesktopHeader = defineAsyncComponent(() => import('@/components/header/DesktopHeader.vue'));
 const MobileHeader = defineAsyncComponent(() => import('@/components/header/MobileHeader.vue'));
 const DesktopSidebar = defineAsyncComponent(() => import('@/components/drawer/DesktopSidebar.vue'));
@@ -91,15 +89,6 @@ const quickCreateItems: IModuleCommands[] = [
     command: '1',
   },
 ];
-
-function alert() {
-  $q.dialog({
-    component: DialogSearch,
-    componentProps: {
-      persistent: false,
-    },
-  });
-}
 </script>
 
 <template>
@@ -135,8 +124,6 @@ function alert() {
         <slot name="desktop-header">
           <desktop-header v-model="showSecondarySidebar" v-model:show-secondary-sidebar-toogle="showSecondaryToggle"
             v-model:search="search" :quick-commands="quickCreateItems">
-            <!-- hey there -->
-            <q-btn no-caps label="Dialog Check" color="primary" @click="alert" />
           </desktop-header>
         </slot>
         <slot v-if="moduleFeatures.length > 0" name="desktop-secondary-sidebar">

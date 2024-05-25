@@ -17,7 +17,7 @@ withDefaults(
 </script>
 
 <template>
-  <q-dialog ref="dialogRef" class="fit border-radius-sm" @hide="onDialogHide">
+  <q-dialog no-refocus ref="dialogRef" class="fit border-radius-sm" @hide="onDialogHide">
     <q-card class="q-dialog-plugin fit border-radius-sm">
       <!-- list buttons -->
       <q-toolbar class="q-pa-sm">

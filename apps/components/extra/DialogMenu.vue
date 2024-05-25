@@ -1,9 +1,15 @@
 <!-- eslint-disable vue/require-default-prop -->
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue';
+import { storeToRefs } from 'pinia';
 import { useDialogPluginComponent } from 'quasar';
 import type { RouteMenu } from '@trace/base/typings';
-import SidebarList from '@/components/drawer/SidebarList.vue';
+import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 
+const SidebarList = defineAsyncComponent(() => import('@/components/drawer/SidebarList.vue'));
+
+const breakpointStates = useAppBreakpoints();
+const { isDesktop } = storeToRefs(breakpointStates);
 const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
   useDialogPluginComponent();
 const emit = defineEmits({ ...useDialogPluginComponent.emitsObject });
@@ -35,9 +41,10 @@ defineExpose({
 
 <template>
   <q-dialog
+    no-refocus
     ref="dialogRef"
-    transition-show="slide-down"
-    transition-hide="slide-up"
+    :transition-show="isDesktop ? 'fade-in' : 'slide-up'"
+    :transition-hide="isDesktop ? 'fade-out' : 'slide-down'"
     @hide="onDialogHide"
   >
     <q-card class="q-dialog-plugin fit q-pa-xs">

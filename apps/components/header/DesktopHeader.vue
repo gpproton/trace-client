@@ -32,7 +32,8 @@ const tagViewStore = useTagViewStore();
 const { getShowHeaderToolbar } = storeToRefs(layoutStore);
 const { tagViewEnabled } = storeToRefs(tagViewStore);
 
-const triggerSearchDialog = () => {
+const triggerSearchDialog = (event: Event) => {
+  event.preventDefault()
   $q.dialog({
     component: DialogSearch,
     componentProps: {

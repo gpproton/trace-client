@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import WorkspaceIcon from '@trace/base/assets/banner/workspace.svg?url';
 import { Workspace } from '@trace/shared';
+import AppLogo from '@trace/base/assets/icons/logo.svg';
 
 const GenericHeader = defineAsyncComponent(() => import('@/app/GenericHeader.vue'));
 const GenericFooter = defineAsyncComponent(() => import('@/app/GenericFooter.vue'));
@@ -82,6 +83,7 @@ const links = ref<Array<{ name: string; label: string }>>([
         </q-card>
         <q-card square fit class="col window-height no-shadow">
           <q-toolbar class="q-px-md q-py-sm q-gutter-sm">
+            <app-logo class="app-logo lt-md" />
             <q-space />
             <q-tabs
               no-caps
