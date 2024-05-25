@@ -15,12 +15,12 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Wednesday, 20th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 24 2024
+ * Modified At: Sat May 25 2024
  */
 
 import { defineStore, storeToRefs } from 'pinia';
 import { usePageStore } from './page';
-import { Workspace } from '@trace/shared';
+import { Workspace, appConstants } from '@trace/shared';
 import type { Router } from '@/.nuxt/vue-router-stub';
 
 export const useLayoutStore = defineStore('state-app-layout', () => {
@@ -28,7 +28,7 @@ export const useLayoutStore = defineStore('state-app-layout', () => {
   const { title } = storeToRefs(usePageStore());
 
   /** States */
-  const name = ref<string>('Trace');
+  const name = ref<string>(appConstants.appName);
   const search = ref<string>('');
   const showHeaderToolbar = ref(true);
   const showPrimarySidebar = ref<boolean>(false);

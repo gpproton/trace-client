@@ -24,6 +24,7 @@ import svgLoader from 'vite-svg-loader';
 import { splitVendorChunkPlugin } from 'vite';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { appConstants } from '@trace/shared';
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
 export default defineNuxtConfig({
@@ -67,7 +68,7 @@ export default defineNuxtConfig({
     manifestFilename: 'manifest.webmanifest',
     manifest: {
       name: 'Trace Demo',
-      short_name: 'Trace',
+      short_name: appConstants.appName,
       lang: 'en',
       theme_color: '#3949ab',
       background_color: '#ffffff',
@@ -109,7 +110,7 @@ export default defineNuxtConfig({
     extras: {
       font: 'roboto-font',
       fontIcons: ['bootstrap-icons', 'material-icons'],
-      animations: [],
+      animations: 'all',
     },
   },
 });

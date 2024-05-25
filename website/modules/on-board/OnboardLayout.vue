@@ -32,7 +32,7 @@ const getStatus = computed(() => {
           <q-toolbar class="q-pa-md">
             <app-logo class="app-logo" />
             <q-toolbar-title class="text-h5 text-primary text-weight-bold">
-              {{ 'Trace' }}
+              {{ appConstants.appName }}
             </q-toolbar-title>
           </q-toolbar>
           <div class="q-pa-lg">

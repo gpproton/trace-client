@@ -22,17 +22,23 @@ import GenericFooter from '@/app/GenericFooter.vue';
           <q-card
             square
             flat
-            class="full-height bg-primary hide-scrollbar border-radius-lg"
+            class="full-height bg-background-shift hide-scrollbar border-radius-lg"
           >
-            <q-img
-              no-native-menu
-              no-spinner
-              lazy
-              :src="LightHouse"
-              alt="Trace Lighthouse"
-              width="calc(32vw)"
-              class="absolute-center"
-            />
+            <transition
+              appear
+              enter-active-class="animated fadeIn faster delay-1s repeat-2"
+              leave-active-class="animated fadeOut"
+            >
+              <q-img
+                lazy
+                no-native-menu
+                no-spinner
+                :src="LightHouse"
+                alt="Trace Lighthouse"
+                width="calc(32vw)"
+                class="absolute-center"
+              />
+            </transition>
           </q-card>
         </div>
       </div>

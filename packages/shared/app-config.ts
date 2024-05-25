@@ -15,10 +15,15 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 26th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 17 2024
+ * Modified At: Sat May 25 2024
  */
 
-export const appHeader = (baseURL: string = '/', title: string = 'Trace') => {
+import { appConstants } from './constants';
+
+export const appHeader = (
+  baseURL: string = '/',
+  title: string = appConstants.appName,
+) => {
   return {
     baseURL,
     head: {

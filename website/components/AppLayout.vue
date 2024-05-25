@@ -28,7 +28,7 @@ const links = [
       <q-toolbar>
         <app-logo class="app-logo" />
         <q-toolbar-title class="text-h5 text-primary text-weight-bold">
-          {{ 'Trace' }}
+          {{ appConstants.appName }}
         </q-toolbar-title>
         <q-space />
         <q-tabs
