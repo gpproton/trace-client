@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sat May 25 2024
+ * Modified At: Sun May 26 2024
  */
 
 import { ref, computed } from 'vue';
@@ -35,14 +35,16 @@ export const useUserAccountStore = defineStore(
 
     const user = ref<User | null>(null);
     const getUser = computed(() => user.value);
-    const getFullname = computed<string>(
-      () => `${user.value?.firstName} ${user.value?.lastName}`,
+    const getFullname = computed<string>(() =>
+      user.value?.firstName
+        ? 'None'
+        : `${user.value?.firstName} ${user.value?.lastName}`,
     );
     const getEmail = computed<string>(() => `${user.value?.email}`);
     const getUserPermmisions = computed(() => permissions.value);
     const getProfileInitials = computed(() => {
-      const char0 = user.value?.firstName.charAt(0) ?? 'x';
-      const char1 = user.value?.lastName.charAt(0) ?? 'x';
+      const char0 = user.value?.firstName.charAt(0) ?? '';
+      const char1 = user.value?.lastName.charAt(0) ?? '';
 
       return `${char0 + char1}`.toUpperCase();
     });
