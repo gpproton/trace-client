@@ -15,14 +15,14 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Sunday, 17th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon May 20 2024
+ * Modified At: Sun May 26 2024
  */
 
 import type { Route } from '@trace/base/typings';
 import type { Workspace } from '@trace/shared';
 
 export default (service: Workspace): Route => {
-  const name = 'calendar';
+  const name = 'schedules';
   const module = `${service}-${name}`;
   const mainView = `${module}.personal`;
 
@@ -33,7 +33,7 @@ export default (service: Workspace): Route => {
     component: () => import('./CalendarLayout.vue'),
     meta: {
       menu: 'module',
-      title: 'shared.calendar',
+      title: 'shared.schedules',
       icon: 'bi-calendar4-week',
       hideChildren: true,
       removeChildren: true,
@@ -44,7 +44,7 @@ export default (service: Workspace): Route => {
         path: 'personal',
         component: () => import('./pages/CalendarView.vue'),
         meta: {
-          title: 'shared.calendar',
+          title: 'shared.schedules',
           icon: 'bi-calendar4-week',
           menu: true,
         },
