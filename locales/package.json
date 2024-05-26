@@ -7,7 +7,7 @@
         "translate-custom": "CUSTOM_URL=http://localhost:8585 CONCURRENCY=3 pnpm run translate"
     },
     "dependencies": {
-        "@parvineyvazov/json-translator": "^2.2.2",
+        "@parvineyvazov/json-translator": "2.2.2",
         "prettier": "^3.2.5"
     },
     "devDependencies": {
