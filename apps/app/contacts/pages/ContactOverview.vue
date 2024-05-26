@@ -1,9 +1,14 @@
 <script lang="ts" setup>
 import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
-import { ref } from 'vue';
+import { ref, defineAsyncComponent } from 'vue';
 import { storeToRefs } from 'pinia';
-import ContactDetailItem from '../components/ContactDetailItem.vue';
-import ContactItem from '../components/ContactItem.vue';
+
+const ContactDetailItem = defineAsyncComponent(
+  () => import('../components/ContactDetailItem.vue'),
+);
+const ContactItem = defineAsyncComponent(
+  () => import('../components/ContactItem.vue'),
+);
 
 defineOptions({ name: 'ContactOverview' });
 

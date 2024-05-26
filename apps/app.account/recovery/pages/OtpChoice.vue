@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, defineAsyncComponent } from 'vue';
 import { useRouter } from 'vue-router';
-import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
+
+const IdentityForm = defineAsyncComponent(
+  () => import('@/app.account/shared/components/IdentityForm.vue'),
+);
 
 defineOptions({ name: 'OtpChoice' });
 
@@ -11,15 +14,13 @@ const resetOptions = ref([
   {
     type: 'email',
     title: 'auth.passwordResetEmail',
-    caption:
-      'Password reset OTP will be sent to your registered email address.',
+    caption: 'auth.recoveryOptionEmail',
     icon: 'bi-envelope',
   },
   {
     type: 'sms',
     title: 'auth.passwordResetSms',
-    caption:
-      'Password reset OTP will be sent to your registered mobile number.',
+    caption: 'auth.recoverySmsOption',
     icon: 'bi-telephone',
   },
 ]);
@@ -39,7 +40,7 @@ const verifyOtp = () => {
     <template #title>{{ $t('auth.forgotPassword') }}</template>
     <template #sub-title>
       <div class="text-body2 text-left q-mt-sm q-mr-md">
-        {{ 'Please select option to send OTP for password reset' }}
+        {{ $t('auth.recoveryActionNote') }}
       </div>
     </template>
     <q-list
@@ -63,9 +64,9 @@ const verifyOtp = () => {
           <q-item-label class="text-h6 text-weight-medium text-primary">
             {{ $t(resetOption.title) }}
           </q-item-label>
-          <q-item-label class="text-caption text-accent">{{
-            resetOption.caption
-          }}</q-item-label>
+          <q-item-label class="text-caption text-accent">
+            {{ $t(resetOption.caption) }}
+          </q-item-label>
         </q-item-section>
 
         <q-item-section side top>

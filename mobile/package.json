@@ -1,0 +1,35 @@
+{
+  "name": "@trace/mobile",
+  "version": "1.0.0",
+  "description": "Trace Mobile",
+  "productName": "Trace",
+  "license": "BSL 1.1",
+  "author": "radioActive DROID <me@godwin.dev>",
+  "private": true,
+  "main": "index.js",
+  "keywords": [
+    "trace",
+    "mobile"
+  ],
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "ionic:build": "pnpm --filter ../apps generate"
+  },
+  "dependencies": {
+    "@capacitor/android": "5.7.4",
+    "@capacitor/app": "^5.0.7",
+    "@capacitor/camera": "latest",
+    "@capacitor/core": "^5.7.4",
+    "@capacitor/haptics": "^5.0.7",
+    "@capacitor/keyboard": "^5.0.8",
+    "@capacitor/splash-screen": "latest",
+    "@capacitor/status-bar": "^5.0.7"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^5.7.4",
+    "vite": "^2.9.13"
+  }
+}

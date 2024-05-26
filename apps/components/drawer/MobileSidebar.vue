@@ -1,28 +1,38 @@
 <script setup lang="ts">
-import SidebarList from '@/components/drawer/SidebarList.vue';
-import ThemeSwitcher from '@/components/extra/ThemeSwitcher.vue';
 import type { RouteMenu } from '@trace/base/typings';
-import { computed, inject } from 'vue';
+import { inject, defineAsyncComponent } from 'vue';
+
+const SidebarList = defineAsyncComponent(
+  () => import('@/components/drawer/SidebarList.vue'),
+);
+const ThemeSwitcher = defineAsyncComponent(
+  () => import('@/components/extra/ThemeSwitcher.vue'),
+);
+const SidebarHeader = defineAsyncComponent(
+  () => import('@/components/drawer/SidebarHeader.vue'),
+);
+const ProfileWidget = defineAsyncComponent(
+  () => import('@/components/extra/ProfileWidget.vue'),
+);
 
 defineOptions({ name: 'MobileSidebar' });
 
-const { modelValue, modules, darkMode } = defineModels<{
+const { modelValue, darkMode } = defineModels<{
   modelValue: boolean;
   darkMode: boolean;
-  modules: RouteMenu[];
 }>();
-const workspace = inject<any>('app:workspace');
-const genralModuleMenu = computed(() => modules.value);
+const modules = inject<RouteMenu[]>('app:modules', []);
 </script>
 
 <template>
   <q-drawer v-model="modelValue" show-if-above side="left">
-    <div>{{ workspace }}</div>
-    <q-scroll-area class="fit fixed-bottom">
-      <sidebar-list :items="genralModuleMenu" />
+    <sidebar-header class="q-mt-none" />
+    <profile-widget class="q-my-md"></profile-widget>
+    <q-scroll-area style="height: 75vh">
+      <sidebar-list :items="modules" />
     </q-scroll-area>
     <div class="fixed-bottom full-width column items-center q-mb-sm">
-      <theme-switcher v-model="darkMode" />
+      <theme-switcher v-if="false" v-model="darkMode" />
     </div>
   </q-drawer>
 </template>

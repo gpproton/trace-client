@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2023 - 2024 drolx Solutions
+ * Copyright (c) 2023 - 2024 drolx Labs
  *
  * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
  * you may not use this file except in compliance with the License.
  * Change License: Reciprocal Public License 1.5
  *     https://mariadb.com/bsl11
- *     https://opensource.org/license/rpl-1-5
+ *     https://trace.ng/licenses/license-1-0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,14 +15,16 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Fri May 24 2024
  */
 
 import type { RouteLocationNormalized, Router } from 'vue-router';
 import type { RouteData } from '@trace/base/typings';
+import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 import { getFirst } from '@trace/base/utils';
 import { defineStore, storeToRefs } from 'pinia';
-import { useUserAccountStore } from './user-account';
+import { Workspace } from '@trace/shared';
+import { useUserAuthStore } from './user-auth';
 
 enum removeType {
   Right,
@@ -31,18 +33,22 @@ enum removeType {
 }
 
 export const useTagViewStore = defineStore(
-  'tagView',
+  'state-tag-view',
   () => {
     const router: Router = useRouter();
-    const userAccountStore = useUserAccountStore();
-    const { getAccessToken } = storeToRefs(userAccountStore);
-    const accessToken = getAccessToken.value;
+    const breakpointStates = useAppBreakpoints();
+    const userAuthStore = useUserAuthStore();
+    const { isMobile } = storeToRefs(breakpointStates);
+    const { getAccessToken } = storeToRefs(userAuthStore);
 
+    const tagViewEnabled = ref(true);
     const tagView = ref<RouteData[]>([]);
     const storedTagView = ref<RouteData[] | null>(null);
 
     const getTagView = computed(() => tagView.value);
     const setTagView = (value: RouteData[]) => (tagView.value = value);
+    const setTagViewEnabled = (value: boolean) =>
+      (tagViewEnabled.value = value);
     const getStoredTagView = computed(() => storedTagView.value);
     const setStoredTagView = (value: RouteData[]) =>
       (storedTagView.value = value);
@@ -182,21 +188,48 @@ export const useTagViewStore = defineStore(
       removeOnSide(removeType.Other, index);
     };
 
-    const removeAllTagView = () => {
-      const router: Router = useRouter();
+    const clearAllTagView = () => {
       setTagView([]);
       setStoredTagView([]);
-      if (accessToken) {
-        router.push({ name: 'home' });
+    };
+
+    const removeAllTagView = () => {
+      const router: Router = useRouter();
+      clearAllTagView();
+      if (getAccessToken.value) {
+        router.push('/');
       }
     };
 
+    watchEffect(() => {
+      const isTrackWorkflow = router.currentRoute.value.fullPath.startsWith(
+        `/${Workspace.Track}/`,
+      );
+      if (isMobile.value) {
+        setTagViewEnabled(false);
+      } else {
+        if (isTrackWorkflow) {
+          // placeholder on condition
+        }
+        setTagViewEnabled(true);
+      }
+
+      if (
+        router.currentRoute.value.fullPath.startsWith(`/${Workspace.Account}/`)
+      ) {
+        setTagViewEnabled(false);
+      }
+    });
+
     return {
       tagView,
+      tagViewEnabled,
       storedTagView,
       getTagView,
       getStoredTagView,
+      clearAllTagView,
       setTagView,
+      setTagViewEnabled,
       setStoredTagView,
       addTagView,
       removeTagViewByFullPath,
@@ -208,6 +241,9 @@ export const useTagViewStore = defineStore(
     };
   },
   {
-    persist: true,
+    persist: {
+      paths: ['storedTagView'],
+      storage: persistedState.sessionStorage,
+    },
   },
 );

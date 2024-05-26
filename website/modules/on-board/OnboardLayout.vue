@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import AppLogo from '@trace/base/icons/logo.svg';
-import LangSelector from '@trace/base/components/LangSelector.vue';
+import { computed, defineAsyncComponent } from 'vue';
+import AppLogo from '@trace/base/assets/icons/logo.svg';
 import { onboardRoutes } from './routes';
 import { useOnboardStore } from '@trace/base/composables/on-board';
+import { appConstants } from '@trace/shared';
+
+const LangSelector = defineAsyncComponent(
+  () => import('@trace/base/components/LangSelector.vue'),
+);
 
 defineOptions({ name: 'OnboardLayout' });
 
@@ -22,7 +26,7 @@ const getStatus = computed(() => {
 <template>
   <q-layout view="hHh LpR fff">
     <q-page-container>
-      <div class="row fit" style="max-height: 100vh">
+      <div class="row fit" style="max-height: 100dvh">
         <q-card
           square
           fit
@@ -31,7 +35,7 @@ const getStatus = computed(() => {
           <q-toolbar class="q-pa-md">
             <app-logo class="app-logo" />
             <q-toolbar-title class="text-h5 text-primary text-weight-bold">
-              {{ 'Trace' }}
+              {{ appConstants.appName }}
             </q-toolbar-title>
           </q-toolbar>
           <div class="q-pa-lg">
@@ -78,8 +82,8 @@ const getStatus = computed(() => {
           </div>
           <div class="q-px-md q-py-sm text-primary">
             {{ 'All right reserved.' }}
-            <NuxtLink class="footer-link" to="https://drolx.com">{{
-              'drolx Solutions'
+            <NuxtLink class="footer-link" :to="appConstants.website">{{
+              appConstants.company
             }}</NuxtLink>
           </div>
         </q-card>
@@ -92,7 +96,7 @@ const getStatus = computed(() => {
               no-caps
               color="primary"
               class="text-body1 border-radius-sm"
-              >{{ $t('router.support') }}</q-btn
+              >{{ $t('shared.support') }}</q-btn
             >
           </q-toolbar>
           <div class="q-pa-sm">

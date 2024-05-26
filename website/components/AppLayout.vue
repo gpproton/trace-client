@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import AppLogo from '@trace/base/icons/logo.svg';
+import AppLogo from '@trace/base/assets/icons/logo.svg';
+import { appConstants } from '@trace/shared';
 
 const links = [
   {
@@ -27,17 +28,22 @@ const links = [
       <q-toolbar>
         <app-logo class="app-logo" />
         <q-toolbar-title class="text-h5 text-primary text-weight-bold">
-          {{ 'Trace' }}
+          {{ appConstants.appName }}
         </q-toolbar-title>
         <q-space />
-        <q-tabs no-caps shrink stretch content-class="text-primary q-mr-lg">
+        <q-tabs
+          no-caps
+          shrink
+          stretch
+          content-class="gt-sm text-primary q-mr-lg"
+        >
           <q-route-tab
             v-for="(link, index) in links"
             :key="index"
             exact
             :to="{ name: link.name }"
             :name="link.name"
-            class="text-body1 border-radius-sm"
+            class="text-body1 border-radius-sm gt-sm"
             >{{ $t(link.label) }}</q-route-tab
           >
         </q-tabs>
@@ -59,9 +65,9 @@ const links = [
     </q-page-container>
     <q-footer class="bg-secondary text-white q-pa-md">
       <div>
-        {{ 'All right reserved.' }}
-        <NuxtLink class="footer-link" to="https://drolx.com">{{
-          'drolx Solutions'
+        {{ 'All right reserved' + ' @' }}
+        <NuxtLink class="footer-link" :to="appConstants.website">{{
+          appConstants.company
         }}</NuxtLink>
       </div>
     </q-footer>

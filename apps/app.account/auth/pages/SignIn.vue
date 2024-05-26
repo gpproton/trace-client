@@ -1,50 +1,66 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
-import { useUserAccountStore } from '@/stores/user-account';
-import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
-import IconGoogle from '@trace/base/icons/brands/google.svg?url';
-import IconMicrosoft from '@trace/base/icons/brands/microsoft.svg?url';
-import IconApple from '@trace/base/icons/brands/apple.svg?url';
+import { reactive, defineAsyncComponent } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useServerStore, socialLogins } from '@/stores/app-server';
+import { useUserAuthStore } from '@/stores/user-auth';
+
+const IdentityForm = defineAsyncComponent(
+  () => import('@/app.account/shared/components/IdentityForm.vue'),
+);
 
 defineOptions({ name: 'SignIn' });
-const userAccount = useUserAccountStore();
-const socialLogins = [
-  {
-    icon: IconGoogle,
-    title: 'Google',
-  },
-  {
-    icon: IconMicrosoft,
-    title: 'Microsoft',
-  },
-  {
-    icon: IconApple,
-    title: 'Apple',
-  },
-];
+
+const userAccount = useUserAuthStore();
+const serverStore = useServerStore();
+const { signIn, registerLifecyces } = userAccount;
+const { getServerState, getRegistrationChoice } = storeToRefs(serverStore);
+const { getLoading } = storeToRefs(userAccount);
+const loginForminactive = computed(
+  () => !getServerState.value.auth?.email || getLoading.value,
+);
 
 const authState = reactive({
   username: '',
   password: '',
+  remember: false,
+  valid: true,
+  error: '',
   show: false,
 });
 
 const triggerAuth = () => {
-  const { signIn } = userAccount;
   signIn(authState);
 };
+
+const resetForm = () => {
+  authState.username = '';
+  authState.password = '';
+};
+
+registerLifecyces();
 </script>
 
 <template>
   <identity-form>
     <template #title>
-      <div class="text-left">
-        {{ $t('auth.signInTitle') }}
+      <div class="text-left text-weight-bold">
+        {{
+          getRegistrationChoice ? $t('shared.welcome') : $t('auth.welcomeBack')
+        }}
       </div>
     </template>
     <template #sub-title>
       <div class="text-left">
-        {{ $t('auth.signInSubTitle') }}
+        <div v-if="getRegistrationChoice" class="q-gutter-x-sm">
+          <span>{{ $t('auth.newHere') }}</span>
+          <nuxt-link
+            class="text-primary"
+            style="text-decoration: none"
+            :to="{ name: 'user-boarding.getting-started' }"
+            >{{ $t('auth.createAnAccount') }}</nuxt-link
+          >
+        </div>
+        <div v-else>{{ $t('auth.continueSignin') }}</div>
       </div>
     </template>
 
@@ -53,12 +69,13 @@ const triggerAuth = () => {
         <q-btn
           v-for="(social, index) in socialLogins"
           :key="index"
-          outline
+          :outline="true"
           size="md"
-          color="secondary"
-          no-caps
-          no-wrap
-          class="border-radius-xs q-py-sm"
+          color="accent"
+          :no-caps="true"
+          :no-wrap="true"
+          :disabled="!getServerState.auth[social.title]"
+          class="border-radius-xs q-py-sm text-capitalize"
         >
           <q-img
             no-native-menu
@@ -77,6 +94,7 @@ const triggerAuth = () => {
       <q-input
         v-model="authState.username"
         outlined
+        :disable="loginForminactive"
         no-error-icon
         type="text"
         :label="$t('auth.usernameOrEmail')"
@@ -87,11 +105,19 @@ const triggerAuth = () => {
           <q-icon name="bi-person" color="accent" />
         </template>
         <template #append>
-          <q-btn icon="bi-arrow-repeat" color="accent" round dense flat />
+          <q-btn
+            icon="bi-arrow-repeat"
+            color="accent"
+            round
+            dense
+            flat
+            @click="resetForm"
+          />
         </template>
       </q-input>
       <q-input
         v-model="authState.password"
+        :disable="loginForminactive"
         outlined
         no-error-icon
         :type="authState.show ? 'text' : 'password'"
@@ -114,18 +140,13 @@ const triggerAuth = () => {
         </template>
       </q-input>
 
-      <q-btn
-        :label="$t('auth.signIn')"
-        color="action"
-        size="lg"
-        no-caps
-        class="full-width border-radius-sm text-weight-medium"
-        @click="triggerAuth"
-      />
-    </div>
-
-    <template #footer>
-      <div class="row items-center q-py-xs q-px-xs justify-end">
+      <div class="row items-center q-py-xs justify-between">
+        <q-checkbox
+          v-model="authState.remember"
+          dense
+          :disable="loginForminactive"
+          :label="$t('shared.remember')"
+        />
         <router-link
           class="identity-link identity-text"
           :to="{ name: 'account-recovery.forgot-password' }"
@@ -133,6 +154,19 @@ const triggerAuth = () => {
           {{ $t('auth.forgotPassword') }}
         </router-link>
       </div>
+    </div>
+
+    <template #footer>
+      <q-btn
+        :label="$t('auth.signIn')"
+        color="action"
+        size="lg"
+        :loading="getLoading"
+        :disable="loginForminactive"
+        no-caps
+        class="full-width border-radius-sm text-weight-medium"
+        @click="triggerAuth"
+      />
     </template>
   </identity-form>
 </template>

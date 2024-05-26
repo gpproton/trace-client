@@ -1,0 +1,7 @@
+{
+  "name": "Trace Mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}

@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2023 - 2024 drolx Solutions
+ * Copyright (c) 2023 - 2024 drolx Labs
  *
  * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
  * you may not use this file except in compliance with the License.
  * Change License: Reciprocal Public License 1.5
  *     https://mariadb.com/bsl11
- *     https://opensource.org/license/rpl-1-5
+ *     https://trace.ng/licenses/license-1-0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 24 2024
+ * Modified At: Thu May 16 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -24,7 +24,7 @@ const routes: Route[] = [
   {
     name: 'work-spaces',
     path: '/work-spaces',
-    component: () => import('@/pages/WorkSpaces.vue'),
+    component: () => import('@/app/WorkSpaces.vue'),
     meta: {
       title: 'router.work-spaces',
       icon: 'sync',
@@ -33,7 +33,7 @@ const routes: Route[] = [
   {
     name: 'app.testing',
     path: '/testing',
-    component: () => import('@trace/base/pages/Testing.vue'),
+    component: () => import('@trace/base/components/TestingPage.vue'),
     meta: {
       title: 'router.testing',
       icon: 'sync',
@@ -43,40 +43,57 @@ const routes: Route[] = [
       },
     },
   },
-  {
-    name: 'support-docs',
-    path: '/docs/:slug',
-    meta: {
-      menu: 'module',
-      title: 'Docs',
-      icon: 'bi-person',
-      permission: false,
-    },
-    component: () => import('./docs/ContentView.vue'),
-  },
 ];
 
-export const addCatchAll = (key: string = ''): Route => ({
-  path: `:catchAll(.*)*`,
-  name: key === '' ? 'error' : `${key}-error`,
-  component: () => import('@trace/base/pages/ErrorNotFound.vue'),
-  meta: {
-    permission: false,
-    title: 'router.error',
-  },
-  props: {
-    home: key === '' ? 'home' : key,
-  },
-});
+export const addCatchAll = (key: string = ''): Route => {
+  const name = key === '' ? 'error' : `${key}-error`;
+  const stack = {
+    path: `:catchAll(.*)*`,
+    name,
+    component: undefined as any,
+    children: [
+      {
+        name: `${name}-content`,
+        path: '',
+        component: () => import('@trace/base/components/NotFound.vue'),
+        meta: {
+          permission: false,
+          title: 'router.error',
+        },
+        props: {
+          home: key === '' ? 'home' : key,
+        },
+      },
+    ],
+  };
 
-export const addUnAuthorized = (key: string = ''): Route => ({
-  path: 'un-authorized',
-  name: key === '' ? 'un-authorized' : `${key}-un-authorized`,
-  component: () => import('@/pages/UnAuthorized.vue'),
-  meta: {
-    permission: false,
-    title: 'router.un-authorized',
-  },
-});
+  if (key === '') stack.component = () => import('@/layouts/empty.vue');
+
+  return stack;
+};
+
+export const addUnAuthorized = (key: string = ''): Route => {
+  const name = key === '' ? 'un-authorized' : `${key}-un-authorized`;
+  const stack = {
+    path: 'un-authorized',
+    name,
+    component: undefined as any,
+    children: [
+      {
+        name: `${name}-content`,
+        path: '',
+        component: () => import('@/app/UnAuthorized.vue'),
+        meta: {
+          permission: false,
+          title: 'router.un-authorized',
+        },
+      },
+    ],
+  };
+
+  if (key === '') stack.component = () => import('@/layouts/empty.vue');
+
+  return stack;
+};
 
 export default routes;

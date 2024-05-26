@@ -1,12 +1,22 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, onActivated, onDeactivated } from 'vue';
+import {
+  ref,
+  onMounted,
+  onUnmounted,
+  onActivated,
+  onDeactivated,
+  defineAsyncComponent,
+} from 'vue';
 import { QScrollArea, SessionStorage } from 'quasar';
 import { useRoute } from 'vue-router';
-import {} from '@/stores/theme';
-import { type IPageContext } from '@/stores/page';
-import UnderConstruction from '@trace/base/components/error/UnderConstruction.vue';
+
+const UnderConstruction = defineAsyncComponent(
+  () => import('@trace/base/components/error/UnderConstruction.vue'),
+);
 
 defineOptions({ name: 'PageWrapper' });
+
+const route = useRoute();
 
 interface scrollInfo {
   horizontalContainerSize: number;
@@ -30,23 +40,23 @@ const thumbStyle = {
   width: '7px',
 };
 
-export interface IProps {
-  options?: IPageContext | any;
-  name?: string;
-  contentActiveStyle?: string;
-  scrollable?: boolean;
-  padding?: boolean;
-}
+withDefaults(
+  defineProps<{
+    options?: IPageContext | any;
+    name?: string;
+    contentActiveStyle?: string;
+    scrollable?: boolean;
+    padding?: boolean;
+  }>(),
+  {
+    options: {},
+    name: '',
+    contentActiveStyle: '',
+    scrollable: false,
+    padding: true,
+  },
+);
 
-withDefaults(defineProps<IProps>(), {
-  options: {},
-  name: '',
-  contentActiveStyle: '',
-  scrollable: false,
-  padding: true,
-});
-
-const route = useRoute();
 const scrollArea = ref<QScrollArea | null>(null);
 const basePath = ref<string>('');
 const showToTopBtn = ref<boolean>(false);
@@ -96,12 +106,13 @@ onDeactivated(() => {
 
 <template>
   <q-page class="fit page" :class="padding ? 'q-pa-sm' : ''">
+    <slot name="header"></slot>
     <q-scroll-area
       v-if="scrollable"
       ref="scrollArea"
       :thumb-style="thumbStyle"
       :visible="false"
-      style="height: calc(100vh - 130px)"
+      style="height: calc(100dvh - 172px)"
       :content-active-style="contentActiveStyle"
       @scroll="onScroll"
     >
@@ -112,6 +123,7 @@ onDeactivated(() => {
     <slot v-else>
       <under-construction />
     </slot>
+    <slot name="footer"></slot>
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <transition
         appear

@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue';
 import { useOnboardStore } from '@trace/base/composables/on-board';
-import ListOption from '@trace/base/components/form/ListOption.vue';
+
+const ListOption = defineAsyncComponent(
+  () => import('@trace/base/components/form/ListOption.vue'),
+);
 
 defineOptions({ name: 'ProfileType' });
 

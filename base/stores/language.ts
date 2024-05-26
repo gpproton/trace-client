@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2023 - 2024 drolx Solutions
+ * Copyright (c) 2023 - 2024 drolx Labs
  *
  * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
  * you may not use this file except in compliance with the License.
  * Change License: Reciprocal Public License 1.5
  *     https://mariadb.com/bsl11
- *     https://opensource.org/license/rpl-1-5
+ *     https://trace.ng/licenses/license-1-0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Sat May 25 2024
  */
 
 import { defineStore } from 'pinia';
@@ -23,11 +23,16 @@ import { useI18n } from 'vue-i18n';
 import { languageSelection } from '@trace/locales';
 
 export const useLanguageStore = defineStore(
-  'language',
+  'state-language',
   () => {
-    const { locale } = useI18n({ useScope: 'global' });
+    const { locale, locales, setLocale } = useI18n();
+    const languages = computed(() => languageSelection);
+    const availableLocales = computed(() => {
+      return locales.value.filter((i) => i.code !== locale.value);
+    });
+
     const language = ref<string>();
-    const getLocale = computed(() => locale.value);
+    const getLocale = computed(() => language.value);
     const getActiveCountry = computed<string>(() => {
       const value = languageSelection.find(
         (item) => item.value === locale.value,
@@ -35,9 +40,9 @@ export const useLanguageStore = defineStore(
       return value?.countryCode ?? 'US';
     });
 
-    const setLocale = (value: string) => {
+    const localeUpdate = (value: string) => {
+      setLocale(value);
       language.value = value;
-      locale.value = value;
     };
 
     const bootstrapLocale = () => {
@@ -47,14 +52,22 @@ export const useLanguageStore = defineStore(
     return {
       locale,
       language,
-      languages: languageSelection,
+      languages,
+      availableLocales,
       getLocale,
       getActiveCountry,
-      setLocale,
+      localeUpdate,
       bootstrapLocale,
     };
   },
   {
-    persist: true,
+    share: {
+      enable: true,
+      initialize: true,
+    },
+    persist: {
+      paths: ['language'],
+      storage: persistedState.cookies,
+    },
   },
 );

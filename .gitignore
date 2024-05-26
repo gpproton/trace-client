@@ -174,3 +174,5 @@ bun.lockb
 obj
 bin
 pnpm-lock.yaml
+.DS_Store
+.DS_Store

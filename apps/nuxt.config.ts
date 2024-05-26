@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2023 - 2024 drolx Solutions
+ * Copyright (c) 2023 - 2024 drolx Labs
  *
  * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
  * you may not use this file except in compliance with the License.
  * Change License: Reciprocal Public License 1.5
  *     https://mariadb.com/bsl11
- *     https://opensource.org/license/rpl-1-5
+ *     https://trace.ng/licenses/license-1-0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,19 +15,56 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon Mar 25 2024
+ * Modified At: Sat May 25 2024
  */
 
 import { appHeader } from '@trace/shared';
+import { createResolver } from '@nuxt/kit';
+
+const resolver = createResolver(import.meta.url);
+
+export type ContentItem = {
+  driver: string;
+  prefix: string;
+  base: string;
+};
+
+export const addDocPath = (name: string): ContentItem => ({
+  driver: 'fs',
+  prefix: `/docs/${name}`,
+  base: resolver.resolve(__dirname, `docs/${name}`),
+});
 
 export default defineNuxtConfig({
-  app: appHeader('/', 'Trace'),
+  app: appHeader('/'),
   extends: ['../base'],
   modules: ['nuxt3-leaflet', '@nuxt/content', './app.core/app-module'],
   routeRules: {
-    // '/**': { ssr: false },
-    // '/docs/**': { ssr: true },
+    '/api/service': { proxy: import.meta.env.SERVER_API },
+    '/api/files': { proxy: import.meta.env.SERVER_FILES },
+    '/api/routing': { proxy: import.meta.env.SERVER_ROUTING },
+    '/api/geocoding': { proxy: import.meta.env.SERVER_GEOCODING },
   },
-  ssr: false,
-  // content: {},
+  hooks: {
+    'pages:routerOptions'({ files }) {
+      files.push({
+        path: resolver.resolve('./app/router'),
+        optional: false,
+      });
+    },
+  },
+  image: {},
+  content: {
+    navigation: {
+      fields: ['author', 'publishedAt'],
+    },
+    sources: {
+      admin: addDocPath('admin'),
+      api: addDocPath('api'),
+      development: addDocPath('development'),
+      features: addDocPath('features'),
+      partners: addDocPath('partners'),
+      portal: addDocPath('portal'),
+    },
+  },
 });

@@ -1,19 +1,25 @@
 <script lang="ts" setup>
-import TwoFactor from '@trace/base/icons/two-factor-authentication.svg?url';
-import AppLogo from '@trace/base/icons/logo.svg';
+import { defineAsyncComponent } from 'vue';
+import TwoFactor from '@trace/base/assets/banner/two-factor-authentication.svg?url';
+import { useUserAuthStore } from '@/stores/user-auth';
+
+const GenericHeader = defineAsyncComponent(
+  () => import('@/app/GenericHeader.vue'),
+);
+const GenericFooter = defineAsyncComponent(
+  () => import('@/app/GenericFooter.vue'),
+);
+
+const userAuth = useUserAuthStore();
+const { registerLifecyces } = userAuth;
+
+registerLifecyces();
 </script>
 
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header :elevated="false" class="bg-transparent" height-hint="64">
-      <q-toolbar class="text-primary q-pa-xs q-mx-sm">
-        <app-logo class="app-logo" />
-        <q-toolbar-title class="text-h5 text-weight-bold">
-          {{ 'Trace' }}
-        </q-toolbar-title>
-        <q-space />
-        <lang-selector class="q-mr-md" />
-      </q-toolbar>
+      <generic-header></generic-header>
     </q-header>
     <q-page-container>
       <q-page class="fit page q-pa-xs column justify-center items-center">
@@ -26,30 +32,20 @@ import AppLogo from '@trace/base/icons/logo.svg';
             <q-img
               no-native-menu
               no-spinner
+              lazy
               :src="TwoFactor"
               alt="Trace Lighthouse"
               width="calc(32vw)"
               class="absolute-center"
             />
           </q-card>
-          <q-card square flat class="col column justify-between items-center">
-            <q-card class="full-width q-pa-sm">
+          <q-card square flat class="full-height col">
+            <q-card class="full-height q-pa-sm row justify-center items-center">
               <router-view />
             </q-card>
-            <div class="row q-pa-sm q-gutter-x-md">
-              <div>
-                {{ $t('shared.copyright') + ' @ ' }}
-                <NuxtLink class="footer-link" to="https://drolx.com">{{
-                  'drolx Solutions'
-                }}</NuxtLink>
-              </div>
-              <div>|</div>
-              <NuxtLink class="footer-link" to="#">
-                {{ $t('shared.privacyPolicy') }}
-              </NuxtLink>
-            </div>
           </q-card>
         </q-card>
+        <generic-footer></generic-footer>
       </q-page>
     </q-page-container>
   </q-layout>

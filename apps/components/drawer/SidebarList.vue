@@ -1,20 +1,23 @@
 <script setup lang="ts">
-import LinkItem from './LinkItem.vue';
+import { defineAsyncComponent } from 'vue';
 import type { RouteMenu } from '@trace/base/typings';
 
-defineOptions({ name: 'SidebarList' });
+const LinkItem = defineAsyncComponent(() => import('./LinkItem.vue'));
 
-interface IProps {
-  mini?: boolean;
-}
+defineOptions({ name: 'SidebarList' });
 
 const { items } = defineModels<{
   items: RouteMenu[];
 }>();
 
-withDefaults(defineProps<IProps>(), {
-  mini: true,
-});
+withDefaults(
+  defineProps<{
+    mini?: boolean;
+  }>(),
+  {
+    mini: true,
+  },
+);
 </script>
 
 <template>

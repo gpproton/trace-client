@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Widgets, { components } from '@/widgets/widget-records';
+// import Widgets, { components } from '@/widgets/widget-records';
 
-defineOptions({ name: 'OverviewDashboard' });
+// defineOptions({ name: 'OverviewDashboard' });
 </script>
 
 <template>
-  <div class="row">
+  <!-- <div class="row justify-start content-start items-start">
     <component
       :is="components[widget.component]"
       v-for="widget in Widgets"
@@ -15,5 +15,8 @@ defineOptions({ name: 'OverviewDashboard' });
       :title="widget.title"
     >
     </component>
+  </div> -->
+  <div class="fit row justify-center items-center">
+    {{ 'Overview Dashboard' }}
   </div>
 </template>

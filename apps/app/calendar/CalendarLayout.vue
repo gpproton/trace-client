@@ -1,6 +1,10 @@
 <script lang="ts" setup>
+import { defineAsyncComponent } from 'vue';
 import { useLayoutRouteStore } from '@/composables/layout-routes';
-import SwitcherButton from '@/components/extra/SwitcherButton.vue';
+
+const SwitcherButton = defineAsyncComponent(
+  () => import('@/components/extra/SwitcherButton.vue'),
+);
 
 const { moduleChildrenFn } = useLayoutRouteStore();
 const navigations = computed(() => moduleChildrenFn());
@@ -25,6 +29,6 @@ const navigations = computed(() => moduleChildrenFn());
         ></q-btn>
       </div>
     </div>
-    <router-view></router-view>
+    <router-view />
   </page-wrapper>
 </template>

@@ -1,20 +1,23 @@
 {
-  "name": "@trace/locales",
-  "module": "index.ts",
-  "scripts": {
-    "translate": "tsx ./translate.ts"
-  },
-  "dependencies": {
-    "@parvineyvazov/json-translator": "^2.2.2"
-  },
-  "devDependencies": {
-    "@types/bun": "latest",
-    "pnpm": "^8.15.4",
-    "rimraf": "^5.0.5",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.7.1"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  }
+    "name": "@trace/locales",
+    "module": "index.ts",
+    "scripts": {
+        "lint": "prettier --write 'output/**/*.{json,js}'",
+        "translate": "tsx ./translate.ts && pnpm run lint",
+        "translate-custom": "CUSTOM_URL=http://localhost:8585 CONCURRENCY=3 pnpm run translate"
+    },
+    "dependencies": {
+        "@parvineyvazov/json-translator": "2.2.2",
+        "prettier": "^3.2.5"
+    },
+    "devDependencies": {
+        "@types/bun": "latest",
+        "pnpm": "^9.1.1",
+        "rimraf": "^5.0.5",
+        "ts-node": "^10.9.2",
+        "tsx": "^4.7.1"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    }
 }

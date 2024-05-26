@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2023 - 2024 drolx Solutions
+ * Copyright (c) 2023 - 2024 drolx Labs
  *
  * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
  * you may not use this file except in compliance with the License.
  * Change License: Reciprocal Public License 1.5
  *     https://mariadb.com/bsl11
- *     https://opensource.org/license/rpl-1-5
+ *     https://trace.ng/licenses/license-1-0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,19 +15,16 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Mon Mar 25 2024
+ * Modified At: Sun May 26 2024
  */
 
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import type { Permission, User } from '@trace/model';
-import { useTagViewStore } from './tag-view';
-import type { Router } from '@/.nuxt/vue-router-stub';
 
 export const useUserAccountStore = defineStore(
-  'userAccount',
+  'state-user-account',
   () => {
-    const router: Router = useRouter();
     const permissions = ref<Permission[]>([
       {
         module: 'default',
@@ -35,76 +32,54 @@ export const useUserAccountStore = defineStore(
         actions: { create: true, read: true, update: false, delete: true },
       },
     ]);
-    // TODO: Fix pinia session storage issues
-    // const accessToken = ref<string | null>();
-    const accessToken = ref<string | null>();
-    const user = ref<User | null>({
-      id: 'ac707e42-74c4-4107-beba-4897107bf9f7',
-      tenantId: '60dccc53-d969-4bb5-a08b-dcf14feab87c',
-      active: true,
-      confirmed: true,
-      exipry: new Date(),
-      username: '',
-      email: 'john.doe@drolx.com',
-      phone: '+23480123456789',
-      roleId: '821f68cd-4b26-4682-ad96-123ac0d30504',
-      roleName: 'Default',
-      firstName: 'John',
-      lastName: 'Doe',
+
+    const user = ref<User | null>(null);
+    const getUser = computed(() => user.value);
+    const getFullname = computed<string>(() =>
+      user.value?.firstName
+        ? `${user.value?.firstName} ${user.value?.lastName}`
+        : 'None',
+    );
+    const getEmail = computed<string>(() => `${user.value?.email}`);
+    const getUserPermmisions = computed(() => permissions.value);
+    const getProfileInitials = computed(() => {
+      const char0 = user.value?.firstName.charAt(0) ?? '';
+      const char1 = user.value?.lastName.charAt(0) ?? '';
+
+      return `${char0 + char1}`.toUpperCase();
     });
 
-    const getUserName = computed(() => user.value);
-    const getUserPermmisions = computed(() => permissions.value);
-    const getAccessToken = computed(() => accessToken.value);
-    const getFirstCharacterOfUserName = computed(() =>
-      user.value!.username ? user.value!.username.charAt(0).toUpperCase() : 'X',
-    );
-
     const setUserInfo = (value: User) => (user.value = value);
-    const setAccessToken = (value: string) => (accessToken.value = value);
     const setUserPermmisions = (values: Permission[]) => {
       const account = user.value;
       permissions.value = values;
       user.value = account;
     };
 
-    const signIn = (auth: { username: string; password: string }) => {
-      console.log('triggered auth here');
-      if (auth.username === 'dev' && auth.password === 'dev') {
-        setAccessToken('xx-xx-xx-xx');
-        router.replace({ name: 'work-spaces' });
-      } else {
-        console.log('Something went wrong');
-      }
-    };
-
-    const signOut = () => {
-      console.log('Start sign out');
-
+    const clearAllUserState = () => {
       user.value = null;
       permissions.value = [];
-      const tagViewStore = useTagViewStore();
-      tagViewStore.removeAllTagView();
-      accessToken.value = null;
-      router.replace({ name: 'auth.sign-in' });
     };
 
     return {
       user,
-      accessToken,
-      getUserName,
+      permissions,
+      getUser,
+      getFullname,
+      getEmail,
       getUserPermmisions,
-      getAccessToken,
-      getFirstCharacterOfUserName,
-      setAccessToken,
+      getProfileInitials,
       setUserInfo,
       setUserPermmisions,
-      signIn,
-      signOut,
+      clearAllUserState,
     };
   },
   {
+    share: {
+      enable: true,
+    },
     persist: {
+      paths: ['user'],
       storage: persistedState.sessionStorage,
     },
   },

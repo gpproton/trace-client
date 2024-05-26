@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import LinkItem from '@/components/drawer/LinkItem.vue';
+import { defineAsyncComponent } from 'vue';
 import type { RouteMenu } from '@trace/base/typings';
+
+const LinkItem = defineAsyncComponent(
+  () => import('@/components/drawer/LinkItem.vue'),
+);
 
 defineOptions({ name: 'DesktopSecondarySidebar' });
 
@@ -14,7 +18,7 @@ const { modelValue, menuItems } = defineModels<{
   <q-drawer
     v-if="modelValue"
     v-model="modelValue"
-    :width="250"
+    :width="220"
     show-if-above
     persistent
     behavior="desktop"
@@ -23,13 +27,14 @@ const { modelValue, menuItems } = defineModels<{
     class="q-px-xs q-py-sm"
   >
     <q-list padding class="text-primary q-px-xs">
-      <template v-for="(item, index) in menuItems" :key="index">
-        <link-item :item="item" :dense="false" class="q-my-xs" />
-        <!-- <q-separator
-          v-if="index !== menuItems.length - 1"
-          :key="'sep' + index"
-        /> -->
-      </template>
+      <link-item
+        v-for="(item, index) in menuItems"
+        :key="index"
+        :show-icon="false"
+        :item="item"
+        :dense="false"
+        class="q-my-xs"
+      />
     </q-list>
   </q-drawer>
 </template>

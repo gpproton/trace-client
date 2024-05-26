@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive, defineAsyncComponent } from 'vue';
 import { useRouter } from 'vue-router';
-import IdentityForm from '@/app.account/shared/components/IdentityForm.vue';
+
+const IdentityForm = defineAsyncComponent(
+  () => import('@/app.account/shared/components/IdentityForm.vue'),
+);
 
 defineOptions({ name: 'PasswordUpdate' });
 
@@ -22,13 +25,13 @@ const updatePassword = () => {
 
 <template>
   <identity-form>
-    <template #title>Update Password</template>
+    <template #title>{{ $t('auth.updatePassword') }}</template>
     <q-input
       v-model="passwordState.value"
       standout
       no-error-icon
       :type="passwordState.show ? 'text' : 'password'"
-      label="New Password"
+      :label="$t('auth.recoveryNewPassword')"
       class="border-radius-sm q-my-lg"
       @keyup.enter="updatePassword"
     >
@@ -52,7 +55,7 @@ const updatePassword = () => {
       standout
       no-error-icon
       :type="passwordState.showConfirm ? 'text' : 'password'"
-      label="Confirm New Password"
+      :label="$t('auth.recoveryConfirmPassword')"
       class="border-radius-sm q-my-lg"
       @keyup.enter="updatePassword"
     >
@@ -73,7 +76,7 @@ const updatePassword = () => {
 
     <div class="q-my-md">
       <q-btn
-        label="Submit"
+        :label="$t('action.submit')"
         color="action"
         size="lg"
         no-caps

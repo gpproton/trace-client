@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2023 - 2024 drolx Solutions
+ * Copyright (c) 2023 - 2024 drolx Labs
  *
  * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
  * you may not use this file except in compliance with the License.
  * Change License: Reciprocal Public License 1.5
  *     https://mariadb.com/bsl11
- *     https://opensource.org/license/rpl-1-5
+ *     https://trace.ng/licenses/license-1-0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Friday, 8th Mar 2024
  * Modified By: Godwin peter .O
- * Modified At: Sun Mar 24 2024
+ * Modified At: Fri May 24 2024
  */
 
 import type { Route } from '@trace/base/typings';
@@ -39,7 +39,7 @@ const routes: Route = {
       component: () => import('./pages/GeneralSettings.vue'),
       meta: {
         menu: true,
-        title: 'router.generalSettings',
+        title: 'settings.generalSettings',
         icon: 'bi-gear',
       },
     },
@@ -49,7 +49,7 @@ const routes: Route = {
       component: () => import('./pages/AlertSettings.vue'),
       meta: {
         menu: true,
-        title: 'router.accountAlerts',
+        title: 'settings.accountAlerts',
         icon: 'bi-bell',
       },
     },
@@ -59,7 +59,7 @@ const routes: Route = {
       component: () => import('./pages/AppearanceSettings.vue'),
       meta: {
         menu: true,
-        title: 'router.appearanceSettings',
+        title: 'settings.appearanceSettings',
         icon: 'bi-palette',
       },
     },
@@ -69,7 +69,7 @@ const routes: Route = {
       component: () => import('./pages/MapSettings.vue'),
       meta: {
         menu: true,
-        title: 'router.mapSettings',
+        title: 'settings.mapSettings',
         icon: 'bi-compass',
       },
     },

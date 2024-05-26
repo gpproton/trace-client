@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import UnderConstruction from '@/icons/banner/under-construction.svg?url';
+import UnderConstruction from '@/assets/banner/under-construction-2.svg?url';
 import { useAppBreakpoints } from '@/composables/breakpoints';
 import { storeToRefs } from 'pinia';
 
@@ -14,6 +14,7 @@ const { isDesktop } = storeToRefs(breakpointStates);
     <q-img
       no-native-menu
       no-spinner
+      lazy
       :src="UnderConstruction"
       class="q-mt-xs q-mb-md page-visual"
       alt="Under Construction"

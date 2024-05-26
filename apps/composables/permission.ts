@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2023 - 2024 drolx Solutions
+ * Copyright (c) 2023 - 2024 drolx Labs
  *
  * Licensed under the Business Source License 1.1 and Trace Source Available License 1.0
  * you may not use this file except in compliance with the License.
  * Change License: Reciprocal Public License 1.5
  *     https://mariadb.com/bsl11
- *     https://opensource.org/license/rpl-1-5
+ *     https://trace.ng/licenses/license-1-0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,11 +15,11 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Monday, 19th Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Thu Mar 21 2024
+ * Modified At: Sat May 18 2024
  */
 
 import { useUserAccountStore } from '@/stores/user-account';
-import { useServerStore } from '@trace/base/stores/server';
+import { useServerStore } from '@/stores/app-server';
 import { type ActionState, Workflow } from '@trace/model';
 import { storeToRefs } from 'pinia';
 
@@ -47,12 +47,12 @@ export const useAppPermission = () => {
 
   const hasWorkflow = (workflows: Workflow[]) => {
     const { getWorkflow } = storeToRefs(serverStore);
-    const workflow = getWorkflow.value;
-    if (workflow) {
-      return (
-        getWorkflow.value === Workflow.System ||
-        Object.values(workflows).includes(workflow)
-      );
+    const activeWorkflows = getWorkflow.value;
+
+    if (activeWorkflows) {
+      activeWorkflows?.forEach((x) => {
+        return x === Workflow.System || workflows.includes(x);
+      });
     }
     return false;
   };
