@@ -1,9 +1,18 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, onActivated, onDeactivated, defineAsyncComponent } from 'vue';
+import {
+  ref,
+  onMounted,
+  onUnmounted,
+  onActivated,
+  onDeactivated,
+  defineAsyncComponent,
+} from 'vue';
 import { QScrollArea, SessionStorage } from 'quasar';
 import { useRoute } from 'vue-router';
 
-const UnderConstruction = defineAsyncComponent(() => import('@trace/base/components/error/UnderConstruction.vue'))
+const UnderConstruction = defineAsyncComponent(
+  () => import('@trace/base/components/error/UnderConstruction.vue'),
+);
 
 defineOptions({ name: 'PageWrapper' });
 
@@ -31,19 +40,22 @@ const thumbStyle = {
   width: '7px',
 };
 
-withDefaults(defineProps<{
-  options?: IPageContext | any;
-  name?: string;
-  contentActiveStyle?: string;
-  scrollable?: boolean;
-  padding?: boolean;
-}>(), {
-  options: {},
-  name: '',
-  contentActiveStyle: '',
-  scrollable: false,
-  padding: true,
-});
+withDefaults(
+  defineProps<{
+    options?: IPageContext | any;
+    name?: string;
+    contentActiveStyle?: string;
+    scrollable?: boolean;
+    padding?: boolean;
+  }>(),
+  {
+    options: {},
+    name: '',
+    contentActiveStyle: '',
+    scrollable: false,
+    padding: true,
+  },
+);
 
 const scrollArea = ref<QScrollArea | null>(null);
 const basePath = ref<string>('');
