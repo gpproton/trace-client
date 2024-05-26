@@ -5,6 +5,8 @@ import MapView from '@/map/MapView.vue';
 const PanelWindow = defineAsyncComponent(
   () => import('@/map/components/PanelWindow.vue'),
 );
+// TODO: create custom import function
+// const PanelWindow = () => import('@/map/components/PanelWindow.vue');
 </script>
 
 <template>

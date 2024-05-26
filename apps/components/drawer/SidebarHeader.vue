@@ -2,6 +2,7 @@
 import { inject } from 'vue';
 import AppLogo from '@trace/base/assets/icons/logo.svg';
 import { QBtn } from 'quasar';
+import { T } from '@vite-pwa/assets-generator/dist/shared/assets-generator.5e51fd40.mjs';
 
 defineOptions({ name: 'SidebarHeader' });
 const { modelValue } = defineModels<{
@@ -44,10 +45,10 @@ const toogleButton = () => (
         <app-logo class="sidebar-logo col self-start" />
         <div class="col-9 text-no-wrap q-pl-md">
           <div class="text-h5 text-weight-medium text-primary text-capitalize">
-            {{ workspace }}
+            {{ $t(`shared.${workspace}`) }}
           </div>
           <div class="text-accent-more">
-            {{ 'Workspace' }}
+            {{ $t('shared.workspace') }}
           </div>
         </div>
       </nuxt-link>

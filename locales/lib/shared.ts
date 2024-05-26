@@ -33,6 +33,7 @@ export default {
     resend: "Resend",
     enter: "Enter",
     new: "New",
+    workspace: "Workspace",
     create: "Create",
     update: "Update",
     confirm: "Confirm",
