@@ -2,7 +2,6 @@
 import { inject } from 'vue';
 import AppLogo from '@trace/base/assets/icons/logo.svg';
 import { QBtn } from 'quasar';
-import { T } from '@vite-pwa/assets-generator/dist/shared/assets-generator.5e51fd40.mjs';
 
 defineOptions({ name: 'SidebarHeader' });
 const { modelValue } = defineModels<{

@@ -5,7 +5,9 @@ import { onboardRoutes } from './routes';
 import { useOnboardStore } from '@trace/base/composables/on-board';
 import { appConstants } from '@trace/shared';
 
-const LangSelector = defineAsyncComponent(() => import('@trace/base/components/LangSelector.vue'));
+const LangSelector = defineAsyncComponent(
+  () => import('@trace/base/components/LangSelector.vue'),
+);
 
 defineOptions({ name: 'OnboardLayout' });
 

@@ -2,7 +2,9 @@
 import { defineAsyncComponent } from 'vue';
 import type { RouteMenu } from '@trace/base/typings';
 
-const LinkItem = defineAsyncComponent(() => import('@/components/drawer/LinkItem.vue'));
+const LinkItem = defineAsyncComponent(
+  () => import('@/components/drawer/LinkItem.vue'),
+);
 
 defineOptions({ name: 'DesktopSecondarySidebar' });
 

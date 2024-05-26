@@ -3,10 +3,18 @@ import WorkspaceIcon from '@trace/base/assets/banner/workspace.svg?url';
 import { Workspace } from '@trace/shared';
 import AppLogo from '@trace/base/assets/icons/logo.svg';
 
-const GenericHeader = defineAsyncComponent(() => import('@/app/GenericHeader.vue'));
-const GenericFooter = defineAsyncComponent(() => import('@/app/GenericFooter.vue'));
-const ProfileWidgetMenu = defineAsyncComponent(() => import('@/components/extra/ProfileWidgetMenu.vue'));
-const ProfileAvatar = defineAsyncComponent(() => import('@/components/extra/ProfileAvatar.vue'));
+const GenericHeader = defineAsyncComponent(
+  () => import('@/app/GenericHeader.vue'),
+);
+const GenericFooter = defineAsyncComponent(
+  () => import('@/app/GenericFooter.vue'),
+);
+const ProfileWidgetMenu = defineAsyncComponent(
+  () => import('@/components/extra/ProfileWidgetMenu.vue'),
+);
+const ProfileAvatar = defineAsyncComponent(
+  () => import('@/components/extra/ProfileAvatar.vue'),
+);
 
 defineOptions({ name: 'WorkSpaces' });
 

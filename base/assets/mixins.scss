@@ -39,14 +39,12 @@
       $mode-color: null;
       $mode-text-color: null;
 
-      @if $profile =='light' {
+      @if $profile == 'light' {
         $mode-color: $color;
         $mode-text-color: $mode-color;
         --q-#{$name}-inverted: #{$color-darken};
         --q-#{$name}-inverted-text: #{$color-darken};
-      }
-
-      @else {
+      } @else {
         $mode-color: $color-darken;
         $mode-text-color: $mode-color;
         --q-#{$name}-inverted: #{$color};

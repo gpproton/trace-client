@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue';
 
-const GenericHeader = defineAsyncComponent(() => import('@/app/GenericHeader.vue'));
-const GenericFooter = defineAsyncComponent(() => import('@/app/GenericFooter.vue'));
-const SupportLinks = defineAsyncComponent(() => import('@/app.account/SupportLinks.vue'));
+const GenericHeader = defineAsyncComponent(
+  () => import('@/app/GenericHeader.vue'),
+);
+const GenericFooter = defineAsyncComponent(
+  () => import('@/app/GenericFooter.vue'),
+);
+const SupportLinks = defineAsyncComponent(
+  () => import('@/app.account/SupportLinks.vue'),
+);
 </script>
 
 <template>

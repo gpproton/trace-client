@@ -1,8 +1,12 @@
 <script lang="ts" setup>
 import { ref, defineAsyncComponent } from 'vue';
 
-const GenericHeader = defineAsyncComponent(() => import('@/app/GenericHeader.vue'));
-const GenericFooter = defineAsyncComponent(() => import('@/app/GenericFooter.vue'));
+const GenericHeader = defineAsyncComponent(
+  () => import('@/app/GenericHeader.vue'),
+);
+const GenericFooter = defineAsyncComponent(
+  () => import('@/app/GenericFooter.vue'),
+);
 
 defineOptions({ name: 'DocumentLayout' });
 const leftDrawerOpen = ref(false);

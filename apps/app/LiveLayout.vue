@@ -5,8 +5,12 @@ import type { RouteMenu } from '@trace/base/typings';
 import { useLayoutRouteStore } from '@/composables/layout-routes';
 
 const AppLayout = defineAsyncComponent(() => import('./AppLayout.vue'));
-const SidebarList = defineAsyncComponent(() => import('@/components/drawer/SidebarList.vue'));
-const ProfileWidget = defineAsyncComponent(() => import('@/components/extra/ProfileWidget.vue'));
+const SidebarList = defineAsyncComponent(
+  () => import('@/components/drawer/SidebarList.vue'),
+);
+const ProfileWidget = defineAsyncComponent(
+  () => import('@/components/extra/ProfileWidget.vue'),
+);
 
 const props = withDefaults(
   defineProps<{

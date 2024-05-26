@@ -4,7 +4,9 @@ import AppLogo from '@trace/base/assets/icons/logo.svg';
 import { storeToRefs } from 'pinia';
 import { useServerStore } from '@/stores/app-server';
 
-const LangSelector = defineAsyncComponent(() => import('@trace/base/components/LangSelector.vue'));
+const LangSelector = defineAsyncComponent(
+  () => import('@trace/base/components/LangSelector.vue'),
+);
 
 withDefaults(
   defineProps<{

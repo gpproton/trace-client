@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import {defineAsyncComponent } from 'vue';
+import { defineAsyncComponent } from 'vue';
 
-const NotFound = defineAsyncComponent(() => import('@/components/error/NotFound.vue'));
+const NotFound = defineAsyncComponent(
+  () => import('@/components/error/NotFound.vue'),
+);
 
 defineOptions({ name: 'NotFoundPage' });
 </script>

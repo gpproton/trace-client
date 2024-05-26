@@ -43,12 +43,5 @@
     "docs",
     "apps",
     "mobile"
-  ],
-  "engines": {
-    "npm": "please-use-pnpm",
-    "pnpm": ">= 8.2.0",
-    "yarn": "please-use-pnpm",
-    "bun": ">= 1.0.1",
-    "node": ">= 16.0.0"
-  }
+  ]
 }

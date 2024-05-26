@@ -2,7 +2,9 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-const IdentityForm = defineAsyncComponent(() => import('@/app.account/shared/components/IdentityForm.vue'));
+const IdentityForm = defineAsyncComponent(
+  () => import('@/app.account/shared/components/IdentityForm.vue'),
+);
 
 defineOptions({ name: 'VerifyOtp' });
 

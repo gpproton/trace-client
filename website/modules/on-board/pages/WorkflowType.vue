@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useOnboardStore } from '@trace/base/composables/on-board';
 
-const ListOption = defineAsyncComponent(() => import('@trace/base/components/form/ListOption.vue'));
+const ListOption = defineAsyncComponent(
+  () => import('@trace/base/components/form/ListOption.vue'),
+);
 
 defineOptions({ name: 'WorkflowType' });
 

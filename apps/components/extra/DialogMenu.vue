@@ -6,7 +6,9 @@ import { useDialogPluginComponent } from 'quasar';
 import type { RouteMenu } from '@trace/base/typings';
 import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 
-const SidebarList = defineAsyncComponent(() => import('@/components/drawer/SidebarList.vue'));
+const SidebarList = defineAsyncComponent(
+  () => import('@/components/drawer/SidebarList.vue'),
+);
 
 const breakpointStates = useAppBreakpoints();
 const { isDesktop } = storeToRefs(breakpointStates);
@@ -41,8 +43,8 @@ defineExpose({
 
 <template>
   <q-dialog
-    no-refocus
     ref="dialogRef"
+    no-refocus
     :transition-show="isDesktop ? 'fade-in' : 'slide-up'"
     :transition-hide="isDesktop ? 'fade-out' : 'slide-down'"
     @hide="onDialogHide"

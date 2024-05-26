@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue';
 
-const UnAuthorized = defineAsyncComponent(() => import('@trace/base/components/error/UnAuthorized.vue'));
+const UnAuthorized = defineAsyncComponent(
+  () => import('@trace/base/components/error/UnAuthorized.vue'),
+);
 
 defineOptions({ name: 'UnAuthorizedPage' });
 </script>

@@ -2,7 +2,9 @@
 import { defineAsyncComponent } from 'vue';
 import { useUserAccountStore } from '@/stores/user-account';
 
-const ProfileWidgetMenu = defineAsyncComponent(() => import('./ProfileWidgetMenu.vue'));
+const ProfileWidgetMenu = defineAsyncComponent(
+  () => import('./ProfileWidgetMenu.vue'),
+);
 const ProfileAvatar = defineAsyncComponent(() => import('./ProfileAvatar.vue'));
 
 const userAccountStore = useUserAccountStore();

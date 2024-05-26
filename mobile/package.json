@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Trace Mobile",
   "productName": "Trace",
+  "license": "BSL 1.1",
   "author": "radioActive DROID <me@godwin.dev>",
   "private": true,
   "main": "index.js",
@@ -30,6 +31,5 @@
     "@capacitor/assets": "^3.0.5",
     "@capacitor/cli": "^5.7.4",
     "vite": "^2.9.13"
-  },
-  "license": "BSL 1.1"
+  }
 }

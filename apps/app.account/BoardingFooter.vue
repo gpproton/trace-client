@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue';
 
-const GenericFooter = defineAsyncComponent(() => import('@/app/GenericFooter.vue'));
+const GenericFooter = defineAsyncComponent(
+  () => import('@/app/GenericFooter.vue'),
+);
 </script>
 
 <template>

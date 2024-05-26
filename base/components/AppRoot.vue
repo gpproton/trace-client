@@ -4,7 +4,9 @@ import { storeToRefs } from 'pinia';
 import { useLanguageStore } from '@/stores/language';
 import type { Route } from '@/typings';
 
-const LoadingIndicator = defineAsyncComponent(() => import('@/components/LoadingIndicator.vue'));
+const LoadingIndicator = defineAsyncComponent(
+  () => import('@/components/LoadingIndicator.vue'),
+);
 
 defineOptions({ name: 'AppRoot' });
 

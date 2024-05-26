@@ -12,8 +12,8 @@
     "postinstall": "nuxt prepare",
     "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
-    "lint": "pnpm lint:js && yarn lint:prettier",
-    "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
+    "lint": "pnpm lint:js && pnpm lint:prettier",
+    "lintfix": "prettier --write --list-different . && pnpm lint:js --fix"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.11",

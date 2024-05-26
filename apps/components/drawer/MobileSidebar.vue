@@ -2,10 +2,18 @@
 import type { RouteMenu } from '@trace/base/typings';
 import { inject, defineAsyncComponent } from 'vue';
 
-const SidebarList = defineAsyncComponent(() => import('@/components/drawer/SidebarList.vue'));
-const ThemeSwitcher = defineAsyncComponent(() => import('@/components/extra/ThemeSwitcher.vue'));
-const SidebarHeader = defineAsyncComponent(() => import('@/components/drawer/SidebarHeader.vue'));
-const ProfileWidget = defineAsyncComponent(() => import('@/components/extra/ProfileWidget.vue'));
+const SidebarList = defineAsyncComponent(
+  () => import('@/components/drawer/SidebarList.vue'),
+);
+const ThemeSwitcher = defineAsyncComponent(
+  () => import('@/components/extra/ThemeSwitcher.vue'),
+);
+const SidebarHeader = defineAsyncComponent(
+  () => import('@/components/drawer/SidebarHeader.vue'),
+);
+const ProfileWidget = defineAsyncComponent(
+  () => import('@/components/extra/ProfileWidget.vue'),
+);
 
 defineOptions({ name: 'MobileSidebar' });
 

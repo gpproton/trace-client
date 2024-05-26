@@ -3,8 +3,12 @@ import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 import { ref, defineAsyncComponent } from 'vue';
 import { storeToRefs } from 'pinia';
 
-const ContactDetailItem = defineAsyncComponent(() => import('../components/ContactDetailItem.vue'));
-const ContactItem = defineAsyncComponent(() => import('../components/ContactItem.vue'));
+const ContactDetailItem = defineAsyncComponent(
+  () => import('../components/ContactDetailItem.vue'),
+);
+const ContactItem = defineAsyncComponent(
+  () => import('../components/ContactItem.vue'),
+);
 
 defineOptions({ name: 'ContactOverview' });
 

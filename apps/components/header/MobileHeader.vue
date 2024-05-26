@@ -3,7 +3,9 @@ import type { Route, RouteMenu } from '@trace/base/typings';
 import { useQuasar } from 'quasar';
 import { inject, defineAsyncComponent } from 'vue';
 
-const DialogMenu = defineAsyncComponent(() => import('@/components/extra/DialogMenu.vue'));
+const DialogMenu = defineAsyncComponent(
+  () => import('@/components/extra/DialogMenu.vue'),
+);
 
 defineOptions({ name: 'MobileHeader' });
 

@@ -2,7 +2,9 @@
 import { ref, defineAsyncComponent } from 'vue';
 import { useRouter } from 'vue-router';
 
-const IdentityForm = defineAsyncComponent(() => import('@/app.account/shared/components/IdentityForm.vue'));
+const IdentityForm = defineAsyncComponent(
+  () => import('@/app.account/shared/components/IdentityForm.vue'),
+);
 
 defineOptions({ name: 'OtpChoice' });
 
@@ -12,15 +14,13 @@ const resetOptions = ref([
   {
     type: 'email',
     title: 'auth.passwordResetEmail',
-    caption:
-      'auth.recoveryOptionEmail',
+    caption: 'auth.recoveryOptionEmail',
     icon: 'bi-envelope',
   },
   {
     type: 'sms',
     title: 'auth.passwordResetSms',
-    caption:
-      'auth.recoverySmsOption',
+    caption: 'auth.recoverySmsOption',
     icon: 'bi-telephone',
   },
 ]);

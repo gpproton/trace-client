@@ -2,9 +2,15 @@
 import { inject, defineAsyncComponent } from 'vue';
 import type { RouteMenu } from '@trace/base/typings';
 
-const SidebarList = defineAsyncComponent(() => import('@/components/drawer/SidebarList.vue'));
-const SidebarHeader = defineAsyncComponent(() => import('@/components/drawer/SidebarHeader.vue'));
-const ThemeSwitcher = defineAsyncComponent(() => import('@/components/extra/ThemeSwitcher.vue'));
+const SidebarList = defineAsyncComponent(
+  () => import('@/components/drawer/SidebarList.vue'),
+);
+const SidebarHeader = defineAsyncComponent(
+  () => import('@/components/drawer/SidebarHeader.vue'),
+);
+const ThemeSwitcher = defineAsyncComponent(
+  () => import('@/components/extra/ThemeSwitcher.vue'),
+);
 
 defineOptions({ name: 'DesktopSidebar' });
 

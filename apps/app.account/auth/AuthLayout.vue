@@ -2,8 +2,12 @@
 import { defineAsyncComponent } from 'vue';
 import LightHouse from '@trace/base/assets/banner/lighthouse.svg?url';
 
-const GenericHeader = defineAsyncComponent(() => import('@/app/GenericHeader.vue'));
-const GenericFooter = defineAsyncComponent(() => import('@/app/GenericFooter.vue'));
+const GenericHeader = defineAsyncComponent(
+  () => import('@/app/GenericHeader.vue'),
+);
+const GenericFooter = defineAsyncComponent(
+  () => import('@/app/GenericFooter.vue'),
+);
 </script>
 
 <template>

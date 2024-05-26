@@ -4,10 +4,18 @@ import { storeToRefs } from 'pinia';
 import OnboardAsset from '@trace/base/assets/banner/man-3.svg?url';
 import { useServerStore } from '@/stores/app-server';
 
-const LangSelector = defineAsyncComponent(() => import('@trace/base/components/LangSelector.vue'));
-const GenericHeader = defineAsyncComponent(() => import('@/app/GenericHeader.vue'));
-const BoardingFooter = defineAsyncComponent(() => import('@/app.account/BoardingFooter.vue'));
-const SupportLinks = defineAsyncComponent(() => import('@/app.account/SupportLinks.vue'));
+const LangSelector = defineAsyncComponent(
+  () => import('@trace/base/components/LangSelector.vue'),
+);
+const GenericHeader = defineAsyncComponent(
+  () => import('@/app/GenericHeader.vue'),
+);
+const BoardingFooter = defineAsyncComponent(
+  () => import('@/app.account/BoardingFooter.vue'),
+);
+const SupportLinks = defineAsyncComponent(
+  () => import('@/app.account/SupportLinks.vue'),
+);
 
 defineOptions({ name: 'WelcomeLayout' });
 

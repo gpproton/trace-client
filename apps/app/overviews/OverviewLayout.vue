@@ -2,7 +2,9 @@
 import { defineAsyncComponent } from 'vue';
 import { useLayoutRouteStore } from '@/composables/layout-routes';
 
-const SwitcherButton = defineAsyncComponent(() => import('@/components/extra/SwitcherButton.vue'));
+const SwitcherButton = defineAsyncComponent(
+  () => import('@/components/extra/SwitcherButton.vue'),
+);
 
 const { moduleChildrenFn } = useLayoutRouteStore();
 const navigations = computed(() => moduleChildrenFn());
