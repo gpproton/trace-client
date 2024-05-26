@@ -37,8 +37,8 @@ export const useUserAccountStore = defineStore(
     const getUser = computed(() => user.value);
     const getFullname = computed<string>(() =>
       user.value?.firstName
-        ? 'None'
-        : `${user.value?.firstName} ${user.value?.lastName}`,
+        ? `${user.value?.firstName} ${user.value?.lastName}`
+        : 'None',
     );
     const getEmail = computed<string>(() => `${user.value?.email}`);
     const getUserPermmisions = computed(() => permissions.value);
