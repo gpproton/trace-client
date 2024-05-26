@@ -145,7 +145,7 @@ registerLifecyces();
           v-model="authState.remember"
           dense
           :disable="loginForminactive"
-          label="Remember"
+          :label="$t('shared.remember')"
         />
         <router-link
           class="identity-link identity-text"
