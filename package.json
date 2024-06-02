@@ -18,7 +18,7 @@
   },
   "homepage": "https://trace.ng",
   "scripts": {
-    "clean": "pnpx rimraf node_modules **/node_modules bun.* **/bun.* **/dist/* pnpm-lock.* **/pnpm-lock.*",
+    "clean": "rimraf node_modules **/node_modules bun.* **/bun.* **/dist/* pnpm-lock.* **/pnpm-lock.*",
     "dev": "pnpm -r --filter ./apps dev",
     "dev:base": "pnpm -r --filter ./base dev",
     "dev:website": "pnpm -r --filter ./website dev",

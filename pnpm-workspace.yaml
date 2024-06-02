@@ -1,6 +1,7 @@
 packages:
   - 'packages/*'
   - 'locales'
+  # - 'docs'
   - 'base'
   - 'website'
   - 'apps'

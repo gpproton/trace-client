@@ -9,6 +9,10 @@
       "path": "packages/shared"
     },
     {
+      "name": "lib-theme",
+      "path": "packages/theme"
+    },
+    {
       "name": "locales",
       "path": "locales"
     },

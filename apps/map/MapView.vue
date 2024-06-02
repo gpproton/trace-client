@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted, nextTick, defineAsyncComponent } from 'vue';
+// import TileLayers from './TileLayers.vue';
 
 const TileLayers = defineAsyncComponent(() => import('./TileLayers.vue'));
 
@@ -22,35 +23,28 @@ const onMapReady = async () => {
 </script>
 
 <template>
-  <client-only>
-    <l-map
-      v-if="mapReady"
-      ref="mapReference"
-      :zoom-animation="true"
-      :marker-zoom-animation="true"
-      :options="{
-        center: center,
-        zoomControl: false,
-        zoom: zoom,
-        minZoom: 4,
-        maxZoom: 19,
-        attributionControl: false,
-        preferCanvas: true,
-      }"
-      v-bind="$attrs"
-      @ready="onMapReady"
-    >
-      <slot name="first"></slot>
-      <!-- <fullscreen-control></fullscreen-control> -->
-      <!-- <measure-control></measure-control> -->
-      <!-- <geocoder-control></geocoder-control> -->
-      <slot></slot>
-      <slot name="last">
-        <lazy-l-control-zoom position="bottomright" />
-      </slot>
-      <tile-layers></tile-layers>
-    </l-map>
-  </client-only>
+  <!-- <client-only> -->
+  <l-map v-if="mapReady" v-bind="$attrs" ref="mapReference" :zoom-animation="true" :marker-zoom-animation="true"
+    :options="{
+      center: center,
+      zoomControl: false,
+      zoom: zoom,
+      minZoom: 4,
+      maxZoom: 19,
+      attributionControl: false,
+      preferCanvas: true,
+    }" @ready="onMapReady">
+    <slot name="first"></slot>
+    <!-- <fullscreen-control></fullscreen-control> -->
+    <!-- <measure-control></measure-control> -->
+    <!-- <geocoder-control></geocoder-control> -->
+    <slot></slot>
+    <slot name="last">
+      <lazy-l-control-zoom position="bottomright" />
+    </slot>
+    <tile-layers></tile-layers>
+  </l-map>
+  <!-- </client-only> -->
 </template>
 
 <style>
