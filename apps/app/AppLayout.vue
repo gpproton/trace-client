@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useQuasar } from 'quasar';
-import { defineAsyncComponent, provide } from 'vue';
+import { provide } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useAppBreakpoints } from '@trace/base/composables/breakpoints';
 import { useLayoutStore } from '@/stores/layout';
@@ -8,22 +8,11 @@ import { useLayoutRouteStore } from '@/composables/layout-routes';
 import { useThemeStore } from '@/stores/theme';
 import type { IModuleCommands, Workspace } from '@trace/shared';
 import type { RouteMenu } from '@trace/base/typings';
-
-const DesktopHeader = defineAsyncComponent(
-  () => import('@/components/header/DesktopHeader.vue'),
-);
-const MobileHeader = defineAsyncComponent(
-  () => import('@/components/header/MobileHeader.vue'),
-);
-const DesktopSidebar = defineAsyncComponent(
-  () => import('@/components/drawer/DesktopSidebar.vue'),
-);
-const MobileSidebar = defineAsyncComponent(
-  () => import('@/components/drawer/MobileSidebar.vue'),
-);
-const DesktopSecondarySidebar = defineAsyncComponent(
-  () => import('@/components/drawer/DesktopSecondarySidebar.vue'),
-);
+import DesktopHeader from '@/components/header/DesktopHeader.vue';
+import MobileHeader from '@/components/header/MobileHeader.vue';
+import DesktopSidebar from '@/components/drawer/DesktopSidebar.vue';
+import MobileSidebar from '@/components/drawer/MobileSidebar.vue';
+import DesktopSecondarySidebar from '@/components/drawer/DesktopSecondarySidebar.vue';
 
 const $q = useQuasar();
 const props = withDefaults(

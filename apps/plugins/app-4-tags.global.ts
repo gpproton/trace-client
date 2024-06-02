@@ -15,7 +15,7 @@
  * Author: Godwin peter .O (me@godwin.dev)
  * Created At: Thursday, 22nd Feb 2024
  * Modified By: Godwin peter .O
- * Modified At: Fri May 24 2024
+ * Modified At: Sun Jun 02 2024
  */
 
 import { useTagViewStore } from '@/stores/tag-view';
@@ -60,7 +60,9 @@ export default defineNuxtPlugin(() => {
       if (getTagView.value.length === 0 && storedTagView.length !== 0) {
         setTagView(storedTagView);
         setKeepAliveList(storedTagView);
-      } else if (from.fullPath !== to.fullPath) {
+      }
+      // else if (from.fullPath !== to.fullPath) {
+      else {
         addTagView(to);
       }
 

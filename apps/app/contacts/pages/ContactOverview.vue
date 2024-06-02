@@ -132,7 +132,7 @@ onMounted(() => {
                 </template>
               </q-input>
             </q-item-label>
-            <q-item-label header class="text-center"
+            <q-item-label header class="text-center text-body2"
               >{{ contactsLlist.length }} Contacts</q-item-label
             >
             <span
@@ -200,6 +200,7 @@ onMounted(() => {
       </div>
     </div>
 
+    <!-- Mobile view -->
     <div v-else>
       <div v-if="Object.keys(selectedContact).length == 0">
         <q-list

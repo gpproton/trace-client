@@ -69,7 +69,7 @@ const links = ref<Array<{ name: string; label: string }>>([
 <template>
   <q-layout view="hHh LpR fff">
     <q-page-container>
-      <div class="row fit" style="max-height: 100dvh">
+      <q-page class="row fit" style="max-height: 100dvh">
         <q-card
           square
           fit
@@ -134,7 +134,7 @@ const links = ref<Array<{ name: string; label: string }>>([
             </div>
           </div>
         </q-card>
-      </div>
+      </q-page>
     </q-page-container>
   </q-layout>
 </template>

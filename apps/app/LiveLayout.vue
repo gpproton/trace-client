@@ -3,8 +3,8 @@ import { ref, provide, defineAsyncComponent } from 'vue';
 import type { Workspace } from '@trace/shared';
 import type { RouteMenu } from '@trace/base/typings';
 import { useLayoutRouteStore } from '@/composables/layout-routes';
+import AppLayout from './AppLayout.vue';
 
-const AppLayout = defineAsyncComponent(() => import('./AppLayout.vue'));
 const SidebarList = defineAsyncComponent(
   () => import('@/components/drawer/SidebarList.vue'),
 );

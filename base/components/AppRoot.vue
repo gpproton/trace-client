@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { onBeforeMount, watch, defineAsyncComponent } from 'vue';
+import { onBeforeMount, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useLanguageStore } from '@/stores/language';
 import type { Route } from '@/typings';
-
-const LoadingIndicator = defineAsyncComponent(
-  () => import('@/components/LoadingIndicator.vue'),
-);
+import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
 defineOptions({ name: 'AppRoot' });
 
